@@ -6,6 +6,7 @@
 package veterinaria;
 
 import modelo.Cliente;
+import modelo.Mascota;
 
 /**
  *
@@ -18,6 +19,7 @@ public class Veterinaria {
      */
     public static void main(String[] args) {
         Cliente cl = new Cliente();
+        Mascota m1 = new Mascota();
     }
     
 }
