@@ -5,6 +5,8 @@
  */
 package veterinaria;
 
+import modelo.Cliente;
+
 /**
  *
  * @author salva
@@ -15,7 +17,7 @@ public class Veterinaria {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Cliente cl = new Cliente();
     }
     
 }
