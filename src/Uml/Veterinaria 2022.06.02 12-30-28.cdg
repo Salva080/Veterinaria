@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Veterinaria">
+  <ClassDiagramComponents>
+    <Class name="ClienteData" package="veterinaria.Controladores" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="con" type="Connection" visibility="private"/>
+        <Field name="sql" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Conexion" name="conexion"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="agregarCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="eliminarCliente" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="clienteExiste" returnType="boolean" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="modificarCliente" returnType="void" visibility="public">
+          <Argument type="int" name="id"/>
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="buscarCliente" returnType="Cliente" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="listarClienteActivos" returnType="List&lt;Cliente&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ConsultaData" package="veterinaria.Controladores" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="MascotaData" package="veterinaria.Controladores" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="TratamientoData" package="veterinaria.Controladores" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="VeterinariaData" package="veterinaria.Controladores" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Cliente" package="veterinaria.Modelo" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="idCliente" type="int" visibility="private"/>
+        <Field name="dni" type="int" visibility="private"/>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="apellido" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="telefono" type="int" visibility="private"/>
+        <Field name="ContactoAlternativo" type="String" visibility="private"/>
+        <Field name="activo" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="idCliente"/>
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="int" name="telefono"/>
+          <Argument type="String" name="contactoAlternativo"/>
+          <Argument type="boolean" name="activo"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="dni"/>
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="apellido"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="int" name="telefono"/>
+          <Argument type="String" name="ContactoAlternativo"/>
+          <Argument type="boolean" name="activo"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIdCliente" returnType="int" visibility="public"/>
+        <Method name="setIdCliente" returnType="void" visibility="public">
+          <Argument type="int" name="idCliente"/>
+        </Method>
+        <Method name="getDni" returnType="int" visibility="public"/>
+        <Method name="setDni" returnType="void" visibility="public">
+          <Argument type="int" name="dni"/>
+        </Method>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getApellido" returnType="String" visibility="public"/>
+        <Method name="setApellido" returnType="void" visibility="public">
+          <Argument type="String" name="apellido"/>
+        </Method>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="getTelefono" returnType="int" visibility="public"/>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="int" name="telefono"/>
+        </Method>
+        <Method name="getContactoAlternativo" returnType="String" visibility="public"/>
+        <Method name="setContactoAlternativo" returnType="void" visibility="public">
+          <Argument type="String" name="ContactoAlternativo"/>
+        </Method>
+        <Method name="isActivo" returnType="boolean" visibility="public"/>
+        <Method name="setActivo" returnType="void" visibility="public">
+          <Argument type="boolean" name="activo"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Conexion" package="veterinaria.Modelo" visibility="public" xPosition="1201.0" yPosition="1269.0">
+      <Fields>
+        <Field name="url" type="String" visibility="private"/>
+        <Field name="usuario" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="conexion" type="Connection" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getConexion" returnType="Connection" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Consulta" package="veterinaria.Modelo" visibility="public" xPosition="20.0" yPosition="870.0">
+      <Fields>
+        <Field name="idConsulta" type="int" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="fechaConsulta" type="LocalDate" visibility="private"/>
+        <Field name="mascota" type="Mascota" visibility="private"/>
+        <Field name="tratamiento" type="Tratamiento" visibility="private"/>
+        <Field name="activo" type="boolean" visibility="private"/>
+        <Field name="pesoPromedio" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="idConsulta"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="LocalDate" name="fechaConsulta"/>
+          <Argument type="Mascota" name="mascota"/>
+          <Argument type="Tratamiento" name="tratamiento"/>
+          <Argument type="boolean" name="activo"/>
+          <Argument type="double" name="pesoPromedio"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="double" name="precio"/>
+          <Argument type="LocalDate" name="fechaConsulta"/>
+          <Argument type="Mascota" name="mascota"/>
+          <Argument type="Tratamiento" name="tratamiento"/>
+          <Argument type="boolean" name="activo"/>
+          <Argument type="double" name="pesoPromedio"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIdConsulta" returnType="int" visibility="public"/>
+        <Method name="setIdConsulta" returnType="void" visibility="public">
+          <Argument type="int" name="idConsulta"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+        <Method name="getFechaConsulta" returnType="LocalDate" visibility="public"/>
+        <Method name="setFechaConsulta" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="fechaConsulta"/>
+        </Method>
+        <Method name="getMascota" returnType="Mascota" visibility="public"/>
+        <Method name="setMascota" returnType="void" visibility="public">
+          <Argument type="Mascota" name="mascota"/>
+        </Method>
+        <Method name="getTratamiento" returnType="Tratamiento" visibility="public"/>
+        <Method name="setTratamiento" returnType="void" visibility="public">
+          <Argument type="Tratamiento" name="tratamiento"/>
+        </Method>
+        <Method name="isActivo" returnType="boolean" visibility="public"/>
+        <Method name="setActivo" returnType="void" visibility="public">
+          <Argument type="boolean" name="activo"/>
+        </Method>
+        <Method name="getPesoPromedio" returnType="double" visibility="public"/>
+        <Method name="setPesoPromedio" returnType="void" visibility="public">
+          <Argument type="double" name="pesoPromedio"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Mascota" package="veterinaria.Modelo" visibility="public" xPosition="920.0" yPosition="902.0">
+      <Fields>
+        <Field name="idMascota" type="int" visibility="private"/>
+        <Field name="alias" type="String" visibility="private"/>
+        <Field name="sexo" type="String" visibility="private"/>
+        <Field name="especie" type="String" visibility="private"/>
+        <Field name="raza" type="String" visibility="private"/>
+        <Field name="colorPelaje" type="String" visibility="private"/>
+        <Field name="fechaNac" type="LocalDate" visibility="private"/>
+        <Field name="pesoActual" type="double" visibility="private"/>
+        <Field name="activo" type="boolean" visibility="private"/>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="idMascota"/>
+          <Argument type="String" name="alias"/>
+          <Argument type="String" name="sexo"/>
+          <Argument type="String" name="especie"/>
+          <Argument type="String" name="raza"/>
+          <Argument type="String" name="colorPelaje"/>
+          <Argument type="LocalDate" name="fechaNac"/>
+          <Argument type="double" name="pesoActual"/>
+          <Argument type="boolean" name="activo"/>
+          <Argument type="Cliente" name="cliente"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="alias"/>
+          <Argument type="String" name="sexo"/>
+          <Argument type="String" name="especie"/>
+          <Argument type="String" name="raza"/>
+          <Argument type="String" name="colorPelaje"/>
+          <Argument type="LocalDate" name="fechaNac"/>
+          <Argument type="double" name="pesoActual"/>
+          <Argument type="boolean" name="activo"/>
+          <Argument type="Cliente" name="cliente"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIdMascota" returnType="int" visibility="public"/>
+        <Method name="setIdMascota" returnType="void" visibility="public">
+          <Argument type="int" name="idMascota"/>
+        </Method>
+        <Method name="getAlias" returnType="String" visibility="public"/>
+        <Method name="setAlias" returnType="void" visibility="public">
+          <Argument type="String" name="alias"/>
+        </Method>
+        <Method name="getSexo" returnType="String" visibility="public"/>
+        <Method name="setSexo" returnType="void" visibility="public">
+          <Argument type="String" name="sexo"/>
+        </Method>
+        <Method name="getEspecie" returnType="String" visibility="public"/>
+        <Method name="setEspecie" returnType="void" visibility="public">
+          <Argument type="String" name="especie"/>
+        </Method>
+        <Method name="getRaza" returnType="String" visibility="public"/>
+        <Method name="setRaza" returnType="void" visibility="public">
+          <Argument type="String" name="raza"/>
+        </Method>
+        <Method name="getColorPelaje" returnType="String" visibility="public"/>
+        <Method name="setColorPelaje" returnType="void" visibility="public">
+          <Argument type="String" name="colorPelaje"/>
+        </Method>
+        <Method name="getFechaNac" returnType="LocalDate" visibility="public"/>
+        <Method name="setFechaNac" returnType="void" visibility="public">
+          <Argument type="LocalDate" name="fechaNac"/>
+        </Method>
+        <Method name="getPesoActual" returnType="double" visibility="public"/>
+        <Method name="setPesoActual" returnType="void" visibility="public">
+          <Argument type="double" name="pesoActual"/>
+        </Method>
+        <Method name="getActivo" returnType="boolean" visibility="public"/>
+        <Method name="setActivo" returnType="void" visibility="public">
+          <Argument type="boolean" name="activo"/>
+        </Method>
+        <Method name="cliente" returnType="Cliente" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="hashCode" returnType="int" visibility="public"/>
+        <Method name="equals" returnType="boolean" visibility="public">
+          <Argument type="Object" name="obj"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Tratamiento" package="veterinaria.Modelo" visibility="public" xPosition="-1.0" yPosition="20.0">
+      <Fields>
+        <Field name="idTratamiento" type="int" visibility="private"/>
+        <Field name="tipoTratamiento" type="String" visibility="private"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="medicamento" type="String" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+        <Field name="activo" type="boolean" visibility="private"/>
+        <Field name="consulta" type="Consulta" visibility="private"/>
+        <Field name="mascota" type="Mascota" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="idTratamiento"/>
+          <Argument type="String" name="tipoTratamiento"/>
+          <Argument type="String" name="descripcion"/>
+          <Argument type="String" name="medicamento"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="boolean" name="activo"/>
+          <Argument type="Consulta" name="consulta"/>
+          <Argument type="Mascota" name="mascota"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="tipoTratamiento"/>
+          <Argument type="String" name="descripcion"/>
+          <Argument type="String" name="medicamento"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="boolean" name="activo"/>
+          <Argument type="Consulta" name="consulta"/>
+          <Argument type="Mascota" name="mascota"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getIdTratamiento" returnType="int" visibility="public"/>
+        <Method name="setIdTratamiento" returnType="void" visibility="public">
+          <Argument type="int" name="idTratamiento"/>
+        </Method>
+        <Method name="getTipoTratamiento" returnType="String" visibility="public"/>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipoTratamiento"/>
+        </Method>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getMedicamento" returnType="String" visibility="public"/>
+        <Method name="setMedicamento" returnType="void" visibility="public">
+          <Argument type="String" name="medicamento"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+        <Method name="getActivo" returnType="boolean" visibility="public"/>
+        <Method name="setActivo" returnType="void" visibility="public">
+          <Argument type="boolean" name="activo"/>
+        </Method>
+        <Method name="getIdConsulta" returnType="Consulta" visibility="public"/>
+        <Method name="setIdConsulta" returnType="void" visibility="public">
+          <Argument type="Consulta" name="consulta"/>
+        </Method>
+        <Method name="mascota" returnType="Mascota" visibility="public"/>
+        <Method name="setMascota" returnType="void" visibility="public">
+          <Argument type="Mascota" name="mascota"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Veterinaria" package="veterinaria.Modelo" visibility="public" xPosition="1607.0" yPosition="724.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="tratamiento" source="veterinaria.Modelo.Consulta" target="veterinaria.Modelo.Tratamiento" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mascota" source="veterinaria.Modelo.Tratamiento" target="veterinaria.Modelo.Mascota" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="veterinaria.Modelo.Consulta" target="veterinaria.Modelo.Mascota" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mascota" source="veterinaria.Modelo.Consulta" target="veterinaria.Modelo.Mascota" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cliente" source="veterinaria.Modelo.Mascota" target="veterinaria.Modelo.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="veterinaria.Modelo.Tratamiento" target="veterinaria.Modelo.Mascota" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="veterinaria.Controladores.ClienteData" target="veterinaria.Modelo.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="veterinaria.Modelo.Tratamiento" target="veterinaria.Modelo.Consulta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="consulta" source="veterinaria.Modelo.Tratamiento" target="veterinaria.Modelo.Consulta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="veterinaria.Modelo.Mascota" target="veterinaria.Modelo.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="veterinaria.Modelo.Consulta" target="veterinaria.Modelo.Tratamiento" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
