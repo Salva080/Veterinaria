@@ -9,34 +9,29 @@ import java.util.Objects;
 
 /**
  *
- * @author Salva
+ * @author NEXO-MAX
  */
 public class Tratamiento {
-
     private int idTratamiento;
     private String tipoTratamiento;
     private String descripcion;
     private String medicamento;
     private double precio;
     private boolean activo;
-   
+
     public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.idTratamiento = idTratamiento;
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
-      
-       
         this.precio = precio;
         this.activo = activo;
     }
 
-    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento,double precio, boolean activo, Consulta consulta) {
+    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
-       
-       
         this.precio = precio;
         this.activo = activo;
     }
@@ -76,8 +71,6 @@ public class Tratamiento {
         this.medicamento = medicamento;
     }
 
-  
-
     public double getPrecio() {
         return precio;
     }
@@ -96,12 +89,41 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamiento{" + "  " + idTratamiento + ",  " + tipoTratamiento + ", " + descripcion + ",  " + medicamento +  ",  " + precio + ",  " + activo + '}';
+        return "Tratamiento{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", precio=" + precio + ", activo=" + activo + '}';
     }
 
-   
-    
-     
-     
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.tipoTratamiento);
+        hash = 97 * hash + Objects.hashCode(this.medicamento);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        return hash;
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tratamiento other = (Tratamiento) obj;
+        if (Double.doubleToLongBits(this.precio) != Double.doubleToLongBits(other.precio)) {
+            return false;
+        }
+        if (!Objects.equals(this.tipoTratamiento, other.tipoTratamiento)) {
+            return false;
+        }
+        if (!Objects.equals(this.medicamento, other.medicamento)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }
