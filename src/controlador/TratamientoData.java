@@ -39,7 +39,6 @@ public class TratamientoData {
             ps.setString(3, tratamiento.getMedicamento());
             ps.setDouble(4, tratamiento.getPrecio());
             ps.setBoolean(5, tratamiento.isActivo());
-            ps.setInt(6, tratamiento.getConsulta().getIdConsulta());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
