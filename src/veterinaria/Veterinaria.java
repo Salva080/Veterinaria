@@ -8,6 +8,7 @@ package veterinaria;
 import controlador.ClienteData;
 import controlador.MascotaData;
 import controlador.TratamientoData;
+import java.util.List;
 import modelo.Cliente;
 import modelo.Conexion;
 import modelo.Mascota;
@@ -41,6 +42,9 @@ public class Veterinaria {
         td.tratamientoExiste(2);
         td.buscarTratamiento(2);
         td.activarTratamiento(1);
+        
+        
+        List<Tratamiento> list = td.listarTratamientos();
 
        /* Cliente cl = new Cliente(39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente c2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);

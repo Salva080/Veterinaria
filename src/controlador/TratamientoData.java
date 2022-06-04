@@ -61,6 +61,7 @@ public class TratamientoData {
 
     }
 //Agreagar ok.
+
     public void eliminarTratamiento(int id) {
         sql = "UPDATE tratamiento SET activo = 0 WHERE idTratamiento = ?";
         try {
@@ -74,7 +75,7 @@ public class TratamientoData {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se pudo eliminar el Tratamiento");
         }
-        
+
     }
 //eliminar ok.    
 
@@ -95,6 +96,7 @@ public class TratamientoData {
         return ret;
     }
 //existe ok.
+
     public void modificarTratamiento(int id, Tratamiento tratamiento) {
 
         sql = "UPDATE tratamiento SET tipoTratamiento=?, descripcion=?, medicamento=?, precio=?, activo=?, WHERE idTratamiento=?";
@@ -146,6 +148,32 @@ public class TratamientoData {
         }
         return Tratamiento;
 
+    }
+
+    public List<Tratamiento> listarTratamientos() {
+
+        List<Tratamiento> Tratamientos = new ArrayList<>();
+        try {
+            sql = "SELECT * FORM tratamiento ORDER BY tratamiento, idTratamiento ASC";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Tratamiento tratamiento = new Tratamiento();
+
+                ps.setInt(1, tratamiento.getIdTratamiento());
+                ps.setString(2, tratamiento.getTipoTratamiento());
+                ps.setString(3, tratamiento.getDescripcion());
+                ps.setString(4, tratamiento.getMedicamento());
+                ps.setDouble(5, tratamiento.getPrecio());
+                ps.setBoolean(6, tratamiento.isActivo());
+                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+        }
+        return Tratamientos;
     }
 
     public List<Tratamiento> listarTratamientosActivos() {
@@ -200,7 +228,7 @@ public class TratamientoData {
         }
         return tratamientos;
     }
-   
+
     public void activarTratamiento(int id) {
         sql = "UPDATE tratamiento SET activo =1 WHERE idTratamiento=?";
         try {
