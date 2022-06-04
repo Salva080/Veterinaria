@@ -5,7 +5,10 @@
  */
 package veterinaria;
 
+import controlador.ClienteData;
+import controlador.MascotaData;
 import modelo.Cliente;
+import modelo.Conexion;
 import modelo.Mascota;
 
 /**
@@ -13,13 +16,21 @@ import modelo.Mascota;
  * @author salva
  */
 public class Veterinaria {
-
+    
+    private static Conexion conexion;
+    private static ClienteData ClienteData;
+    private static MascotaData MascotaData;
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Cliente cl = new Cliente();
-        Mascota m1 = new Mascota();
+        conexion = new Conexion();
+        ClienteData = new ClienteData(conexion);
+        Cliente cl = new Cliente(39,"Maxi","Gonzalez","santaRosa",2665,"2554",true);
+      //  Mascota m1 = new Mascota();
+      ClienteData.agregarCliente(cl);
+      ClienteData.eliminarCliente(1);
+      
     }
     
 }
