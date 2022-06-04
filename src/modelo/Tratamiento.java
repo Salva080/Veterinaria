@@ -9,35 +9,29 @@ import java.util.Objects;
 
 /**
  *
- * @author Salva
+ * @author NEXO-MAX
  */
 public class Tratamiento {
-
     private int idTratamiento;
     private String tipoTratamiento;
     private String descripcion;
     private String medicamento;
     private double precio;
     private boolean activo;
-    private Consulta consulta;
 
-    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, double precio, boolean activo, Consulta consulta ) {
+    public Tratamiento(int idTratamiento, String tipoTratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.idTratamiento = idTratamiento;
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
-        this.consulta = consulta;
-       
         this.precio = precio;
         this.activo = activo;
     }
 
-    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento,double precio, boolean activo, Consulta consulta) {
+    public Tratamiento(String tipoTratamiento, String descripcion, String medicamento, double precio, boolean activo) {
         this.tipoTratamiento = tipoTratamiento;
         this.descripcion = descripcion;
         this.medicamento = medicamento;
-        this.consulta = consulta;
-       
         this.precio = precio;
         this.activo = activo;
     }
@@ -77,16 +71,6 @@ public class Tratamiento {
         this.medicamento = medicamento;
     }
 
-    public Consulta getConsulta() {
-        return consulta;
-    }
-
-    public void setConsulta(Consulta consulta) {
-        this.consulta = consulta;
-    }
-
-    
-
     public double getPrecio() {
         return precio;
     }
@@ -105,17 +89,15 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamiento{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", consulta=" + consulta + ", precio=" + precio + ", activo=" + activo + '}';
+        return "Tratamiento{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", precio=" + precio + ", activo=" + activo + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + Objects.hashCode(this.tipoTratamiento);
-        hash = 67 * hash + Objects.hashCode(this.medicamento);
-        hash = 67 * hash + Objects.hashCode(this.consulta);
-       
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.tipoTratamiento);
+        hash = 97 * hash + Objects.hashCode(this.medicamento);
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
         return hash;
     }
 
@@ -140,11 +122,8 @@ public class Tratamiento {
         if (!Objects.equals(this.medicamento, other.medicamento)) {
             return false;
         }
-        if (!Objects.equals(this.consulta, other.consulta)) {
-            return false;
-        }
-     
         return true;
     }
-
+    
+    
 }

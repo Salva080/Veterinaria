@@ -32,7 +32,7 @@ public class TratamientoData {
 
     public void agregarTratamiento(Tratamiento tratamiento) {
         try {
-            sql = "INSERT INTO tratamiento (tipoTratamiento, descripcion, medicamento, precio, activo, idConsulta) VALUES (?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO Tratamiento (tipoTratamiento, descripcion, medicamento, precio, activo) VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -41,7 +41,7 @@ public class TratamientoData {
             ps.setString(3, tratamiento.getMedicamento());
             ps.setDouble(4, tratamiento.getPrecio());
             ps.setBoolean(5, tratamiento.isActivo());
-            //  ps.setInt(6, tratamiento.getConsulta().getIdConsulta());
+            //  ps.setInt(6, Tratamiento.getConsulta().getIdConsulta());
             ps.executeUpdate();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -49,7 +49,7 @@ public class TratamientoData {
                 tratamiento.setIdTratamiento(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se agregó el tratamiento");
             } else {
-                JOptionPane.showMessageDialog(null, "No se pudo ingresar el tratamiento");
+                JOptionPane.showMessageDialog(null, "No se pudo ingresar el Tratamiento");
 
             }
             ps.close();
@@ -70,10 +70,10 @@ public class TratamientoData {
             ps.executeUpdate();
 
             ps.close();
-            JOptionPane.showMessageDialog(null, "Se eliminó el tratamiento");
+            JOptionPane.showMessageDialog(null, "Se eliminó el Tratamiento");
         } catch (Exception e) {
         }
-        JOptionPane.showMessageDialog(null, "No se pudo eliminar el tratamiento");
+        JOptionPane.showMessageDialog(null, "No se pudo eliminar el Tratamiento");
     }
 
     public boolean tratamientoExiste(int id) {
@@ -87,14 +87,14 @@ public class TratamientoData {
                 ret = true;
             }
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al buscar el tratamiento, no existe");
+            JOptionPane.showMessageDialog(null, "Error al buscar el Tratamiento, no existe");
         }
         return ret;
     }
 
     public void modificarTratamiento(int id, Tratamiento tratamiento) {
 
-        sql = "UPDATE tratamiento SET apellido=?, nombre=?, fechaNac=? WHERE idTratamiento=?";
+        sql = "UPDATE tratamiento SET tipoTratamiento=?, descripcion=?, medicamento=?, precio=?, activo=?, WHERE idTratamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -107,17 +107,17 @@ public class TratamientoData {
             ps.executeUpdate();
 
             ps.close();
-            JOptionPane.showMessageDialog(null, " Se modificó el tratamiento");
+            JOptionPane.showMessageDialog(null, " Se modificó el Tratamiento");
         } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null, " No se pudo modificar el tratamiento");
+            JOptionPane.showMessageDialog(null, " No se pudo modificar el Tratamiento");
         }
 
     }
 
-    public Tratamiento buscartratamiento(int id) {
+    public Tratamiento buscarTratamiento(int id) {
 
-        Tratamiento tratamiento = null;
+        Tratamiento Tratamiento = null;
         try {
 
             sql = "SELECT * FROM tratamiento WHERE idTratamiento = ?";
@@ -126,28 +126,28 @@ public class TratamientoData {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                tratamiento = new Tratamiento();
+                Tratamiento tratamiento = new Tratamiento();
                 ps.setInt(1, tratamiento.getIdTratamiento());
                 ps.setString(2, tratamiento.getTipoTratamiento());
                 ps.setString(3, tratamiento.getDescripcion());
                 ps.setString(4, tratamiento.getMedicamento());
                 ps.setDouble(5, tratamiento.getPrecio());
                 ps.setBoolean(6, tratamiento.isActivo());
-                //  ps.setInt(7, tratamiento.getConsulta().getIdConsulta());
+                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
 
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda del tratamiento.");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda del Tratamiento.");
         }
-        return tratamiento;
+        return Tratamiento;
 
     }
 
     public List<Tratamiento> listarTratamientosActivos() {
 
-        List<Tratamiento> tratamientos = new ArrayList<>();
+        List<Tratamiento> Tratamientos = new ArrayList<>();
         try {
             sql = "SELECT * FROM tratamiento WHERE activo= 1  ORDER BY idTratamiento ASC";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -161,17 +161,17 @@ public class TratamientoData {
                 ps.setString(4, tratamiento.getMedicamento());
                 ps.setDouble(5, tratamiento.getPrecio());
                 ps.setBoolean(6, tratamiento.isActivo());
-                //  ps.setInt(7, tratamiento.getConsulta().getIdConsulta());
+                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
             }
             ps.close();
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
         }
-        return tratamientos;
+        return Tratamientos;
     }
 
-    public List<Tratamiento> listartratamientosInactivos() {
+    public List<Tratamiento> listarTratamientosInactivos() {
 
         List<Tratamiento> tratamientos = new ArrayList<>();
         try {
@@ -187,7 +187,7 @@ public class TratamientoData {
                 ps.setString(4, tratamiento.getMedicamento());
                 ps.setDouble(5, tratamiento.getPrecio());
                 ps.setBoolean(6, tratamiento.isActivo());
-                //  ps.setInt(7, tratamiento.getConsulta().getIdConsulta());
+                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
 
             }
             ps.close();
@@ -199,7 +199,7 @@ public class TratamientoData {
     }
     
     public void activarTratamiento(int id) {
-        sql = "UPDATE Tratamiento SET activo =1 WHERE idTratamiento=?";
+        sql = "UPDATE tratamiento SET activo =1 WHERE idTratamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -207,10 +207,10 @@ public class TratamientoData {
             ps.executeUpdate();
 
             ps.close();
-            JOptionPane.showMessageDialog(null, " Se dió de alta el tratamiento");
+            JOptionPane.showMessageDialog(null, " Se dió de alta el Tratamiento");
         } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null, " No se puedo activar el tratamiento");
+            JOptionPane.showMessageDialog(null, " No se puedo activar el Tratamiento");
         }
 
     }
