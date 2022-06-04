@@ -13,11 +13,11 @@ public class Consulta {
     private double precio;
     private LocalDate fechaConsulta;
     private Mascota mascota; ///
-    private Tratamient tratamiento;
+    private Tratamiento tratamiento;
     private boolean activo;
     private double pesoPromedio;
 
-    public Consulta(int idConsulta, double precio, LocalDate fechaConsulta, Mascota mascota, Tratamient tratamiento, boolean activo, double pesoPromedio) {
+    public Consulta(int idConsulta, double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoPromedio) {
         this.idConsulta = idConsulta;
         this.precio = precio;
         this.fechaConsulta = fechaConsulta;
@@ -27,7 +27,7 @@ public class Consulta {
         this.pesoPromedio = pesoPromedio;
     }
 
-    public Consulta(double precio, LocalDate fechaConsulta, Mascota mascota, Tratamient tratamiento, boolean activo, double pesoPromedio) {
+    public Consulta(double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoPromedio) {
         this.precio = precio;
         this.fechaConsulta = fechaConsulta;
         this.mascota = mascota;
@@ -71,11 +71,11 @@ public class Consulta {
         this.mascota = mascota;
     }
 
-    public Tratamient getTratamiento() {
+    public Tratamiento getTratamiento() {
         return tratamiento;
     }
 
-    public void setTratamiento(Tratamient tratamiento) {
+    public void setTratamiento(Tratamiento tratamiento) {
         this.tratamiento = tratamiento;
     }
 
