@@ -37,14 +37,18 @@ public class Veterinaria {
         Tratamiento tdd2 = new Tratamiento("baño", "masajes", "pildoras", 12389, true);
         td.agregarTratamiento(tdd1);
         td.agregarTratamiento(tdd2);
+        td.eliminarTratamiento(1);
+        td.tratamientoExiste(2);
+        td.buscarTratamiento(2);
+        td.activarTratamiento(1);
 
-        Cliente cl = new Cliente(39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+       /* Cliente cl = new Cliente(39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente c2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         //  Mascota m1 = new Mascota();
         ClienteData.agregarCliente(cl);
         ClienteData.agregarCliente(c2);
         ClienteData.eliminarCliente(1);
-
+        */
     }
 
 }

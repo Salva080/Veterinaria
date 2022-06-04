@@ -60,7 +60,7 @@ public class TratamientoData {
         }
 
     }
-
+//Agreagar ok.
     public void eliminarTratamiento(int id) {
         sql = "UPDATE tratamiento SET activo = 0 WHERE idTratamiento = ?";
         try {
@@ -72,9 +72,11 @@ public class TratamientoData {
             ps.close();
             JOptionPane.showMessageDialog(null, "Se eliminó el Tratamiento");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar el Tratamiento");
         }
-        JOptionPane.showMessageDialog(null, "No se pudo eliminar el Tratamiento");
+        
     }
+//eliminar ok.    
 
     public boolean tratamientoExiste(int id) {
         boolean ret = false;
@@ -86,12 +88,13 @@ public class TratamientoData {
             if (rs.next()) {
                 ret = true;
             }
+            JOptionPane.showMessageDialog(null, "El tratamiento si existe");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar el Tratamiento, no existe");
         }
         return ret;
     }
-
+//existe ok.
     public void modificarTratamiento(int id, Tratamiento tratamiento) {
 
         sql = "UPDATE tratamiento SET tipoTratamiento=?, descripcion=?, medicamento=?, precio=?, activo=?, WHERE idTratamiento=?";
@@ -137,7 +140,7 @@ public class TratamientoData {
 
             }
             ps.close();
-
+            JOptionPane.showMessageDialog(null, "Busqueda exitosa");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error en la busqueda del Tratamiento.");
         }
@@ -197,7 +200,7 @@ public class TratamientoData {
         }
         return tratamientos;
     }
-    
+   
     public void activarTratamiento(int id) {
         sql = "UPDATE tratamiento SET activo =1 WHERE idTratamiento=?";
         try {
@@ -214,5 +217,5 @@ public class TratamientoData {
         }
 
     }
-
+//activar ok.
 }
