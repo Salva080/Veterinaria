@@ -30,12 +30,13 @@ public class MascotaData {
         con = conexion.getConexion();
     }
     
-// falta pasar por parametro idCliente
+// Terminado
     public void agregarMascota(Mascota mascota) {
         try {
             sql = "INSERT INTO `mascota` (`alias`, `sexo`, `especie`, `raza`, `colorPelaje`, `fechaNac`, `pesoActual`, `activo`, `idCliente`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
 
             ps.setString(1, mascota.getAlias());
             ps.setString(2, mascota.getSexo());
@@ -45,6 +46,7 @@ public class MascotaData {
             ps.setDate(6,  Date.valueOf(mascota.getFechaNac()));
             ps.setDouble(7, (Double) mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
+            ps.setInt(9, mascota.getCliente().getIdCliente());
 
             ps.executeUpdate();
 
