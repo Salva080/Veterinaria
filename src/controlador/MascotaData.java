@@ -22,108 +22,109 @@ import modelo.Mascota;
  * @author Salva
  */
 public class MascotaData {
-    
+
     private Connection con = null;
     private String sql;
-    
-    public MascotaData(Conexion conexion){
+
+    public MascotaData(Conexion conexion) {
         con = conexion.getConexion();
     }
     
-    public void agregarMascota(Mascota mascota){
-        try{
+// falta pasar por parametro idCliente
+    public void agregarMascota(Mascota mascota) {
+        try {
             sql = "INSERT INTO `mascota` (`alias`, `sexo`, `especie`, `raza`, `colorPelaje`, `fechaNac`, `pesoActual`, `activo`, `idCliente`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            
+
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
+
             ps.setString(1, mascota.getAlias());
             ps.setString(2, mascota.getSexo());
             ps.setString(3, mascota.getEspecie());
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
-            ps.setDate(6, (Date) mascota.getFechaNac());
+            ps.setDate(6,  Date.valueOf(mascota.getFechaNac()));
             ps.setDouble(7, (Double) mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
-            
+
             ps.executeUpdate();
-            
+
             ResultSet rs = ps.getGeneratedKeys();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 mascota.setIdMascota(rs.getInt(1));
                 JOptionPane.showMessageDialog(null, "Se agrego la mascota con exito");
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "No se pudo agregar a la mascota");
             }
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error");
         }
     }
-    
-    public void eliminarMascota(int id){
+
+    public void eliminarMascota(int id) {
         sql = "UPDATE mascota SET activo = 0 WHERE idMascota = ?";
-        try{
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setInt(1, id);
             ps.executeUpdate();
-            
+
             ps.close();
-            
+
             JOptionPane.showMessageDialog(null, "Se elimino a la mascota");
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al eliminar la mascota");
         }
     }
-    
-    public boolean mascotaExiste(int id){
+
+    public boolean mascotaExiste(int id) {
         boolean ret = false;
         try {
             sql = "SELECT * FROM mascota WHERE idMascota = ?";
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 ret = true;
             }
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar a la mascota, no existe");
         }
         return ret;
     }
-    
-    public void modificarMascota(int id,Mascota mascota){
+
+    public void modificarMascota(int id, Mascota mascota) {
         sql = "UPDATE `mascota` SET alias = ?, sexo = ?,especie = ?,raza = ?, colorPelaje = ?, fechaNac = ?, pesoActual = ? WHERE activo = 1 AND idMascota = ?";
-        try{
+        try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ps.setString(1, mascota.getAlias());
             ps.setString(2, mascota.getSexo());
             ps.setString(3, mascota.getEspecie());
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
-            ps.setDate(6, (Date) mascota.getFechaNac());
+            ps.setDate(6,  Date.valueOf(mascota.getFechaNac()));
             ps.setDouble(7, (Double) mascota.getPesoActual());
-            
+
             ps.executeUpdate();
-            
+
             ps.close();
             JOptionPane.showMessageDialog(null, "Se modificó la mascota");
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA");
         }
     }
-    
-    public Mascota buscarMascota(int id){
+
+    public Mascota buscarMascota(int id) {
         Mascota mascota = null;
-        try{
+        try {
             sql = "SELECT * FROM `mascota` WHERE idMascota = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, id);
-            
+
             ResultSet rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 mascota = new Mascota();
                 mascota.setIdMascota(rs.getInt(1));
                 mascota.setAlias(rs.getString(2));
@@ -131,84 +132,84 @@ public class MascotaData {
                 mascota.setEspecie(rs.getString(4));
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
-                mascota.setFechaNac(rs.getDate(7));
+                mascota.setFechaNac(rs.getDate(7).toLocalDate());
                 mascota.setPesoActual(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
-              
+
             }
             ps.close();
-        }catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar la mascota");
         }
         return mascota;
-    } 
-    
-    public List <Mascota> listarMascotasActivas(){
-      List <Mascota> mascotas = new ArrayList<>();
-      try{
-          sql = "SELECT * FROM `mascota` WHERE activo = 1 ORDER BY idMascota ASC";
-          PreparedStatement ps = con.prepareStatement(sql);
-          ResultSet rs = ps.executeQuery();
-          while(rs.next()){
-              Mascota mascota = new Mascota();
-              
-              mascota.setIdMascota(rs.getInt(1));
-              mascota.setAlias(rs.getString(2));
-              mascota.setSexo(rs.getString(3));
-              mascota.setEspecie(rs.getString(4));
-              mascota.setRaza(rs.getString(5));
-              mascota.setColorPelaje(rs.getString(6));
-              mascota.setFechaNac(rs.getDate(7));
-              mascota.setPesoActual(rs.getDouble(8));
-              mascota.setActivo(rs.getBoolean(9));
-              mascotas.add(mascota);
-          }
-          ps.close();
-      }catch (SQLException ex){
-          JOptionPane.showMessageDialog(null, "ERROR EN LA BUSQUEDA");
-      }
-      return mascotas;
     }
-    
-    public List <Mascota> listarMascotasInactivas(){
-        List <Mascota> mascotas = new ArrayList<>();
-      try{
-          sql = "SELECT * FROM `mascota` WHERE activo = 0 ORDER BY idMascota ASC";
-          PreparedStatement ps = con.prepareStatement(sql);
-          ResultSet rs = ps.executeQuery();
-          while(rs.next()){
-              Mascota mascota = new Mascota();
-              
-              mascota.setIdMascota(rs.getInt(1));
-              mascota.setAlias(rs.getString(2));
-              mascota.setSexo(rs.getString(3));
-              mascota.setEspecie(rs.getString(4));
-              mascota.setRaza(rs.getString(5));
-              mascota.setColorPelaje(rs.getString(6));
-              mascota.setFechaNac(rs.getDate(7));
-              mascota.setPesoActual(rs.getDouble(8));
-              mascota.setActivo(rs.getBoolean(9));
-              mascotas.add(mascota);
-          }
-          ps.close();
-      }catch (SQLException ex){
-          JOptionPane.showMessageDialog(null, "ERROR EN LA BUSQUEDA");
-      }
-      return mascotas;
-    }
-    
-    public void activarMascotas(int id){
-        sql = "UPDATE `mascota` SET activo = 1 WHERE idMascota = ?";
-        
-        try{
+
+    public List<Mascota> listarMascotasActivas() {
+        List<Mascota> mascotas = new ArrayList<>();
+        try {
+            sql = "SELECT * FROM `mascota` WHERE activo = 1 ORDER BY idMascota ASC";
             PreparedStatement ps = con.prepareStatement(sql);
-            
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mascota mascota = new Mascota();
+
+                mascota.setIdMascota(rs.getInt(1));
+                mascota.setAlias(rs.getString(2));
+                mascota.setSexo(rs.getString(3));
+                mascota.setEspecie(rs.getString(4));
+                mascota.setRaza(rs.getString(5));
+                mascota.setColorPelaje(rs.getString(6));
+                mascota.setFechaNac(rs.getDate(7).toLocalDate());
+                mascota.setPesoActual(rs.getDouble(8));
+                mascota.setActivo(rs.getBoolean(9));
+                mascotas.add(mascota);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LA BUSQUEDA");
+        }
+        return mascotas;
+    }
+
+    public List<Mascota> listarMascotasInactivas() {
+        List<Mascota> mascotas = new ArrayList<>();
+        try {
+            sql = "SELECT * FROM `mascota` WHERE activo = 0 ORDER BY idMascota ASC";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Mascota mascota = new Mascota();
+
+                mascota.setIdMascota(rs.getInt(1));
+                mascota.setAlias(rs.getString(2));
+                mascota.setSexo(rs.getString(3));
+                mascota.setEspecie(rs.getString(4));
+                mascota.setRaza(rs.getString(5));
+                mascota.setColorPelaje(rs.getString(6));
+                mascota.setFechaNac(rs.getDate(7).toLocalDate());
+                mascota.setPesoActual(rs.getDouble(8));
+                mascota.setActivo(rs.getBoolean(9));
+                mascotas.add(mascota);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR EN LA BUSQUEDA");
+        }
+        return mascotas;
+    }
+
+    public void activarMascotas(int id) {
+        sql = "UPDATE `mascota` SET activo = 1 WHERE idMascota = ?";
+
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
             ps.setInt(1, id);
             ps.executeUpdate();
-            
+
             ps.close();
             JOptionPane.showMessageDialog(null, "Se dio de alta a la mascota");
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo activar a la mascota");
         }
     }

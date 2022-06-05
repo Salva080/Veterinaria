@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,12 +20,12 @@ public class Mascota {
     private String especie;
     private String raza;
     private String colorPelaje;
-    private Date fechaNac;
+    private LocalDate fechaNac;    
     private double pesoActual;
     private boolean activo;
     private Cliente cliente;
 
-    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, Date fechaNac, double pesoActual, boolean activo, Cliente cliente) {
+    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, boolean activo, Cliente cliente) {
         this.idMascota = idMascota;
         this.alias = alias;
         this.sexo = sexo;
@@ -37,7 +38,7 @@ public class Mascota {
         this.cliente = cliente;
     }
 
-    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, Date fechaNac, double pesoActual, boolean activo) {
+    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, boolean activo) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -99,11 +100,11 @@ public class Mascota {
         this.colorPelaje = colorPelaje;
     }
 
-    public Date getFechaNac() {
+    public LocalDate getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(Date fechaNac) {
+    public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
 

@@ -97,12 +97,7 @@ public class Consulta {
 
     @Override
     public String toString() {
-        return  idConsulta + ", precio " + precio + ", fecha de Consulta  " + fechaConsulta + ", " + mascota + ", tratamiento " + tratamiento + ", " + activo + ", peso Promedio " + pesoPromedio + '}';
+        return idConsulta + ", precio " + precio + ", fecha de Consulta  " + fechaConsulta + ", " + mascota + ", tratamiento " + tratamiento + ", " + activo + ", peso Promedio " + pesoPromedio + '}';
     }
 
-   
-    
-
-    
 }
-
