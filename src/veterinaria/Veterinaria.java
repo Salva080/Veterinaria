@@ -40,33 +40,33 @@ public class Veterinaria {
 
         Tratamiento tdd1 = new Tratamiento(1,"cirugia", "corte", "pildoras", 12389, true);
         Tratamiento tdd2 = new Tratamiento("baño", "masajes", "pildoras", 12389, true);
-//        td.agregarTratamiento(tdd1);
+        td.agregarTratamiento(tdd1);
 //        td.agregarTratamiento(tdd2);
-//        td.eliminarTratamiento(1);
+       td.eliminarTratamiento(1);
 //        td.tratamientoExiste(2);
- //     td.buscarTratamiento(7);
-//        td.activarTratamiento(1);
+      td.buscarTratamiento(1);
+        td.activarTratamiento(1);
 //        
         
  //       List<Tratamiento> list = td.listarTratamientos();
 
-       Cliente cl = new Cliente(1,39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
-        Cliente c2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
-       Mascota m1 = new Mascota();
+ //      Cliente cl = new Cliente(1,39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+ //       Cliente c2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
+  //     Mascota m1 = new Mascota();
 //        ClienteData.agregarCliente(cl);
 //        ClienteData.agregarCliente(c2);
 //        ClienteData.eliminarCliente(1);
 //      
        
-       mascotaData =new MascotaData(conexion);
+  //     mascotaData = new MascotaData(conexion);
        
-     Mascota mas1= new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 39, true);
-     Mascota m3= new Mascota(1, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 15, true, cl);
+  //   Mascota mas1= new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 39, true);
+   //  Mascota m3= new Mascota(1, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 15, true, cl);
 //     Mascota mas2= new Mascota(1, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 15, true);
 //       Mascota mas= new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true);
 //       mascotaData.agregarMascota(mas);
-       Consulta con= new Consulta(500, LocalDate.of(2022,6,6), m3, tdd1, true, 2.5);
-       cd= new ConsultaData(conexion);
+   //    Consulta con= new Consulta(500, LocalDate.of(2022,6,6), m3, tdd1, true, 2.5);
+    //   cd= new ConsultaData(conexion);
       
      //3 cd.registrarConsulta(con);
       //8 ok
