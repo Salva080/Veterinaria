@@ -52,6 +52,8 @@ public class Mascota {
     public Mascota() {
     }
 
+   
+
     public int getIdMascota() {
         return idMascota;
     }

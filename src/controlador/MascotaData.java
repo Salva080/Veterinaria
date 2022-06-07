@@ -46,7 +46,7 @@ public class MascotaData {
             ps.setDate(6,  Date.valueOf(mascota.getFechaNac()));
             ps.setDouble(7, (Double) mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
-            ps.setInt(9, mascota.getCliente().getIdCliente());
+            ps.setInt(9, mascota.getCliente().getIdCliente());//
 
             ps.executeUpdate();
 

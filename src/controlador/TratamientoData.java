@@ -122,7 +122,7 @@ public class TratamientoData {
 
     public Tratamiento buscarTratamiento(int id) {
 
-        Tratamiento Tratamiento = null;
+        Tratamiento tratamiento = null;
         try {
 
             sql = "SELECT * FROM tratamiento WHERE idTratamiento = ?";
@@ -131,13 +131,15 @@ public class TratamientoData {
 
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Tratamiento tratamiento = new Tratamiento();
-                ps.setInt(1, tratamiento.getIdTratamiento());
-                ps.setString(2, tratamiento.getTipoTratamiento());
-                ps.setString(3, tratamiento.getDescripcion());
-                ps.setString(4, tratamiento.getMedicamento());
-                ps.setDouble(5, tratamiento.getPrecio());
-                ps.setBoolean(6, tratamiento.isActivo());
+                tratamiento = new Tratamiento();
+  // correcto              tratamiento.setIdTratamiento(rs.getInt(1));
+                
+//   cambiar             ps.setInt(1, tratamiento.getIdTratamiento());
+////              ps.setString(2, tratamiento.getTipoTratamiento());
+ //               ps.setString(3, tratamiento.getDescripcion());
+ //               ps.setString(4, tratamiento.getMedicamento());
+ //               ps.setDouble(5, tratamiento.getPrecio());
+ //               ps.setBoolean(6, tratamiento.isActivo());
                 //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
 
             }
@@ -146,7 +148,7 @@ public class TratamientoData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error en la busqueda del Tratamiento.");
         }
-        return Tratamiento;
+        return tratamiento;
 
     }
 
