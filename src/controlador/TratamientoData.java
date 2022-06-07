@@ -132,14 +132,15 @@ public class TratamientoData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 tratamiento = new Tratamiento();
-  // correcto              tratamiento.setIdTratamiento(rs.getInt(1));
-                
-//   cambiar             ps.setInt(1, tratamiento.getIdTratamiento());
-////              ps.setString(2, tratamiento.getTipoTratamiento());
- //               ps.setString(3, tratamiento.getDescripcion());
- //               ps.setString(4, tratamiento.getMedicamento());
- //               ps.setDouble(5, tratamiento.getPrecio());
- //               ps.setBoolean(6, tratamiento.isActivo());
+                // correcto         
+                tratamiento.setIdTratamiento(rs.getInt(1));
+
+                //ps.setInt(1, tratamiento.getIdTratamiento());
+                tratamiento.setTipoTratamiento(rs.getString(2));
+                tratamiento.setDescripcion(rs.getString(3));
+                tratamiento.setMedicamento(rs.getString(4));
+                tratamiento.setPrecio(rs.getDouble(5));
+                tratamiento.setActivo(rs.getBoolean(6));
                 //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
 
             }
