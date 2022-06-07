@@ -50,7 +50,7 @@ public class Veterinaria {
         
  //       List<Tratamiento> list = td.listarTratamientos();
 
-       Cliente cl = new Cliente(1,39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+       Cliente cl = new Cliente(15,39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente c2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
        Mascota m1 = new Mascota();
 //        ClienteData.agregarCliente(cl);
@@ -60,12 +60,14 @@ public class Veterinaria {
        
        mascotaData =new MascotaData(conexion);
        
-     Mascota mas1= new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 39, true);
+     Mascota mas1= new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 39, true, cl);
      Mascota m3= new Mascota(1, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 15, true, cl);
 //     Mascota mas2= new Mascota(1, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 15, true);
-//       Mascota mas= new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true);
-//       mascotaData.agregarMascota(mas);
+     Mascota mas= new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, cl);
+     // mascotaData.agregarMascota(m3);
+       mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)
        Consulta con= new Consulta(500, LocalDate.of(2022,6,6), m3, tdd1, true, 2.5);
+       Consulta cone= new Consulta(15, 500, LocalDate.of(2022,6,6), m3, tdd1, true, 40);
        cd= new ConsultaData(conexion);
       
      //3 cd.registrarConsulta(con);
@@ -92,9 +94,9 @@ public class Veterinaria {
         }
       */
       //4
-      /*  cd.modificarConsulta(0, con);
+     //cd.modificarConsulta(15, cone);
       //5
-       
+      /* 
        //1
        cd.listarMascotasPorCliente(0);
        //

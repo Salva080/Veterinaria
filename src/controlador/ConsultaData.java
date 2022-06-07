@@ -146,7 +146,7 @@ public class ConsultaData {
             ps.setDouble(1, consulta.getPrecio());
             ps.setDate(2, Date.valueOf(consulta.getFechaConsulta()));
             ps.setInt(3, consulta.getMascota().getIdMascota());
-            ps.setInt(3, consulta.getTratamiento().getIdTratamiento());
+            ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
             ps.setDouble(5, consulta.getPesoPromedio());
 
             ps.setInt(1, idConsulta);

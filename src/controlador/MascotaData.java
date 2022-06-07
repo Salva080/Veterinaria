@@ -14,8 +14,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import modelo.Cliente;
 import modelo.Conexion;
 import modelo.Mascota;
+import modelo.Tratamiento;
 
 /**
  *
@@ -25,39 +27,49 @@ public class MascotaData {
 
     private Connection con = null;
     private String sql;
+    private Conexion conexion;
 
     public MascotaData(Conexion conexion) {
         con = conexion.getConexion();
+        this.conexion = conexion;
     }
-    
-// Terminado
+
+    public Cliente buscarCliente(int id) {
+
+        ClienteData cl = new ClienteData(conexion);
+        return cl.buscarCliente(id);
+    }
+
+// Terminado OK
     public void agregarMascota(Mascota mascota) {
+
         try {
-            sql = "INSERT INTO `mascota` (`alias`, `sexo`, `especie`, `raza`, `colorPelaje`, `fechaNac`, `pesoActual`, `activo`, `idCliente`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO mascota (alias, sexo, especie, raza, colorPelaje, fechaNac, pesoActual, activo, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            
 
             ps.setString(1, mascota.getAlias());
             ps.setString(2, mascota.getSexo());
             ps.setString(3, mascota.getEspecie());
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
-            ps.setDate(6,  Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, (Double) mascota.getPesoActual());
+            ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
+            ps.setDouble(7, mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
             ps.setInt(9, mascota.getCliente().getIdCliente());//
 
-            ps.executeUpdate();
+            ps.execute();
 
             ResultSet rs = ps.getGeneratedKeys();
 
             if (rs.next()) {
                 mascota.setIdMascota(rs.getInt(1));
+
                 JOptionPane.showMessageDialog(null, "Se agrego la mascota con exito");
             } else {
                 JOptionPane.showMessageDialog(null, "No se pudo agregar a la mascota");
             }
+            ps.close();
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error");
         }
@@ -106,7 +118,7 @@ public class MascotaData {
             ps.setString(3, mascota.getEspecie());
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
-            ps.setDate(6,  Date.valueOf(mascota.getFechaNac()));
+            ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
             ps.setDouble(7, (Double) mascota.getPesoActual());
 
             ps.executeUpdate();
@@ -215,4 +227,5 @@ public class MascotaData {
             JOptionPane.showMessageDialog(null, "No se pudo activar a la mascota");
         }
     }
+
 }
