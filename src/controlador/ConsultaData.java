@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -103,7 +102,7 @@ public class ConsultaData {
         }
         return cliente;
     }
-//3
+//3 ok
     public void registrarConsulta(Consulta consulta) {
         sql = "INSERT INTO consulta (precio, fechaConsulta, idMascota, idTratamiento, activo, pesoPromedio) VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -137,9 +136,9 @@ public class ConsultaData {
 
     }
 //4
-    public void modificarConsulta(int idConsulta, Consulta consulta) {
+    public void modificarConsulta(int id, Consulta consulta) {
 
-        sql = "UPDATE consulta SET precio=?, fechaConsulta=?, idMascota=?, idTratamiento=?, pesoPromedio=?, WHERE idConsulta=?";
+        sql = "UPDATE consulta SET precio=?, fechaConsulta=?, idMascota=?, idTratamiento=?, pesoPromedio=?, WHERE activo=1 AND idConsulta=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -149,7 +148,7 @@ public class ConsultaData {
             ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
             ps.setDouble(5, consulta.getPesoPromedio());
 
-            ps.setInt(1, idConsulta);
+          ps.setInt(1, id);
             ps.executeUpdate();
 
             ps.close();
@@ -228,7 +227,7 @@ public class ConsultaData {
 
         return consultas;
     }
-//9
+//9 ok ( ver no muestra fecha)
     public List<Consulta> listarConsultasPorTratamiento(int idTratamiento, String tipoTratamiento) {
         List<Consulta> consultas = new ArrayList<>();
         Consulta consulta;
@@ -239,7 +238,7 @@ public class ConsultaData {
         {
 
             try {
-                sql = "SELECT * FROM consulta, tratamiento, mascota WHERE idTratamiento = ? ORDER BY tipoTratamiento ASC ";
+                sql = "SELECT * FROM consulta, tratamiento, mascota WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tratamiento.idTratamiento= ? ORDER BY fechaConsulta ASC ";
 
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setInt(1, idTratamiento);
@@ -248,11 +247,13 @@ public class ConsultaData {
                 while (rs.next()) {
                     consulta = new Consulta();
                     consulta.setIdConsulta(rs.getInt("idConsulta"));
-
-                    tratamiento = buscarTratamiento(rs.getInt("idTratamiento"));
+                    consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
+                  
+                    
+                    tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                     consulta.setTratamiento(tratamiento);
 
-                    mascota = buscarMascota(rs.getInt("IdMascota"));
+                    mascota = buscarMascotas(rs.getInt("IdMascota"));
 
                     consulta.setMascota(mascota);
                     consulta.setTratamiento(tratamiento);
@@ -266,20 +267,23 @@ public class ConsultaData {
         }
         if (idTratamiento == 0) {
             try {
-                sql = "SELECT * FROM consulta, tratamiento, mascota WHERE tipoTratamiento = ? ORDER BY tipoTratamiento ASC ";
-
-                PreparedStatement ps = con.prepareStatement(sql);
+             //   sql = "SELECT * FROM consulta, tratamiento, mascota WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tipoTratamiento = ? ORDER BY tipoTratamiento ASC ";
+sql="SELECT consulta.idConsulta, consulta.fechaConsulta, tratamiento.idTratamiento, tratamiento.tipoTratamiento, consulta.idMascota FROM consulta, tratamiento  WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tipoTratamiento = ? ORDER BY fechaConsulta ASC ";
+               
+PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, tipoTratamiento);
                 ResultSet rs = ps.executeQuery();
 
                 while (rs.next()) {
                     consulta = new Consulta();
                     consulta.setIdConsulta(rs.getInt("idConsulta"));
-
-                    tratamiento = buscarTratamiento(rs.getInt("idTratamiento"));
+//                     consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate()); 
+                    
+                     
+                    tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                     consulta.setTratamiento(tratamiento);
 
-                    mascota = buscarMascota(rs.getInt("IdMascota"));
+                    mascota = buscarMascotas(rs.getInt("IdMascota"));
 
                     consulta.setMascota(mascota);
                     consulta.setTratamiento(tratamiento);

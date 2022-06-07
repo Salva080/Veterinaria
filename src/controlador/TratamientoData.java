@@ -145,7 +145,7 @@ public class TratamientoData {
 
             }
             ps.close();
-            JOptionPane.showMessageDialog(null, "Busqueda exitosa");
+            //JOptionPane.showMessageDialog(null, "Busqueda exitosa");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error en la busqueda del Tratamiento.");
         }

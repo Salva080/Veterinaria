@@ -100,4 +100,37 @@ public class Consulta {
         return idConsulta + ", precio " + precio + ", fecha de Consulta  " + fechaConsulta + ", " + mascota + ", tratamiento " + tratamiento + ", " + activo + ", peso Promedio " + pesoPromedio + '}';
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + Objects.hashCode(this.fechaConsulta);
+        hash = 79 * hash + Objects.hashCode(this.mascota);
+        hash = 79 * hash + Objects.hashCode(this.tratamiento);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Consulta other = (Consulta) obj;
+        if (!Objects.equals(this.fechaConsulta, other.fechaConsulta)) {
+            return false;
+        }
+        if (!Objects.equals(this.mascota, other.mascota)) {
+            return false;
+        }
+        if (!Objects.equals(this.tratamiento, other.tratamiento)) {
+            return false;
+        }
+        return true;
+    }
+
 }
