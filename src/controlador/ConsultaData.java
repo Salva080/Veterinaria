@@ -1,7 +1,11 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+  alumno.setFechaNac(rs.getDate(4).toLocalDate()); // pasar de Date a LocalDate
+
+ps.setDate(3, Date.valueOf(alumno.getFechaNac()));
+
  */
 package controlador;
 
@@ -31,7 +35,8 @@ public class ConsultaData {
         this.conexion = conexion;
 
     }
-///ok
+///  1 ok
+
     public List<Consulta> promediarPesoPorMascota(int idMascota) {
 
         List<Consulta> promedios = new ArrayList<>();
@@ -47,8 +52,8 @@ public class ConsultaData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                double prom = rs.getDouble("AVG(pesoPromedio)");
-                System.out.println("" + prom);
+//                double prom = rs.getDouble("AVG(pesoPromedio)");
+//                System.out.println("" + prom);
                 consulta = new Consulta();
                 consulta.setIdConsulta(rs.getInt("idConsulta"));
                 mascota = buscarMascotas(rs.getInt("idMascota"));
@@ -66,48 +71,17 @@ public class ConsultaData {
         return promedios;
     }
 //    public void CobrarConsulta() {
-//      
-//    }
-    //1
-/////(incompleto)
-    public List<Consulta> promediarPesoDeMascotas() {
+//       }
+    
+    //2 ok
 
-        List<Consulta> promedios = new ArrayList<>();
+    public List<Consulta> listarMascotasPorClienteActivo(int idCliente) {
+
+        List<Consulta> listado = new ArrayList<>();
         Consulta consulta;
         Mascota mascota;
-        try {
-            sql = "SELECT consulta.idMascota, idConsulta, AVG(pesoPromedio) FROM mascota,consulta ORDER BY consulta.idMascota;";
-
-            PreparedStatement ps = con.prepareStatement(sql);
-
-
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                double prom = rs.getDouble("AVG(pesoPromedio)");
-                System.out.println("" + prom);
-                consulta = new Consulta();
-                consulta.setIdConsulta(rs.getInt("idConsulta"));
-                mascota = buscarMascotas(rs.getInt("idMascota"));
-
-                consulta.setPesoPromedio(rs.getDouble("AVG(pesoPromedio)"));
-
-                consulta.setMascota(mascota);
-                promedios.add(consulta);
-
-            }
-            ps.close();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo generar el promedio de mascotas." + e.getMessage());
-        }
-        return promedios;
-    }
-
-    public List<Mascota> listarMascotasPorCliente(int idCliente) {
-
-        List<Mascota> mascotas = new ArrayList<>();
-        Mascota mascota;
-        sql = " SELECT * FROM mascota WHERE idCliente= ? ";
+        Cliente cliente;
+        sql = " SELECT consulta.idConsulta, mascota.idMascota, mascota.idCliente FROM consulta, mascota WHERE mascota.idMascota=consulta.idMascota AND mascota.idCliente= ?; ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -116,29 +90,30 @@ public class ConsultaData {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
 
-                mascota = new Mascota();
-                mascota.setIdMascota(rs.getInt("idMascota"));
-                mascota.setAlias(rs.getString("alias"));
-                mascota.setSexo(rs.getString("sexo"));
-                mascota.setEspecie(rs.getString("especie"));
-                mascota.setRaza(rs.getString("raza"));
-                mascota.setColorPelaje(rs.getString("colorPelaje"));
-                mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
-                mascota.setPesoActual(rs.getDouble("pesoActual"));
+                consulta = new Consulta();
+                consulta.setIdConsulta(rs.getInt("idConsulta"));
 
-                mascota.setActivo(rs.getBoolean("activo"));
-                mascotas.add(mascota);
+                cliente = buscarClientes(rs.getInt("idCliente"));
 
+                mascota = buscarMascotas(rs.getInt("IdMascota"));
+                mascota.setCliente(cliente);
+                consulta.setMascota(mascota);
+
+                listado.add(consulta);
+
+            }
+            if (!rs.next()) {
+                JOptionPane.showMessageDialog(null, "No se encontró ese id como cliente activo en Consulta.");
             }
 
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "No se pudo generar el listado de mascotas.");
+            JOptionPane.showMessageDialog(null, "No se pudo generar el listado de mascotas." + ex.getMessage());
         }
-        return mascotas;
+        return listado;
     }
-//2 ok
+//3 ok
 
     public Cliente buscarClientePorMascota(int idMascota) {
         Cliente cliente = null;
@@ -166,7 +141,7 @@ public class ConsultaData {
         }
         return cliente;
     }
-//3 ok
+//4 ok
 
     public void registrarConsulta(Consulta consulta) {
         sql = "INSERT INTO consulta (precio, fechaConsulta, idMascota, idTratamiento, activo, pesoPromedio) VALUES (?, ?, ?, ?, ?, ?)";
@@ -200,34 +175,8 @@ public class ConsultaData {
         }
 
     }
-//4
 
-    public void modificarConsulta(int id, Consulta consulta) {
-
-        sql = "UPDATE consulta SET precio=?, fechaConsulta=?, pesoPromedio=?, WHERE activo=1 AND idConsulta=?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setDouble(2, consulta.getPrecio());
-            ps.setDate(3, Date.valueOf(consulta.getFechaConsulta()));
-//            ps.setInt(3, consulta.getMascota().getIdMascota());
-//            ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
-            ps.setDouble(4, consulta.getPesoPromedio());
-
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-            ps.close();
-            JOptionPane.showMessageDialog(null, " Se modificó la consulta.");
-        } catch (SQLException e) {
-
-            JOptionPane.showMessageDialog(null, " No se pudo modificar la consulta.");
-        }
-
-    }
-    //5
-    //ok
-
+//5 ok
     public void eliminarConsulta(int idMascota, int idTratamiento) {
 
         try {
@@ -248,14 +197,14 @@ public class ConsultaData {
         }
 
     }
-//6 
+//6 ok
 
     public Tratamiento buscarTratamientos(int id) {
 
         TratamientoData tr = new TratamientoData(conexion);
         return tr.buscarTratamiento(id);
     }
-//7 
+//7 ok
 
     public Mascota buscarMascotas(int id) {
 
@@ -263,7 +212,15 @@ public class ConsultaData {
         return md.buscarMascota(id);
 
     }
-//8 ok (no trae fecha)
+// 8 ok
+
+    public Cliente buscarClientes(int id) {
+
+        ClienteData cd = new ClienteData(conexion);
+        return cd.buscarCliente(id);
+
+    }
+//9 ok 
 
     public List<Consulta> listarConsultasporMascota(int idMascota) {
         List<Consulta> consultas = new ArrayList<>();
@@ -272,7 +229,9 @@ public class ConsultaData {
         Tratamiento tratamiento;
 
         sql = "SELECT * FROM consulta WHERE idMascota = ? ORDER BY idTratamiento ASC ";
+
         try {
+            
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idMascota);
             ResultSet rs = ps.executeQuery();
@@ -280,7 +239,7 @@ public class ConsultaData {
             while (rs.next()) {
                 consulta = new Consulta();
                 consulta.setIdConsulta(rs.getInt("idConsulta"));
-
+                consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
                 tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                 consulta.setTratamiento(tratamiento);
 
@@ -297,8 +256,8 @@ public class ConsultaData {
 
         return consultas;
     }
-//9 ok ( ver no muestra fecha)
 
+//10 ok 
     public List<Consulta> listarConsultasPorTratamiento(int idTratamiento, String tipoTratamiento) {
         List<Consulta> consultas = new ArrayList<>();
         Consulta consulta;
@@ -319,10 +278,7 @@ public class ConsultaData {
                     consulta = new Consulta();
                     consulta.setIdConsulta(rs.getInt("idConsulta"));
                     consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
-
                     tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
-                    consulta.setTratamiento(tratamiento);
-
                     mascota = buscarMascotas(rs.getInt("IdMascota"));
 
                     consulta.setMascota(mascota);
@@ -337,8 +293,8 @@ public class ConsultaData {
         }
         if (idTratamiento == 0) {
             try {
-                //   sql = "SELECT * FROM consulta, tratamiento, mascota WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tipoTratamiento = ? ORDER BY tipoTratamiento ASC ";
-                sql = "SELECT consulta.idConsulta, consulta.fechaConsulta, tratamiento.idTratamiento, tratamiento.tipoTratamiento, consulta.idMascota FROM consulta, tratamiento  WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tipoTratamiento = ? ORDER BY fechaConsulta ASC ";
+
+                sql = "SELECT * FROM consulta, tratamiento, mascota WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tipoTratamiento = ? ORDER BY fechaConsulta ASC ";
 
                 PreparedStatement ps = con.prepareStatement(sql);
                 ps.setString(1, tipoTratamiento);
@@ -347,7 +303,8 @@ public class ConsultaData {
                 while (rs.next()) {
                     consulta = new Consulta();
                     consulta.setIdConsulta(rs.getInt("idConsulta"));
-//                     consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate()); 
+                    System.out.println("fechaConsulta");
+                    consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
 
                     tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                     consulta.setTratamiento(tratamiento);
@@ -366,8 +323,8 @@ public class ConsultaData {
         }
         return consultas;
     }
-//10 
 
+//11 ok
     public List<Tratamiento> listarTratamientosporMascota(int idMascota) {
         List<Tratamiento> tratamientos = new ArrayList<>();
         Tratamiento trat;
@@ -397,7 +354,7 @@ public class ConsultaData {
         return tratamientos;
 
     }
-//11 ok ver (no trae fecha)
+//12 ok 
 
     public List<Consulta> listarConsultasActivas() {
         List<Consulta> consultas = new ArrayList<>();
@@ -415,7 +372,7 @@ public class ConsultaData {
 
                 consul.setIdConsulta(rs.getInt("idConsulta"));
                 consul.setPrecio(rs.getDouble("precio"));
-                //consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
+                consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
 
                 consul.setPesoPromedio(rs.getDouble("pesoPromedio"));
                 consul.setActivo(rs.getBoolean("activo"));
@@ -439,7 +396,7 @@ public class ConsultaData {
         return consultas;
 
     }
-//12 okk (no trae fecha)
+//13 ok
 
     public List<Consulta> listarConsultasInactivas() {
         List<Consulta> consultas = new ArrayList<>();
@@ -456,7 +413,7 @@ public class ConsultaData {
                 consul = new Consulta();
                 consul.setIdConsulta(rs.getInt("idConsulta"));
                 consul.setPrecio(rs.getDouble("precio"));
-                //consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
+              consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
 
                 consul.setPesoPromedio(rs.getDouble("pesoPromedio"));
                 consul.setActivo(rs.getBoolean("activo"));

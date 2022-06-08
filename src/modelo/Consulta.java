@@ -38,6 +38,7 @@ public class Consulta {
 
     public Consulta() {
     }
+    
   
 
     public int getIdConsulta() {

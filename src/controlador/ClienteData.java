@@ -175,7 +175,7 @@ public class ClienteData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de clientes activos. ");
         }
         return clientes;
     }
@@ -203,7 +203,7 @@ public class ClienteData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de los clientes inactivos. ");
         }
         return clientes;
     }

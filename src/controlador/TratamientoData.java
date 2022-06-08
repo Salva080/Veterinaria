@@ -174,7 +174,7 @@ public class TratamientoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos. ");
         }
         return Tratamientos;
     }
@@ -200,7 +200,7 @@ public class TratamientoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos activos. ");
         }
         return Tratamientos;
     }
@@ -227,7 +227,7 @@ public class TratamientoData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda. ");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos inactivos. ");
         }
         return tratamientos;
     }
