@@ -83,36 +83,56 @@ public class Veterinaria {
 //     Mascota mas2= new Mascota(1, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 2, 10), 15, true);
 //       Mascota mas= new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true);
 //       mascotaData.agregarMascota(mas);
-   //    Consulta con= new Consulta(500, LocalDate.of(2022,6,6), m3, tdd1, true, 2.5);
-    //   cd= new ConsultaData(conexion);
+       Consulta coneee= new Consulta(15,500, LocalDate.of(2022,6,6), m3, tdd1, true, 2.5);
+       cd= new ConsultaData(conexion);
+      
+    
+       List<Consulta> coned =    cd.promediarPesoPorMascota(23);
+        for(Consulta a: coned){
+            System.out.println("id consulta: "+a.getIdConsulta()+" id mascota : "+ a.getMascota().getIdMascota()+"  peso prom : "+ a.getPesoPromedio() );
+       
+        }
+     /*   */
+       // System.out.println(""+cd.promediarPesoPorMascota(25));
+//        List<Mascota> co =  cd.promediarPesoDeMascotas();
+//        for(Mascota a: co){
+//            System.out.println(a.getAlias()+a.getIdMascota()+" "+a.getPesoActual());
+//        }
+       //4
+    //   cd.modificarConsulta(30, c11);
 
       // ok
      //cd.registrarConsulta(con);
       //8 ok
-      
-      /*List<Consulta> co =  cd.listarConsultasporMascota(23);
+       /*  
+      List<Consulta> co =  cd.listarConsultasporMascota(23);
         for(Consulta a: co){
             System.out.println(" "+a.getFechaConsulta()+a.getFechaConsulta()+a.getMascota().getAlias()+a.getTratamiento().getTipoTratamiento());
-        }*/
+   } */ 
       //2 ok
 //        System.out.println(""+ cd.buscarClientePorMascota(35));
-      
+       
+     
+      //5
     /// ok   cd.eliminarConsulta(23, 0);
+    
+    
      //11
-    /* List<Consulta> co =  cd.listarConsultasActivas();
+     /*    List<Consulta> co =  cd.listarConsultasActivas();
         for(Consulta a: co){
             System.out.println("" + a.getFechaConsulta()+a.getIdConsulta()+a.getMascota()+a.getPesoPromedio()+a.getTratamiento().getTipoTratamiento());
-        }*/
+        }
+    
+      */
   
       //12
-      /*List<Consulta> co = cd.listarConsultasInactivas(); 
+   /*   List<Consulta> co = cd.listarConsultasInactivas(); 
         for(Consulta a: co){
             System.out.println(""+a.getFechaConsulta()+ " "+a.getIdConsulta()+ " "+a.getMascota());
         }
       */
-      //4
-     //cd.modificarConsulta(30, con);
-      //5
+   
+     
       /* 
        //1
        cd.listarMascotasPorCliente(0);
@@ -129,7 +149,9 @@ public class Veterinaria {
             System.out.println(a.getFechaConsulta()+" "+a.getIdConsulta()+" "+ a.getTratamiento().getTipoTratamiento()+ " "+a.getMascota().getAlias());
         }
    */
-       /* List<Tratamiento> t =cd.listarTratamientosporMascota(25);
+    
+    //10
+      /*  List<Tratamiento> t =cd.listarTratamientosporMascota(25);
         for(Tratamiento tr: t ){
             System.out.println(""+ tr.getIdTratamiento()+" "+tr.getTipoTratamiento()+ " "+tr.getMedicamento());
         }
