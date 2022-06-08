@@ -54,7 +54,7 @@ public class MascotaData {
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, mascota.getPesoActual());
+            ps.setDouble(7,(double) mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
             ps.setInt(9, mascota.getCliente().getIdCliente());//
 
@@ -109,7 +109,7 @@ public class MascotaData {
     }
 
     public void modificarMascota(int id, Mascota mascota) {
-        sql = "UPDATE `mascota` SET alias = ?, sexo = ?,especie = ?,raza = ?, colorPelaje = ?, fechaNac = ?, pesoActual = ? WHERE activo = 1 AND idMascota = ?";
+        sql = "UPDATE `mascota` SET `alias`=?,`sexo`=?,`especie`=?,`raza`=?,`colorPelaje`=?,`fechaNac = ?,`pesoActual`= ? WHERE activo = 1 AND idMascota = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -119,12 +119,11 @@ public class MascotaData {
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, (Double) mascota.getPesoActual());
-
+            ps.setDouble(7, (double) mascota.getPesoActual());
+            
             ps.executeUpdate();
-
-            ps.close();
             JOptionPane.showMessageDialog(null, "Se modificó la mascota");
+            ps.close();            
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA");
         }
@@ -222,7 +221,7 @@ public class MascotaData {
             ps.executeUpdate();
 
             ps.close();
-            JOptionPane.showMessageDialog(null, "Se dio de alta a la mascota");
+            JOptionPane.showMessageDialog(null, "Se activo a la mascota nuevamente");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "No se pudo activar a la mascota");
         }
