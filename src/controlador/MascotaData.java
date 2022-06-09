@@ -54,10 +54,11 @@ public class MascotaData {
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7,(double) mascota.getPesoActual());
+            ps.setDouble(7, mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
             ps.setInt(9, mascota.getCliente().getIdCliente());//
-
+            
+            
             ps.execute();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -71,7 +72,7 @@ public class MascotaData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "Error" + ex);
         }
     }
 
@@ -108,24 +109,28 @@ public class MascotaData {
         return ret;
     }
 
-    public void modificarMascota(int id, Mascota mascota) {
-        sql = "UPDATE `mascota` SET `alias`=?,`sexo`=?,`especie`=?,`raza`=?,`colorPelaje`=?,`fechaNac = ?,`pesoActual`= ? WHERE activo = 1 AND idMascota = ?";
+    public void modificarMascota(int idMascota, Mascota mascota) {
+        
+        sql = "UPDATE mascota SET alias = ?,sexo = ?,especie= ?,raza = ?,colorPelaje = ?,fechaNac = ?,pesoActual = ?,idCliente = ? WHERE activo = 1 AND idMascota = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
+            
             ps.setString(1, mascota.getAlias());
             ps.setString(2, mascota.getSexo());
             ps.setString(3, mascota.getEspecie());
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, (double) mascota.getPesoActual());
-            
+            ps.setDouble(7,  mascota.getPesoActual());
+            ps.setInt(8, mascota.getCliente().getIdCliente());
+            ps.setInt(9, idMascota);
+
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se modificó la mascota");
-            ps.close();            
+            
+            ps.close(); 
+            JOptionPane.showMessageDialog(null, "Se modificó la mascota");           
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA");
+            JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA" + ex.getMessage());
         }
     }
 

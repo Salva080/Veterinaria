@@ -54,24 +54,40 @@ public class Veterinaria {
         Cliente cl2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota ma1 = new Mascota();
 
-        Cliente cl = new Cliente(1, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
-        Cliente c2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
+        Cliente cl = new Cliente(28, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+        Cliente c2 = new Cliente(26,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota m1 = new Mascota();
 //        ClienteData.agregarCliente(cl);
 //        ClienteData.agregarCliente(c2);
 //        ClienteData.eliminarCliente(1);
+//        ClienteData.eliminarCliente(23);
 
         /*........................Mascota.........................*/
         mascotaData = new MascotaData(conexion);
         Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl);
-        Mascota m3 = new Mascota(35, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2021,12, 3), 15, true, cl);
+        Mascota m3 = new Mascota("Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2);
 
-        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, cl);
+        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, c2);
 
-        mascotaData.agregarMascota(m3);
-        mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)
-        mascotaData.agregarMascota(mas);
-
+//        mascotaData.agregarMascota(mas1);
+//        mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)
+//        mascotaData.agregarMascota(mas);
+//        System.out.println("" + mascotaData.buscarMascota(39));
+//        mascotaData.eliminarMascota(39);
+//        mascotaData.eliminarMascota(35);
+//        mascotaData.activarMascotas(39);
+//        List<Mascota> masc = mascotaData.listarMascotasActivas();
+//        for(Mascota m: masc){
+//            System.out.println(m.getIdMascota() + " " + m.getAlias() + " " + m.getSexo() + " " + m.getEspecie() + " " + m.getRaza() + " " + m.getColorPelaje() + " " + m.getFechaNac() + " " + m.isActivo());
+//        } 
+//        List<Mascota> masco = mascotaData.listarMascotasInactivas();
+//        for(Mascota t: masco){
+//            System.out.println(t.getIdMascota() + " " + t.getAlias() + " " + t.getSexo() + " " + t.getEspecie() + " " + t.getRaza() + " " + t.getColorPelaje() + " " + t.getFechaNac() + " " + t.isActivo());
+//        }
+//        mascotaData.modificarMascota(237, m3);
+//        System.out.println("" + mascotaData.mascotaExiste(23));
+          
+            
         /*........................Consulta.........................*/
         Tratamiento tdd3 = new Tratamiento(16, "cirugia", "corte", "pildoras", 12389, true);
 
@@ -155,11 +171,11 @@ public class Veterinaria {
                     }
 */
   
-        List<Consulta> conn =cd.listarConsultasporMascota(23);
-             for(Consulta tr: conn ){
-              System.out.println(tr.getIdConsulta()+" fecha : "+tr.getFechaConsulta()+" Mascota "+tr.getMascota().getIdMascota()+" - "+tr.getMascota().getAlias()+" tratamiento :"+tr.getTratamiento().getTipoTratamiento());
-                    }
-  
+//        List<Consulta> conn =cd.listarConsultasporMascota(23);
+//             for(Consulta tr: conn ){
+//              System.out.println(tr.getIdConsulta()+" fecha : "+tr.getFechaConsulta()+" Mascota "+tr.getMascota().getIdMascota()+" - "+tr.getMascota().getAlias()+" tratamiento :"+tr.getTratamiento().getTipoTratamiento());
+//                    }
+//  
     }
 
 }
