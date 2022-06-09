@@ -44,7 +44,7 @@ public class MascotaData {
     public void agregarMascota(Mascota mascota) {
 
         try {
-            sql = "INSERT INTO mascota (alias, sexo, especie, raza, colorPelaje, fechaNac, pesoMascota, activo, idCliente, pesoActual ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO mascota (alias, sexo, especie, raza, colorPelaje, fechaNac, pesoActual, activo, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -54,11 +54,11 @@ public class MascotaData {
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, mascota.getPesoMascota());
+            ps.setDouble(7, mascota.getPesoActual());
             ps.setBoolean(8, mascota.isActivo());
             ps.setInt(9, mascota.getCliente().getIdCliente());//
-            ps.setDouble(10, mascota.getPesoActual());
-
+            
+            
             ps.execute();
 
             ResultSet rs = ps.getGeneratedKeys();
@@ -72,7 +72,7 @@ public class MascotaData {
             }
             ps.close();
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error");
+            JOptionPane.showMessageDialog(null, "Error" + ex);
         }
     }
 
@@ -109,29 +109,28 @@ public class MascotaData {
         return ret;
     }
 
-    public void modificarMascota(int id, Mascota mascota) {
+    public void modificarMascota(int idMascota, Mascota mascota) {
         
-        sql = "UPDATE `mascota` SET `alias`=?,`sexo`=?,`especie`=?,`raza`=?,`colorPelaje`=?,`fechaNac = ?, pesoMascota=?, idCliente=?, `pesoActual`= ?  WHERE activo = 1 AND idMascota = ?";
+        sql = "UPDATE mascota SET alias = ?,sexo = ?,especie= ?,raza = ?,colorPelaje = ?,fechaNac = ?,pesoActual = ?,idCliente = ? WHERE activo = 1 AND idMascota = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
+            
             ps.setString(1, mascota.getAlias());
             ps.setString(2, mascota.getSexo());
             ps.setString(3, mascota.getEspecie());
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, mascota.getPesoMascota());
-            ps.setInt(8, mascota.getCliente().getIdCliente());//
-            ps.setDouble(9, (double) mascota.getPesoActual());
-            
-            ps.setInt(10, id);
-            
+            ps.setDouble(7,  mascota.getPesoActual());
+            ps.setInt(8, mascota.getCliente().getIdCliente());
+            ps.setInt(9, idMascota);
+
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se modificó la mascota");
-            ps.close();            
+            
+            ps.close(); 
+            JOptionPane.showMessageDialog(null, "Se modificó la mascota");           
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA");
+            JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA" + ex.getMessage());
         }
     }
 
@@ -152,10 +151,9 @@ public class MascotaData {
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
                 mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoMascota(rs.getDouble(8));
+                mascota.setPesoActual(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
-                //ver falta cliente
-                mascota.setPesoActual(rs.getDouble(11));
+
             }
             ps.close();
         } catch (SQLException ex) {
@@ -180,10 +178,8 @@ public class MascotaData {
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
                 mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoMascota(rs.getDouble(8));
+                mascota.setPesoActual(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
-                //ver falta cliente
-                mascota.setPesoActual(rs.getDouble(11));
                 mascotas.add(mascota);
             }
             ps.close();
@@ -209,10 +205,8 @@ public class MascotaData {
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
                 mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoMascota(rs.getDouble(8));
+                mascota.setPesoActual(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
-                //ver falta cliente
-                mascota.setPesoActual(rs.getDouble(11));
                 mascotas.add(mascota);
             }
             ps.close();
