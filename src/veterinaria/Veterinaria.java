@@ -63,10 +63,10 @@ public class Veterinaria {
 
         /*........................Mascota.........................*/
         mascotaData = new MascotaData(conexion);
-        Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl);
-        Mascota m3 = new Mascota(35, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2021,12, 3), 15, true, cl);
+        Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl, 2);
+        Mascota m3 = new Mascota(35, "Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2021,12, 3), 15, true, cl, 3);
 
-        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, cl);
+        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, cl, 5);
 
         mascotaData.agregarMascota(m3);
         mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)

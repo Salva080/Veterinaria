@@ -35,7 +35,7 @@ public class ConsultaData {
         this.conexion = conexion;
 
     }
-///  1 ok
+///  1 ok va por consola
 
     public List<Consulta> promediarPesoPorMascota(int idMascota) {
 
@@ -43,7 +43,7 @@ public class ConsultaData {
         Consulta consulta;
         Mascota mascota;
         try {
-            sql = "SELECT consulta.idMascota, idConsulta, AVG(pesoPromedio) FROM mascota,consulta where consulta.idMascota=mascota.idMascota AND consulta.idMascota=?;";
+            sql = "SELECT consulta.idMascota, idConsulta, AVG(pesoConsulta) FROM mascota,consulta where consulta.idMascota=mascota.idMascota AND consulta.idMascota=?;";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -52,13 +52,13 @@ public class ConsultaData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-//                double prom = rs.getDouble("AVG(pesoPromedio)");
-//                System.out.println("" + prom);
+//                double prom = rs.getDouble("AVG(pesoConsulta)");
+//              
                 consulta = new Consulta();
                 consulta.setIdConsulta(rs.getInt("idConsulta"));
                 mascota = buscarMascotas(rs.getInt("idMascota"));
 
-                consulta.setPesoPromedio(rs.getDouble("AVG(pesoPromedio)"));
+                consulta.setPesoConsulta(rs.getDouble("AVG(pesoConsulta)"));
 
                 consulta.setMascota(mascota);
                 promedios.add(consulta);
@@ -70,8 +70,7 @@ public class ConsultaData {
         }
         return promedios;
     }
-//    public void CobrarConsulta() {
-//       }
+
     
     //2 ok
 
@@ -155,7 +154,7 @@ public class ConsultaData {
             ps.setInt(3, consulta.getMascota().getIdMascota());
             ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
             ps.setBoolean(5, consulta.isActivo());
-            ps.setDouble(6, consulta.getPesoPromedio());
+            ps.setDouble(6, consulta.getPesoConsulta());
 
             ps.execute();
 
@@ -374,7 +373,7 @@ public class ConsultaData {
                 consul.setPrecio(rs.getDouble("precio"));
                 consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
 
-                consul.setPesoPromedio(rs.getDouble("pesoPromedio"));
+                consul.setPesoConsulta(rs.getDouble("pesoConsulta"));
                 consul.setActivo(rs.getBoolean("activo"));
                 tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                 consul.setTratamiento(tratamiento);
@@ -415,7 +414,7 @@ public class ConsultaData {
                 consul.setPrecio(rs.getDouble("precio"));
               consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
 
-                consul.setPesoPromedio(rs.getDouble("pesoPromedio"));
+                consul.setPesoConsulta(rs.getDouble("pesoConsulta"));
                 consul.setActivo(rs.getBoolean("activo"));
                 tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                 consul.setTratamiento(tratamiento);
@@ -437,4 +436,6 @@ public class ConsultaData {
         return consultas;
 
     }
+    
+    
 }

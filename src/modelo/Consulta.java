@@ -15,25 +15,25 @@ public class Consulta {
     private Mascota mascota; ///
     private Tratamiento tratamiento;
     private boolean activo;
-    private double pesoPromedio;
+    private double pesoConsulta;
 
-    public Consulta(int idConsulta, double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoPromedio) {
+    public Consulta(int idConsulta, double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoConsulta) {
         this.idConsulta = idConsulta;
         this.precio = precio;
         this.fechaConsulta = fechaConsulta;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.activo = activo;
-        this.pesoPromedio = pesoPromedio;
+        this.pesoConsulta = pesoConsulta;
     }
 
-    public Consulta(double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoPromedio) {
+    public Consulta(double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoConsulta) {
         this.precio = precio;
         this.fechaConsulta = fechaConsulta;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
         this.activo = activo;
-        this.pesoPromedio = pesoPromedio;
+        this.pesoConsulta = pesoConsulta;
     }
 
     public Consulta() {
@@ -89,17 +89,17 @@ public class Consulta {
         this.activo = activo;
     }
 
-    public double getPesoPromedio() {
-        return pesoPromedio;
+    public double getPesoConsulta() {
+        return pesoConsulta;
     }
 
-    public void setPesoPromedio(double pesoPromedio) {
-        this.pesoPromedio = pesoPromedio;
+    public void setPesoConsulta(double pesoConsulta) {
+        this.pesoConsulta = pesoConsulta;
     }
 
     @Override
     public String toString() {
-        return idConsulta + ", precio " + precio + ", fecha de Consulta  " + fechaConsulta + ", " + mascota + ", tratamiento " + tratamiento + ", " + activo + ", peso Promedio " + pesoPromedio + '}';
+        return idConsulta + ", precio " + precio + ", fecha de Consulta  " + fechaConsulta + ", " + mascota + ", tratamiento " + tratamiento + ", " + activo + ", peso Promedio " + pesoConsulta + '}';
     }
 
     @Override

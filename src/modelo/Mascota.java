@@ -21,11 +21,12 @@ public class Mascota {
     private String raza;
     private String colorPelaje;
     private LocalDate fechaNac;    
-    private double pesoActual;
+    private double pesoMascota;
     private boolean activo;
     private Cliente cliente;
+    private double pesoActual;
 
-    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, boolean activo, Cliente cliente) {
+    public Mascota(int idMascota, String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoMascota, boolean activo, Cliente cliente, double pesoActual) {
         this.idMascota = idMascota;
         this.alias = alias;
         this.sexo = sexo;
@@ -36,9 +37,10 @@ public class Mascota {
         this.pesoActual = pesoActual;
         this.activo = activo;
         this.cliente = cliente;
+        this.pesoMascota=pesoMascota;
     }
 
-    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoActual, boolean activo,Cliente cliente) {
+    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoMascota, boolean activo, Cliente cliente, double pesoActuala) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -48,9 +50,18 @@ public class Mascota {
         this.pesoActual = pesoActual;
         this.activo = activo;
         this.cliente = cliente;
+         this.pesoMascota=pesoMascota;
     }
            
     public Mascota() {
+    }
+
+    public double getPesoMascota() {
+        return pesoMascota;
+    }
+
+    public void setPesoMascota(double pesoMascota) {
+        this.pesoMascota = pesoMascota;
     }
 
    
@@ -166,7 +177,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return idMascota + "," + alias + "," + sexo + "," + especie + "," + raza + "," + colorPelaje + "," + fechaNac + "," + pesoActual;
+        return idMascota + "," + alias + "," + sexo + "," + especie + "," + raza + "," + colorPelaje + "," + fechaNac + "," + pesoActual +" ,"+ cliente +", "+ pesoMascota;
     }
     
     
