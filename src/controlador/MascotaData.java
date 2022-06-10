@@ -109,6 +109,9 @@ public class MascotaData {
         return ret;
     }
 
+    
+    
+   // MODIFICAR
     public void modificarMascota(int idMascota, Mascota mascota) {
         
         sql = "UPDATE mascota SET alias = ?,sexo = ?,especie= ?,raza = ?,colorPelaje = ?,fechaNac = ?,pesoActual = ?,idCliente = ? WHERE activo = 1 AND idMascota = ?";
@@ -124,7 +127,8 @@ public class MascotaData {
             ps.setDouble(7,  mascota.getPesoActual());
             ps.setInt(8, mascota.getCliente().getIdCliente());
             ps.setInt(9, idMascota);
-
+            
+            
             ps.executeUpdate();
             
             ps.close(); 
