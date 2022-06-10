@@ -108,21 +108,21 @@ public class Cliente {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
-    
+
     @Override
     public String toString() {
-        return "Cliente{" + "idCliente=" + idCliente + ", dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", contactoAlternativo=" + contactoAlternativo + ", activo=" + activo + '}';
+        return "Cliente{" + "dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", contactoAlternativo=" + contactoAlternativo + ", activo=" + activo + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 89 * hash + this.dni;
-        hash = 89 * hash + Objects.hashCode(this.apellido);
-        hash = 89 * hash + Objects.hashCode(this.nombre);
-        hash = 89 * hash + Objects.hashCode(this.direccion);
-        hash = 89 * hash + this.telefono;
-        hash = 89 * hash + Objects.hashCode(this.contactoAlternativo);
+        int hash = 7;
+        hash = 67 * hash + this.dni;
+        hash = 67 * hash + Objects.hashCode(this.apellido);
+        hash = 67 * hash + Objects.hashCode(this.nombre);
+        hash = 67 * hash + Objects.hashCode(this.direccion);
+        hash = 67 * hash + this.telefono;
+        hash = 67 * hash + Objects.hashCode(this.contactoAlternativo);
         return hash;
     }
 
@@ -157,5 +157,7 @@ public class Cliente {
             return false;
         }
         return true;
-    }    
+    }
+
+    
 }
