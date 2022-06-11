@@ -99,16 +99,19 @@ public class ClienteData {
 
     public void modificarCliente(int id, Cliente cliente) {
 
-        sql = "UPDATE cliente SET dni=?, nombre=?, apellido=?, direccion=?, telefono=?, contactoAlternativo=? WHERE activo=1 AND idCliente=?";
+        sql = "UPDATE cliente SET dni=?, nombre=?, apellido=?, direccion=?, telefono=?, contactoAlternativo=?, activo=? WHERE activo=1 AND idCliente=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-
+            
+            
             ps.setInt(1, (int) cliente.getDni());
             ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getApellido());
             ps.setString(4, cliente.getDireccion());
             ps.setInt(5, (int) cliente.getTelefono());
             ps.setString(6, cliente.getContactoAlternativo());
+            ps.setBoolean(7, cliente.isActivo());
+            ps.setInt(8,id);
 
             ps.executeUpdate();
 
@@ -116,7 +119,7 @@ public class ClienteData {
             JOptionPane.showMessageDialog(null, " Se modificó el cliente");
         } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null, " No se pudo modificar el cliente");
+            JOptionPane.showMessageDialog(null, " No se pudo modificar el cliente" + e.getMessage());
         }
 
     }
