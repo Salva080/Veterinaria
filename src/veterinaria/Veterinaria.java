@@ -55,17 +55,19 @@ public class Veterinaria {
         Mascota ma1 = new Mascota();
 
         Cliente cl = new Cliente(28, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
-        Cliente c2 = new Cliente(26,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
+        Cliente c2 = new Cliente(15,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota m1 = new Mascota();
 //        ClienteData.agregarCliente(cl);
 //        ClienteData.agregarCliente(c2);
 //        ClienteData.eliminarCliente(1);
 //        ClienteData.eliminarCliente(23);
+            
+//            System.out.println("" +ClienteData.buscarClientePorDni(33333) );
 
         /*........................Mascota.........................*/
         mascotaData = new MascotaData(conexion);
         Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl,2);
-        Mascota m3 = new Mascota("Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,2);
+        Mascota m3 = new Mascota(59,"Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,2);
 
         Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, c2, 3);
 
@@ -98,13 +100,17 @@ public class Veterinaria {
 
         Consulta coneee = new Consulta(15, 500, LocalDate.of(2020, 8, 8), m3, tdd1, true, 2.5);
         cd = new ConsultaData(conexion);
-        /* 
+        
+     //   cd.modificarConsulta(27, con);
+        
+        
+      /*      
         List<Consulta> coned = cd.promediarPesoPorMascota(23);
         for (Consulta a : coned) {
-            System.out.println("id consulta: " + a.getIdConsulta() + " id mascota : " + a.getMascota().getIdMascota() + "  peso prom : " + a.getPesoPromedio());
+            System.out.println("id consulta: " + a.getIdConsulta() + " id mascota : " + a.getMascota().getIdMascota() + "  peso prom : " + a.getPesoConsulta()+" kg");
 
         }
-         */
+      */
        
         //        ok
         //       cd.registrarConsulta(con);
