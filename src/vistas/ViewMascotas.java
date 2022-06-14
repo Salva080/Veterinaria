@@ -28,30 +28,180 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jcbCliente = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jtfSexo = new javax.swing.JTextField();
+        jtfEspecie = new javax.swing.JTextField();
+        jtfRaza = new javax.swing.JTextField();
+        jtfPesomascota = new javax.swing.JTextField();
+        jtfPesoactual = new javax.swing.JTextField();
+        jtfAlia = new javax.swing.JTextField();
+        jcbEstado = new javax.swing.JCheckBox();
+        jdcFechaNac = new com.toedter.calendar.JDateChooser();
+        jtfIDmascota = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jbGuardar = new javax.swing.JButton();
+        jbActualizar = new javax.swing.JButton();
+        jbLimpíar = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
+
+        getContentPane().setLayout(null);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 830, 670));
+        jLabel2.setBackground(new java.awt.Color(0, 153, 204));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel2.setText("Mascotas");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 160, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jPanel1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 260, -1));
+
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel4.setText("Peso actual de la mascota:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 30));
+
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel5.setText("ID Cliente:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, 30));
+
+        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel6.setText("Estado:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, -1, 30));
+
+        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel7.setText("Peso de mascota:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, 30));
+
+        jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel8.setText("Fecha de nacimiento:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, 30));
+
+        jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel9.setText("Especie:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, 30));
+
+        jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel10.setText("Sexo:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, 30));
+
+        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel11.setText("Raza:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, 30));
+
+        jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel12.setText("Alias:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, 30));
+
+        jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel13.setText("ID Mascota:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 30));
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 570, -1));
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 172, 570, 10));
+        jPanel1.add(jtfSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 130, -1));
+        jPanel1.add(jtfEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 250, -1));
+        jPanel1.add(jtfRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 160, -1));
+        jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 80, -1));
+        jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 90, -1));
+        jPanel1.add(jtfAlia, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 200, -1));
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, -1, -1));
+        jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
+        jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 80, -1));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 721, 617);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(131, 635, 530, 83);
+
+        jbGuardar.setText("Guardar");
+        getContentPane().add(jbGuardar);
+        jbGuardar.setBounds(60, 753, 76, 32);
+
+        jbActualizar.setText("Actualizar");
+        getContentPane().add(jbActualizar);
+        jbActualizar.setBounds(168, 753, 87, 32);
+
+        jbLimpíar.setText("Limpiar");
+        getContentPane().add(jbLimpíar);
+        jbLimpíar.setBounds(433, 753, 73, 32);
+
+        jbBorrar.setText("Borrar");
+        getContentPane().add(jbBorrar);
+        jbBorrar.setBounds(557, 753, 67, 32);
+
+        jbSalir.setText("Salir");
+        getContentPane().add(jbSalir);
+        jbSalir.setBounds(682, 753, 56, 32);
+
+        jbModificar.setText("Modificar");
+        getContentPane().add(jbModificar);
+        jbModificar.setBounds(299, 753, 83, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbActualizar;
+    private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbLimpíar;
+    private javax.swing.JButton jbModificar;
+    private javax.swing.JButton jbSalir;
+    private javax.swing.JComboBox<String> jcbCliente;
+    private javax.swing.JCheckBox jcbEstado;
+    private com.toedter.calendar.JDateChooser jdcFechaNac;
+    private javax.swing.JTextField jtfAlia;
+    private javax.swing.JTextField jtfEspecie;
+    private javax.swing.JTextField jtfIDmascota;
+    private javax.swing.JTextField jtfPesoactual;
+    private javax.swing.JTextField jtfPesomascota;
+    private javax.swing.JTextField jtfRaza;
+    private javax.swing.JTextField jtfSexo;
     // End of variables declaration//GEN-END:variables
 }
