@@ -44,7 +44,7 @@ public class MascotaData {
     public void agregarMascota(Mascota mascota) {
 
         try {
-            sql = "INSERT INTO mascota (alias, sexo, especie, raza, colorPelaje, fechaNac, pesoActual, activo, idCliente) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO mascota (alias, sexo, especie, raza, colorPelaje, fechaNac, pesoMascota, activo, idCliente, pesoActual) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
@@ -54,10 +54,10 @@ public class MascotaData {
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7, mascota.getPesoActual());
+            ps.setDouble(7, mascota.getPesoMascota());
             ps.setBoolean(8, mascota.isActivo());
             ps.setInt(9, mascota.getCliente().getIdCliente());//
-            
+            ps.setDouble(10, mascota.getPesoActual());
             
             ps.execute();
 
@@ -114,7 +114,7 @@ public class MascotaData {
    // MODIFICAR
     public void modificarMascota(int idMascota, Mascota mascota) {
         
-        sql = "UPDATE mascota SET alias = ?,sexo = ?,especie= ?,raza = ?,colorPelaje = ?,fechaNac = ?,pesoActual = ?,idCliente = ? WHERE activo = 1 AND idMascota = ?";
+        sql = "UPDATE mascota SET alias = ?,sexo = ?,especie= ?,raza = ?,colorPelaje = ?,fechaNac = ?,pesoMascota = ?,idCliente = ?,pesoActual = ? WHERE activo = 1 AND idMascota = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -124,9 +124,10 @@ public class MascotaData {
             ps.setString(4, mascota.getRaza());
             ps.setString(5, mascota.getColorPelaje());
             ps.setDate(6, Date.valueOf(mascota.getFechaNac()));
-            ps.setDouble(7,  mascota.getPesoActual());
+            ps.setDouble(7,  mascota.getPesoMascota());
             ps.setInt(8, mascota.getCliente().getIdCliente());
-            ps.setInt(9, idMascota);
+            ps.setDouble(9, mascota.getPesoActual());
+            ps.setInt(10, idMascota);
             
             
             ps.executeUpdate();
@@ -155,8 +156,9 @@ public class MascotaData {
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
                 mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoActual(rs.getDouble(8));
+                mascota.setPesoMascota(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
+                mascota.setPesoActual(rs.getDouble(10));
 
             }
             ps.close();
@@ -182,8 +184,9 @@ public class MascotaData {
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
                 mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoActual(rs.getDouble(8));
+                mascota.setPesoMascota(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
+                mascota.setPesoActual(rs.getDouble(10));
                 mascotas.add(mascota);
             }
             ps.close();
@@ -209,8 +212,9 @@ public class MascotaData {
                 mascota.setRaza(rs.getString(5));
                 mascota.setColorPelaje(rs.getString(6));
                 mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoActual(rs.getDouble(8));
+                mascota.setPesoMascota(rs.getDouble(8));
                 mascota.setActivo(rs.getBoolean(9));
+                mascota.setPesoActual(rs.getDouble(10));
                 mascotas.add(mascota);
             }
             ps.close();

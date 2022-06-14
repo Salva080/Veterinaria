@@ -34,10 +34,10 @@ public class Mascota {
         this.raza = raza;
         this.colorPelaje = colorPelaje;
         this.fechaNac = fechaNac;
-        this.pesoActual = pesoActual;
+        this.pesoMascota = pesoMascota;
         this.activo = activo;
         this.cliente = cliente;
-        this.pesoMascota=pesoMascota;
+        this.pesoActual = pesoActual;
     }
 
     public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoMascota, boolean activo, Cliente cliente, double pesoActuala) {
@@ -47,10 +47,9 @@ public class Mascota {
         this.raza = raza;
         this.colorPelaje = colorPelaje;
         this.fechaNac = fechaNac;
-        this.pesoActual = pesoActual;
-        this.activo = activo;
+        this.pesoMascota = pesoMascota;
         this.cliente = cliente;
-         this.pesoMascota=pesoMascota;
+        this.pesoActual = pesoActual;
     }
            
     public Mascota() {
@@ -177,7 +176,7 @@ public class Mascota {
 
     @Override
     public String toString() {
-        return idMascota + "," + alias + "," + sexo + "," + especie + "," + raza + "," + colorPelaje + "," + fechaNac + "," + pesoActual +" ,"+ cliente +", "+ pesoMascota;
+        return idMascota + "," + alias + "," + sexo + "," + especie + "," + raza + "," + colorPelaje + "," + fechaNac + "," + pesoMascota +" ,"+ cliente +", "+ pesoActual;
     }
     
     

@@ -54,7 +54,7 @@ public class Veterinaria {
         Cliente cl2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota ma1 = new Mascota();
 
-        Cliente cl = new Cliente(28, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+        Cliente cl = new Cliente(26, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente c2 = new Cliente(15,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota m1 = new Mascota();
 //        ClienteData.agregarCliente(cl);
@@ -66,7 +66,7 @@ public class Veterinaria {
 
         /*........................Mascota.........................*/
         mascotaData = new MascotaData(conexion);
-        Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl,2);
+        Mascota mas1 = new Mascota(26,"Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl,2);
         Mascota m3 = new Mascota(59,"Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,2);
 
         Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, c2, 3);
@@ -74,7 +74,7 @@ public class Veterinaria {
 //        mascotaData.agregarMascota(mas1);
 //        mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)
 //        mascotaData.agregarMascota(mas);
-//        System.out.println("" + mascotaData.buscarMascota(39));
+//        System.out.println("" + mascotaData.buscarMascota(29));
 //        mascotaData.eliminarMascota(39);
 //        mascotaData.eliminarMascota(35);
 //        mascotaData.activarMascotas(39);
@@ -86,7 +86,7 @@ public class Veterinaria {
 //        for(Mascota t: masco){
 //            System.out.println(t.getIdMascota() + " " + t.getAlias() + " " + t.getSexo() + " " + t.getEspecie() + " " + t.getRaza() + " " + t.getColorPelaje() + " " + t.getFechaNac() + " " + t.isActivo());
 //        }
-//        mascotaData.modificarMascota(237, m3);
+//        mascotaData.modificarMascota(23, m3);
 //        System.out.println("" + mascotaData.mascotaExiste(23));
           
             
