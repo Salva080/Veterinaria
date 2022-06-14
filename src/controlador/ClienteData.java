@@ -154,6 +154,36 @@ public class ClienteData {
         return cliente;
 
     }
+    public Cliente buscarClientePorDni(int dni) {
+
+        Cliente cliente = null;
+        try {
+
+            sql = "SELECT * FROM cliente WHERE dni=? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, dni);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                cliente = new Cliente();
+                cliente.setIdCliente(rs.getInt(1));
+                cliente.setDni(rs.getInt(2));
+                cliente.setNombre(rs.getString(3));
+                cliente.setApellido(rs.getString(4));
+                cliente.setDireccion(rs.getString(5));
+                cliente.setTelefono(rs.getInt(6));
+                cliente.setContactoAlternativo(rs.getString(7));
+                cliente.setActivo(rs.getBoolean(8));
+
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la busqueda del cliente.");
+        }
+        return cliente;
+
+    }
 
     public List<Cliente> listarClienteActivos() {
 

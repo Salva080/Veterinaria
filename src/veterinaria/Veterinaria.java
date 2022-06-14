@@ -54,32 +54,22 @@ public class Veterinaria {
         Cliente cl2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota ma1 = new Mascota();
 
-     //   Cliente cl = new Cliente(28, 39, "Leo", "Messi", "Paris", 2665, "Antonella", true);
-        Cliente c5 = new Cliente(47, "Leo", "Messi", "España", 2665, "Thiago", true);
-        Cliente c2 = new Cliente(39, "Harry", "Potter", "Dursley", 2665, "Ron", true);
-
+        Cliente cl = new Cliente(28, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+        Cliente c2 = new Cliente(15,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota m1 = new Mascota();
-   //     ClienteData.agregarCliente(cl);
-        ClienteData.agregarCliente(c2);
-        ClienteData.eliminarCliente(1);
-        ClienteData.eliminarCliente(23);
-        ClienteData.clienteExiste(2);
-        ClienteData.modificarCliente(26, c5);
-        System.out.println("" + ClienteData.buscarCliente(2));
-        List<Cliente> client = ClienteData.listarClienteActivos();
-        for (Cliente c : client) {
-            System.out.println(c.getIdCliente() + " " + c.getDni() + " " + c.getNombre()+ " " + c.getApellido()+ " " + c.getDireccion()+ " " + c.getTelefono() + " " + c.getContactoAlternativo());
-        }
-        
+//        ClienteData.agregarCliente(cl);
+//        ClienteData.agregarCliente(c2);
+//        ClienteData.eliminarCliente(1);
+//        ClienteData.eliminarCliente(23);
+            
+//            System.out.println("" +ClienteData.buscarClientePorDni(33333) );
 
         /*........................Mascota.........................*/
-      /*  mascotaData = new MascotaData(conexion);
-        Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl, 2);
-        Mascota m3 = new Mascota("Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2, 2);
-        Mascota ciro = new Mascota("Hulk", "Masculino", "perro", "Dogo", "Marron", LocalDate.of(2018, 11, 3), 45, true, cl, 45);
-        Mascota dobby = new Mascota("dobby", "Masculino", "elfo", "domestico", "gris", LocalDate.of(1998, 07, 5), 25, true, c2, 25);
+        mascotaData = new MascotaData(conexion);
+        Mascota mas1 = new Mascota("Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl,2);
+        Mascota m3 = new Mascota(59,"Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,2);
 
-        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, c2, 3);//Jaja
+        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, c2, 3);
 
 //        mascotaData.agregarMascota(mas1);
 //        mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)
@@ -98,24 +88,30 @@ public class Veterinaria {
 //        }
 //        mascotaData.modificarMascota(237, m3);
 //        System.out.println("" + mascotaData.mascotaExiste(23));
+          
+            
         /*........................Consulta.........................*/
-    /*    Tratamiento tdd3 = new Tratamiento(16, "cirugia", "corte", "pildoras", 12389, true);
+        Tratamiento tdd3 = new Tratamiento(16, "cirugia", "corte", "pildoras", 12389, true);
 
         Consulta con = new Consulta(1500, LocalDate.of(2000, 12, 06), m3, tdd3, true, 2.5);
         Consulta cone = new Consulta(15, 500, LocalDate.of(2022, 07, 06), m3, tdd3, true, 40);
-
+       
         cd = new ConsultaData(conexion);
 
         Consulta coneee = new Consulta(15, 500, LocalDate.of(2020, 8, 8), m3, tdd1, true, 2.5);
         cd = new ConsultaData(conexion);
-        /* 
+        
+     //   cd.modificarConsulta(27, con);
+        
+        
+      /*      
         List<Consulta> coned = cd.promediarPesoPorMascota(23);
         for (Consulta a : coned) {
-            System.out.println("id consulta: " + a.getIdConsulta() + " id mascota : " + a.getMascota().getIdMascota() + "  peso prom : " + a.getPesoPromedio());
+            System.out.println("id consulta: " + a.getIdConsulta() + " id mascota : " + a.getMascota().getIdMascota() + "  peso prom : " + a.getPesoConsulta()+" kg");
 
         }
-         */
-
+      */
+       
         //        ok
         //       cd.registrarConsulta(con);
         /*      8 ok   
@@ -126,52 +122,61 @@ public class Veterinaria {
          */
 //        2 ok System
 //        .out.println("" + cd.buscarClientePorMascota(35));
+
 //        5
 //        ok 
 //       cd.eliminarConsulta(23, 0);
 
-        /*                List<Consulta> co =  cd.listarConsultasActivas();
+ /*                List<Consulta> co =  cd.listarConsultasActivas();
         for(Consulta a: co){
             System.out.println(" fecha consulta : " + a.getFechaConsulta()+" id consulta: "+a.getIdConsulta()+" mascota:  " +a.getMascota().getAlias()+" peso consulta:" +a.getPesoPromedio()+" tipo tratamiento :"+a.getTratamiento().getTipoTratamiento());
           }
-         */
+    */
+        
  /*          List<Consulta> cot = cd.listarConsultasInactivas(); 
         for(Consulta a: co){
              System.out.println(" fecha consulta : " + a.getFechaConsulta()+" id consulta: "+a.getIdConsulta()+" mascota:  " +a.getMascota().getAlias()+" peso consulta:" +a.getPesoPromedio()+" tipo tratamiento :"+a.getTratamiento().getTipoTratamiento());
         }
-         */
+    */        
+  
 // 1
 /*      
          List<Consulta> consult= cd.listarMascotasPorClienteActivo(15);
        for(Consulta c: consult){
            System.out.println("id consulta  "+c.getIdConsulta()+ " id cliente :" +c.getMascota().getCliente().getIdCliente()+ " id mascota: "+c.getMascota().getIdMascota());
        }
-         */
- /*    List<Consulta> co = cd.listarConsultasPorTratamiento(16, "");
+*/                
+     
+  /*    List<Consulta> co = cd.listarConsultasPorTratamiento(16, "");
         for(Consulta a: co){
             System.out.println(a.getFechaConsulta()+" "+a.getIdConsulta()+" "+ a.getTratamiento().getTipoTratamiento()+ " "+a.getMascota().getAlias());
         }
-         */
- /* 
+ */ 
+        
+   /* 
         List<Consulta> consukltas = cd.listarConsultasPorTratamiento(0, "cirugia");
         for(Consulta a: consukltas){
             System.out.println(a.getFechaConsulta()+" "+a.getIdConsulta()+" "+ a.getTratamiento().getTipoTratamiento()+ " "+a.getMascota().getAlias());
         }
-         */
-        // 10 
-        /*  
+    */             
+    
+
+  // 10 
+  /*  
         List<Tratamiento> t =cd.listarTratamientosporMascota(23);
         for(Tratamiento tr: t ){
             System.out.println(" id Tratamiento : "+ tr.getIdTratamiento()+"-tipo de tratamiento "+tr.getTipoTratamiento()+ "- medicamento: "+tr.getMedicamento()+"  precio :$ "+tr.getPrecio());
         }
-         */
- /*   
+ */ 
+  
+/*   
   
          List<Consulta> t =cd.listarMascotasPorCliente(15);
         for(Consulta tr: t ){
             System.out.println("id consulta "+tr.getIdConsulta()+", id mascota "+tr.getMascota().getIdMascota()+",id cliente "+tr.getMascota().getCliente().getIdCliente() );
                     }
-         */
+*/
+  
 //        List<Consulta> conn =cd.listarConsultasporMascota(23);
 //             for(Consulta tr: conn ){
 //              System.out.println(tr.getIdConsulta()+" fecha : "+tr.getFechaConsulta()+" Mascota "+tr.getMascota().getIdMascota()+" - "+tr.getMascota().getAlias()+" tratamiento :"+tr.getTratamiento().getTipoTratamiento());

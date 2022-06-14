@@ -43,7 +43,7 @@ public class ConsultaData {
         Consulta consulta;
         Mascota mascota;
         try {
-            sql = "SELECT consulta.idMascota, idConsulta, AVG(pesoConsulta) FROM mascota,consulta where consulta.idMascota=mascota.idMascota AND consulta.idMascota=?;";
+            sql = "SELECT consulta.idMascota, idConsulta, AVG(pesoConsulta) FROM mascota,consulta where consulta.idMascota=mascota.idMascota AND consulta.idMascota=? ;";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -174,6 +174,29 @@ public class ConsultaData {
         }
 
     }
+    public void modificarConsulta(int idConsulta, Consulta consulta) {
+        
+        sql = "UPDATE consulta SET precio=?, fechaConsulta=?, idMascota=?,  idTratamiento=?, pesoConsulta=? WHERE  activo=1 AND idConsulta=? ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setDouble(1, consulta.getPrecio());
+            ps.setDate(2, Date.valueOf(consulta.getFechaConsulta()));
+            ps.setInt(3, consulta.getMascota().getIdMascota());
+            ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
+            ps.setDouble(5, consulta.getPesoConsulta());
+            ps.setInt(6, idConsulta);
+
+            
+            
+            ps.executeUpdate();
+            
+            ps.close(); 
+            JOptionPane.showMessageDialog(null, "Se modificó la consulta");           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "no se puedo modificar la consuta" + ex.getMessage());
+        }
+    }
 
 //5 ok
     public void eliminarConsulta(int idMascota, int idTratamiento) {
@@ -188,11 +211,11 @@ public class ConsultaData {
 
             ps.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Se eliminó la consulta ");
+            JOptionPane.showMessageDialog(null, "Se dio de baja la consulta ");
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al eliminar la consulta " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al dalr de baja la consulta " + ex.getMessage());
         }
 
     }
