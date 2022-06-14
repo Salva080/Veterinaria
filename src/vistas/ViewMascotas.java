@@ -54,7 +54,6 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jbGuardar = new javax.swing.JButton();
-        jbActualizar = new javax.swing.JButton();
         jbLimpíar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
@@ -146,25 +145,21 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         getContentPane().add(jbGuardar);
         jbGuardar.setBounds(60, 753, 76, 32);
 
-        jbActualizar.setText("Actualizar");
-        getContentPane().add(jbActualizar);
-        jbActualizar.setBounds(168, 753, 87, 32);
-
         jbLimpíar.setText("Limpiar");
         getContentPane().add(jbLimpíar);
-        jbLimpíar.setBounds(433, 753, 73, 32);
+        jbLimpíar.setBounds(360, 750, 73, 32);
 
         jbBorrar.setText("Borrar");
         getContentPane().add(jbBorrar);
-        jbBorrar.setBounds(557, 753, 67, 32);
+        jbBorrar.setBounds(520, 750, 67, 32);
 
         jbSalir.setText("Salir");
         getContentPane().add(jbSalir);
-        jbSalir.setBounds(682, 753, 56, 32);
+        jbSalir.setBounds(650, 750, 56, 32);
 
         jbModificar.setText("Modificar");
         getContentPane().add(jbModificar);
-        jbModificar.setBounds(299, 753, 83, 32);
+        jbModificar.setBounds(200, 750, 83, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -187,7 +182,6 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbActualizar;
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpíar;
