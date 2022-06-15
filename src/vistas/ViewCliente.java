@@ -25,7 +25,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     public ViewCliente() {
         initComponents();
         limpiar();
-
+        this.setSize(700, 650);
         conexion = new Conexion();
         cliente = new ClienteData(conexion);
     }
@@ -109,6 +109,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel4.setBounds(80, 150, 87, 23);
 
         cId.setBackground(new java.awt.Color(255, 255, 255));
+        cId.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cIdKeyTyped(evt);
+            }
+        });
         getContentPane().add(cId);
         cId.setBounds(180, 140, 60, 30);
 
@@ -128,10 +133,25 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Ingresar cliente");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(550, 170, 140, 29);
 
         cApellido.setBackground(new java.awt.Color(255, 255, 255));
+        cApellido.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cApellidoFocusLost(evt);
+            }
+        });
+        cApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cApellidoKeyTyped(evt);
+            }
+        });
         getContentPane().add(cApellido);
         cApellido.setBounds(180, 280, 160, 30);
 
@@ -148,6 +168,16 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel6.setBounds(80, 330, 72, 23);
 
         cNombre.setBackground(new java.awt.Color(255, 255, 255));
+        cNombre.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cNombreFocusLost(evt);
+            }
+        });
+        cNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cNombreKeyTyped(evt);
+            }
+        });
         getContentPane().add(cNombre);
         cNombre.setBounds(180, 320, 160, 30);
 
@@ -158,6 +188,16 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel9.setBounds(80, 370, 81, 23);
 
         cDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        cDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cDireccionFocusLost(evt);
+            }
+        });
+        cDireccion.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cDireccionKeyTyped(evt);
+            }
+        });
         getContentPane().add(cDireccion);
         cDireccion.setBounds(180, 360, 260, 30);
 
@@ -172,18 +212,33 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 >>>>>>> Stashed changes
 
         cCelular.setBackground(new java.awt.Color(255, 255, 255));
+        cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cCelularFocusLost(evt);
+            }
+        });
         getContentPane().add(cCelular);
         cCelular.setBounds(180, 400, 260, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Nomb. Contacto:");
+        jLabel11.setText("Nomb. Alternativo:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 440, 138, 23);
+        jLabel11.setBounds(80, 440, 157, 23);
 
         alternativo.setBackground(new java.awt.Color(255, 255, 255));
+        alternativo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                alternativoFocusLost(evt);
+            }
+        });
+        alternativo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                alternativoKeyTyped(evt);
+            }
+        });
         getContentPane().add(alternativo);
-        alternativo.setBounds(230, 440, 210, 30);
+        alternativo.setBounds(250, 440, 190, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
@@ -228,6 +283,16 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel8.setBounds(80, 250, 40, 23);
 
         cDNI.setBackground(new java.awt.Color(255, 255, 255));
+        cDNI.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cDNIFocusLost(evt);
+            }
+        });
+        cDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cDNIKeyTyped(evt);
+            }
+        });
         getContentPane().add(cDNI);
         cDNI.setBounds(180, 240, 160, 30);
 
@@ -295,6 +360,9 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
+<<<<<<< HEAD
+        jLabel1.setBounds(0, 0, 750, 630);
+=======
         jLabel1.setBounds(0, 0, 780, 630);
 =======
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
@@ -311,6 +379,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 786, 700);
 >>>>>>> Stashed changes
+>>>>>>> 773fc8919883ee2d7ebfd20f47e68c3ca89c8a43
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -361,8 +430,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
             Cliente c = new Cliente(dni, apellido, nombre, direccion, celular, alt, estado);
             cliente.modificarCliente(id, c);
-
-            JOptionPane.showMessageDialog(null, "Cliente modificado con exito");
+            
             limpiar();
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo modificar el cliente");
@@ -383,28 +451,149 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         if (cId.getText() != null && cliente.clienteExiste(id)) {
  
-            int dni = Integer.parseInt(cId.getText());
+            cDNI.setText(c.getDni() + "");
             cApellido.setText(c.getApellido());
             cNombre.setText(c.getNombre());
             cDireccion.setText(c.getDireccion());
-            int cel = Integer.parseInt(cId.getText());
+            cCelular.setText(c.getTelefono()+ "");
             alternativo.setText(c.getContactoAlternativo());
             cEstado.setSelected(c.isActivo());
-            desactivarOtros();
+            cGuardar.setEnabled(false);
+            
         } else {
             JOptionPane.showMessageDialog(this, "No se encontro el cliente");
+            limpiar();
         }
 
-        activarOtros();
+      //  activarOtros();
     }//GEN-LAST:event_cBuscarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        desactivarOtros();
+        activarId();
+        cBuscar.setEnabled(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
         dispose();
     }//GEN-LAST:event_cSalirActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        desactivarId();
+        activarOtros();
+        //botonesGuardar();
+
+        sinBotonesBuscar();
+        cBuscar.setEnabled(false);
+        cId.setEnabled(false);
+
+       cId.setText("");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cApellidoKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
+            evt.consume();
+        }
+    
+    }//GEN-LAST:event_cApellidoKeyTyped
+
+    private void cNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cNombreKeyTyped
+            int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
+            evt.consume();
+        }
+    
+    }//GEN-LAST:event_cNombreKeyTyped
+
+    private void cDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cDireccionKeyTyped
+     
+    }//GEN-LAST:event_cDireccionKeyTyped
+
+    private void alternativoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_alternativoKeyTyped
+            int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
+            evt.consume();
+        }
+    
+    }//GEN-LAST:event_alternativoKeyTyped
+
+    private void cDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cDNIFocusLost
+        if (cDNI.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            cDNI.requestFocus();
+        }
+    }//GEN-LAST:event_cDNIFocusLost
+
+    private void cApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cApellidoFocusLost
+        if (cApellido.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            cApellido.requestFocus();
+        }    
+    }//GEN-LAST:event_cApellidoFocusLost
+
+    private void cNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cNombreFocusLost
+        if (cNombre.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            cNombre.requestFocus();
+        }    
+    }//GEN-LAST:event_cNombreFocusLost
+
+    private void cDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cDireccionFocusLost
+        if (cDireccion.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            cDireccion.requestFocus();
+        }   
+    }//GEN-LAST:event_cDireccionFocusLost
+
+    private void cCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cCelularFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cCelularFocusLost
+
+    private void alternativoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alternativoFocusLost
+        if (alternativo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            alternativo.requestFocus();
+        }    
+    }//GEN-LAST:event_alternativoFocusLost
+
+    private void cIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cIdKeyTyped
+                int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El dato ID debe ser numérico");
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_cIdKeyTyped
+
+    private void cDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cDNIKeyTyped
+                int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
+            evt.consume();
+        }
+
+    }//GEN-LAST:event_cDNIKeyTyped
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
@@ -431,6 +620,15 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private void activarOtros() {
         cNombre.setEnabled(true);
         cApellido.setEnabled(true);
+        cEstado.setEnabled(true);
+        cDNI.setEnabled(true);
+        cDireccion.setEnabled(true);
+        cCelular.setEnabled(true);
+        alternativo.setEnabled(true);
+        cId.setEnabled(true);
+        cGuardar.setEnabled(true);
+        cBorrar.setEnabled(true);
+        cActualizar.setEnabled(true);
 
     }
 
@@ -438,6 +636,14 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cNombre.setEnabled(false);
         cApellido.setEnabled(false);
         cEstado.setEnabled(false);
+        cDNI.setEnabled(false);
+        cDireccion.setEnabled(false);
+        cCelular.setEnabled(false);
+        alternativo.setEnabled(false);
+        cId.setEnabled(false);
+        cGuardar.setEnabled(false);
+        cBorrar.setEnabled(false);
+        cActualizar.setEnabled(false);
     }
 
     private void botonesDesactivados() {
