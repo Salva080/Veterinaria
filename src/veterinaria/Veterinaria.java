@@ -16,6 +16,7 @@ import modelo.Conexion;
 import modelo.Consulta;
 import modelo.Mascota;
 import modelo.Tratamiento;
+import vistas.ViewVeterinaria;
 
 /**
  *
@@ -34,6 +35,9 @@ public class Veterinaria {
      */
     public static void main(String[] args) {
         conexion = new Conexion();
+        
+         ViewVeterinaria cv= new  ViewVeterinaria();
+      cv.setVisible(true);
         ClienteData = new ClienteData(conexion);
         td = new TratamientoData(conexion);
 
@@ -47,7 +51,11 @@ public class Veterinaria {
 //        td.buscarTratamiento(1);
 //        td.activarTratamiento(1);
 //        List<Tratamiento> list = td.listarTratamientos();
-
+ /*        List<Tratamiento> list = td.listarTiposDeTratamientos();
+         for(Tratamiento tt:list){
+             System.out.println(" - "+tt.getTipoTratamiento());
+         }
+*/
 
         /*........................Cliente.........................*/
         Cliente cli = new Cliente(15, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);

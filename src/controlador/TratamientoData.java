@@ -89,7 +89,7 @@ public class TratamientoData {
             if (rs.next()) {
                 ret = true;
             }
-            JOptionPane.showMessageDialog(null, "El tratamiento si existe");
+           // JOptionPane.showMessageDialog(null, "El tratamiento si existe");
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al buscar el Tratamiento, no existe");
         }
@@ -99,7 +99,7 @@ public class TratamientoData {
 
     public void modificarTratamiento(int id, Tratamiento tratamiento) {
 
-        sql = "UPDATE tratamiento SET tipoTratamiento=?, descripcion=?, medicamento=?, precio=?, activo=?, WHERE idTratamiento=?";
+        sql = "UPDATE tratamiento SET tipoTratamiento=?, descripcion=?, medicamento=?, precio=? WHERE activo=1 AND idTratamiento=?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -249,4 +249,30 @@ public class TratamientoData {
 
     }
 //activar ok.
+    
+    
+    //prueba
+    public  List<Tratamiento> listarTiposDeTratamientos(){
+        List<Tratamiento> lista= new ArrayList<>();
+        
+        sql="SELECT tipoTratamiento FROM tratamiento WHERE activo=1";
+       try{
+           
+       
+        PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Tratamiento tratamiento = new Tratamiento();
+                
+                 tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
+                 lista.add(tratamiento);
+            }
+            ps.close();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de tipos de tratamientos . ");
+        }
+        return lista;
+    }
+    
 }

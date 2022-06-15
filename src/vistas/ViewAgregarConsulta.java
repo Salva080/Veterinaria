@@ -32,28 +32,27 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
 
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        popupMenu1 = new java.awt.PopupMenu();
+        cbMascota = new javax.swing.JComboBox<>();
+        cbTratamiento = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jButton6 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tConsulta = new javax.swing.JTable();
+        txtPrecio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        chActivo = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        btnCancelar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        txtfecha = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtPeso = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -61,65 +60,31 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel7.setText("CONSULTAS");
 
+        popupMenu1.setLabel("popupMenu1");
+
         getContentPane().setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "ALIAS ", "ESPECIE", "RAZA", "CLIENTE", "PESO", "PESO ACTUAL"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        getContentPane().add(cbMascota);
+        cbMascota.setBounds(360, 130, 120, 20);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(360, 200, 464, 87);
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "TIPO", "DESCRIPCION", "PRECIO"
-            }
-        ));
-        jScrollPane2.setViewportView(jTable2);
-
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(360, 390, 464, 70);
-
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(500, 150, 161, 20);
-
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(510, 340, 172, 20);
-
-        jButton1.setText("BUSCAR");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(710, 150, 73, 23);
+        getContentPane().add(cbTratamiento);
+        cbTratamiento.setBounds(170, 210, 160, 20);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("MASCOTAS");
+        jLabel2.setText("MASCOTA");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(380, 150, 69, 15);
+        jLabel2.setBounds(280, 130, 70, 15);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("TRATAMIENTOS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(370, 340, 96, 15);
+        jLabel3.setBounds(50, 210, 96, 15);
 
-        jButton4.setText("AGREGAR");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(30, 380, 81, 23);
+        btnAgregar.setText("AGREGAR");
+        getContentPane().add(btnAgregar);
+        btnAgregar.setBounds(330, 280, 81, 23);
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -130,60 +95,65 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
                 "ID", "FECHA", "MASCOTA", "TRATAMIENTO", "PESO CONSULTA", "PRECIO"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(80, 530, 691, 70);
+        jScrollPane3.setBounds(20, 360, 640, 70);
+        getContentPane().add(txtPrecio);
+        txtPrecio.setBounds(450, 210, 81, 20);
 
-        jButton6.setText("BUSCAR");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(730, 340, 73, 23);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(130, 170, 86, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(130, 240, 81, 20);
-
-        jLabel4.setText("PESO");
+        jLabel4.setText("PRECIO");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 230, 76, 23);
-
-        jLabel5.setText("FECHA");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 160, 50, 24);
+        jLabel4.setBounds(380, 210, 76, 23);
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
-        jLabel6.setText("AGREGAR CONSULTA");
+        jLabel6.setText("Agregar consulta");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(200, 70, 271, 29);
-        getContentPane().add(jCheckBox1);
-        jCheckBox1.setBounds(130, 300, 21, 21);
+        jLabel6.setBounds(230, 40, 190, 29);
+        getContentPane().add(chActivo);
+        chActivo.setBounds(650, 210, 21, 21);
 
         jLabel1.setText("ACTIVO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 300, 46, 14);
+        jLabel1.setBounds(590, 210, 46, 14);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(90, 180, 570, 10);
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel9.setText("CONSULTAS");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(90, 460, 100, 14);
+        btnCancelar.setText("CANCELAR");
+        getContentPane().add(btnCancelar);
+        btnCancelar.setBounds(450, 280, 85, 23);
 
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(-10, -10, 870, 640);
+        jLabel11.setText("FECHA");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(60, 130, 50, 24);
+        getContentPane().add(txtfecha);
+        txtfecha.setBounds(120, 130, 86, 20);
+
+        jLabel12.setText("PESO");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(570, 130, 76, 23);
+        getContentPane().add(txtPeso);
+        txtPeso.setBounds(620, 130, 81, 20);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(90, 320, 570, 20);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(-20, -50, 760, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JComboBox<Mascota> jComboBox1;
-    private javax.swing.JComboBox<Tratamiento> jComboBox2;
+    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JComboBox<Mascota> cbMascota;
+    private javax.swing.JComboBox<Tratamiento> cbTratamiento;
+    private javax.swing.JCheckBox chActivo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -191,14 +161,13 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private java.awt.PopupMenu popupMenu1;
+    private javax.swing.JTable tConsulta;
+    private javax.swing.JTextField txtPeso;
+    private javax.swing.JTextField txtPrecio;
+    private javax.swing.JTextField txtfecha;
     // End of variables declaration//GEN-END:variables
 }

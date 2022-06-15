@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -89,7 +89,7 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return "Tratamiento{" + "idTratamiento=" + idTratamiento + ", tipoTratamiento=" + tipoTratamiento + ", descripcion=" + descripcion + ", medicamento=" + medicamento + ", precio=" + precio + ", activo=" + activo + '}';
+        return tipoTratamiento; // prueba
     }
 
     @Override

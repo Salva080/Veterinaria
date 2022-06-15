@@ -24,9 +24,16 @@ public class ViewVeterinaria extends javax.swing.JFrame {
      */
     public ViewVeterinaria() {
         initComponents();
+<<<<<<< Updated upstream
         this.setSize(700, 600);
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+=======
+        this.setSize(720, 630);
+        this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
+        
+>>>>>>> Stashed changes
 
     }
 
@@ -40,6 +47,10 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private void initComponents() {
 
         escritorio = new javax.swing.JDesktopPane();
+<<<<<<< Updated upstream
+=======
+        jLabel1 = new javax.swing.JLabel();
+>>>>>>> Stashed changes
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiSalir = new javax.swing.JMenuItem();
@@ -52,10 +63,41 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         jmiManejoConsultas = new javax.swing.JMenuItem();
         jmiListadoConsulta = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+<<<<<<< Updated upstream
         jmiManejoTratamientos = new javax.swing.JMenuItem();
+=======
+        jMenuTratamiento = new javax.swing.JMenuItem();
+>>>>>>> Stashed changes
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+<<<<<<< Updated upstream
+=======
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+
+        escritorio.setLayer(jLabel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
+        escritorio.setLayout(escritorioLayout);
+        escritorioLayout.setHorizontalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(escritorioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 787, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        escritorioLayout.setVerticalGroup(
+            escritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, escritorioLayout.createSequentialGroup()
+                .addGap(0, 11, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        getContentPane().add(escritorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 609));
+
+>>>>>>> Stashed changes
         jMenu1.setText("Archivo");
 
         jmiSalir.setText("Salir");
@@ -122,6 +164,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
 
         jMenu5.setText("Tratamientos");
 
+<<<<<<< Updated upstream
         jmiManejoTratamientos.setText("Manejo de tratamientos");
         jmiManejoTratamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,11 +172,21 @@ public class ViewVeterinaria extends javax.swing.JFrame {
             }
         });
         jMenu5.add(jmiManejoTratamientos);
+=======
+        jMenuTratamiento.setText("Manejo de tratamientos");
+        jMenuTratamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTratamientoActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuTratamiento);
+>>>>>>> Stashed changes
 
         jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
+<<<<<<< Updated upstream
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,6 +201,8 @@ public class ViewVeterinaria extends javax.swing.JFrame {
             .addComponent(escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 529, Short.MAX_VALUE)
         );
 
+=======
+>>>>>>> Stashed changes
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -216,6 +271,15 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.moveToFront(vlc);
     }//GEN-LAST:event_jmiListadoConsultaActionPerformed
 
+    private void jMenuTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTratamientoActionPerformed
+       escritorio.removeAll();
+        escritorio.repaint();
+        ViewTratamiento vm = new ViewTratamiento();
+        vm.setVisible(true);
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+    }//GEN-LAST:event_jMenuTratamientoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -254,12 +318,17 @@ public class ViewVeterinaria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane escritorio;
+<<<<<<< Updated upstream
+=======
+    private javax.swing.JLabel jLabel1;
+>>>>>>> Stashed changes
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+<<<<<<< Updated upstream
     private javax.swing.JMenuItem jmiAgregarConsulta;
     private javax.swing.JMenuItem jmiFormularioCliente;
     private javax.swing.JMenuItem jmiFormularioMascotas;
@@ -267,5 +336,12 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiManejoConsultas;
     private javax.swing.JMenuItem jmiManejoTratamientos;
     private javax.swing.JMenuItem jmiSalir;
+=======
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuTratamiento;
+>>>>>>> Stashed changes
     // End of variables declaration//GEN-END:variables
 }
