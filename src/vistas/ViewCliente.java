@@ -39,97 +39,121 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        cCelular = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        cApellido = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        cId = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        cSalir = new javax.swing.JButton();
-        alternativo = new javax.swing.JTextField();
-        cDireccion = new javax.swing.JTextField();
-        cNombre = new javax.swing.JTextField();
-        cEstado = new javax.swing.JCheckBox();
-        cDNI = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        cId = new javax.swing.JTextField();
         cBuscar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        cApellido = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cNombre = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        cDireccion = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        cCelular = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        alternativo = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        cEstado = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
-        cActualizar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        cDNI = new javax.swing.JTextField();
         cGuardar = new javax.swing.JButton();
         cBorrar = new javax.swing.JButton();
+        cActualizar = new javax.swing.JButton();
         cLimpiar = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        cSalir = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         getContentPane().setLayout(null);
 
-        jPanel1.setLayout(null);
-
-        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel7.setText("Estado:");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(70, 480, 60, 23);
-        jPanel1.add(cCelular);
-        cCelular.setBounds(170, 400, 260, 30);
-
-        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel6.setText("Nombre:");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(70, 330, 72, 23);
-        jPanel1.add(cApellido);
-        cApellido.setBounds(170, 280, 160, 30);
-        jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(70, 540, 610, 10);
-
-        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel5.setText("Apellido:");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(70, 290, 75, 23);
-        jPanel1.add(cId);
-        cId.setBounds(170, 150, 60, 30);
-
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("ID Cliente:");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(70, 160, 87, 23);
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(80, 150, 87, 23);
+
+        cId.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cId);
+        cId.setBounds(180, 140, 60, 30);
+
+        cBuscar.setBackground(new java.awt.Color(255, 255, 255));
+        cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        cBuscar.setText("Buscar ");
+        cBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cBuscar);
+        cBuscar.setBounds(260, 140, 90, 29);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("Ingresar cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(540, 180, 140, 35);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(550, 170, 140, 29);
 
-        cSalir.setBackground(new java.awt.Color(255, 255, 255));
-        cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cSalir.setText("Salir");
-        cSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cSalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cSalir);
-        cSalir.setBounds(590, 570, 90, 35);
-        jPanel1.add(alternativo);
-        alternativo.setBounds(230, 440, 200, 30);
-        jPanel1.add(cDireccion);
-        cDireccion.setBounds(170, 360, 260, 30);
-        jPanel1.add(cNombre);
-        cNombre.setBounds(170, 320, 160, 30);
+        cApellido.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cApellido);
+        cApellido.setBounds(180, 280, 160, 30);
+
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Apellido:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(80, 290, 75, 23);
+
+        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Nombre:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(80, 330, 72, 23);
+
+        cNombre.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cNombre);
+        cNombre.setBounds(180, 320, 160, 30);
+
+        jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Dirección:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(80, 370, 81, 23);
+
+        cDireccion.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cDireccion);
+        cDireccion.setBounds(180, 360, 260, 30);
+
+        jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Celular:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(80, 410, 64, 23);
+
+        cCelular.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cCelular);
+        cCelular.setBounds(180, 400, 260, 30);
+
+        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Nomb. Contacto:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(80, 440, 138, 23);
+
+        alternativo.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(alternativo);
+        alternativo.setBounds(230, 440, 210, 30);
+
+        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Estado:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(80, 480, 60, 23);
 
         cEstado.setBackground(new java.awt.Color(255, 255, 255));
         cEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -137,118 +161,104 @@ public class ViewCliente extends javax.swing.JInternalFrame {
                 cEstadoActionPerformed(evt);
             }
         });
-        jPanel1.add(cEstado);
-        cEstado.setBounds(170, 480, 24, 24);
-        jPanel1.add(cDNI);
-        cDNI.setBounds(170, 240, 160, 30);
+        getContentPane().add(cEstado);
+        cEstado.setBounds(180, 480, 21, 21);
+        getContentPane().add(jSeparator2);
+        jSeparator2.setBounds(80, 210, 360, 10);
 
-        jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel12.setText("DNI:");
-        jPanel1.add(jLabel12);
-        jLabel12.setBounds(70, 250, 40, 23);
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel3.setText("Clientes");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(240, 30, 150, 48);
 
-        cBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBuscar.setText("Buscar ");
-        cBuscar.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("Buscar cliente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBuscarActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(cBuscar);
-        cBuscar.setBounds(260, 150, 90, 35);
-        jPanel1.add(jSeparator2);
-        jSeparator2.setBounds(70, 220, 360, 10);
+        getContentPane().add(jButton4);
+        jButton4.setBounds(550, 130, 140, 29);
 
-        cActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cActualizar.setText("Actualizar");
-        cActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cActualizarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cActualizar);
-        cActualizar.setBounds(330, 570, 100, 35);
+        jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("DNI:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(80, 250, 40, 23);
 
-        jButton3.setBackground(new java.awt.Color(255, 255, 255));
-        jButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton3.setText("Buscar cliente");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3);
-        jButton3.setBounds(540, 140, 140, 35);
+        cDNI.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cDNI);
+        cDNI.setBounds(180, 240, 160, 30);
 
         cGuardar.setBackground(new java.awt.Color(255, 255, 255));
         cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cGuardar.setForeground(new java.awt.Color(0, 0, 0));
         cGuardar.setText("Guardar");
         cGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(cGuardar);
-        cGuardar.setBounds(70, 570, 100, 35);
+        getContentPane().add(cGuardar);
+        cGuardar.setBounds(80, 560, 100, 29);
 
         cBorrar.setBackground(new java.awt.Color(255, 255, 255));
         cBorrar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cBorrar.setForeground(new java.awt.Color(0, 0, 0));
         cBorrar.setText("Borrar");
         cBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBorrarActionPerformed(evt);
             }
         });
-        jPanel1.add(cBorrar);
-        cBorrar.setBounds(200, 570, 100, 35);
+        getContentPane().add(cBorrar);
+        cBorrar.setBounds(210, 560, 100, 29);
+
+        cActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cActualizar.setForeground(new java.awt.Color(0, 0, 0));
+        cActualizar.setText("Actualizar");
+        cActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cActualizar);
+        cActualizar.setBounds(340, 560, 100, 29);
 
         cLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         cLimpiar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cLimpiar.setForeground(new java.awt.Color(0, 0, 0));
         cLimpiar.setText("Limpiar");
         cLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(cLimpiar);
-        cLimpiar.setBounds(460, 570, 100, 35);
+        getContentPane().add(cLimpiar);
+        cLimpiar.setBounds(470, 560, 100, 29);
 
-        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel11.setText("Contacto Altern. :");
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(70, 440, 143, 23);
-
-        jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel10.setText("Celular:");
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(70, 410, 64, 23);
-
-        jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel9.setText("Dirección:");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(70, 370, 81, 23);
-
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 48)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel3.setText("Clientes");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(250, 30, 167, 64);
+        cSalir.setBackground(new java.awt.Color(255, 255, 255));
+        cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cSalir.setForeground(new java.awt.Color(0, 0, 0));
+        cSalir.setText("Salir");
+        cSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cSalir);
+        cSalir.setBounds(600, 560, 90, 29);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(80, 530, 610, 10);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 750, 610);
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(786, 186, 0, 0);
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        jLabel8.setText("Direccion:");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(70, 360, 106, 32);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 750, 610);
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 780, 630);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,10 +266,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private void cEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cEstadoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cEstadoActionPerformed
-
-    private void cLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cLimpiarActionPerformed
-        limpiar();
-    }//GEN-LAST:event_cLimpiarActionPerformed
 
     private void cGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cGuardarActionPerformed
         int dni = Integer.parseInt(cDNI.getText());
@@ -276,7 +282,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cId.setText(c.getIdCliente() + "");
         limpiar();
 
-
     }//GEN-LAST:event_cGuardarActionPerformed
 
     private void cBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBorrarActionPerformed
@@ -290,13 +295,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El clinete no existe");
         }
     }//GEN-LAST:event_cBorrarActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        desactivarOtros();
-        activarId();
-        cBuscar.setEnabled(true);
-        cId.requestFocus();
-    }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActualizarActionPerformed
         if (cId.getText() != null) {
@@ -319,25 +317,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cActualizarActionPerformed
 
-    private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
-        dispose();
-    }//GEN-LAST:event_cSalirActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        desactivarId();
-        activarOtros();
-        cEstado.setEnabled(true);
-        //botonesGuardar();
-
-        sinBotonesBuscar();
-        cBuscar.setEnabled(false);
-
-        cId.setText("");
-        cId.requestFocus();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void cLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cLimpiarActionPerformed
+        limpiar();
+    }//GEN-LAST:event_cLimpiarActionPerformed
 
     private void cBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscarActionPerformed
-        //Buscar
         botonesBuscar();
         activarOtros();
 
@@ -360,8 +344,15 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         }
 
         activarOtros();
-
     }//GEN-LAST:event_cBuscarActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_cSalirActionPerformed
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
@@ -434,12 +425,10 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cNombre;
     private javax.swing.JButton cSalir;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -447,7 +436,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
