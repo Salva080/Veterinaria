@@ -5,17 +5,37 @@
  */
 package vistas;
 
+import controlador.ClienteData;
+import controlador.MascotaData;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import modelo.Cliente;
+import modelo.Conexion;
+import modelo.Mascota;
+
 /**
  *
  * @author NEXO-MAX
  */
 public class ViewMascotas extends javax.swing.JInternalFrame {
-
+    private ArrayList<Cliente> listaClientes;
+    private MascotaData md;
+    private Conexion con;
+    private ClienteData cli;
     /**
      * Creates new form ViewMascotas
      */
     public ViewMascotas() {
         initComponents();
+        con = new Conexion();
+        md = new MascotaData(con);
+        cli = new ClienteData(con);
+        listaClientes = (ArrayList<Cliente>) cli.listarClienteActivos();
+        
+        cargarClientes();
     }
 
     /**
@@ -32,7 +52,6 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jcbCliente = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -47,18 +66,21 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jtfRaza = new javax.swing.JTextField();
         jtfPesomascota = new javax.swing.JTextField();
         jtfPesoactual = new javax.swing.JTextField();
-        jtfAlia = new javax.swing.JTextField();
+        jtfAlias = new javax.swing.JTextField();
         jcbEstado = new javax.swing.JCheckBox();
         jdcFechaNac = new com.toedter.calendar.JDateChooser();
         jtfIDmascota = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jbBuscarMascota = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
+        jbAgregar = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
         jbLimpíar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
-        jbModificar = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
+        jtfColorpelaje = new javax.swing.JTextField();
 
+        setResizable(true);
         getContentPane().setLayout(null);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -67,29 +89,30 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 255, 255));
         jLabel2.setText("Mascotas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 20, 160, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 160, 40));
 
+        jcbCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcbClienteActionPerformed(evt);
+            }
+        });
         jPanel1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 260, -1));
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel4.setText("Peso actual de la mascota:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel5.setText("ID Cliente:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, -1, 30));
-
-        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel6.setText("Estado:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 540, -1, 30));
+        jLabel5.setText("Cliente:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setText("Peso de mascota:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel8.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 490, -1, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel9.setText("Especie:");
@@ -100,69 +123,325 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel11.setText("Raza:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, 30));
+        jLabel11.setText("Color de pelaje:");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, 30));
 
         jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel12.setText("Alias:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, 30));
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel13.setText("ID Mascota:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 30));
+        jLabel13.setText("Mascota:");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 570, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 172, 570, 10));
         jPanel1.add(jtfSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 130, -1));
         jPanel1.add(jtfEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 250, -1));
         jPanel1.add(jtfRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 160, -1));
-        jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 80, -1));
-        jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 90, -1));
-        jPanel1.add(jtfAlia, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 200, -1));
-        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, -1, -1));
-        jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, -1, -1));
-        jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 140, 80, -1));
+        jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 80, -1));
+        jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 90, -1));
+        jPanel1.add(jtfAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 200, -1));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 721, 617);
+        jcbEstado.setText("ESTADO");
+        jcbEstado.setEnabled(false);
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, -1, -1));
+        jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, -1, -1));
+        jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 80, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jbBuscarMascota.setText("Buscar");
+        jbBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarMascotaActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(131, 635, 530, 83);
+        });
+        jPanel1.add(jbBuscarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 132, -1, 40));
 
         jbGuardar.setText("Guardar");
-        getContentPane().add(jbGuardar);
-        jbGuardar.setBounds(60, 753, 76, 32);
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, -1, -1));
 
-        jbLimpíar.setText("Limpiar");
-        getContentPane().add(jbLimpíar);
-        jbLimpíar.setBounds(360, 750, 73, 32);
-
-        jbBorrar.setText("Borrar");
-        getContentPane().add(jbBorrar);
-        jbBorrar.setBounds(520, 750, 67, 32);
-
-        jbSalir.setText("Salir");
-        getContentPane().add(jbSalir);
-        jbSalir.setBounds(650, 750, 56, 32);
+        jbAgregar.setText("Agregar");
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 640, 77, -1));
 
         jbModificar.setText("Modificar");
-        getContentPane().add(jbModificar);
-        jbModificar.setBounds(200, 750, 83, 32);
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, -1, -1));
+
+        jbLimpíar.setText("Limpiar");
+        jbLimpíar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbLimpíarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbLimpíar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 640, -1, -1));
+
+        jbBorrar.setText("Borrar");
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 640, -1, -1));
+
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 640, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel14.setText("Raza:");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, 30));
+        jPanel1.add(jtfColorpelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 160, -1));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 0, 720, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbBuscarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarMascotaActionPerformed
+        // TODO add your handling code here:
+        
+        Mascota m = md.buscarMascota(Integer.parseInt(jtfIDmascota.getText()));
+        if(m != null){
+        Cliente c = m.getCliente();
+//            System.out.println(c);
+        jcbCliente.setSelectedItem(c);
+//        double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
+//        double pesoActual = Double.parseDouble(jtfPesoactual.getText());        
+        int id = Integer.parseInt(jtfIDmascota.getText());
+        
+        if(jtfIDmascota.getText() != null && md.mascotaExiste(id)){
+//            jcbCliente.setSelectedItem(m.getCliente());
+            jtfAlias.setText(m.getAlias());
+            jtfSexo.setText(m.getSexo());
+            jtfEspecie.setText(m.getEspecie());
+            jtfRaza.setText(m.getRaza());
+            jtfColorpelaje.setText(m.getColorPelaje());
+            jtfPesomascota.setText(m.getPesoMascota()+"");
+            jtfPesoactual.setText(m.getPesoActual()+"");
+            LocalDate lc = m.getFechaNac();
+            Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            jdcFechaNac.setDate(date);
+            jcbEstado.setSelected(m.isActivo());
+            
+            jbGuardar.setEnabled(false);
+            jtfAlias.setEnabled(true);
+            jtfSexo.setEnabled(true);
+            jtfEspecie.setEnabled(true);
+            jtfRaza.setEnabled(true);
+            jtfColorpelaje.setEnabled(true);
+            jtfPesomascota.setEnabled(true);
+            jtfPesoactual.setEnabled(true);
+            jdcFechaNac.setEnabled(true);
+            jbBorrar.setEnabled(true);
+            jbModificar.setEnabled(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "Mascota no existente");
+            jcbEstado.setEnabled(false);
+            jtfAlias.setEnabled(false);
+            jtfSexo.setEnabled(false);
+            jtfEspecie.setEnabled(false);
+            jtfRaza.setEnabled(false);
+            jtfColorpelaje.setEnabled(false);
+            jtfPesomascota.setEnabled(false);
+            jtfPesoactual.setEnabled(false);
+            jdcFechaNac.setEnabled(false);
+            jbBorrar.setEnabled(false);
+            jbGuardar.setEnabled(false);
+            jbModificar.setEnabled(false);
+        }
+        if(jcbEstado.isSelected()){
+            jbBorrar.setEnabled(true);
+            jbModificar.setEnabled(true);
+        }else{
+            jbBorrar.setEnabled(false);
+            jbModificar.setEnabled(false);
+        }
+        }else{
+            JOptionPane.showMessageDialog(this, "Mascota no existente");
+            jcbEstado.setEnabled(false);
+            jtfAlias.setEnabled(false);
+            jtfSexo.setEnabled(false);
+            jtfEspecie.setEnabled(false);
+            jtfRaza.setEnabled(false);
+            jtfColorpelaje.setEnabled(false);
+            jtfPesomascota.setEnabled(false);
+            jtfPesoactual.setEnabled(false);
+            jdcFechaNac.setEnabled(false);
+            jbBorrar.setEnabled(false);
+            jbGuardar.setEnabled(false);
+            jbModificar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jbBuscarMascotaActionPerformed
+
+    private void jcbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbClienteActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+        String alias = jtfAlias.getText();
+        String sexo = jtfSexo.getText();
+        String especie = jtfEspecie.getText();
+        String raza = jtfRaza.getText();
+        String colorPelaje = jtfColorpelaje.getText();
+        double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
+        boolean estado = jcbEstado.isEnabled();
+        Cliente c = (Cliente) jcbCliente.getSelectedItem();
+        Date fecha = jdcFechaNac.getDate();
+        LocalDate fechaNac = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
+        double pesoActual = Double.parseDouble(jtfPesoactual.getText()); 
+        
+        Mascota m = new Mascota(alias, sexo, especie, raza, colorPelaje,fechaNac, pesoMascota, estado, c,pesoActual);
+        
+        if(jcbEstado.isSelected()){
+        md.agregarMascota(m);
+        jtfIDmascota.setText(m.getIdMascota()+ "");
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe agregar una mascota con estado activo");
+            jcbEstado.isFocusPainted();
+        }
+        jcbEstado.setSelected(true);
+        desactivarOtros();
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbLimpíarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpíarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        activarID();
+        jbBuscarMascota.setEnabled(true);
+    }//GEN-LAST:event_jbLimpíarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(jtfIDmascota.getText());
+        
+        if(jtfIDmascota.getText() != null){
+            md.eliminarMascota(id);
+            jbGuardar.setEnabled(false);
+            jbModificar.setEnabled(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Debe ingresar una mascota");
+        }
+    }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        // TODO add your handling code here:
+        if(jtfIDmascota.getText() != null){
+            int id = Integer.parseInt(jtfIDmascota.getText());
+            String alias = jtfAlias.getText();
+            String sexo = jtfSexo.getText();
+            String especie = jtfEspecie.getText();
+            String raza = jtfRaza.getText();
+            String colorPelaje = jtfColorpelaje.getText();
+            double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
+            boolean estado = jcbEstado.isEnabled();
+            Cliente c = (Cliente) jcbCliente.getSelectedItem();
+            Date fecha = jdcFechaNac.getDate();
+            LocalDate fechaNac = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
+            double pesoActual = Double.parseDouble(jtfPesoactual.getText()); 
+            
+            jcbEstado.setEnabled(false);
+            jcbEstado.setSelected(true);
+            Mascota m = new Mascota(alias, sexo, especie, raza, colorPelaje,fechaNac, pesoMascota, estado, c,pesoActual);
+            md.modificarMascota(id, m);
+            jbGuardar.setEnabled(false);
+        }else{
+            JOptionPane.showMessageDialog(this, "La mascota no se encuentra activa");
+        }
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        // TODO add your handling code here:
+        activarOtros();
+    }//GEN-LAST:event_jbAgregarActionPerformed
+
+    private void cargarClientes(){
+        for(Cliente item:listaClientes){
+            jcbCliente.addItem(item);
+        }
+    }
+    
+    
+    private void limpiar(){
+        jtfIDmascota.setText("");
+        jtfAlias.setText("");
+        jtfSexo.setText("");
+        jtfEspecie.setText("");
+        jtfRaza.setText("");
+        jtfColorpelaje.setText("");
+        jtfPesomascota.setText("");
+        jtfPesoactual.setText("");
+        jcbEstado.setSelected(false);
+        jdcFechaNac.setDate(null);
+        desactivarOtros();
+        desactivarID();
+        botonesDesactivados();
+    }
+    
+    private void activarOtros(){
+            jtfIDmascota.setEnabled(true);
+            jcbEstado.setEnabled(true);
+            jtfAlias.setEnabled(true);
+            jtfSexo.setEnabled(true);
+            jtfEspecie.setEnabled(true);
+            jtfRaza.setEnabled(true);
+            jtfColorpelaje.setEnabled(true);
+            jtfPesomascota.setEnabled(true);
+            jtfPesoactual.setEnabled(true);
+            jdcFechaNac.setEnabled(true);
+            jbGuardar.setEnabled(true);
+    }
+    
+    private void desactivarOtros(){
+            jcbEstado.setEnabled(false);
+            jtfAlias.setEnabled(false);
+            jtfSexo.setEnabled(false);
+            jtfEspecie.setEnabled(false);
+            jtfRaza.setEnabled(false);
+            jtfColorpelaje.setEnabled(false);
+            jtfPesomascota.setEnabled(false);
+            jtfPesoactual.setEnabled(false);
+            jdcFechaNac.setEnabled(false);
+            jbGuardar.setEnabled(false);
+    }
+    
+    private void activarID(){
+        jtfIDmascota.setEnabled(true);
+    }
+    
+    private void desactivarID(){
+        jtfIDmascota.setEnabled(false);
+    }
+    
+    private void botonesDesactivados() {
+        jbGuardar.setEnabled(false);
+        jbBorrar.setEnabled(false);
+        jbModificar.setEnabled(false);
+        jbBuscarMascota.setEnabled(false);
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -170,27 +449,28 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscarMascota;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbLimpíar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
-    private javax.swing.JComboBox<String> jcbCliente;
+    private javax.swing.JComboBox<Cliente> jcbCliente;
     private javax.swing.JCheckBox jcbEstado;
     private com.toedter.calendar.JDateChooser jdcFechaNac;
-    private javax.swing.JTextField jtfAlia;
+    private javax.swing.JTextField jtfAlias;
+    private javax.swing.JTextField jtfColorpelaje;
     private javax.swing.JTextField jtfEspecie;
     private javax.swing.JTextField jtfIDmascota;
     private javax.swing.JTextField jtfPesoactual;
