@@ -32,13 +32,13 @@ public class ClienteData {
 
     public void agregarCliente(Cliente cliente) {
         try {
-            sql = "INSERT INTO cliente(dni, nombre, apellido, direccion, telefono, contactoAlternativo, activo) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            sql = "INSERT INTO cliente(dni, apellido, nombre, direccion, telefono, contactoAlternativo, activo) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
             ps.setInt(1, (int) cliente.getDni());
-            ps.setString(2, cliente.getNombre());
             ps.setString(3, cliente.getApellido());
+            ps.setString(2, cliente.getNombre());
             ps.setString(4, cliente.getDireccion());
             ps.setInt(5, (int) cliente.getTelefono());
             ps.setString(6, cliente.getContactoAlternativo());
@@ -58,7 +58,7 @@ public class ClienteData {
 
         } catch (SQLException e) {
 
-            JOptionPane.showMessageDialog(null, " Error");
+            JOptionPane.showMessageDialog(null, " Error, no se pudo agregar el cliente");
         }
 
     }
