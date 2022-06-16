@@ -16,7 +16,7 @@ import modelo.Conexion;
  */
 public class ViewCliente extends javax.swing.JInternalFrame {
 
-    private ClienteData cliente;
+    private ClienteData clienteData;
     private Conexion conexion;
 
     /**
@@ -27,8 +27,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         limpiar();
         this.setSize(700, 650);
         conexion = new Conexion();
-        cliente = new ClienteData(conexion);
-        
+        clienteData = new ClienteData(conexion);
+
     }
 
     /**
@@ -60,6 +60,10 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        cDNI2 = new javax.swing.JTextField();
+        cBuscar1 = new javax.swing.JButton();
         cDNI = new javax.swing.JTextField();
         cGuardar = new javax.swing.JButton();
         cBorrar = new javax.swing.JButton();
@@ -73,9 +77,9 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("ID Cliente:");
+        jLabel4.setText("Busqueda:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 150, 87, 23);
+        jLabel4.setBounds(80, 120, 87, 23);
 
         cId.setBackground(new java.awt.Color(255, 255, 255));
         cId.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -84,7 +88,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cId);
-        cId.setBounds(180, 140, 60, 30);
+        cId.setBounds(180, 150, 60, 30);
 
         cBuscar.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -96,7 +100,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cBuscar);
-        cBuscar.setBounds(260, 140, 90, 29);
+        cBuscar.setBounds(250, 150, 90, 29);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -122,19 +126,19 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cApellido);
-        cApellido.setBounds(180, 280, 160, 30);
+        cApellido.setBounds(180, 300, 160, 30);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Apellido:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(80, 290, 75, 23);
+        jLabel5.setBounds(80, 310, 75, 23);
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nombre:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 330, 72, 23);
+        jLabel6.setBounds(80, 350, 72, 23);
 
         cNombre.setBackground(new java.awt.Color(255, 255, 255));
         cNombre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -148,13 +152,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cNombre);
-        cNombre.setBounds(180, 320, 160, 30);
+        cNombre.setBounds(180, 340, 160, 30);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Dirección:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(80, 370, 81, 23);
+        jLabel9.setBounds(80, 390, 81, 23);
 
         cDireccion.setBackground(new java.awt.Color(255, 255, 255));
         cDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -168,13 +172,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDireccion);
-        cDireccion.setBounds(180, 360, 260, 30);
+        cDireccion.setBounds(180, 380, 260, 30);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Celular:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(80, 410, 64, 23);
+        jLabel10.setBounds(80, 430, 64, 23);
 
         cCelular.setBackground(new java.awt.Color(255, 255, 255));
         cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -183,13 +187,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cCelular);
-        cCelular.setBounds(180, 400, 260, 30);
+        cCelular.setBounds(180, 420, 260, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Nomb. Alternativo:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 440, 157, 23);
+        jLabel11.setBounds(80, 460, 157, 23);
 
         alternativo.setBackground(new java.awt.Color(255, 255, 255));
         alternativo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -203,13 +207,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(alternativo);
-        alternativo.setBounds(250, 440, 190, 30);
+        alternativo.setBounds(250, 460, 190, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estado:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 480, 60, 23);
+        jLabel7.setBounds(80, 500, 60, 23);
 
         cEstado.setBackground(new java.awt.Color(255, 255, 255));
         cEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -218,9 +222,9 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cEstado);
-        cEstado.setBounds(180, 480, 21, 21);
+        cEstado.setBounds(180, 500, 21, 21);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(80, 210, 360, 10);
+        jSeparator2.setBounds(80, 240, 360, 10);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
@@ -244,7 +248,40 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("DNI:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(80, 250, 40, 23);
+        jLabel8.setBounds(80, 270, 40, 23);
+
+        jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel13.setText("ID Cliente:");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(80, 160, 87, 23);
+
+        jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel14.setText("DNI:");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(80, 190, 40, 23);
+
+        cDNI2.setBackground(new java.awt.Color(255, 255, 255));
+        cDNI2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cDNI2KeyTyped(evt);
+            }
+        });
+        getContentPane().add(cDNI2);
+        cDNI2.setBounds(180, 190, 60, 30);
+
+        cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
+        cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cBuscar1.setForeground(new java.awt.Color(0, 0, 0));
+        cBuscar1.setText("Buscar ");
+        cBuscar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBuscar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cBuscar1);
+        cBuscar1.setBounds(250, 190, 90, 29);
 
         cDNI.setBackground(new java.awt.Color(255, 255, 255));
         cDNI.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -258,7 +295,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDNI);
-        cDNI.setBounds(180, 240, 160, 30);
+        cDNI.setBounds(180, 260, 160, 30);
 
         cGuardar.setBackground(new java.awt.Color(255, 255, 255));
         cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -320,7 +357,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         getContentPane().add(cSalir);
         cSalir.setBounds(600, 560, 90, 29);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(80, 530, 610, 10);
+        jSeparator1.setBounds(80, 540, 610, 10);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -344,7 +381,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         Cliente c = new Cliente(dni, apellido, nombre, direccion, celular, alt, estado);
 
-        cliente.agregarCliente(c);
+        clienteData.agregarCliente(c);
         cId.setText(c.getIdCliente() + "");
         limpiar();
 
@@ -352,8 +389,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
     private void cBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBorrarActionPerformed
         int id = Integer.parseInt(cId.getText());
-        if (cliente.clienteExiste(id)) {
-            cliente.eliminarCliente(id);
+        if (clienteData.clienteExiste(id)) {
+            clienteData.eliminarCliente(id);
             limpiar();
             desactivarOtros();
             desactivarId();
@@ -374,8 +411,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             boolean estado = cEstado.isEnabled();
 
             Cliente c = new Cliente(dni, apellido, nombre, direccion, celular, alt, estado);
-            cliente.modificarCliente(id, c);
-            
+            clienteData.modificarCliente(id, c);
+
             limpiar();
         } else {
             JOptionPane.showMessageDialog(null, "No se pudo modificar el cliente");
@@ -390,27 +427,27 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         botonesBuscar();
         activarOtros();
 
-        Cliente c = cliente.buscarCliente(Integer.parseInt(cId.getText()));
+        Cliente c = clienteData.buscarCliente(Integer.parseInt(cId.getText()));
 
         int id = Integer.parseInt(cId.getText());
 
-        if (cId.getText() != null && cliente.clienteExiste(id)) {
- 
+        if (cId.getText() != null && clienteData.clienteExiste(id)) {
+
             cDNI.setText(c.getDni() + "");
             cApellido.setText(c.getApellido());
             cNombre.setText(c.getNombre());
             cDireccion.setText(c.getDireccion());
-            cCelular.setText(c.getTelefono()+ "");
+            cCelular.setText(c.getTelefono() + "");
             alternativo.setText(c.getContactoAlternativo());
             cEstado.setSelected(c.isActivo());
             cGuardar.setEnabled(false);
-            
+
         } else {
             JOptionPane.showMessageDialog(this, "No se encontro el cliente");
             limpiar();
         }
 
-      //  activarOtros();
+        //  activarOtros();
     }//GEN-LAST:event_cBuscarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -431,7 +468,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         sinBotonesBuscar();
         cBuscar.setEnabled(false);
 
-       cId.setText("");
+        cId.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cApellidoKeyTyped
@@ -445,11 +482,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
             evt.consume();
         }
-    
+
     }//GEN-LAST:event_cApellidoKeyTyped
 
     private void cNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cNombreKeyTyped
-            int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean mayusculas = key >= 65 && key <= 90;
         boolean minusculas = key >= 97 && key <= 122;
@@ -459,15 +496,15 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
             evt.consume();
         }
-    
+
     }//GEN-LAST:event_cNombreKeyTyped
 
     private void cDireccionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cDireccionKeyTyped
-     
+
     }//GEN-LAST:event_cDireccionKeyTyped
 
     private void alternativoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_alternativoKeyTyped
-            int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
 
         boolean mayusculas = key >= 65 && key <= 90;
         boolean minusculas = key >= 97 && key <= 122;
@@ -477,7 +514,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
             evt.consume();
         }
-    
+
     }//GEN-LAST:event_alternativoKeyTyped
 
     private void cDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cDNIFocusLost
@@ -491,21 +528,21 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         if (cApellido.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cApellido.requestFocus();
-        }    
+        }
     }//GEN-LAST:event_cApellidoFocusLost
 
     private void cNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cNombreFocusLost
         if (cNombre.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cNombre.requestFocus();
-        }    
+        }
     }//GEN-LAST:event_cNombreFocusLost
 
     private void cDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cDireccionFocusLost
         if (cDireccion.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cDireccion.requestFocus();
-        }   
+        }
     }//GEN-LAST:event_cDireccionFocusLost
 
     private void cCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cCelularFocusLost
@@ -516,11 +553,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         if (alternativo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             alternativo.requestFocus();
-        }    
+        }
     }//GEN-LAST:event_alternativoFocusLost
 
     private void cIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cIdKeyTyped
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros) {
             JOptionPane.showMessageDialog(this, "El dato ID debe ser numérico");
@@ -530,7 +567,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cIdKeyTyped
 
     private void cDNIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cDNIKeyTyped
-                int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros) {
             JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
@@ -538,6 +575,35 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_cDNIKeyTyped
+
+    private void cDNI2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cDNI2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cDNI2KeyTyped
+
+    private void cBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar1ActionPerformed
+               botonesBuscar();
+        activarOtros();
+
+        Cliente c = clienteData.buscarClientePorDni(Integer.parseInt(cDNI2.getText()));
+
+        int id = Integer.parseInt(cDNI2.getText());
+
+        if (cDNI2.getText() != null && clienteData.clienteExiste(id)) {
+            
+            cDNI.setText(c.getDni() + "");
+            cApellido.setText(c.getApellido());
+            cNombre.setText(c.getNombre());
+            cDireccion.setText(c.getDireccion());
+            cCelular.setText(c.getTelefono() + "");
+            alternativo.setText(c.getContactoAlternativo());
+            cEstado.setSelected(c.isActivo());
+            cGuardar.setEnabled(false);
+
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontro el cliente");
+            limpiar();
+        }
+    }//GEN-LAST:event_cBuscar1ActionPerformed
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
@@ -617,8 +683,10 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JTextField cApellido;
     private javax.swing.JButton cBorrar;
     private javax.swing.JButton cBuscar;
+    private javax.swing.JButton cBuscar1;
     private javax.swing.JTextField cCelular;
     private javax.swing.JTextField cDNI;
+    private javax.swing.JTextField cDNI2;
     private javax.swing.JTextField cDireccion;
     private javax.swing.JCheckBox cEstado;
     private javax.swing.JButton cGuardar;
@@ -631,6 +699,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
