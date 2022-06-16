@@ -79,6 +79,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jbSalir = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jtfColorpelaje = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setResizable(true);
         getContentPane().setLayout(null);
@@ -86,67 +87,67 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setBackground(new java.awt.Color(0, 153, 204));
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 28)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Mascotas");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, 160, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 20, 130, 50));
 
         jcbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, 260, -1));
+        jPanel1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 260, -1));
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel4.setText("Peso actual de la mascota:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, -1, 30));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel5.setText("Cliente:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, -1, 30));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setText("Peso de mascota:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, -1, 30));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, 30));
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel8.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 540, -1, 30));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, 30));
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel9.setText("Especie:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 290, -1, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, 30));
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel10.setText("Sexo:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 240, -1, 30));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, 30));
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel11.setText("Color de pelaje:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, -1, 30));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, 30));
 
         jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel12.setText("Alias:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, 30));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, 30));
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel13.setText("Mascota:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, -1, 30));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 570, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 172, 570, 10));
-        jPanel1.add(jtfSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 240, 130, -1));
-        jPanel1.add(jtfEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 290, 250, -1));
-        jPanel1.add(jtfRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 160, -1));
-        jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 80, -1));
-        jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 490, 90, -1));
-        jPanel1.add(jtfAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 200, -1));
+        jPanel1.add(jtfSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, -1));
+        jPanel1.add(jtfEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 250, -1));
+        jPanel1.add(jtfRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 160, -1));
+        jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 80, -1));
+        jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 90, -1));
+        jPanel1.add(jtfAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 200, -1));
 
         jcbEstado.setText("ESTADO");
         jcbEstado.setEnabled(false);
-        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 590, -1, -1));
-        jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, -1, -1));
-        jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 80, -1));
+        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, -1, -1));
+        jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
+        jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, -1));
 
         jbBuscarMascota.setText("Buscar");
         jbBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +155,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbBuscarMascotaActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBuscarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 132, -1, 40));
+        jPanel1.add(jbBuscarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, 40));
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -206,8 +207,12 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
 
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel14.setText("Raza:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, -1, 30));
-        jPanel1.add(jtfColorpelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 160, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, 30));
+        jPanel1.add(jtfColorpelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 160, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, -1, 730));
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 720, 710);
@@ -445,6 +450,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
