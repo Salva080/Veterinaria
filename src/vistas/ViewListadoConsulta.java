@@ -44,6 +44,7 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         jButton3 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setResizable(true);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
@@ -58,7 +59,7 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(473, 171, 73, 23);
+        jButton1.setBounds(473, 171, 78, 32);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -76,35 +77,35 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(50, 280, 577, 88);
 
-        jRadioButton1.setText("avtivas");
+        jRadioButton1.setText("activas");
         getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(145, 220, 61, 23);
+        jRadioButton1.setBounds(145, 220, 80, 28);
 
         jRadioButton2.setText("no Activas");
         getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(316, 220, 75, 23);
+        jRadioButton2.setBounds(316, 220, 91, 28);
 
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(230, 130, 161, 20);
+        jComboBox1.setBounds(230, 130, 161, 26);
 
         jLabel2.setText("MASCOTA");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(108, 131, 103, 14);
+        jLabel2.setBounds(108, 131, 103, 16);
 
         jLabel3.setText("CLIENTE");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(108, 175, 41, 14);
+        jLabel3.setBounds(108, 175, 47, 16);
 
         getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(230, 172, 161, 20);
+        jComboBox2.setBounds(230, 172, 161, 26);
 
         jButton2.setText("MODIFICAR");
         getContentPane().add(jButton2);
-        jButton2.setBounds(200, 420, 91, 23);
+        jButton2.setBounds(200, 420, 93, 32);
 
         jButton3.setText("DAR DE BAJA");
         getContentPane().add(jButton3);
-        jButton3.setBounds(400, 420, 97, 23);
+        jButton3.setBounds(400, 420, 106, 32);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel4.setText("jLabel4");

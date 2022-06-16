@@ -113,7 +113,7 @@ public class MascotaData {
     
    // MODIFICAR
     public void modificarMascota(int idMascota, Mascota mascota) {
-        
+//        System.out.println(mascota);       
         sql = "UPDATE mascota SET alias = ?,sexo = ?,especie= ?,raza = ?,colorPelaje = ?,fechaNac = ?,pesoMascota = ?,idCliente = ?,pesoActual = ? WHERE activo = 1 AND idMascota = ?";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -139,7 +139,7 @@ public class MascotaData {
         }
     }
 
-    public Mascota buscarMascota(int id) {
+    public Mascota buscarMascota(int id) { //MODIFICADO
         Mascota mascota = null;
         try {
             sql = "SELECT * FROM `mascota` WHERE idMascota = ?";
@@ -149,17 +149,18 @@ public class MascotaData {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 mascota = new Mascota();
-                mascota.setIdMascota(rs.getInt(1));
-                mascota.setAlias(rs.getString(2));
-                mascota.setSexo(rs.getString(3));
-                mascota.setEspecie(rs.getString(4));
-                mascota.setRaza(rs.getString(5));
-                mascota.setColorPelaje(rs.getString(6));
-                mascota.setFechaNac(rs.getDate(7).toLocalDate());
-                mascota.setPesoMascota(rs.getDouble(8));
-                mascota.setActivo(rs.getBoolean(9));
-                mascota.setPesoActual(rs.getDouble(10));
-
+                mascota.setIdMascota(rs.getInt("idMascota"));
+                mascota.setAlias(rs.getString("alias"));
+                mascota.setSexo(rs.getString("sexo"));
+                mascota.setEspecie(rs.getString("especie"));
+                mascota.setRaza(rs.getString("raza"));
+                mascota.setColorPelaje(rs.getString("colorPelaje"));
+                mascota.setFechaNac(rs.getDate("fechaNac").toLocalDate());
+                mascota.setPesoMascota(rs.getDouble("pesoMascota"));
+                mascota.setActivo(rs.getBoolean("activo"));
+                mascota.setPesoActual(rs.getDouble("pesoActual"));
+                Cliente c = buscarCliente(rs.getInt("idCliente"));
+                mascota.setCliente(c);
             }
             ps.close();
         } catch (SQLException ex) {

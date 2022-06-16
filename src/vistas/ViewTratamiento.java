@@ -6,30 +6,15 @@
 
 package vistas;
 
-import controlador.ConsultaData;
-import controlador.TratamientoData;
-import java.util.List;
-import javax.swing.JOptionPane;
-import modelo.Conexion;
-import modelo.Tratamiento;
-
 /**
  *
  * @author Manuel Belgrano Nº3
  */
 public class ViewTratamiento extends javax.swing.JInternalFrame {
 
-   private TratamientoData tratamientoData;
-    private Conexion conexion;
-
+    /** Creates new form ViewTratamiento */
     public ViewTratamiento() {
         initComponents();
-        this.setSize(720, 630);
-        conexion = new Conexion();
-        
-        tratamientoData = new TratamientoData(conexion);
-        cargartipoTratamiento();
-        
     }
 
     /** This method is called from within the constructor to
@@ -42,29 +27,32 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        cbActivo = new javax.swing.JCheckBox();
+        jTextField4 = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        tDescrip = new javax.swing.JTextField();
-        tMedicamento = new javax.swing.JTextField();
-        tPrecio = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        tId = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        btnIngresar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        cbTipo = new javax.swing.JComboBox<>();
-        btnEliminar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
+        setResizable(true);
         getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
@@ -72,507 +60,159 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
         jLabel3.setText("Tratamiento");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(240, 30, 200, 48);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(40, 450, 610, 10);
 
-        cbActivo.setBackground(new java.awt.Color(255, 255, 255));
-        cbActivo.setEnabled(false);
-        cbActivo.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jButton4.setText("Guardar");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(80, 560, 100, 35);
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton5.setForeground(new java.awt.Color(0, 0, 0));
+        jButton5.setText("Borrar");
+        getContentPane().add(jButton5);
+        jButton5.setBounds(210, 560, 100, 35);
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 0));
+        jButton6.setText("Actualizar");
+        getContentPane().add(jButton6);
+        jButton6.setBounds(340, 560, 100, 35);
+
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton7.setForeground(new java.awt.Color(0, 0, 0));
+        jButton7.setText("Limpiar");
+        getContentPane().add(jButton7);
+        jButton7.setBounds(470, 560, 100, 35);
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Salir");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(600, 560, 90, 35);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(80, 530, 610, 10);
+
+        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(230, 400, 210, 30);
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbActivoActionPerformed(evt);
+                jCheckBox1ActionPerformed(evt);
             }
         });
-        getContentPane().add(cbActivo);
-        cbActivo.setBounds(230, 410, 21, 21);
+        getContentPane().add(jCheckBox1);
+        jCheckBox1.setBounds(180, 440, 24, 24);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel7.setText("Activo:");
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Estado:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(140, 410, 58, 23);
+        jLabel7.setBounds(80, 440, 60, 23);
+
+        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Nomb. Contacto:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(80, 400, 138, 23);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel10.setText("Precio:");
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setText("Celular:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(140, 370, 55, 23);
+        jLabel10.setBounds(80, 370, 64, 23);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel9.setText("Medicamento:");
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Dirección:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(80, 330, 140, 23);
+        jLabel9.setBounds(80, 330, 81, 23);
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel6.setText("Descripción:");
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Nombre:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 290, 100, 23);
+        jLabel6.setBounds(80, 290, 72, 23);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel5.setText("Tipo:");
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("Apellido:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(140, 250, 42, 23);
+        jLabel5.setBounds(80, 250, 75, 23);
 
-        tDescrip.setEnabled(false);
-        tDescrip.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tDescripFocusLost(evt);
-            }
-        });
-        tDescrip.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tDescripActionPerformed(evt);
-            }
-        });
-        tDescrip.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tDescripKeyTyped(evt);
-            }
-        });
-        getContentPane().add(tDescrip);
-        tDescrip.setBounds(230, 280, 160, 30);
+        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(180, 240, 160, 30);
 
-        tMedicamento.setEnabled(false);
-        tMedicamento.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tMedicamentoFocusLost(evt);
-            }
-        });
-        tMedicamento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tMedicamentoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tMedicamento);
-        tMedicamento.setBounds(230, 320, 260, 30);
+        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField6);
+        jTextField6.setBounds(180, 280, 160, 30);
 
-        tPrecio.setEnabled(false);
-        tPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tPrecioFocusLost(evt);
-            }
-        });
-        tPrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tPrecioActionPerformed(evt);
-            }
-        });
-        tPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tPrecioKeyTyped(evt);
-            }
-        });
-        getContentPane().add(tPrecio);
-        tPrecio.setBounds(230, 360, 260, 30);
+        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(180, 320, 260, 30);
+
+        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(180, 360, 260, 30);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(80, 210, 360, 10);
 
-        tId.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                tIdFocusLost(evt);
-            }
-        });
-        tId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tIdActionPerformed(evt);
-            }
-        });
-        tId.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                tIdKeyTyped(evt);
-            }
-        });
-        getContentPane().add(tId);
-        tId.setBounds(230, 150, 60, 30);
+        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(180, 140, 60, 30);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel4.setText("ID :");
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("ID Cliente:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(160, 160, 30, 23);
+        jLabel4.setBounds(80, 150, 87, 23);
 
-        btnIngresar.setBackground(new java.awt.Color(255, 255, 255));
-        btnIngresar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnIngresar.setText("Ingresar ");
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnIngresar);
-        btnIngresar.setBounds(550, 170, 120, 27);
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Ingresar cliente");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(550, 170, 140, 35);
 
-        btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnGuardar.setText("Guardar");
-        btnGuardar.setEnabled(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(40, 500, 110, 27);
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(0, 0, 0));
+        jButton3.setText("Buscar cliente");
+        getContentPane().add(jButton3);
+        jButton3.setBounds(550, 130, 140, 35);
 
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSalir);
-        btnSalir.setBounds(600, 500, 110, 27);
-
-        btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        btnBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnBuscar.setText("Buscar ");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(550, 130, 120, 27);
-
-        btnModificar.setBackground(new java.awt.Color(255, 255, 255));
-        btnModificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.setEnabled(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnModificar);
-        btnModificar.setBounds(180, 500, 110, 27);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(-40, 80, 170, 360);
-
-        cbTipo.setEnabled(false);
-        getContentPane().add(cbTipo);
-        cbTipo.setBounds(230, 240, 150, 20);
-
-        btnEliminar.setText("ELIMINAR");
-        btnEliminar.setEnabled(false);
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnEliminar);
-        btnEliminar.setBounds(320, 500, 110, 30);
-
-        btnLimpiar.setText("LIMPIAR");
-        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimpiarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnLimpiar);
-        btnLimpiar.setBounds(470, 500, 100, 30);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 780, 630);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cbActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbActivoActionPerformed
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cbActivoActionPerformed
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-       if (tId.getText().isEmpty()){
-          JOptionPane.showMessageDialog(this, "Debe ingrear un ID"); 
-       }
-        
-        
-        
-        
-        Tratamiento t = tratamientoData.buscarTratamiento(Integer.parseInt(tId.getText()));
-
-        int id = Integer.parseInt(tId.getText());
-
-        if (tId.getText() != null && tratamientoData.tratamientoExiste(id)) {
-
-            cbTipo.setSelectedItem(t.getTipoTratamiento()); ///
-            
-            tDescrip.setText(t.getDescripcion() );
-            tMedicamento.setText(t.getMedicamento());
-            tPrecio.setText(t.getPrecio()+ "");
-            cbActivo.setSelected(t.isActivo());//
-            
-       
-
-            btnGuardar.setEnabled(false);
-            activarCampos();
-            cbActivo.setEnabled(false);
-            
-            btnModificar.setEnabled(true);
-        } else {
-
-            JOptionPane.showMessageDialog(this, "El tratamiento no existe");
-            desactivarCampos();
-            desactivarBtnSec();
-
-        }
-        if (cbActivo.isSelected()) {//
-            btnEliminar.setEnabled(true);
-            btnModificar.setEnabled(true);
-        }else{
-             btnEliminar.setEnabled(false);
-            btnModificar.setEnabled(false);
-            desactivarCampos();
-        }
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-       btnBuscar.setEnabled(false);
-        tId.setEnabled(false);
-        tId.setText("");
-        cbTipo.setEnabled(true);
-        tDescrip.setEnabled(true);
-        tMedicamento.setEnabled(true);
-        tPrecio.setEnabled(true);
-        cbActivo.setEnabled(true);
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
-        
-       Tratamiento t = (Tratamiento) cbTipo.getSelectedItem();
- 
-        String descripcion = tDescrip.getText();
-        String medicamento =tMedicamento.getText();
-        double precio = Double.parseDouble(tPrecio.getText());
-       
-         cbActivo.isSelected();
-          if (cbActivo.isSelected() && !tDescrip.getText().isEmpty()&& !tMedicamento.getText().isEmpty() && !tPrecio.getText().isEmpty() ){
-              
-          
-        Tratamiento tr = new Tratamiento(t.getTipoTratamiento(), descripcion,medicamento,precio, cbActivo.isSelected());
-  
-         
-              if (cbActivo.isSelected())  {//
-              
-            tratamientoData.agregarTratamiento(tr);
-            tId.setText(tr.getIdTratamiento() + "");
-            desactivarCampos();
-        } else {
-            JOptionPane.showMessageDialog(this, " Esta agregando un tratamiento con estado inactivo");//
-            cbActivo.isFocusPainted();//
-        }
-          }  cbActivo.setSelected(true);//
-        
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-       
-        if ((tId.getText() != null)) {
-            int id = Integer.parseInt(tId.getText());
-            
-            Tratamiento t = (Tratamiento) cbTipo.getSelectedItem();
-     
-        String descripcion = tDescrip.getText();
-        String medicamento =tMedicamento.getText();
-        double precio = Double.parseDouble(tPrecio.getText());
-        
-        cbActivo.setEnabled(false);
-        cbActivo.setSelected(true);
-            
-       Tratamiento tr= new  Tratamiento(t.getTipoTratamiento(),descripcion,medicamento,precio,cbActivo.isSelected()  );
-            
-       tratamientoData.modificarTratamiento(id, tr);
-         desactivarCampos();   
-           
-       btnGuardar.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "El tratamiento no se encuentra activo");
-       }
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-      dispose();
-    }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void tDescripActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tDescripActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tDescripActionPerformed
-
-    private void tMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tMedicamentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tMedicamentoActionPerformed
-
-    private void tPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tPrecioActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-            tId.setText("");
-            tDescrip.setText("");
-            tMedicamento.setText("");
-            tPrecio.setText("");
-            cbActivo.setSelected(false);
-            
-            tId.setEnabled(true);
-            
-            desactivarCampos();
-            desactivarBtnSec();
-            
-        
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        int id = Integer.parseInt(tId.getText());
-
-       
-        if (tId.getText() != null)
-        {
-            tratamientoData.eliminarTratamiento(id);
-            btnGuardar.setEnabled(false);
-            btnModificar.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(this, " Debe ingresar un id ");
-        }
-        desactivarCampos();
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void tIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tIdActionPerformed
-      
-    }//GEN-LAST:event_tIdActionPerformed
-
-    private void tIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tIdKeyTyped
-         int key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key <= 57;
-       
-        if (!numeros  ) {
-            JOptionPane.showMessageDialog(this, "El id debe ser numérico");
-            evt.consume();
-        }
-    }//GEN-LAST:event_tIdKeyTyped
-
-    private void tPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tPrecioKeyTyped
-        int key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key <= 57;
-        boolean coma = key ==44 ;
-        boolean punto=key ==46;
-        if (!(numeros ||coma || punto) )
-        {
-            JOptionPane.showMessageDialog(this, "Ingrese un precio válido");
-            evt.consume();
-        }
-    }//GEN-LAST:event_tPrecioKeyTyped
-
-    private void tDescripKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tDescripKeyTyped
-       int key = evt.getKeyChar();
-
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
-
-        if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido");
-            evt.consume();
-        }
-    }//GEN-LAST:event_tDescripKeyTyped
-
-    private void tMedicamentoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tMedicamentoFocusLost
-        if (tMedicamento.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo Medicamento debe estar completo");
-            tMedicamento.requestFocus();
-        }
-    }//GEN-LAST:event_tMedicamentoFocusLost
-
-    private void tIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tIdFocusLost
-        if (tId.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Para buscar debe ingresar un ID");
-            requestFocus();
-            btnBuscar.setEnabled(false);
-        }
-        btnBuscar.setEnabled(true);
-    }//GEN-LAST:event_tIdFocusLost
-
-    private void tPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPrecioFocusLost
-         if (tPrecio.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo precio debe estar completo");
-            tPrecio.requestFocus();
-        } else {
-            btnGuardar.setEnabled(true);
-        }
-    }//GEN-LAST:event_tPrecioFocusLost
-
-    private void tDescripFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tDescripFocusLost
-         if (tDescrip.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "El campo descripción debe estar completo");
-            tDescrip.requestFocus();
-        }
-    }//GEN-LAST:event_tDescripFocusLost
-    
-    private void desactivarCampos(){
-            cbTipo.setEnabled(false);
-            tDescrip.setEnabled(false);
-            tMedicamento.setEnabled(false);
-            tPrecio.setEnabled(false);
-            cbActivo.setEnabled(false);
-    }
-    private void activarCampos(){
-            cbTipo.setEnabled(true);
-            tDescrip.setEnabled(true);
-            tMedicamento.setEnabled(true);
-            tPrecio.setEnabled(true);
-            cbActivo.setEnabled(true);
-    }
-    
-    private void ActivarBtnSec(){
-            btnEliminar.setEnabled(true);
-            btnModificar.setEnabled(true);
-            btnGuardar.setEnabled(true);
-    }
-    
-    
-    private void desactivarBtnSec(){
-            btnEliminar.setEnabled(false);
-            btnModificar.setEnabled(false);
-            btnGuardar.setEnabled(false);
-    }
-    private void limpiar(){
-            
-            tId.setText("");
-            tDescrip.setText("");
-            tMedicamento.setText("");
-            tPrecio.setText("");
-            cbActivo.setSelected(false);
-            tId.setEnabled(true);//
-       
-    }
-    
-    //ver //se cambio a desktop panel en vista principal para poder accedera a las vistas
-    //se agreg+o un metodo ver tipo- verificar si sirve igual con otro de los list de tratamientos.
-    //se cambio el metodo To String en clase modelo para cargar combobox en tipo tratamiento
-    //falta validar tipo$ valor precio con comas, check box y combo box set enabled true con boton "ingresar"
-    //activar campos luego de buscar y encontrar.
-    //setear como unico el campo tipo de tratamiento en sql para q nos e repita
-    private void cargartipoTratamiento() {
-        Tratamiento t=new Tratamiento();
-        ConsultaData dt= new ConsultaData(conexion);
-       List<Tratamiento>  listaTiposTrat = tratamientoData.listarTiposDeTratamientos();
-       String tipoTratamiento=listaTiposTrat.toString();
-               for (Tratamiento item : listaTiposTrat) {
-                   
-            cbTipo.addItem(item);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnSalir;
-    private javax.swing.JCheckBox cbActivo;
-    private javax.swing.JComboBox<Tratamiento> cbTipo;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -581,10 +221,12 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTextField tDescrip;
-    private javax.swing.JTextField tId;
-    private javax.swing.JTextField tMedicamento;
-    private javax.swing.JTextField tPrecio;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     // End of variables declaration//GEN-END:variables
 
 }
