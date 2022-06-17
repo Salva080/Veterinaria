@@ -89,7 +89,7 @@ public class Tratamiento {
 
     @Override
     public String toString() {
-        return tipoTratamiento; // prueba
+        return idTratamiento + "-" +tipoTratamiento+"- "+precio; // prueba
     }
 
     @Override

@@ -55,8 +55,12 @@ public class Veterinaria {
          for(Tratamiento tt:list){
              System.out.println(" - "+tt.getTipoTratamiento());
          }
+  */          
+ /*       List<Tratamiento> list = td.listarTratamientosActivos();
+            for(Tratamiento tt:list){
+             System.out.println(tt.getIdTratamiento()+"-"+ tt.getTipoTratamiento());
+            }
 */
-
         /*........................Cliente.........................*/
         Cliente cli = new Cliente(15, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente cl2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);

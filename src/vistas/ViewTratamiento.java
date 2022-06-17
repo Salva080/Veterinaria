@@ -91,9 +91,9 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
         jLabel7.setBounds(140, 410, 58, 23);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel10.setText("Precio:");
+        jLabel10.setText("Precio: $");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(140, 370, 55, 23);
+        jLabel10.setBounds(130, 370, 80, 23);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel9.setText("Medicamento:");
@@ -127,7 +127,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tDescrip);
-        tDescrip.setBounds(230, 280, 160, 30);
+        tDescrip.setBounds(230, 280, 260, 30);
 
         tMedicamento.setEnabled(false);
         tMedicamento.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -160,7 +160,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tPrecio);
-        tPrecio.setBounds(230, 360, 260, 30);
+        tPrecio.setBounds(230, 360, 110, 30);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(80, 210, 360, 10);
 
@@ -251,7 +251,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
 
         cbTipo.setEnabled(false);
         getContentPane().add(cbTipo);
-        cbTipo.setBounds(230, 240, 150, 20);
+        cbTipo.setBounds(230, 240, 260, 20);
 
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setEnabled(false);
@@ -361,6 +361,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             cbActivo.isFocusPainted();//
         }
           }  cbActivo.setSelected(true);//
+          limpiarCampos();
         
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -386,7 +387,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
        btnGuardar.setEnabled(false);
         } else {
             JOptionPane.showMessageDialog(this, "El tratamiento no se encuentra activo");
-       }
+       }limpiarCampos();
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -469,7 +470,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
         boolean espacio = key == 32;
 
         if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido");
+//            JOptionPane.showMessageDialog(this, "Ingrese un nombre válido");
             evt.consume();
         }
     }//GEN-LAST:event_tDescripKeyTyped
@@ -533,9 +534,9 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             btnModificar.setEnabled(false);
             btnGuardar.setEnabled(false);
     }
-    private void limpiar(){
+    private void limpiarCampos(){
             
-            tId.setText("");
+         
             tDescrip.setText("");
             tMedicamento.setText("");
             tPrecio.setText("");
@@ -544,17 +545,11 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
        
     }
     
-    //ver //se cambio a desktop panel en vista principal para poder accedera a las vistas
-    //se agreg+o un metodo ver tipo- verificar si sirve igual con otro de los list de tratamientos.
-    //se cambio el metodo To String en clase modelo para cargar combobox en tipo tratamiento
-    //falta validar tipo$ valor precio con comas, check box y combo box set enabled true con boton "ingresar"
-    //activar campos luego de buscar y encontrar.
-    //setear como unico el campo tipo de tratamiento en sql para q nos e repita
+ 
     private void cargartipoTratamiento() {
-        Tratamiento t=new Tratamiento();
-        ConsultaData dt= new ConsultaData(conexion);
-       List<Tratamiento>  listaTiposTrat = tratamientoData.listarTiposDeTratamientos();
-       String tipoTratamiento=listaTiposTrat.toString();
+   
+       List<Tratamiento>  listaTiposTrat = tratamientoData.listarTratamientosActivos();
+     
                for (Tratamiento item : listaTiposTrat) {
                    
             cbTipo.addItem(item);

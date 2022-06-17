@@ -28,6 +28,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         this.setSize(700, 650);
         conexion = new Conexion();
         cliente = new ClienteData(conexion);
+        
     }
 
     /**
@@ -39,16 +40,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-<<<<<<< Updated upstream
-=======
-        jPanel1 = new javax.swing.JPanel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
->>>>>>> Stashed changes
         jLabel4 = new javax.swing.JLabel();
         cId = new javax.swing.JTextField();
         cBuscar = new javax.swing.JButton();
@@ -67,7 +58,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cEstado = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-<<<<<<< Updated upstream
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         cDNI = new javax.swing.JTextField();
@@ -80,27 +70,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
 
         getContentPane().setLayout(null);
-=======
-        jLabel2 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-
-        getContentPane().setLayout(null);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 370, 260, 30));
-
-        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel6.setText("Nombre:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, -1, -1));
-        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 250, 160, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 610, 10));
-
-        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel5.setText("Apellido:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, -1, -1));
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, 60, 30));
->>>>>>> Stashed changes
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -204,12 +173,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Celular:");
-<<<<<<< Updated upstream
         getContentPane().add(jLabel10);
         jLabel10.setBounds(80, 410, 64, 23);
-=======
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 370, -1, -1));
->>>>>>> Stashed changes
 
         cCelular.setBackground(new java.awt.Color(255, 255, 255));
         cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -260,7 +225,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
         jLabel3.setText("Clientes");
-<<<<<<< Updated upstream
         getContentPane().add(jLabel3);
         jLabel3.setBounds(240, 30, 150, 48);
 
@@ -360,26 +324,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-<<<<<<< HEAD
         jLabel1.setBounds(0, 0, 750, 630);
-=======
-        jLabel1.setBounds(0, 0, 780, 630);
-=======
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 186, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel7.setText("Estado:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, -1, -1));
-
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        jLabel12.setText("jLabel12");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 790, 710));
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 786, 700);
->>>>>>> Stashed changes
->>>>>>> 773fc8919883ee2d7ebfd20f47e68c3ca89c8a43
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -485,7 +430,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         sinBotonesBuscar();
         cBuscar.setEnabled(false);
-        cId.setEnabled(false);
 
        cId.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -684,25 +628,15 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton cSalir;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-<<<<<<< Updated upstream
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-=======
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
->>>>>>> Stashed changes
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

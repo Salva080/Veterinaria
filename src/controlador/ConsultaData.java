@@ -143,7 +143,7 @@ public class ConsultaData {
 //4 ok
 
     public void registrarConsulta(Consulta consulta) {
-        sql = "INSERT INTO consulta (precio, fechaConsulta, idMascota, idTratamiento, activo, pesoPromedio) VALUES (?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO consulta (precio, fechaConsulta, idMascota, idTratamiento, activo, PesoConsulta) VALUES (?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -163,14 +163,11 @@ public class ConsultaData {
                 consulta.setIdConsulta(rs.getInt(1));
 
                 JOptionPane.showMessageDialog(null, " Se registró la consulta.");
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo registrar la consulta.");
-
-            }
+               }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "error en la conexíon");
+            JOptionPane.showMessageDialog(null, "No se pudo registrar la consulta.");
         }
 
     }

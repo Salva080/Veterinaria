@@ -5,6 +5,20 @@
  */
 package vistas;
 
+import controlador.ClienteData;
+import controlador.ConsultaData;
+import controlador.MascotaData;
+import controlador.TratamientoData;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+import modelo.Conexion;
+import modelo.Consulta;
 import modelo.Mascota;
 import modelo.Tratamiento;
 
@@ -14,11 +28,34 @@ import modelo.Tratamiento;
  */
 public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ViewConsulta
-     */
+    private ArrayList<Tratamiento> tratamientos;
+    private TratamientoData tData;
+    private ArrayList<Consulta> consultas;
+    private ConsultaData cData;
+    private ArrayList<Mascota> mascotas;
+    private MascotaData mData;
+    private ArrayList<Cliente> clientes;
+    private ClienteData clienteData;
+    private Conexion conexion;
+    private DefaultTableModel modelo;
+
     public ViewAgregarConsulta() {
         initComponents();
+        conexion = new Conexion();
+        cData = new ConsultaData(conexion);
+
+        tData = new TratamientoData(conexion);
+        tratamientos = (ArrayList<Tratamiento>) tData.listarTratamientosActivos();
+
+        mData = new MascotaData(conexion);
+        mascotas = (ArrayList<Mascota>) mData.listarMascotasActivas();
+        modelo = new DefaultTableModel();
+
+        cargarTratamiento();
+        cargarMascota();
+        armaCabeceraTabla();
+        consultas = (ArrayList<Consulta>) cData.listarConsultasActivas();
+
     }
 
     /**
@@ -37,22 +74,22 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         cbTratamiento = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         tConsulta = new javax.swing.JTable();
-        txtPrecio = new javax.swing.JTextField();
+        tPrecio = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         chActivo = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        btnCancelar = new javax.swing.JButton();
+        btnSalir = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        txtfecha = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
-        txtPeso = new javax.swing.JTextField();
+        tPeso = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
-        jLabel5 = new javax.swing.JLabel();
+        tFecha = new com.toedter.calendar.JDateChooser();
+        btnLimpiar = new javax.swing.JButton();
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -80,10 +117,24 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(50, 210, 96, 15);
 
-        btnAgregar.setText("AGREGAR");
-        getContentPane().add(btnAgregar);
-        btnAgregar.setBounds(330, 280, 81, 23);
+        btnGuardar.setText("GUARDAR");
+        btnGuardar.setEnabled(false);
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+        });
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnGuardar);
+        btnGuardar.setBounds(330, 273, 90, 30);
 
+        tConsulta.setBackground(new java.awt.Color(204, 255, 204));
+        tConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
+        tConsulta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -98,10 +149,27 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(20, 360, 640, 70);
-        getContentPane().add(txtPrecio);
-        txtPrecio.setBounds(450, 210, 81, 20);
+        jScrollPane3.setBounds(20, 360, 650, 90);
 
+        tPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tPrecioFocusLost(evt);
+            }
+        });
+        tPrecio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tPrecioActionPerformed(evt);
+            }
+        });
+        tPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tPrecioKeyTyped(evt);
+            }
+        });
+        getContentPane().add(tPrecio);
+        tPrecio.setBounds(450, 210, 81, 20);
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("PRECIO");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(380, 210, 76, 23);
@@ -110,44 +178,326 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         jLabel6.setText("Agregar consulta");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(230, 40, 190, 29);
+
+        chActivo.setSelected(true);
         getContentPane().add(chActivo);
         chActivo.setBounds(650, 210, 21, 21);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ACTIVO");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(590, 210, 46, 14);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(90, 180, 570, 10);
 
-        btnCancelar.setText("CANCELAR");
-        getContentPane().add(btnCancelar);
-        btnCancelar.setBounds(450, 280, 85, 23);
+        btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnSalir);
+        btnSalir.setBounds(580, 470, 90, 30);
 
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("FECHA");
         getContentPane().add(jLabel11);
         jLabel11.setBounds(60, 130, 50, 24);
-        getContentPane().add(txtfecha);
-        txtfecha.setBounds(120, 130, 86, 20);
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("PESO");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(570, 130, 76, 23);
-        getContentPane().add(txtPeso);
-        txtPeso.setBounds(620, 130, 81, 20);
+        jLabel12.setBounds(570, 130, 40, 23);
+
+        tPeso.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tPesoFocusLost(evt);
+            }
+        });
+        tPeso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tPesoKeyTyped(evt);
+            }
+        });
+        getContentPane().add(tPeso);
+        tPeso.setBounds(620, 130, 81, 20);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(90, 320, 570, 20);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(-20, -50, 760, 720);
+        tFecha.setBackground(new java.awt.Color(153, 204, 255));
+        tFecha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tFechaFocusLost(evt);
+            }
+        });
+        tFecha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tFechaMouseClicked(evt);
+            }
+        });
+        getContentPane().add(tFecha);
+        tFecha.setBounds(120, 130, 110, 20);
+
+        btnLimpiar.setText("LIMPIAR");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLimpiar);
+        btnLimpiar.setBounds(460, 273, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void tPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tPesoKeyTyped
+        int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        boolean coma = key == 44;
+        boolean punto = key == 46;
+        if (!(numeros || coma || punto)) {
+//            JOptionPane.showMessageDialog(this, "Ingrese un peso válido");
+            evt.consume();
+        }
+    }//GEN-LAST:event_tPesoKeyTyped
+
+    private void tFechaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tFechaMouseClicked
+        // TODO add your handling code here:
+        if (tFecha.isDisplayable() && tFecha.getAutoscrolls()) {
+
+            btnGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_tFechaMouseClicked
+
+    private void tFechaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tFechaFocusLost
+        // TODO add your handling code here:
+        if (null == tFecha.getDate()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            tFecha.requestFocus();
+            btnGuardar.setEnabled(false);
+        } else {
+            btnGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_tFechaFocusLost
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
+        if(controlar()) {
+           registrar();
+       }else{
+          desactivarCampos();
+       }
+
+//        double precio = Double.parseDouble(tPrecio.getText());
+//
+//        Date fech = tFecha.getDate();
+//        LocalDate fechaNac = fech.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//
+//        Mascota seleccionada = (Mascota) cbMascota.getSelectedItem();
+//
+//        Tratamiento seleccionado = (Tratamiento) cbTratamiento.getSelectedItem();
+//
+//        boolean estado = chActivo.isSelected();
+//
+//        double PesoC = Double.parseDouble(tPeso.getText());
+//
+//        Consulta consul = new Consulta(precio, fechaNac, seleccionada, seleccionado, estado, PesoC);
+//   
+//        if( chActivo.isSelected()&& !tPrecio.getText().isEmpty()&& tFecha.getDate() !=null && !tPeso.getText().isEmpty() ){
+//        cData.registrarConsulta(consul);
+//        }
+//        else{
+//           
+//            JOptionPane.showMessageDialog(this, " Esta agregando una consulta con estado inactivo");//
+//            chActivo.isFocusPainted();//
+//        
+//          }  chActivo.setSelected(true);//
+//        
+//        modelo.addRow(new Object[]{consul.getIdConsulta(), consul.getFechaConsulta(), consul.getMascota().getAlias(), consul.getTratamiento().getTipoTratamiento(), consul.getPesoConsulta(), consul.getPrecio()});
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        tPrecio.setText("");
+        tPeso.setText("");
+        tFecha.setDate(null);
+       
+        btnGuardar.setEnabled(false);
+
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void tPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tPrecioKeyTyped
+        int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        boolean coma = key == 44;
+        boolean punto = key == 46;
+        if (!(numeros || coma || punto)) {
+//            JOptionPane.showMessageDialog(this, "Ingrese un peso válido");
+            evt.consume();
+        }
+    }//GEN-LAST:event_tPrecioKeyTyped
+
+    private void tPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPrecioActionPerformed
+       
+    }//GEN-LAST:event_tPrecioActionPerformed
+
+    private void tPrecioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPrecioFocusLost
+        // TODO add your handling code here:
+         if (tFecha.getDate() != null) {
+
+            if (!tPeso.getText().isEmpty()) { //
+
+                if (!tPrecio.getText().isEmpty()) {
+
+                    
+                        btnGuardar.setEnabled(true);
+                        
+                        
+                    }else {
+              JOptionPane.showMessageDialog(this, "No puede dejar campos vacíos ");
+            tPrecio.requestFocus();
+                }
+            }
+             
+             
+         }
+        
+        
+        
+    }//GEN-LAST:event_tPrecioFocusLost
+
+    private void tPesoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tPesoFocusLost
+        if(tPeso.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "El campo peso debe estar completo");
+            tPeso.requestFocus();
+            
+        }
+    }//GEN-LAST:event_tPesoFocusLost
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+        // TODO add your handling code here:
+        
+       if(controlar()) {
+           registrar();
+       }else{
+           
+       }
+        
+        
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void cargarTratamiento() {
+
+        for (Tratamiento item : tratamientos) {
+
+            cbTratamiento.addItem(item);
+
+        }
+
+    }
+
+    private void cargarMascota() {
+
+        for (Mascota item : mascotas) {
+
+            cbMascota.addItem(item);
+
+        }
+
+    }
+
+    private void armaCabeceraTabla() {
+
+        //Titulos de Columnas
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("Fecha");
+        columnas.add("Mascota");
+        columnas.add("Tratamiento");
+        columnas.add("Peso Consulta");
+        columnas.add("Precio");
+
+        for (Object it : columnas) {
+
+            modelo.addColumn(it);
+        }
+        tConsulta.setModel(modelo);
+    }
+
+    private void borraFilasTabla() {
+
+        int a = modelo.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+
+            modelo.removeRow(i);
+        }
+    }
+    private boolean controlar(){
+        boolean control=true;
+          if (tFecha.getDate() == null) {
+
+            if (tPeso.getText().isEmpty()) { //
+
+                if (tPrecio.getText().isEmpty()) {
+
+                   JOptionPane.showMessageDialog(this, "Todos los campos deben estar completos");
+                }
+            }
+         } return control;
+    }
+    
+    private void registrar(){
+        double precio = Double.parseDouble(tPrecio.getText());
+
+        Date fech = tFecha.getDate();
+        LocalDate fechaNac = fech.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        Mascota seleccionada = (Mascota) cbMascota.getSelectedItem();
+
+        Tratamiento seleccionado = (Tratamiento) cbTratamiento.getSelectedItem();
+
+        boolean estado = chActivo.isSelected();
+
+        double PesoC = Double.parseDouble(tPeso.getText());
+
+        Consulta consul = new Consulta(precio, fechaNac, seleccionada, seleccionado, estado, PesoC);
+   
+        if( chActivo.isSelected()&& !tPrecio.getText().isEmpty()&& tFecha.getDate() !=null && !tPeso.getText().isEmpty() ){
+        cData.registrarConsulta(consul);
+        }
+        else{
+           
+            JOptionPane.showMessageDialog(this, " Esta agregando una consulta con estado inactivo");//
+            chActivo.isFocusPainted();//
+        
+          }  chActivo.setSelected(true);//
+        
+        modelo.addRow(new Object[]{consul.getIdConsulta(), consul.getFechaConsulta(), consul.getMascota().getAlias(), consul.getTratamiento().getTipoTratamiento(), consul.getPesoConsulta(), consul.getPrecio()});
+    }
+    
+   private void desactivarCampos(){
+       tPrecio.setEnabled(false);
+        tFecha.setEnabled(false);
+        cbMascota.setEnabled(false);
+        cbTratamiento.setEnabled(false);
+        chActivo.setEnabled(false);
+        tPeso.setEnabled(false);
+   }
+   
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<Mascota> cbMascota;
     private javax.swing.JComboBox<Tratamiento> cbTratamiento;
     private javax.swing.JCheckBox chActivo;
@@ -157,7 +507,6 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -166,8 +515,8 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator2;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTable tConsulta;
-    private javax.swing.JTextField txtPeso;
-    private javax.swing.JTextField txtPrecio;
-    private javax.swing.JTextField txtfecha;
+    private com.toedter.calendar.JDateChooser tFecha;
+    private javax.swing.JTextField tPeso;
+    private javax.swing.JTextField tPrecio;
     // End of variables declaration//GEN-END:variables
 }

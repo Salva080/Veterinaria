@@ -178,33 +178,35 @@ public class TratamientoData {
         }
         return Tratamientos;
     }
-
+//revisado
     public List<Tratamiento> listarTratamientosActivos() {
 
-        List<Tratamiento> Tratamientos = new ArrayList<>();
+        List<Tratamiento> tratamientos = new ArrayList<>();
         try {
             sql = "SELECT * FROM tratamiento WHERE activo= 1  ORDER BY idTratamiento ASC";
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Tratamiento tratamiento = new Tratamiento();
-
-                ps.setInt(1, tratamiento.getIdTratamiento());
-                ps.setString(2, tratamiento.getTipoTratamiento());
-                ps.setString(3, tratamiento.getDescripcion());
-                ps.setString(4, tratamiento.getMedicamento());
-                ps.setDouble(5, tratamiento.getPrecio());
-                ps.setBoolean(6, tratamiento.isActivo());
-                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
+         
+                tratamiento.setIdTratamiento(rs.getInt("idTratamiento"));
+               tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
+                tratamiento.setDescripcion(rs.getString("descripcion"));
+                tratamiento.setMedicamento(rs.getString("medicamento"));
+                tratamiento.setPrecio(rs.getDouble("precio"));
+                tratamiento.setActivo(rs.getBoolean("activo"));
+                
+                
+                tratamientos.add(tratamiento);
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos activos. ");
+            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos activos. "+ex.getMessage());
         }
-        return Tratamientos;
+        return tratamientos;
     }
-
+//revisado
     public List<Tratamiento> listarTratamientosInactivos() {
 
         List<Tratamiento> tratamientos = new ArrayList<>();
@@ -215,13 +217,15 @@ public class TratamientoData {
             while (rs.next()) {
                 Tratamiento tratamiento = new Tratamiento();
 
-                ps.setInt(1, tratamiento.getIdTratamiento());
-                ps.setString(2, tratamiento.getTipoTratamiento());
-                ps.setString(3, tratamiento.getDescripcion());
-                ps.setString(4, tratamiento.getMedicamento());
-                ps.setDouble(5, tratamiento.getPrecio());
-                ps.setBoolean(6, tratamiento.isActivo());
-                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
+                 tratamiento.setIdTratamiento(rs.getInt("idTratamiento"));
+               tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
+                tratamiento.setDescripcion(rs.getString("descripcion"));
+                tratamiento.setMedicamento(rs.getString("medicamento"));
+                tratamiento.setPrecio(rs.getDouble("precio"));
+                tratamiento.setActivo(rs.getBoolean("activo"));
+                
+                
+                tratamientos.add(tratamiento);
 
             }
             ps.close();
