@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
 import modelo.Mascota;
+import static vistas.ViewVeterinaria.escritorio;
 
 /**
  *
@@ -53,14 +54,19 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tMascotas = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         rbActivas = new javax.swing.JRadioButton();
         rbNoActivas = new javax.swing.JRadioButton();
         jbSalir = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jbAgregar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setResizable(true);
         getContentPane().setLayout(null);
 
+        tMascotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tMascotas.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         tMascotas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -76,7 +82,7 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
                 {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Alias", "Sexo", "Especie", "Raza", "Color de pelaje", "Fecha de nacimiento", "Peso de mascota", "Estado", "Peso actual de mascota"
+                "ID", "ALIAS", "SEXO", "ESPECIE", "RAZA", "COLOR DE PELAJE", "FECHA DE NACIMIENTO", "PESO DE MASCOTA", "ESTADO", "PESO ACTUAL DE MASCOTA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -96,12 +102,7 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 130, 1377, 187);
 
-        jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 36)); // NOI18N
-        jLabel1.setText("LISTADO DE MASCOTAS");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(450, 20, 420, 48);
-
-        rbActivas.setText("activas");
+        rbActivas.setText("Activas");
         rbActivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbActivasActionPerformed(evt);
@@ -110,14 +111,14 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         getContentPane().add(rbActivas);
         rbActivas.setBounds(490, 80, 80, 28);
 
-        rbNoActivas.setText("no Activas");
+        rbNoActivas.setText("Inactivas");
         rbNoActivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rbNoActivasActionPerformed(evt);
             }
         });
         getContentPane().add(rbNoActivas);
-        rbNoActivas.setBounds(720, 80, 91, 28);
+        rbNoActivas.setBounds(690, 80, 83, 28);
 
         jbSalir.setText("SALIR");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +127,31 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbSalir);
-        jbSalir.setBounds(610, 340, 64, 32);
+        jbSalir.setBounds(910, 340, 64, 32);
+
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel3.setText("Listado de Mascotas");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(470, 20, 420, 48);
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Si no encuentra su mascota en este listado, haga click en el boton de abajo.");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(320, 330, 430, 20);
+
+        jbAgregar.setText("Agregar");
+        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAgregarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbAgregar);
+        jbAgregar.setBounds(440, 350, 210, 32);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(290, -20, 790, 670);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -149,6 +174,17 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewMascotas vm = new ViewMascotas();
+        vm.setSize(800,600);
+        vm.setVisible(true);
+        escritorio.add(vm);
+        escritorio.moveToFront(vm);
+    }//GEN-LAST:event_jbAgregarActionPerformed
 
     private void cargarDatosActivos(){
         
@@ -205,7 +241,10 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbAgregar;
     private javax.swing.JButton jbSalir;
     private javax.swing.JRadioButton rbActivas;
     private javax.swing.JRadioButton rbNoActivas;

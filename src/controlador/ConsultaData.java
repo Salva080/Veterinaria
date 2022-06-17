@@ -212,7 +212,7 @@ public class ConsultaData {
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al dalr de baja la consulta " + ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Error al dar de baja la consulta " + ex.getMessage());
         }
 
     }

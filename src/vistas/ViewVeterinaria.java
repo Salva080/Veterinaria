@@ -256,7 +256,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewListadoMascotas vlm = new ViewListadoMascotas();
-        vlm.setSize(800,600);
+        vlm.setSize(1300,400);
         vlm.setVisible(true);
         escritorio.add(vlm);
         escritorio.moveToFront(vlm);
