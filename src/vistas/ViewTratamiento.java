@@ -60,18 +60,19 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
         btnSalir = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         cbTipo = new javax.swing.JComboBox<>();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        cbTipo1 = new javax.swing.JComboBox<>();
 
         getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel3.setText("Tratamiento");
+        jLabel3.setText("Agregar tratamiento");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(240, 30, 200, 48);
+        jLabel3.setBounds(170, 30, 340, 48);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(40, 450, 610, 10);
 
@@ -83,32 +84,32 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cbActivo);
-        cbActivo.setBounds(230, 410, 21, 21);
+        cbActivo.setBounds(320, 410, 21, 21);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setText("Activo:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(140, 410, 58, 23);
+        jLabel7.setBounds(230, 410, 58, 23);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel10.setText("Precio: $");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(130, 370, 80, 23);
+        jLabel10.setBounds(220, 370, 80, 23);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel9.setText("Medicamento:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(80, 330, 140, 23);
+        jLabel9.setBounds(170, 330, 140, 23);
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel6.setText("Descripción:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(90, 290, 100, 23);
+        jLabel6.setBounds(180, 290, 100, 23);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel5.setText("Tipo:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(140, 250, 42, 23);
+        jLabel5.setBounds(140, 120, 42, 23);
 
         tDescrip.setEnabled(false);
         tDescrip.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -127,7 +128,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tDescrip);
-        tDescrip.setBounds(230, 280, 260, 30);
+        tDescrip.setBounds(320, 280, 260, 30);
 
         tMedicamento.setEnabled(false);
         tMedicamento.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -141,7 +142,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tMedicamento);
-        tMedicamento.setBounds(230, 320, 260, 30);
+        tMedicamento.setBounds(320, 320, 260, 30);
 
         tPrecio.setEnabled(false);
         tPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -160,9 +161,9 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tPrecio);
-        tPrecio.setBounds(230, 360, 110, 30);
+        tPrecio.setBounds(320, 360, 110, 30);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(80, 210, 360, 10);
+        jSeparator2.setBounds(70, 210, 470, 10);
 
         tId.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -180,12 +181,12 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tId);
-        tId.setBounds(230, 150, 60, 30);
+        tId.setBounds(230, 160, 60, 20);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel4.setText("ID :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(160, 160, 30, 23);
+        jLabel4.setBounds(150, 160, 30, 23);
 
         btnIngresar.setBackground(new java.awt.Color(255, 255, 255));
         btnIngresar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -196,7 +197,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnIngresar);
-        btnIngresar.setBounds(550, 170, 120, 27);
+        btnIngresar.setBounds(40, 230, 90, 40);
 
         btnGuardar.setBackground(new java.awt.Color(255, 255, 255));
         btnGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -219,7 +220,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(600, 500, 110, 27);
+        btnSalir.setBounds(580, 500, 110, 27);
 
         btnBuscar.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -230,7 +231,7 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(550, 130, 120, 27);
+        btnBuscar.setBounds(480, 147, 90, 40);
 
         btnModificar.setBackground(new java.awt.Color(255, 255, 255));
         btnModificar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -244,14 +245,9 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
         getContentPane().add(btnModificar);
         btnModificar.setBounds(180, 500, 110, 27);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(-40, 80, 170, 360);
-
         cbTipo.setEnabled(false);
         getContentPane().add(cbTipo);
-        cbTipo.setBounds(230, 240, 260, 20);
+        cbTipo.setBounds(230, 120, 210, 20);
 
         btnEliminar.setText("ELIMINAR");
         btnEliminar.setEnabled(false);
@@ -270,7 +266,16 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnLimpiar);
-        btnLimpiar.setBounds(470, 500, 100, 30);
+        btnLimpiar.setBounds(460, 500, 100, 30);
+
+        jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel8.setText("Tipo:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(230, 250, 42, 23);
+
+        cbTipo1.setEnabled(false);
+        getContentPane().add(cbTipo1);
+        cbTipo1.setBounds(320, 250, 260, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -566,13 +571,14 @@ public class ViewTratamiento extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox cbActivo;
     private javax.swing.JComboBox<Tratamiento> cbTipo;
+    private javax.swing.JComboBox<Tratamiento> cbTipo1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
