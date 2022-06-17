@@ -25,7 +25,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     public ViewCliente() {
         initComponents();
         limpiar();
-        this.setSize(700, 650);
+        this.setSize(900, 700);
         conexion = new Conexion();
         clienteData = new ClienteData(conexion);
 
@@ -79,7 +79,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Busqueda:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 120, 87, 23);
+        jLabel4.setBounds(80, 110, 87, 23);
 
         cId.setBackground(new java.awt.Color(255, 255, 255));
         cId.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -88,7 +88,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cId);
-        cId.setBounds(180, 150, 60, 30);
+        cId.setBounds(180, 140, 60, 30);
 
         cBuscar.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -100,7 +100,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cBuscar);
-        cBuscar.setBounds(250, 150, 90, 35);
+        cBuscar.setBounds(250, 130, 90, 30);
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -112,7 +112,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(550, 170, 140, 35);
+        jButton1.setBounds(550, 170, 140, 30);
 
         cApellido.setBackground(new java.awt.Color(255, 255, 255));
         cApellido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -126,19 +126,19 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cApellido);
-        cApellido.setBounds(180, 300, 160, 30);
+        cApellido.setBounds(180, 280, 160, 30);
 
-        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Apellido:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(80, 310, 75, 23);
+        jLabel5.setBounds(80, 290, 59, 17);
 
-        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nombre:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 350, 72, 23);
+        jLabel6.setBounds(80, 320, 57, 17);
 
         cNombre.setBackground(new java.awt.Color(255, 255, 255));
         cNombre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -152,13 +152,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cNombre);
-        cNombre.setBounds(180, 340, 160, 30);
+        cNombre.setBounds(180, 310, 160, 30);
 
-        jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Dirección:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(80, 390, 81, 23);
+        jLabel9.setBounds(80, 350, 64, 17);
 
         cDireccion.setBackground(new java.awt.Color(255, 255, 255));
         cDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -172,13 +172,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDireccion);
-        cDireccion.setBounds(180, 380, 260, 30);
+        cDireccion.setBounds(180, 340, 260, 30);
 
-        jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Celular:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(80, 430, 64, 23);
+        jLabel10.setBounds(80, 380, 50, 17);
 
         cCelular.setBackground(new java.awt.Color(255, 255, 255));
         cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -187,13 +187,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cCelular);
-        cCelular.setBounds(180, 420, 260, 30);
+        cCelular.setBounds(180, 370, 260, 30);
 
-        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Nomb. Alternativo:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 460, 157, 23);
+        jLabel11.setBounds(80, 410, 125, 17);
 
         alternativo.setBackground(new java.awt.Color(255, 255, 255));
         alternativo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -207,13 +207,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(alternativo);
-        alternativo.setBounds(250, 460, 190, 30);
+        alternativo.setBounds(250, 400, 190, 30);
 
-        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estado:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 500, 60, 23);
+        jLabel7.setBounds(80, 430, 48, 17);
 
         cEstado.setBackground(new java.awt.Color(255, 255, 255));
         cEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -222,9 +222,9 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cEstado);
-        cEstado.setBounds(180, 500, 24, 24);
+        cEstado.setBounds(180, 430, 24, 24);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(80, 240, 360, 10);
+        jSeparator2.setBounds(80, 230, 360, 2);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
@@ -242,25 +242,25 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(550, 130, 140, 35);
+        jButton4.setBounds(550, 130, 140, 30);
 
-        jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("DNI:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(80, 270, 40, 23);
+        jLabel8.setBounds(80, 260, 32, 17);
 
-        jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("ID Cliente:");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(80, 160, 87, 23);
+        jLabel13.setBounds(80, 150, 69, 17);
 
-        jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("DNI:");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(80, 190, 40, 23);
+        jLabel14.setBounds(80, 180, 32, 17);
 
         cDNI2.setBackground(new java.awt.Color(255, 255, 255));
         cDNI2.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -269,7 +269,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDNI2);
-        cDNI2.setBounds(180, 190, 160, 30);
+        cDNI2.setBounds(180, 180, 160, 30);
 
         cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -281,7 +281,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cBuscar1);
-        cBuscar1.setBounds(360, 190, 90, 35);
+        cBuscar1.setBounds(350, 170, 90, 30);
 
         cDNI.setBackground(new java.awt.Color(255, 255, 255));
         cDNI.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -295,7 +295,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDNI);
-        cDNI.setBounds(180, 260, 160, 30);
+        cDNI.setBounds(180, 250, 160, 30);
 
         cGuardar.setBackground(new java.awt.Color(255, 255, 255));
         cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -307,7 +307,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cGuardar);
-        cGuardar.setBounds(80, 560, 100, 35);
+        cGuardar.setBounds(80, 520, 100, 35);
 
         cBorrar.setBackground(new java.awt.Color(255, 255, 255));
         cBorrar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -319,7 +319,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cBorrar);
-        cBorrar.setBounds(210, 560, 100, 35);
+        cBorrar.setBounds(210, 520, 100, 35);
 
         cActualizar.setBackground(new java.awt.Color(255, 255, 255));
         cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -331,7 +331,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cActualizar);
-        cActualizar.setBounds(340, 560, 100, 35);
+        cActualizar.setBounds(340, 520, 100, 35);
 
         cLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         cLimpiar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -343,7 +343,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cLimpiar);
-        cLimpiar.setBounds(470, 560, 100, 35);
+        cLimpiar.setBounds(470, 520, 100, 35);
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -355,9 +355,9 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cSalir);
-        cSalir.setBounds(600, 560, 90, 35);
+        cSalir.setBounds(600, 520, 90, 35);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(80, 540, 610, 10);
+        jSeparator1.setBounds(80, 490, 610, 10);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -454,6 +454,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         desactivarOtros();
         activarId();
         cBuscar.setEnabled(true);
+        cBuscar1.setEnabled(true);
+        cDNI2.setEnabled(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
@@ -467,8 +469,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         sinBotonesBuscar();
         cBuscar.setEnabled(false);
-
+        cBuscar1.setEnabled(false);
+        cDNI2.setEnabled(false);
+        limpiarCampos();
         cId.setText("");
+        cId.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cApellidoKeyTyped
@@ -493,7 +498,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         boolean espacio = key == 32;
 
         if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
+            JOptionPane.showMessageDialog(this, "El dato NOMBRE  no debe ser numérico");
             evt.consume();
         }
 
@@ -511,7 +516,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         boolean espacio = key == 32;
 
         if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "El dato APELLIDO  no debe ser numérico");
+            JOptionPane.showMessageDialog(this, "El dato Contacto alternativo  no debe ser numérico");
             evt.consume();
         }
 
@@ -577,7 +582,12 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cDNIKeyTyped
 
     private void cDNI2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cDNI2KeyTyped
-        // TODO add your handling code here:
+       int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
+            evt.consume();
+        }
     }//GEN-LAST:event_cDNI2KeyTyped
 
     private void cBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar1ActionPerformed
@@ -608,6 +618,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
+        cDNI2.setText("");
         cApellido.setText("");
         cNombre.setText("");
         cDireccion.setText("");
@@ -617,7 +628,21 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         desactivarOtros();
         desactivarId();
         botonesDesactivados();
+        cDNI2.setEnabled(false);
+        cBuscar1.setEnabled(false);
+        cId.setEnabled(false);
 
+    }
+    private void limpiarCampos(){
+        cId.setText("");
+        cDNI.setText("");
+        cDNI2.setText("");
+        cApellido.setText("");
+        cNombre.setText("");
+        cDireccion.setText("");
+        cCelular.setText("");
+        alternativo.setText("");
+        cEstado.setSelected(false);
     }
 
     private void activarId() {
@@ -637,6 +662,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cCelular.setEnabled(true);
         alternativo.setEnabled(true);
         cId.setEnabled(true);
+        cDNI2.setEnabled(true);
         cGuardar.setEnabled(true);
         cBorrar.setEnabled(true);
         cActualizar.setEnabled(true);
@@ -662,6 +688,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cBorrar.setEnabled(false);
         cActualizar.setEnabled(false);
         cBuscar.setEnabled(false);
+        cBuscar1.setEnabled(false);
     }
 
     private void botonesBuscar() {
