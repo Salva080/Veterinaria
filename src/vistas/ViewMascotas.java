@@ -7,6 +7,7 @@ package vistas;
 
 import controlador.ClienteData;
 import controlador.MascotaData;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -136,16 +137,88 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 30));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 570, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 172, 570, 10));
+
+        jtfSexo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfSexoFocusLost(evt);
+            }
+        });
+        jtfSexo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfSexoKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, -1));
+
+        jtfEspecie.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfEspecieFocusLost(evt);
+            }
+        });
+        jtfEspecie.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfEspecieKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 250, -1));
+
+        jtfRaza.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfRazaFocusLost(evt);
+            }
+        });
+        jtfRaza.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfRazaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 160, -1));
+
+        jtfPesomascota.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfPesomascotaFocusLost(evt);
+            }
+        });
+        jtfPesomascota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPesomascotaKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 80, -1));
+
+        jtfPesoactual.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfPesoactualFocusLost(evt);
+            }
+        });
+        jtfPesoactual.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfPesoactualKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 90, -1));
+
+        jtfAlias.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfAliasFocusLost(evt);
+            }
+        });
+        jtfAlias.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfAliasKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 200, -1));
 
         jcbEstado.setText("ESTADO");
         jcbEstado.setEnabled(false);
         jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, -1, -1));
+
+        jdcFechaNac.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jdcFechaNacFocusLost(evt);
+            }
+        });
         jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
         jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, -1));
 
@@ -208,6 +281,17 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel14.setText("Raza:");
         jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, 30));
+
+        jtfColorpelaje.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jtfColorpelajeFocusLost(evt);
+            }
+        });
+        jtfColorpelaje.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfColorpelajeKeyTyped(evt);
+            }
+        });
         jPanel1.add(jtfColorpelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 160, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
@@ -382,6 +466,165 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         activarOtros();
     }//GEN-LAST:event_jbAgregarActionPerformed
+
+    private void jtfAliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAliasKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El Alias de su mascota no debe ser numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfAliasKeyTyped
+
+    private void jtfSexoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSexoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El sexo de su mascota no debe ser numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfSexoKeyTyped
+
+    private void jtfEspecieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEspecieKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "La especie de su mascota no debe ser un dato numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfEspecieKeyTyped
+
+    private void jtfRazaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRazaKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "La raza de su mascota no debe ser un dato numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfRazaKeyTyped
+
+    private void jtfColorpelajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfColorpelajeKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El color de pelaje de su mascota no debe ser un dato numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfColorpelajeKeyTyped
+
+    private void jtfPesomascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesomascotaKeyTyped
+        // TODO add your handling code here:
+        double key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El peso de la mascota debe ser numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPesomascotaKeyTyped
+
+    private void jtfPesoactualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoactualKeyTyped
+        // TODO add your handling code here:
+        double key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El peso actual de la mascota debe ser numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfPesoactualKeyTyped
+
+    private void jdcFechaNacFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jdcFechaNacFocusLost
+        // TODO add your handling code here:
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        String fechaComoCadena = sdf.format(new Date());
+        if ((!jtfIDmascota.getText().isEmpty())) {
+
+            jbGuardar.setEnabled(true);
+
+        } else {
+            jbGuardar.setEnabled(false);
+        }
+    }//GEN-LAST:event_jdcFechaNacFocusLost
+
+    private void jtfAliasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAliasFocusLost
+        // TODO add your handling code here:
+        if (jtfAlias.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfAlias.requestFocus();
+        }
+    }//GEN-LAST:event_jtfAliasFocusLost
+
+    private void jtfSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSexoFocusLost
+        // TODO add your handling code here:
+        if (jtfSexo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfSexo.requestFocus();
+        }
+    }//GEN-LAST:event_jtfSexoFocusLost
+
+    private void jtfEspecieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEspecieFocusLost
+        // TODO add your handling code here:
+        if (jtfEspecie.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfEspecie.requestFocus();
+        }
+    }//GEN-LAST:event_jtfEspecieFocusLost
+
+    private void jtfRazaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRazaFocusLost
+        // TODO add your handling code here:
+        if (jtfRaza.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfRaza.requestFocus();
+        }
+    }//GEN-LAST:event_jtfRazaFocusLost
+
+    private void jtfColorpelajeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfColorpelajeFocusLost
+        // TODO add your handling code here:
+        if (jtfColorpelaje.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfColorpelaje.requestFocus();
+        }
+    }//GEN-LAST:event_jtfColorpelajeFocusLost
+
+    private void jtfPesomascotaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesomascotaFocusLost
+        // TODO add your handling code here:
+        if (jtfPesomascota.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfPesomascota.requestFocus();
+        }
+    }//GEN-LAST:event_jtfPesomascotaFocusLost
+
+    private void jtfPesoactualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesoactualFocusLost
+        // TODO add your handling code here:
+        if (jtfPesoactual.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfPesoactual.requestFocus();
+        }
+    }//GEN-LAST:event_jtfPesoactualFocusLost
 
     private void cargarClientes(){
         for(Cliente item:listaClientes){

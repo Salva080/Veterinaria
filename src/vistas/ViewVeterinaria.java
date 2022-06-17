@@ -47,6 +47,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         jmiFormularioCliente = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmiFormularioMascotas = new javax.swing.JMenuItem();
+        jmiListadoMascotas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiAgregarConsulta = new javax.swing.JMenuItem();
         jmiManejoConsultas = new javax.swing.JMenuItem();
@@ -102,6 +103,14 @@ public class ViewVeterinaria extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jmiFormularioMascotas);
+
+        jmiListadoMascotas.setText("Listado Mascotas");
+        jmiListadoMascotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiListadoMascotasActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiListadoMascotas);
 
         jMenuBar1.add(jMenu3);
 
@@ -233,6 +242,17 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.moveToFront(vlc);
     }//GEN-LAST:event_jmiListadoConsultaActionPerformed
 
+    private void jmiListadoMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListadoMascotasActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewListadoMascotas vlm = new ViewListadoMascotas();
+        vlm.setSize(800,600);
+        vlm.setVisible(true);
+        escritorio.add(vlm);
+        escritorio.moveToFront(vlm);
+    }//GEN-LAST:event_jmiListadoMascotasActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +301,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiFormularioCliente;
     private javax.swing.JMenuItem jmiFormularioMascotas;
     private javax.swing.JMenuItem jmiListadoConsulta;
+    private javax.swing.JMenuItem jmiListadoMascotas;
     private javax.swing.JMenuItem jmiManejoConsultas;
     private javax.swing.JMenuItem jmiManejoTratamientos;
     private javax.swing.JMenuItem jmiSalir;
