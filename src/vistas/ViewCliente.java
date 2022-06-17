@@ -379,7 +379,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         String alt = alternativo.getText();
         boolean estado = cEstado.isEnabled();
 
-        Cliente c = new Cliente(dni, apellido, nombre, direccion, celular, alt, estado);
+        Cliente c = new Cliente(dni, nombre, apellido, direccion, celular, alt, estado);
 
         clienteData.agregarCliente(c);
         cId.setText(c.getIdCliente() + "");
@@ -410,7 +410,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             String alt = alternativo.getText();
             boolean estado = cEstado.isEnabled();
 
-            Cliente c = new Cliente(dni, apellido, nombre, direccion, celular, alt, estado);
+            Cliente c = new Cliente(dni, nombre, apellido, direccion, celular, alt, estado);
             clienteData.modificarCliente(id, c);
 
             limpiar();

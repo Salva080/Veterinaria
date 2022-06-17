@@ -202,6 +202,7 @@ public class ClienteData {
                 cliente.setDireccion(rs.getString(5));
                 cliente.setTelefono(rs.getInt(6));
                 cliente.setContactoAlternativo(rs.getString(7));
+                cliente.setActivo(rs.getBoolean(8));
                 clientes.add(cliente);
 
             }
@@ -230,6 +231,7 @@ public class ClienteData {
                 cliente.setDireccion(rs.getString(5));
                 cliente.setTelefono(rs.getInt(6));
                 cliente.setContactoAlternativo(rs.getString(7));
+                cliente.setActivo(rs.getBoolean(8));
                 clientes.add(cliente);
 
             }
