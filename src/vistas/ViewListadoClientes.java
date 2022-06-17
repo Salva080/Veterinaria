@@ -47,14 +47,10 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel16 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tClientes = new javax.swing.JTable();
-        jComboBox2 = new javax.swing.JComboBox<>();
         cBuscar1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel17 = new javax.swing.JLabel();
-        cBuscar2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         cBuscar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
@@ -67,11 +63,6 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         fondo = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel16.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel16.setText("Mascota del cliente:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         tClientes.setBackground(new java.awt.Color(255, 255, 255));
         tClientes.setForeground(new java.awt.Color(0, 0, 0));
@@ -94,9 +85,6 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 700, 150));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 140, -1));
-
         cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cBuscar1.setForeground(new java.awt.Color(0, 0, 0));
@@ -108,22 +96,6 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         });
         getContentPane().add(cBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 90, 30));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 690, 10));
-
-        jLabel17.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("¿No encuentras la mascota?");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
-
-        cBuscar2.setBackground(new java.awt.Color(255, 255, 255));
-        cBuscar2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBuscar2.setForeground(new java.awt.Color(0, 0, 0));
-        cBuscar2.setText("Agregar");
-        cBuscar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBuscar2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cBuscar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 90, 30));
 
         jLabel15.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
@@ -225,13 +197,6 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         vc.toFront();
         vc.setVisible(true);
     }//GEN-LAST:event_cBuscar1ActionPerformed
-
-    private void cBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar2ActionPerformed
-        ViewMascotas vma = new ViewMascotas();
-        ViewVeterinaria.escritorio.add(vma);
-        vma.toFront();
-        vma.setVisible(true);
-    }//GEN-LAST:event_cBuscar2ActionPerformed
    private void armaCabeceraTabla() {
 
         //Titulos de Columnas
@@ -287,14 +252,10 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
     private javax.swing.JButton cBorrar;
     private javax.swing.JButton cBuscar;
     private javax.swing.JButton cBuscar1;
-    private javax.swing.JButton cBuscar2;
     private javax.swing.JButton cSalir;
     private javax.swing.JLabel fondo;
-    private javax.swing.JComboBox<Cliente> jComboBox2;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
