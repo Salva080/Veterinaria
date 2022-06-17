@@ -40,7 +40,7 @@ public class Mascota {
         this.pesoActual = pesoActual;
     }
 
-    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoMascota, boolean activo, Cliente cliente, double pesoActuala) {
+    public Mascota(String alias, String sexo, String especie, String raza, String colorPelaje, LocalDate fechaNac, double pesoMascota, boolean activo, Cliente cliente, double pesoActual) {
         this.alias = alias;
         this.sexo = sexo;
         this.especie = especie;
@@ -48,6 +48,7 @@ public class Mascota {
         this.colorPelaje = colorPelaje;
         this.fechaNac = fechaNac;
         this.pesoMascota = pesoMascota;
+        this.activo = activo;
         this.cliente = cliente;
         this.pesoActual = pesoActual;
     }

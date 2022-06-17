@@ -111,23 +111,18 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "dni=" + dni + ", apellido=" + apellido + ", nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", contactoAlternativo=" + contactoAlternativo + ", activo=" + activo + '}';
+        return dni+", "+apellido+", "+nombre; //MODIFICADO  
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode() { //MODIFICADO
         int hash = 7;
-        hash = 67 * hash + this.dni;
-        hash = 67 * hash + Objects.hashCode(this.apellido);
-        hash = 67 * hash + Objects.hashCode(this.nombre);
-        hash = 67 * hash + Objects.hashCode(this.direccion);
-        hash = 67 * hash + this.telefono;
-        hash = 67 * hash + Objects.hashCode(this.contactoAlternativo);
+        hash = 89 * hash + this.dni;
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
+    public boolean equals(Object obj) { //MODIFICADO
         if (this == obj) {
             return true;
         }
@@ -141,23 +136,10 @@ public class Cliente {
         if (this.dni != other.dni) {
             return false;
         }
-        if (this.telefono != other.telefono) {
-            return false;
-        }
-        if (!Objects.equals(this.apellido, other.apellido)) {
-            return false;
-        }
-        if (!Objects.equals(this.nombre, other.nombre)) {
-            return false;
-        }
-        if (!Objects.equals(this.direccion, other.direccion)) {
-            return false;
-        }
-        if (!Objects.equals(this.contactoAlternativo, other.contactoAlternativo)) {
-            return false;
-        }
         return true;
     }
+
+    
 
     
 }

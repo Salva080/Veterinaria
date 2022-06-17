@@ -79,13 +79,11 @@ public class Veterinaria {
         /*........................Mascota.........................*/
         mascotaData = new MascotaData(conexion);
         Mascota mas1 = new Mascota(26,"Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl,2);
-        Mascota m3 = new Mascota(59,"Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,2);
+        Mascota m3 = new Mascota(15,"Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,23);
 
-        Mascota mas = new Mascota("Whisky", "Mascullino", "Perro", "pichichu", "Blanco", LocalDate.of(2020, 2, 13), 15, true, c2, 3);
 
 //        mascotaData.agregarMascota(mas1);
 //        mascotaData.agregarMascota(mas1);// SE DEBE PASAR COMO PARAMETRO UNA MASCOTA SIN ID ,LA CUAL EN EL NEW DE MASCOTA , DEBE RECIBIR UN CLIENTE CON ID (EXISTENTE EN LA BASE)
-//        mascotaData.agregarMascota(mas);
 //        System.out.println("" + mascotaData.buscarMascota(29));
 //        mascotaData.eliminarMascota(39);
 //        mascotaData.eliminarMascota(35);
