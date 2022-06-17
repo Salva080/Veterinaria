@@ -6,7 +6,9 @@
 package vistas;
 
 import controlador.ClienteData;
+import java.awt.HeadlessException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
@@ -36,6 +38,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         
         modelo = new DefaultTableModel();
         armaCabeceraTabla();
+        btAlta.setEnabled(false);
     }
 
     /**
@@ -52,13 +55,11 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         cBuscar1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel15 = new javax.swing.JLabel();
-        cBuscar = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        cBorrar = new javax.swing.JButton();
-        cActualizar = new javax.swing.JButton();
+        btAlta = new javax.swing.JButton();
         cSalir = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbActivos = new javax.swing.JRadioButton();
+        rbNoActivos = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
@@ -68,22 +69,22 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         tClientes.setForeground(new java.awt.Color(0, 0, 0));
         tClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "DNI", "Apellido", "Nombre", "Direccion", "Telefono", "Contacto"
+                "ID", "DNI", "Apellido", "Nombre", "Direccion", "Telefono", "Contacto", "Activo"
             }
         ));
         jScrollPane1.setViewportView(tClientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 700, 150));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 720, 150));
 
         cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -102,43 +103,21 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         jLabel15.setText("¿No encuentras el cliente?");
         getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 260, -1, -1));
 
-        cBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        cBuscar.setText("Buscar ");
-        cBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 90, 50));
-
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("Estado:");
+        jLabel14.setText("Busqueda:");
         getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
-        cBorrar.setBackground(new java.awt.Color(255, 255, 255));
-        cBorrar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBorrar.setForeground(new java.awt.Color(0, 0, 0));
-        cBorrar.setText("Borrar");
-        cBorrar.addActionListener(new java.awt.event.ActionListener() {
+        btAlta.setBackground(new java.awt.Color(255, 255, 255));
+        btAlta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btAlta.setForeground(new java.awt.Color(0, 0, 0));
+        btAlta.setText("Dar de Alta");
+        btAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBorrarActionPerformed(evt);
+                btAltaActionPerformed(evt);
             }
         });
-        getContentPane().add(cBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 510, 120, 50));
-
-        cActualizar.setBackground(new java.awt.Color(255, 255, 255));
-        cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cActualizar.setForeground(new java.awt.Color(0, 0, 0));
-        cActualizar.setText("Actualizar");
-        cActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cActualizarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 510, 120, 50));
+        getContentPane().add(btAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 120, 30));
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -149,17 +128,27 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
                 cSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(cSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 510, 120, 50));
+        getContentPane().add(cSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 480, 120, 30));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton1.setText("Activos");
-        getContentPane().add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
+        rbActivos.setBackground(new java.awt.Color(255, 255, 255));
+        rbActivos.setForeground(new java.awt.Color(0, 0, 0));
+        rbActivos.setText("Activos");
+        rbActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActivosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, -1, -1));
 
-        jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jRadioButton2.setText("Inactivos");
-        getContentPane().add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
+        rbNoActivos.setBackground(new java.awt.Color(255, 255, 255));
+        rbNoActivos.setForeground(new java.awt.Color(0, 0, 0));
+        rbNoActivos.setText("Inactivos");
+        rbNoActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNoActivosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbNoActivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
@@ -172,20 +161,34 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscarActionPerformed
-        
+    private void btAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaActionPerformed
+    try {
+            int filaSeleccionada = tClientes.getSelectedRow();
 
-        //  activarOtros();
-    }//GEN-LAST:event_cBuscarActionPerformed
+            if (filaSeleccionada != -1) {
 
-    private void cBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBorrarActionPerformed
-        
-        
-    }//GEN-LAST:event_cBorrarActionPerformed
+                int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+                int dni = (Integer) modelo.getValueAt (filaSeleccionada,1);
+                String apellido = (String) modelo.getValueAt(filaSeleccionada, 2);
+                String nombre = (String) modelo.getValueAt(filaSeleccionada, 3);
+                String direccion = (String) modelo.getValueAt(filaSeleccionada, 4);
+                int telefono = (int) modelo.getValueAt(filaSeleccionada, 5);
+                String contacto = (String) modelo.getValueAt(filaSeleccionada, 6);
 
-    private void cActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActualizarActionPerformed
-        
-    }//GEN-LAST:event_cActualizarActionPerformed
+                clienteData.activarCliente(idCliente);
+
+                boolean estado = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
+
+                borraFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar un cliente");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
+        }
+    }//GEN-LAST:event_btAltaActionPerformed
 
     private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
         dispose();
@@ -197,6 +200,21 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         vc.toFront();
         vc.setVisible(true);
     }//GEN-LAST:event_cBuscar1ActionPerformed
+
+    private void rbActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivosActionPerformed
+        rbNoActivos.setSelected(false);
+        borraFilasTabla();
+        cargaDatosActivos();
+        btAlta.setEnabled(false);
+    }//GEN-LAST:event_rbActivosActionPerformed
+
+    private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
+        rbActivos.setSelected(false);
+
+        borraFilasTabla();
+        cargaDatosInactivos();
+        btAlta.setEnabled(true);
+    }//GEN-LAST:event_rbNoActivosActionPerformed
    private void armaCabeceraTabla() {
 
         //Titulos de Columnas
@@ -208,6 +226,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         columnas.add("Direccion");
         columnas.add("Telefono");
         columnas.add("Contacto");
+        columnas.add("Activo");
 
         for (Object it : columnas) {
 
@@ -224,13 +243,13 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    private void cargarDatosActivos(){
+    private void cargaDatosActivos(){
         borraFilasTabla();
         ArrayList<Cliente> lista = (ArrayList) clienteData.listarClienteActivos();
 
         for (Cliente a : lista) {
 
-            modelo.addRow(new Object[]{a.getIdCliente(),a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(), a.getContactoAlternativo()});
+            modelo.addRow(new Object[]{a.getIdCliente(),a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(),a.getTelefono(), a.getContactoAlternativo(),a.isActivo()});
         }
     }
     private void cargaDatosInactivos() {
@@ -242,25 +261,24 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
 
         for (Cliente a : lista) {
 
-            modelo.addRow(new Object[]{a.getIdCliente(),a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(), a.getContactoAlternativo()});
+                        modelo.addRow(new Object[]{a.getIdCliente(),a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(),a.getTelefono(), a.getContactoAlternativo(),a.isActivo()});
+
         }
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton cActualizar;
-    private javax.swing.JButton cBorrar;
-    private javax.swing.JButton cBuscar;
+    private javax.swing.JButton btAlta;
     private javax.swing.JButton cBuscar1;
     private javax.swing.JButton cSalir;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JRadioButton rbActivos;
+    private javax.swing.JRadioButton rbNoActivos;
     private javax.swing.JTable tClientes;
     // End of variables declaration//GEN-END:variables
 }
