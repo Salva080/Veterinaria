@@ -15,6 +15,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Conexion;
+import modelo.Consulta;
+import modelo.Mascota;
+import modelo.Tratamiento;
 
 /**
  *

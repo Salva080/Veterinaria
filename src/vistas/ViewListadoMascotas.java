@@ -65,6 +65,7 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(null);
 
+        tMascotas.setBackground(new java.awt.Color(255, 255, 255));
         tMascotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tMascotas.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         tMascotas.setModel(new javax.swing.table.DefaultTableModel(
@@ -100,8 +101,9 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 130, 1377, 187);
+        jScrollPane1.setBounds(0, 160, 780, 187);
 
+        rbActivas.setBackground(new java.awt.Color(255, 255, 255));
         rbActivas.setText("Activas");
         rbActivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +111,9 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbActivas);
-        rbActivas.setBounds(490, 80, 80, 28);
+        rbActivas.setBounds(190, 110, 80, 28);
 
+        rbNoActivas.setBackground(new java.awt.Color(255, 255, 255));
         rbNoActivas.setText("Inactivas");
         rbNoActivas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,8 +121,9 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbNoActivas);
-        rbNoActivas.setBounds(690, 80, 83, 28);
+        rbNoActivas.setBounds(390, 110, 83, 28);
 
+        jbSalir.setBackground(new java.awt.Color(255, 255, 255));
         jbSalir.setText("SALIR");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,19 +131,20 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbSalir);
-        jbSalir.setBounds(910, 340, 64, 32);
+        jbSalir.setBounds(610, 370, 64, 32);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
         jLabel3.setText("Listado de Mascotas");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(470, 20, 420, 48);
+        jLabel3.setBounds(170, 50, 420, 48);
 
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Si no encuentra su mascota en este listado, haga click en el boton de abajo.");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(320, 330, 430, 20);
+        jLabel2.setBounds(20, 360, 430, 20);
 
+        jbAgregar.setBackground(new java.awt.Color(255, 255, 255));
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -147,11 +152,11 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbAgregar);
-        jbAgregar.setBounds(440, 350, 210, 32);
+        jbAgregar.setBounds(140, 380, 210, 32);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(290, -20, 790, 670);
+        jLabel1.setBounds(0, -10, 790, 670);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
