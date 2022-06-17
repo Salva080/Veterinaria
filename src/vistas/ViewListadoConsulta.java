@@ -9,8 +9,12 @@ import controlador.ClienteData;
 import controlador.ConsultaData;
 import controlador.MascotaData;
 import controlador.TratamientoData;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import modelo.Cliente;
 import modelo.Conexion;
 import modelo.Consulta;
@@ -34,17 +38,19 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
     private ClienteData clienteData;
     private Conexion conexion;
     private DefaultTableModel modelo;
+      TableRowSorter trs;
     
     
     public ViewListadoConsulta() {
         initComponents();
+        TableRowSorter trs;
          conexion = new Conexion();
         cData = new ConsultaData(conexion);
         
          mData = new MascotaData(conexion);
         mascotas = (ArrayList<Mascota>) mData.listarMascotasActivas();
         modelo = new DefaultTableModel();
-        cargarMascota();
+       
         
         consultas=(ArrayList<Consulta>)cData.promediarPesoPorMascota(WIDTH);
          consultasI=(ArrayList<Consulta>)cData.listarConsultasInactivas();
@@ -66,15 +72,16 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tConsulta = new javax.swing.JTable();
-        cbMascota = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         btnPromedio = new javax.swing.JButton();
         tPromedio = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        tFiltrocliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        TFiltroMascota = new javax.swing.JTextField();
 
         setResizable(true);
         getContentPane().setLayout(null);
@@ -82,52 +89,40 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel1.setText("LISTA DE  CONSULTAS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(220, 40, 210, 24);
-
-        jButton1.setText("BUSCAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(440, 140, 73, 23);
+        jLabel1.setBounds(260, 40, 210, 24);
 
         tConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID CONSULTA", "FECHA", "ID TRATAMIENTO", "TIPO TRATAMIENTO", "PRECIO", "PESO CONSULTA", "ACTIVO"
+                "ID ", "FECHA", " CLIENTE", "ALIAS MASCOTA", "TIPO TRATAMIENTO", "PRECIO", "PESO CONSULTA", "ACTIVO"
             }
         ));
         jScrollPane1.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 260, 620, 88);
+        jScrollPane1.setBounds(10, 260, 750, 120);
 
-        getContentPane().add(cbMascota);
-        cbMascota.setBounds(230, 140, 161, 20);
-
-        jLabel2.setText("MASCOTA");
+        jLabel2.setText("BUSCAR POR CLIENTE");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(140, 140, 70, 14);
+        jLabel2.setBounds(70, 110, 140, 14);
 
         jButton2.setText("SALIR");
         getContentPane().add(jButton2);
-        jButton2.setBounds(560, 440, 80, 30);
+        jButton2.setBounds(640, 430, 80, 30);
 
-        btnPromedio.setText("PROMEDIAR");
+        btnPromedio.setText("PROMEDIAR PESO");
         btnPromedio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPromedioActionPerformed(evt);
             }
         });
         getContentPane().add(btnPromedio);
-        btnPromedio.setBounds(350, 380, 100, 30);
+        btnPromedio.setBounds(440, 130, 130, 30);
 
         tPromedio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,19 +130,35 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tPromedio);
-        tPromedio.setBounds(460, 380, 80, 30);
+        tPromedio.setBounds(580, 130, 80, 30);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("LISTADO DE CONSULTAS");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(220, 210, 150, 15);
 
+        tFiltrocliente.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tFiltroclienteKeyTyped(evt);
+            }
+        });
+        getContentPane().add(tFiltrocliente);
+        tFiltrocliente.setBounds(250, 110, 110, 20);
+
+        jLabel4.setText("BUSCAR POR MASCOTA");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(70, 140, 130, 14);
+
+        TFiltroMascota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                TFiltroMascotaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(TFiltroMascota);
+        TFiltroMascota.setBounds(250, 140, 110, 20);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPromedioActionPerformed
         // TODO add your handling code here:
@@ -156,23 +167,46 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
     private void btnPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromedioActionPerformed
       
     }//GEN-LAST:event_btnPromedioActionPerformed
-
-     private void cargarMascota() {
-
-        for (Mascota item : mascotas) {
-
-            cbMascota.addItem(item);
-
+    private void TFiltroMascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TFiltroMascotaKeyTyped
+       
+       
+        TFiltroMascota.addKeyListener(new KeyAdapter(){
+            
+        public void KeyReleased(KeyEvent ke){
+             
+            trs.setRowFilter(RowFilter.regexFilter(TFiltroMascota.getText(),3));
         }
+    });
+                trs=new TableRowSorter(modelo);
+                tConsulta.setRowSorter(trs);
+                
+        
+        
+    }//GEN-LAST:event_TFiltroMascotaKeyTyped
 
-    }
+    private void tFiltroclienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tFiltroclienteKeyTyped
+      tFiltrocliente.addKeyListener(new KeyAdapter(){
+            
+        public void KeyReleased(KeyEvent ke){
+             
+            trs.setRowFilter(RowFilter.regexFilter(tFiltrocliente.getText(),2));
+        }
+    });
+                trs=new TableRowSorter(modelo);
+                tConsulta.setRowSorter(trs);
+        
+        
+    }//GEN-LAST:event_tFiltroclienteKeyTyped
+
+     
       private void armaCabeceraTabla() {
 
       
         ArrayList<Object> columnas = new ArrayList<Object>();
         columnas.add("ID");
         columnas.add("FECHA");
-         columnas.add("ID DE TRATAMIENTO");
+        columnas.add("CLIENTE");
+         columnas.add("ALIAS MASCOTA");
         columnas.add("TIPO DE TRATAMIENTO");
          columnas.add("PRECIO");
         columnas.add("PESO CONSULTA");
@@ -199,26 +233,27 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         borraFilasTabla();
           
            
-       Mascota seleccionado= (Mascota)cbMascota.getSelectedItem();
+     
         
-        ArrayList<Consulta> lista = (ArrayList)cData.listarConsultasporMascota(seleccionado.getIdMascota());
+        ArrayList<Consulta> lista = (ArrayList)cData.listarConsultasActivas();
         
         for(Consulta c:lista){
         
-            modelo.addRow(new Object[]{c.getIdConsulta(),c.getFechaConsulta(),c.getTratamiento().getIdTratamiento(),c.getTratamiento().getTipoTratamiento(),c.getPrecio(),c.getPrecio(),c.getPesoConsulta(),c.isActivo()});
+            modelo.addRow(new Object[]{c.getIdConsulta(),c.getFechaConsulta(),c.getMascota().getCliente().getApellido(),c.getMascota().getAlias(),c.getTratamiento().getTipoTratamiento(),c.getPrecio(),c.getPesoConsulta(),c.isActivo()});
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField TFiltroMascota;
     private javax.swing.JButton btnPromedio;
-    private javax.swing.JComboBox<Mascota> cbMascota;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tConsulta;
+    private javax.swing.JTextField tFiltrocliente;
     private javax.swing.JTextField tPromedio;
     // End of variables declaration//GEN-END:variables
 }
