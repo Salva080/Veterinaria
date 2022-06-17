@@ -7,33 +7,45 @@ package vistas;
 
 import controlador.ClienteData;
 import controlador.ConsultaData;
+import controlador.MascotaData;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
+import modelo.Mascota;
 
 /**
  *
  * @author NEXO-MAX
  */
-public class ViewListarClientesPorMascotas extends javax.swing.JInternalFrame {
+public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
+
     private ClienteData clienteData;
     private ConsultaData consultaData;
+    private MascotaData mascotaData;
     private Conexion conexion;
     private ArrayList<Cliente> listaClientes;
+    private ArrayList<Mascota> listaMascotas;
     private DefaultTableModel modelo;
+
     /**
      * Creates new form ViewListarClientesPorMascotas
      */
-    public ViewListarClientesPorMascotas() {
+    public ViewClientePorMascotas() {
         initComponents();
         initComponents();
         this.setSize(900, 700);
         conexion = new Conexion();
+
+        mascotaData = new MascotaData(conexion);
+        listaMascotas = (ArrayList<Mascota>) mascotaData.listarMascotasActivas();
+        cargaMascotas();
         clienteData = new ClienteData(conexion);
         listaClientes = (ArrayList<Cliente>) clienteData.listarClienteActivos();
-        listaClientes = (ArrayList<Cliente>) clienteData.listarClientesInactivos();
-        listaClientes = (ArrayList<Cliente>) consultaData.();
+
+        modelo = new DefaultTableModel();
+        armaCabeceraTabla();
+
     }
 
     /**
@@ -45,11 +57,12 @@ public class ViewListarClientesPorMascotas extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cbMascota = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tClientes = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel16 = new javax.swing.JLabel();
+        cBuscar3 = new javax.swing.JButton();
+        cMascotas = new javax.swing.JComboBox<>();
         cSalir = new javax.swing.JButton();
         cBuscar2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -61,9 +74,6 @@ public class ViewListarClientesPorMascotas extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        cbMascota.setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().add(cbMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 140, -1));
 
         tClientes.setBackground(new java.awt.Color(255, 255, 255));
         tClientes.setForeground(new java.awt.Color(0, 0, 0));
@@ -84,13 +94,27 @@ public class ViewListarClientesPorMascotas extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tClientes);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 720, 150));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 760, 150));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 690, 10));
 
         jLabel16.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(0, 0, 0));
         jLabel16.setText("¿No encuentras la mascota?");
         getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, -1, -1));
+
+        cBuscar3.setBackground(new java.awt.Color(255, 255, 255));
+        cBuscar3.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cBuscar3.setForeground(new java.awt.Color(0, 0, 0));
+        cBuscar3.setText("Buscar");
+        cBuscar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cBuscar3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cBuscar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, 90, 30));
+
+        cMascotas.setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(cMascotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 140, -1));
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -178,41 +202,74 @@ public class ViewListarClientesPorMascotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cSalirActionPerformed
 
     private void btAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaActionPerformed
-        try {
-            int filaSeleccionada = tClientes.getSelectedRow();
 
-            if (filaSeleccionada != -1) {
-
-                int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
-                int dni = (Integer) modelo.getValueAt (filaSeleccionada,1);
-                String apellido = (String) modelo.getValueAt(filaSeleccionada, 2);
-                String nombre = (String) modelo.getValueAt(filaSeleccionada, 3);
-                String direccion = (String) modelo.getValueAt(filaSeleccionada, 4);
-                int telefono = (int) modelo.getValueAt(filaSeleccionada, 5);
-                String contacto = (String) modelo.getValueAt(filaSeleccionada, 6);
-
-                clienteData.activarCliente(idCliente);
-
-                boolean estado = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
-
-                borraFilasTabla();
-
-            } else {
-                JOptionPane.showMessageDialog(this, " Debe seleccionar un cliente");
-
-            }
-        } catch (HeadlessException e) {
-            JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
-        }
     }//GEN-LAST:event_btAltaActionPerformed
 
+    private void cBuscar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar3ActionPerformed
+        cargaDatosMascotas();
+    }//GEN-LAST:event_cBuscar3ActionPerformed
+    private void armaCabeceraTabla() {
+
+        //Titulos de Columnas
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("DNI");
+        columnas.add("Apellido");
+        columnas.add("Nombre");
+        columnas.add("Direccion");
+        columnas.add("Telefono");
+        columnas.add("Contacto");
+        columnas.add("Activo");
+        for (Object it : columnas) {
+
+            modelo.addColumn(it);
+        }
+        tClientes.setModel(modelo);
+    }
+
+    private void borraFilasTabla() {
+
+        int a = modelo.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+
+            modelo.removeRow(i);
+        }
+    }
+
+    private void cargaMascotas() {
+        //Carga las mascotas al ComboBox
+
+        for (Mascota item : listaMascotas) {
+
+            cMascotas.addItem(item);
+
+        }
+    }
+
+    private void cargaDatosMascotas() {
+
+        borraFilasTabla();
+        //Llenar filas con las materias en las que esta incripto un alumno
+
+        Mascota seleccionado = (Mascota) cMascotas.getSelectedItem();
+
+        ArrayList<Cliente> lista = (ArrayList) consultaData.buscarClientePorMascota(seleccionado.getIdMascota());
+
+        for (Alumno a : lista) {
+
+            modelo1.addRow(new Object[]{a.getId_alumno(), a.getApellido(), a.getNombre(), a.getFechaNac()});
+
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlta;
     private javax.swing.JButton cBuscar1;
     private javax.swing.JButton cBuscar2;
+    private javax.swing.JButton cBuscar3;
+    private javax.swing.JComboBox<String> cMascotas;
     private javax.swing.JButton cSalir;
-    private javax.swing.JComboBox<Mascota> cbMascota;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
