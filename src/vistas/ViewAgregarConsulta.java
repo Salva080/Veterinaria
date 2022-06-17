@@ -90,6 +90,11 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         jSeparator2 = new javax.swing.JSeparator();
         tFecha = new com.toedter.calendar.JDateChooser();
         btnLimpiar = new javax.swing.JButton();
+        btnNueva = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
+        tId = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -99,23 +104,24 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
 
         popupMenu1.setLabel("popupMenu1");
 
+        setBorder(null);
         getContentPane().setLayout(null);
 
         getContentPane().add(cbMascota);
-        cbMascota.setBounds(360, 130, 120, 20);
+        cbMascota.setBounds(160, 190, 160, 20);
 
         getContentPane().add(cbTratamiento);
-        cbTratamiento.setBounds(170, 210, 160, 20);
+        cbTratamiento.setBounds(160, 260, 160, 20);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("MASCOTA");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(280, 130, 70, 15);
+        jLabel2.setBounds(40, 190, 90, 15);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("TRATAMIENTOS");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(50, 210, 96, 15);
+        jLabel3.setBounds(40, 260, 96, 15);
 
         btnGuardar.setText("GUARDAR");
         btnGuardar.setEnabled(false);
@@ -130,7 +136,7 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnGuardar);
-        btnGuardar.setBounds(330, 273, 90, 30);
+        btnGuardar.setBounds(140, 320, 90, 30);
 
         tConsulta.setBackground(new java.awt.Color(204, 255, 204));
         tConsulta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 204)));
@@ -149,7 +155,7 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(20, 360, 650, 90);
+        jScrollPane3.setBounds(30, 380, 690, 90);
 
         tPrecio.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -167,28 +173,28 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tPrecio);
-        tPrecio.setBounds(450, 210, 81, 20);
+        tPrecio.setBounds(440, 260, 81, 20);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("PRECIO");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(380, 210, 76, 23);
+        jLabel4.setBounds(370, 260, 76, 23);
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
         jLabel6.setText("Agregar consulta");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(230, 40, 190, 29);
+        jLabel6.setBounds(480, 20, 190, 29);
 
         chActivo.setSelected(true);
         getContentPane().add(chActivo);
-        chActivo.setBounds(650, 210, 21, 21);
+        chActivo.setBounds(650, 260, 30, 21);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("ACTIVO");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(590, 210, 46, 14);
+        jLabel1.setBounds(590, 260, 50, 14);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(90, 180, 570, 10);
+        jSeparator1.setBounds(10, 130, 260, 10);
 
         btnSalir.setText("SALIR");
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -197,17 +203,17 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnSalir);
-        btnSalir.setBounds(580, 470, 90, 30);
+        btnSalir.setBounds(530, 320, 100, 30);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel11.setText("FECHA");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(60, 130, 50, 24);
+        jLabel11.setBounds(40, 130, 50, 30);
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel12.setText("PESO");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(570, 130, 40, 23);
+        jLabel12.setBounds(380, 190, 40, 23);
 
         tPeso.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -220,9 +226,9 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tPeso);
-        tPeso.setBounds(620, 130, 81, 20);
+        tPeso.setBounds(440, 190, 81, 20);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(90, 320, 570, 20);
+        jSeparator2.setBounds(60, 300, 650, 20);
 
         tFecha.setBackground(new java.awt.Color(153, 204, 255));
         tFecha.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -236,7 +242,7 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tFecha);
-        tFecha.setBounds(120, 130, 110, 20);
+        tFecha.setBounds(120, 140, 110, 20);
 
         btnLimpiar.setText("LIMPIAR");
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -245,7 +251,38 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnLimpiar);
-        btnLimpiar.setBounds(460, 273, 90, 30);
+        btnLimpiar.setBounds(400, 320, 90, 30);
+
+        btnNueva.setText("NUEVA");
+        btnNueva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNueva);
+        btnNueva.setBounds(320, 40, 80, 30);
+
+        btnModificar.setText("MODIFICAR");
+        getContentPane().add(btnModificar);
+        btnModificar.setBounds(270, 320, 91, 30);
+
+        tId.setEnabled(false);
+        getContentPane().add(tId);
+        tId.setBounds(110, 90, 80, 20);
+
+        btnBuscar.setText("BUSCAR");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBuscar);
+        btnBuscar.setBounds(320, 90, 80, 30);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel5.setText("ID");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(40, 80, 40, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -363,6 +400,7 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
                     }else {
               JOptionPane.showMessageDialog(this, "No puede dejar campos vacíos ");
             tPrecio.requestFocus();
+            
                 }
             }
              
@@ -392,6 +430,24 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         
         
     }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnNuevaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaActionPerformed
+     btnBuscar.setEnabled(false);
+     tId.setEnabled(false);
+     btnModificar.setEnabled(false);
+     activarCampos();
+    }//GEN-LAST:event_btnNuevaActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        if (tId.getText().isEmpty()){
+          JOptionPane.showMessageDialog(this, "Debe ingrear un ID"); 
+       }
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cargarTratamiento() {
 
@@ -491,12 +547,23 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
         chActivo.setEnabled(false);
         tPeso.setEnabled(false);
    }
+   private void activarCampos(){
+       tPrecio.setEnabled(true);
+        tFecha.setEnabled(true);
+        cbMascota.setEnabled(true);
+        cbTratamiento.setEnabled(true);
+        chActivo.setEnabled(true);
+        tPeso.setEnabled(true);
+   }
    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnModificar;
+    private javax.swing.JButton btnNueva;
     private javax.swing.JButton btnSalir;
     private javax.swing.JComboBox<Mascota> cbMascota;
     private javax.swing.JComboBox<Tratamiento> cbTratamiento;
@@ -507,6 +574,7 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -516,6 +584,7 @@ public class ViewAgregarConsulta extends javax.swing.JInternalFrame {
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JTable tConsulta;
     private com.toedter.calendar.JDateChooser tFecha;
+    private javax.swing.JTextField tId;
     private javax.swing.JTextField tPeso;
     private javax.swing.JTextField tPrecio;
     // End of variables declaration//GEN-END:variables

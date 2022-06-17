@@ -5,8 +5,17 @@
  */
 package vistas;
 
+import controlador.ClienteData;
+import controlador.ConsultaData;
+import controlador.MascotaData;
+import controlador.TratamientoData;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
+import modelo.Conexion;
+import modelo.Consulta;
 import modelo.Mascota;
+import modelo.Tratamiento;
 
 /**
  *
@@ -14,11 +23,37 @@ import modelo.Mascota;
  */
 public class ViewListadoConsulta extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ViewListadoConsulta
-     */
+    private ArrayList<Tratamiento> tratamientos;
+    private TratamientoData tData;
+    private ArrayList<Consulta> consultas;
+    private ArrayList<Consulta> consultasI;
+    private ConsultaData cData;
+    private ArrayList<Mascota> mascotas;
+    private MascotaData mData;
+    private ArrayList<Cliente> clientes;
+    private ClienteData clienteData;
+    private Conexion conexion;
+    private DefaultTableModel modelo;
+    
+    
     public ViewListadoConsulta() {
         initComponents();
+         conexion = new Conexion();
+        cData = new ConsultaData(conexion);
+        
+         mData = new MascotaData(conexion);
+        mascotas = (ArrayList<Mascota>) mData.listarMascotasActivas();
+        modelo = new DefaultTableModel();
+        cargarMascota();
+        
+        consultas=(ArrayList<Consulta>)cData.promediarPesoPorMascota(WIDTH);
+         consultasI=(ArrayList<Consulta>)cData.listarConsultasInactivas();
+        
+        tData = new TratamientoData(conexion);
+        tratamientos = (ArrayList<Tratamiento>) tData.listarTratamientosActivos();
+
+       
+
     }
 
     /**
@@ -33,16 +68,13 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tConsulta = new javax.swing.JTable();
+        cbMascota = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        btnPromedio = new javax.swing.JButton();
+        tPromedio = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setResizable(true);
         getContentPane().setLayout(null);
@@ -50,7 +82,7 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         jLabel1.setFont(new java.awt.Font("Sylfaen", 0, 18)); // NOI18N
         jLabel1.setText("LISTA DE  CONSULTAS");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(180, 70, 317, 24);
+        jLabel1.setBounds(220, 40, 210, 24);
 
         jButton1.setText("BUSCAR");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -59,58 +91,56 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(473, 171, 78, 32);
+        jButton1.setBounds(440, 140, 73, 23);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID CONSULTA", "FECHA", "ID TRATAMIENTO", "TIPO TRATAMIENTO", "PRECIO", "PESO CONSULTA", "ACTIVO"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(50, 280, 577, 88);
+        jScrollPane1.setBounds(30, 260, 620, 88);
 
-        jRadioButton1.setText("activas");
-        getContentPane().add(jRadioButton1);
-        jRadioButton1.setBounds(145, 220, 80, 28);
-
-        jRadioButton2.setText("no Activas");
-        getContentPane().add(jRadioButton2);
-        jRadioButton2.setBounds(316, 220, 91, 28);
-
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(230, 130, 161, 26);
+        getContentPane().add(cbMascota);
+        cbMascota.setBounds(230, 140, 161, 20);
 
         jLabel2.setText("MASCOTA");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(108, 131, 103, 16);
+        jLabel2.setBounds(140, 140, 70, 14);
 
-        jLabel3.setText("CLIENTE");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(108, 175, 47, 16);
-
-        getContentPane().add(jComboBox2);
-        jComboBox2.setBounds(230, 172, 161, 26);
-
-        jButton2.setText("MODIFICAR");
+        jButton2.setText("SALIR");
         getContentPane().add(jButton2);
-        jButton2.setBounds(200, 420, 93, 32);
+        jButton2.setBounds(560, 440, 80, 30);
 
-        jButton3.setText("DAR DE BAJA");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(400, 420, 106, 32);
+        btnPromedio.setText("PROMEDIAR");
+        btnPromedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromedioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPromedio);
+        btnPromedio.setBounds(350, 380, 100, 30);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(-50, -10, 760, 640);
+        tPromedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tPromedioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(tPromedio);
+        tPromedio.setBounds(460, 380, 80, 30);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setText("LISTADO DE CONSULTAS");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(220, 210, 150, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -119,20 +149,76 @@ public class ViewListadoConsulta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void tPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tPromedioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tPromedioActionPerformed
+
+    private void btnPromedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromedioActionPerformed
+      
+    }//GEN-LAST:event_btnPromedioActionPerformed
+
+     private void cargarMascota() {
+
+        for (Mascota item : mascotas) {
+
+            cbMascota.addItem(item);
+
+        }
+
+    }
+      private void armaCabeceraTabla() {
+
+      
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("FECHA");
+         columnas.add("ID DE TRATAMIENTO");
+        columnas.add("TIPO DE TRATAMIENTO");
+         columnas.add("PRECIO");
+        columnas.add("PESO CONSULTA");
+        columnas.add("ACTIVO");
+      
+
+        for (Object it : columnas) {
+
+            modelo.addColumn(it);
+        }
+        tConsulta.setModel(modelo);
+    }
+       private void borraFilasTabla() {
+
+        int a = modelo.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+
+            modelo.removeRow(i);
+        }
+    }
+        private void cargaDatos(){
+    
+        borraFilasTabla();
+          
+           
+       Mascota seleccionado= (Mascota)cbMascota.getSelectedItem();
+        
+        ArrayList<Consulta> lista = (ArrayList)cData.listarConsultasporMascota(seleccionado.getIdMascota());
+        
+        for(Consulta c:lista){
+        
+            modelo.addRow(new Object[]{c.getIdConsulta(),c.getFechaConsulta(),c.getTratamiento().getIdTratamiento(),c.getTratamiento().getTipoTratamiento(),c.getPrecio(),c.getPrecio(),c.getPesoConsulta(),c.isActivo()});
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnPromedio;
+    private javax.swing.JComboBox<Mascota> cbMascota;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<Mascota> jComboBox1;
-    private javax.swing.JComboBox<Cliente> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tConsulta;
+    private javax.swing.JTextField tPromedio;
     // End of variables declaration//GEN-END:variables
 }
