@@ -15,6 +15,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import modelo.Cliente;
 import modelo.Conexion;
+import modelo.Consulta;
+import modelo.Mascota;
+import modelo.Tratamiento;
 
 /**
  *
@@ -202,6 +205,7 @@ public class ClienteData {
                 cliente.setDireccion(rs.getString(5));
                 cliente.setTelefono(rs.getInt(6));
                 cliente.setContactoAlternativo(rs.getString(7));
+                cliente.setActivo(rs.getBoolean(8));
                 clientes.add(cliente);
 
             }
@@ -230,6 +234,7 @@ public class ClienteData {
                 cliente.setDireccion(rs.getString(5));
                 cliente.setTelefono(rs.getInt(6));
                 cliente.setContactoAlternativo(rs.getString(7));
+                cliente.setActivo(rs.getBoolean(8));
                 clientes.add(cliente);
 
             }
