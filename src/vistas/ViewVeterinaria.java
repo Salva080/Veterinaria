@@ -5,12 +5,12 @@
  */
 package vistas;
 
-import vistas.ViewAgregarConsulta;
+import vistas.ViewGestionConsulta;
 import vistas.ViewCliente;
-import vistas.ViewConsulta;
-import vistas.ViewListadoConsulta;
+
+
 import vistas.ViewMascotas;
-import vistas.ViewTratamiento;
+
 import vistas.ViewVeterinaria;
 
 /**
@@ -24,7 +24,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
      */
     public ViewVeterinaria() {
         initComponents();
-       this.setSize(800, 600);
+       this.setSize(800, 800);
        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 
@@ -51,13 +51,12 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         jmiListadoMascotas = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiAgregarConsulta = new javax.swing.JMenuItem();
-        jmiManejoConsultas = new javax.swing.JMenuItem();
-        jmiListadoConsulta = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
-        jmiManejoTratamientos = new javax.swing.JMenuItem();
+        menulTratamientos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        escritorio.setBackground(new java.awt.Color(255, 255, 255));
         escritorio.setPreferredSize(new java.awt.Dimension(397, 268));
 
         javax.swing.GroupLayout escritorioLayout = new javax.swing.GroupLayout(escritorio);
@@ -125,7 +124,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
 
         jMenu4.setText("Consultas");
 
-        jmiAgregarConsulta.setText("Agregar consulta");
+        jmiAgregarConsulta.setText("Gestion Consultas");
         jmiAgregarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jmiAgregarConsultaActionPerformed(evt);
@@ -133,33 +132,17 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         });
         jMenu4.add(jmiAgregarConsulta);
 
-        jmiManejoConsultas.setText("Manejo de consultas");
-        jmiManejoConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiManejoConsultasActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jmiManejoConsultas);
-
-        jmiListadoConsulta.setText("Listado de consultas");
-        jmiListadoConsulta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiListadoConsultaActionPerformed(evt);
-            }
-        });
-        jMenu4.add(jmiListadoConsulta);
-
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Tratamientos");
 
-        jmiManejoTratamientos.setText("Manejo de tratamientos");
-        jmiManejoTratamientos.addActionListener(new java.awt.event.ActionListener() {
+        menulTratamientos.setText("GestionTratamientos");
+        menulTratamientos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiManejoTratamientosActionPerformed(evt);
+                menulTratamientosActionPerformed(evt);
             }
         });
-        jMenu5.add(jmiManejoTratamientos);
+        jMenu5.add(menulTratamientos);
 
         jMenuBar1.add(jMenu5);
 
@@ -189,7 +172,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewCliente vc = new ViewCliente();
-        vc.setSize(800,600);
+        vc.setSize(850,700);
         vc.setVisible(true);
         escritorio.add(vc);
         escritorio.moveToFront(vc);
@@ -201,62 +184,29 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewMascotas vm = new ViewMascotas();
-        vm.setSize(800,600);
+        vm.setSize(850,700);
         vm.setVisible(true);
         escritorio.add(vm);
         escritorio.moveToFront(vm);
     }//GEN-LAST:event_jmiFormularioMascotasActionPerformed
 
-    private void jmiManejoConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManejoConsultasActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        ViewConsulta vcta = new ViewConsulta();
-        vcta.setSize(800,600);
-        vcta.setVisible(true);
-        escritorio.add(vcta);
-        escritorio.moveToFront(vcta);
-    }//GEN-LAST:event_jmiManejoConsultasActionPerformed
-
-    private void jmiManejoTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiManejoTratamientosActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        ViewTratamiento vt = new ViewTratamiento();
-        vt.setSize(800,600);
-        vt.setVisible(true);
-        escritorio.add(vt);
-        escritorio.moveToFront(vt);
-    }//GEN-LAST:event_jmiManejoTratamientosActionPerformed
-
     private void jmiAgregarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiAgregarConsultaActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
-        ViewAgregarConsulta vac = new ViewAgregarConsulta();
-        vac.setSize(800,600);
+        ViewGestionConsulta vac = new ViewGestionConsulta();
+        vac.setSize(850,700);
         vac.setVisible(true);
         escritorio.add(vac);
         escritorio.moveToFront(vac);
     }//GEN-LAST:event_jmiAgregarConsultaActionPerformed
-
-    private void jmiListadoConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListadoConsultaActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        ViewListadoConsulta vlc = new ViewListadoConsulta();
-        vlc.setSize(800,600);
-        vlc.setVisible(true);
-        escritorio.add(vlc);
-        escritorio.moveToFront(vlc);
-    }//GEN-LAST:event_jmiListadoConsultaActionPerformed
 
     private void jmiListadoMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListadoMascotasActionPerformed
         // TODO add your handling code here:
         escritorio.removeAll();
         escritorio.repaint();
         ViewListadoMascotas vlm = new ViewListadoMascotas();
-        vlm.setSize(800,600);
+        vlm.setSize(850,700);
         vlm.setVisible(true);
         escritorio.add(vlm);
         escritorio.moveToFront(vlm);
@@ -266,11 +216,21 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewListadoClientes lc = new ViewListadoClientes();
-        lc.setSize(800,600);
+        lc.setSize(850,700);
         lc.setVisible(true);
         escritorio.add(lc);
         escritorio.moveToFront(lc);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menulTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menulTratamientosActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewGestionTratamientos ltr = new ViewGestionTratamientos();
+        ltr.setSize(850,700);
+        ltr.setVisible(true);
+        escritorio.add(ltr);
+        escritorio.moveToFront(ltr);
+    }//GEN-LAST:event_menulTratamientosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,10 +280,8 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiAgregarConsulta;
     private javax.swing.JMenuItem jmiFormularioCliente;
     private javax.swing.JMenuItem jmiFormularioMascotas;
-    private javax.swing.JMenuItem jmiListadoConsulta;
     private javax.swing.JMenuItem jmiListadoMascotas;
-    private javax.swing.JMenuItem jmiManejoConsultas;
-    private javax.swing.JMenuItem jmiManejoTratamientos;
     private javax.swing.JMenuItem jmiSalir;
+    private javax.swing.JMenuItem menulTratamientos;
     // End of variables declaration//GEN-END:variables
 }

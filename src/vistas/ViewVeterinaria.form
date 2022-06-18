@@ -72,26 +72,10 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="jmiAgregarConsulta">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Agregar consulta"/>
+                <Property name="text" type="java.lang.String" value="Gestion Consultas"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiAgregarConsultaActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiManejoConsultas">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Manejo de consultas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiManejoConsultasActionPerformed"/>
-              </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiListadoConsulta">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Listado de consultas"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiListadoConsultaActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -101,12 +85,12 @@
             <Property name="text" type="java.lang.String" value="Tratamientos"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jmiManejoTratamientos">
+            <MenuItem class="javax.swing.JMenuItem" name="menulTratamientos">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Manejo de tratamientos"/>
+                <Property name="text" type="java.lang.String" value="GestionTratamientos"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jmiManejoTratamientosActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menulTratamientosActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -149,6 +133,9 @@
   <SubComponents>
     <Container class="javax.swing.JDesktopPane" name="escritorio">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[397, 268]"/>
         </Property>

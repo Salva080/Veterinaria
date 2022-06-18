@@ -111,6 +111,7 @@ public class Veterinaria {
         Consulta coneee = new Consulta(15, 500, LocalDate.of(2020, 8, 8), m3, tdd1, true, 2.5);
         cd = new ConsultaData(conexion);
         
+        
      //   cd.modificarConsulta(27, con);
         
         

@@ -70,7 +70,9 @@ public class ConsultaData {
         }
         return promedios;
     }
-
+    
+    
+    
     
     //2 ok
 
@@ -114,6 +116,9 @@ public class ConsultaData {
     }
 //3 ok
 
+    
+    
+    
     public Cliente buscarClientePorMascota(int idMascota) {
         Cliente cliente = null;
         try {
@@ -241,108 +246,13 @@ public class ConsultaData {
     }
 //9 ok 
 
-    public List<Consulta> listarConsultasporMascota(int idMascota) {
-        List<Consulta> consultas = new ArrayList<>();
-        Consulta consulta;
-        Mascota mascota;
-        Tratamiento tratamiento;
-
-        sql = "SELECT * FROM consulta WHERE idMascota = ? ORDER BY idTratamiento ASC ";
-
-        try {
-            
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idMascota);
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                consulta = new Consulta();
-                consulta.setIdConsulta(rs.getInt("idConsulta"));
-                consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
-                tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
-                consulta.setTratamiento(tratamiento);
-
-                mascota = buscarMascotas(rs.getInt("IdMascota"));
-
-                consulta.setMascota(mascota);
-                consulta.setTratamiento(tratamiento);
-                consultas.add(consulta);
-            }
-            ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al obtener las consultas" + ex.getMessage());
-        }
-
-        return consultas;
-    }
-
+  
+    
+    
+    
+    
 //10 ok 
-    public List<Consulta> listarConsultasPorTratamiento(int idTratamiento, String tipoTratamiento) {
-        List<Consulta> consultas = new ArrayList<>();
-        Consulta consulta;
-        Mascota mascota;
-        Tratamiento tratamiento;
-
-        if (tipoTratamiento == null);
-        {
-
-            try {
-                sql = "SELECT * FROM consulta, tratamiento, mascota WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tratamiento.idTratamiento= ? ORDER BY fechaConsulta ASC ";
-
-                PreparedStatement ps = con.prepareStatement(sql);
-                ps.setInt(1, idTratamiento);
-                ResultSet rs = ps.executeQuery();
-
-                while (rs.next()) {
-                    consulta = new Consulta();
-                    consulta.setIdConsulta(rs.getInt("idConsulta"));
-                    consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
-                    tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
-                    mascota = buscarMascotas(rs.getInt("IdMascota"));
-
-                    consulta.setMascota(mascota);
-                    consulta.setTratamiento(tratamiento);
-                    consultas.add(consulta);
-                }
-                ps.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al obtener las consultas" + ex.getMessage());
-            }
-
-        }
-        if (idTratamiento == 0) {
-            try {
-
-                sql = "SELECT * FROM consulta, tratamiento, mascota WHERE consulta.idTratamiento = tratamiento.idTratamiento AND tipoTratamiento = ? ORDER BY fechaConsulta ASC ";
-
-                PreparedStatement ps = con.prepareStatement(sql);
-                ps.setString(1, tipoTratamiento);
-                ResultSet rs = ps.executeQuery();
-
-                while (rs.next()) {
-                    consulta = new Consulta();
-                    consulta.setIdConsulta(rs.getInt("idConsulta"));
-                    System.out.println("fechaConsulta");
-                    consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
-
-                    tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
-                    consulta.setTratamiento(tratamiento);
-
-                    mascota = buscarMascotas(rs.getInt("IdMascota"));
-
-                    consulta.setMascota(mascota);
-                    consulta.setTratamiento(tratamiento);
-                    consultas.add(consulta);
-                }
-                ps.close();
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error al obtener las consultas" + ex.getMessage());
-            }
-
-        }
-        return consultas;
-    }
-
+   
 //11 ok
     public List<Tratamiento> listarTratamientosporMascota(int idMascota) {
         List<Tratamiento> tratamientos = new ArrayList<>();
@@ -373,22 +283,41 @@ public class ConsultaData {
         return tratamientos;
 
     }
-//12 ok 
-
-    public List<Consulta> listarConsultasActivas() {
-        List<Consulta> consultas = new ArrayList<>();
-        Consulta consul;
-        Mascota mascota;
-        Tratamiento tratamiento;
-
-        sql = "SELECT * FROM consulta WHERE activo=1 ORDER BY fechaConsulta ASC;";
+//consultas activas/inactivas/filtrar por cliente y alias mascota
+ public ArrayList<Consulta> listarConsultas(int valor, String cc) {
+Consulta consul;
+Mascota mascota;
+Tratamiento tratamiento;
+Cliente cliente;
+        ArrayList<Consulta> clista = new ArrayList<>();
+        switch(valor){
+            case 0:
+                sql = "SELECT * FROM consulta";
+                break;
+            case 1:
+                sql = "SELECT * FROM consulta where activo=0";
+                break;
+            case 2:
+                sql = "SELECT * FROM consulta where activo=1";
+                break;
+            case 3:
+                 sql = "SELECT * FROM consulta, mascota where mascota.idMascota=consulta.idMascota AND mascota.alias like '%"+cc+"%'";
+                 break;
+            case 4:     
+            sql = "SELECT * FROM consulta, mascota, cliente where cliente.idCliente= mascota.idCliente AND mascota.idMascota=consulta.idMascota AND cliente.apellido like '%"+cc+"%'";
+                 break; 
+            case 5:     
+            sql = "SELECT * FROM consulta, mascota, tratamiento where tratamiento.idTratamiento= consulta.idTratamiento AND tratamiento.tipoTratamiento like '%"+cc+"%'";
+                 break;       
+                           
+            default: break;    
+        }
         try {
+            
             PreparedStatement ps = con.prepareStatement(sql);
-
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 consul = new Consulta();
-
                 consul.setIdConsulta(rs.getInt("idConsulta"));
                 consul.setPrecio(rs.getDouble("precio"));
                 consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
@@ -402,60 +331,20 @@ public class ConsultaData {
 
                 consul.setMascota(mascota);
                 consul.setTratamiento(tratamiento);
-
-                consultas.add(consul);
-
+              
+              clista.add(consul);
             }
-            rs.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, " No se pudo obtener el listado de consultas activas");
+            ps.close();
 
+        } catch (SQLException ex) {
+          JOptionPane.showMessageDialog(null, " Error en la busqueda de consultas. ");
         }
-
-        return consultas;
-
+        return clista;
     }
-//13 ok
-
-    public List<Consulta> listarConsultasInactivas() {
-        List<Consulta> consultas = new ArrayList<>();
-        Consulta consul;
-        Mascota mascota;
-        Tratamiento tratamiento;
-
-        sql = "SELECT * FROM consulta WHERE activo=0 ORDER BY fechaConsulta ASC;";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                consul = new Consulta();
-                consul.setIdConsulta(rs.getInt("idConsulta"));
-                consul.setPrecio(rs.getDouble("precio"));
-              consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
-
-                consul.setPesoConsulta(rs.getDouble("pesoConsulta"));
-                consul.setActivo(rs.getBoolean("activo"));
-                tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
-                consul.setTratamiento(tratamiento);
-
-                mascota = buscarMascotas(rs.getInt("IdMascota"));
-
-                consul.setMascota(mascota);
-                consul.setTratamiento(tratamiento);
-
-                consultas.add(consul);
-
-            }
-            rs.close();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, " No se pudo obtener el listado de consultas Inactivas");
-
-        }
-
-        return consultas;
-
-    }
+    
+    
+    
+    
     
     
 }

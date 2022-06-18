@@ -178,105 +178,47 @@ public class TratamientoData {
         }
         return Tratamientos;
     }
-//revisado
-    public List<Tratamiento> listarTratamientosActivos() {
 
-        List<Tratamiento> tratamientos = new ArrayList<>();
+    //tratamientos activos, no activos,por tipo
+    public ArrayList<Tratamiento> listarTratamientos(int valor, String tt) {
+Tratamiento tratamiento;
+        ArrayList<Tratamiento> tlista = new ArrayList<Tratamiento>();
+        switch(valor){
+            case 0:
+                sql = "SELECT * FROM tratamiento";
+                break;
+            case 1:
+                sql = "SELECT * FROM tratamiento where activo=0";
+                break;
+            case 2:
+                sql = "SELECT * FROM tratamiento where activo=1";
+                break;
+            case 3:
+                 sql = "SELECT * FROM tratamiento where tipoTratamiento like '%"+tt+"%'";
+                 break;
+                           
+            default: break;    
+        }
         try {
-            sql = "SELECT * FROM tratamiento WHERE activo= 1  ORDER BY idTratamiento ASC";
+            
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Tratamiento tratamiento = new Tratamiento();
-         
-                tratamiento.setIdTratamiento(rs.getInt("idTratamiento"));
-               tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
-                tratamiento.setDescripcion(rs.getString("descripcion"));
-                tratamiento.setMedicamento(rs.getString("medicamento"));
-                tratamiento.setPrecio(rs.getDouble("precio"));
-                tratamiento.setActivo(rs.getBoolean("activo"));
-                
-                
-                tratamientos.add(tratamiento);
+                tratamiento = new Tratamiento();
+tratamiento.setIdTratamiento(rs.getInt("idTratamiento"));
+tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
+tratamiento.setMedicamento(rs.getString("medicamento"));
+tratamiento.setDescripcion(rs.getString("descripcion"));
+tratamiento.setPrecio(rs.getDouble("precio"));
+tratamiento.setActivo(rs.getBoolean("activo"));
+              
+                tlista.add(tratamiento);
             }
             ps.close();
 
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos activos. "+ex.getMessage());
+          JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos. ");
         }
-        return tratamientos;
+        return tlista;
     }
-//revisado
-    public List<Tratamiento> listarTratamientosInactivos() {
-
-        List<Tratamiento> tratamientos = new ArrayList<>();
-        try {
-            sql = "SELECT * FROM tratamiento WHERE activo= 0  ORDER BY idTratamiento ASC";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Tratamiento tratamiento = new Tratamiento();
-
-                 tratamiento.setIdTratamiento(rs.getInt("idTratamiento"));
-               tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
-                tratamiento.setDescripcion(rs.getString("descripcion"));
-                tratamiento.setMedicamento(rs.getString("medicamento"));
-                tratamiento.setPrecio(rs.getDouble("precio"));
-                tratamiento.setActivo(rs.getBoolean("activo"));
-                
-                
-                tratamientos.add(tratamiento);
-
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda de tratamientos inactivos. ");
-        }
-        return tratamientos;
-    }
-
-    public void activarTratamiento(int id) {
-        sql = "UPDATE tratamiento SET activo =1 WHERE idTratamiento=?";
-        try {
-            PreparedStatement ps = con.prepareStatement(sql);
-
-            ps.setInt(1, id);
-            ps.executeUpdate();
-
-            ps.close();
-            JOptionPane.showMessageDialog(null, " Se dió de alta el Tratamiento");
-        } catch (SQLException e) {
-
-            JOptionPane.showMessageDialog(null, " No se puedo activar el Tratamiento");
-        }
-
-    }
-//activar ok.
-    
-    
-    //prueba
-    public  List<Tratamiento> listarTiposDeTratamientos(){
-        List<Tratamiento> lista= new ArrayList<>();
-        
-        sql="SELECT tipoTratamiento FROM tratamiento WHERE activo=1";
-       try{
-           
-       
-        PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Tratamiento tratamiento = new Tratamiento();
-                
-                 tratamiento.setTipoTratamiento(rs.getString("tipoTratamiento"));
-                 lista.add(tratamiento);
-            }
-            ps.close();
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, " Error en la busqueda de tipos de tratamientos . ");
-        }
-        return lista;
-    }
-    
 }
