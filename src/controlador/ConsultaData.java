@@ -285,10 +285,10 @@ public class ConsultaData {
     }
 //consultas activas/inactivas/filtrar por cliente y alias mascota
  public ArrayList<Consulta> listarConsultas(int valor, String cc) {
-Consulta consul;
-Mascota mascota;
-Tratamiento tratamiento;
-Cliente cliente;
+        Consulta consul;
+        Mascota mascota;
+        Tratamiento tratamiento;
+        Cliente cliente;
         ArrayList<Consulta> clista = new ArrayList<>();
         switch(valor){
             case 0:

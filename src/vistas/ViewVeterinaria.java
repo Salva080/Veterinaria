@@ -49,6 +49,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jmiFormularioMascotas = new javax.swing.JMenuItem();
         jmiListadoMascotas = new javax.swing.JMenuItem();
+        jmiListadoMascotaPorClientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiAgregarConsulta = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -119,6 +120,14 @@ public class ViewVeterinaria extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jmiListadoMascotas);
+
+        jmiListadoMascotaPorClientes.setText("Listado Mascotas Por Cliente");
+        jmiListadoMascotaPorClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiListadoMascotaPorClientesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiListadoMascotaPorClientes);
 
         jMenuBar1.add(jMenu3);
 
@@ -232,6 +241,17 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.moveToFront(ltr);
     }//GEN-LAST:event_menulTratamientosActionPerformed
 
+    private void jmiListadoMascotaPorClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListadoMascotaPorClientesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewListaMascotasPorCliente lmc = new ViewListaMascotasPorCliente();
+        lmc.setSize(850,700);
+        lmc.setVisible(true);
+        escritorio.add(lmc);
+        escritorio.moveToFront(lmc);
+    }//GEN-LAST:event_jmiListadoMascotaPorClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -280,6 +300,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiAgregarConsulta;
     private javax.swing.JMenuItem jmiFormularioCliente;
     private javax.swing.JMenuItem jmiFormularioMascotas;
+    private javax.swing.JMenuItem jmiListadoMascotaPorClientes;
     private javax.swing.JMenuItem jmiListadoMascotas;
     private javax.swing.JMenuItem jmiSalir;
     private javax.swing.JMenuItem menulTratamientos;

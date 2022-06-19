@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/controlador/ClienteData.java</file>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/modelo/Cliente.java</file>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/vistas/ViewVeterinaria.java</file>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/vistas/ViewListadoClientes.java</file>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/vistas/ViewListarClientesPorMascotas.java</file>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/vistas/ViewListaMascotasPorCliente.java</file>
-            <file>file:/C:/Users/NEXO-MAX/Documents/GitHub/Veterinaria/src/controlador/ConsultaData.java</file>
+            <file>file:/C:/Users/salva/OneDrive/Documents/NetBeansProjects/Veterinaria/src/vistas/ViewMascotas.java</file>
+            <file>file:/C:/Users/salva/OneDrive/Documents/NetBeansProjects/Veterinaria/src/controlador/MascotaData.java</file>
+            <file>file:/C:/Users/salva/OneDrive/Documents/NetBeansProjects/Veterinaria/src/vistas/ViewListadoMascotas.java</file>
+            <file>file:/C:/Users/salva/OneDrive/Documents/NetBeansProjects/Veterinaria/src/controlador/ConsultaData.java</file>
         </group>
     </open-files>
 </project-private>
