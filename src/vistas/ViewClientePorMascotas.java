@@ -249,7 +249,6 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
     private void cargaDatosMascotas() {
 
         borraFilasTabla();
-        //Llenar filas con las materias en las que esta incripto un alumno
 
         Mascota seleccionado = (Mascota) cMascotas.getSelectedItem();
 
