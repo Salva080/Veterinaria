@@ -54,6 +54,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         tClientes = new javax.swing.JTable();
         cBuscar1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btBaja = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         btAlta = new javax.swing.JButton();
@@ -98,6 +99,17 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         getContentPane().add(cBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 90, 30));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 690, 10));
 
+        btBaja.setBackground(new java.awt.Color(255, 255, 255));
+        btBaja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btBaja.setForeground(new java.awt.Color(0, 0, 0));
+        btBaja.setText("Dar de Baja");
+        btBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBajaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 120, 30));
+
         jLabel15.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("¿No encuentras el cliente?");
@@ -117,7 +129,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
                 btAltaActionPerformed(evt);
             }
         });
-        getContentPane().add(btAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 120, 30));
+        getContentPane().add(btAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 120, 30));
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -200,6 +212,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         borraFilasTabla();
         cargaDatosActivos();
         btAlta.setEnabled(false);
+        btBaja.setEnabled(true);
     }//GEN-LAST:event_rbActivosActionPerformed
 
     private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
@@ -208,7 +221,31 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         borraFilasTabla();
         cargaDatosInactivos();
         btAlta.setEnabled(true);
+        btBaja.setEnabled(false);
     }//GEN-LAST:event_rbNoActivosActionPerformed
+
+    private void btBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBajaActionPerformed
+         try {
+            int filaSeleccionada = tClientes.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+
+                clienteData.desactivarCliente(idCliente);
+
+                boolean activo = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
+
+                borraFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar un cliente");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
+        }
+    }//GEN-LAST:event_btBajaActionPerformed
     private void armaCabeceraTabla() {
 
         //Titulos de Columnas
@@ -266,6 +303,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlta;
+    private javax.swing.JButton btBaja;
     private javax.swing.JButton cBuscar1;
     private javax.swing.JButton cSalir;
     private javax.swing.JLabel fondo;
