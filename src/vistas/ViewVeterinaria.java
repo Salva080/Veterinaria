@@ -11,7 +11,7 @@ import vistas.ViewCliente;
 
 import vistas.ViewMascotas;
 
-import vistas.ViewVeterinaria;
+import vistas.*;
 
 /**
  *
@@ -24,7 +24,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
      */
     public ViewVeterinaria() {
         initComponents();
-       this.setSize(800, 800);
+       this.setSize(900, 900);
        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 
@@ -195,7 +195,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewGestionConsulta vac = new ViewGestionConsulta();
-        vac.setSize(850,700);
+        vac.setSize(970,700);
         vac.setVisible(true);
         escritorio.add(vac);
         escritorio.moveToFront(vac);
@@ -226,7 +226,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.removeAll();
         escritorio.repaint();
         ViewGestionTratamientos ltr = new ViewGestionTratamientos();
-        ltr.setSize(850,700);
+        ltr.setSize(900,700);
         ltr.setVisible(true);
         escritorio.add(ltr);
         escritorio.moveToFront(ltr);

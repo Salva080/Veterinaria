@@ -37,13 +37,14 @@ public class ConsultaData {
     }
 ///  1 ok va por consola
 
-    public List<Consulta> promediarPesoPorMascota(int idMascota) {
+    public double promediarPesoPorMascota(int idMascota) {
 
         List<Consulta> promedios = new ArrayList<>();
         Consulta consulta;
         Mascota mascota;
+        double promedio=0;
         try {
-            sql = "SELECT consulta.idMascota, idConsulta, AVG(pesoConsulta) FROM mascota,consulta where consulta.idMascota=mascota.idMascota AND consulta.idMascota=? ;";
+            sql = "SELECT  AVG(pesoConsulta) FROM mascota,consulta where consulta.idMascota=mascota.idMascota AND consulta.idMascota=? ;";
 
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -52,23 +53,23 @@ public class ConsultaData {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-//                double prom = rs.getDouble("AVG(pesoConsulta)");
-//              
-                consulta = new Consulta();
-                consulta.setIdConsulta(rs.getInt("idConsulta"));
-                mascota = buscarMascotas(rs.getInt("idMascota"));
-
-                consulta.setPesoConsulta(rs.getDouble("AVG(pesoConsulta)"));
-
-                consulta.setMascota(mascota);
-                promedios.add(consulta);
-
+                promedio = rs.getDouble("AVG(pesoConsulta)");
+                System.out.println(""+ promedio);
+//                consulta = new Consulta();
+//                consulta.setIdConsulta(rs.getInt("idConsulta"));
+//                mascota = buscarMascotas(rs.getInt("idMascota"));
+//
+//                consulta.setPesoConsulta(rs.getDouble("AVG(pesoConsulta)"));
+//
+//                consulta.setMascota(mascota);
+//                promedios.add(consulta);
+            
             }
             ps.close();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "No se pudo generar el promedio de mascotas." + e.getMessage());
         }
-        return promedios;
+        return promedio;
     }
     
     
@@ -201,15 +202,15 @@ public class ConsultaData {
     }
 
 //5 ok
-    public void eliminarConsulta(int idMascota, int idTratamiento) {
+    public void eliminarConsulta(int idConsulta) {
 
         try {
 
-            sql = "UPDATE consulta SET activo=0 WHERE idMascota =? AND idTratamiento = ?";
+            sql = "UPDATE consulta SET activo=0 WHERE idConsulta =? ";
 
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, idMascota);
-            ps.setInt(2, idTratamiento);
+            ps.setInt(1, idConsulta);
+           
 
             ps.executeUpdate();
 
@@ -304,10 +305,10 @@ Cliente cliente;
                  sql = "SELECT * FROM consulta, mascota where mascota.idMascota=consulta.idMascota AND mascota.alias like '%"+cc+"%'";
                  break;
             case 4:     
-            sql = "SELECT * FROM consulta, mascota, cliente where cliente.idCliente= mascota.idCliente AND mascota.idMascota=consulta.idMascota AND cliente.apellido like '%"+cc+"%'";
+            sql = "SELECT * FROM consulta, mascota, cliente where cliente.idCliente= mascota.idCliente AND mascota.idMascota=consulta.idMascota AND cliente.dni like '%"+cc+"%'";
                  break; 
             case 5:     
-            sql = "SELECT * FROM consulta, mascota, tratamiento where tratamiento.idTratamiento= consulta.idTratamiento AND tratamiento.tipoTratamiento like '%"+cc+"%'";
+            sql = "SELECT * FROM consulta, tratamiento where tratamiento.idTratamiento= consulta.idTratamiento AND tratamiento.tipoTratamiento like '%"+cc+"%'";
                  break;       
                            
             default: break;    
@@ -342,7 +343,43 @@ Cliente cliente;
         return clista;
     }
     
-    
+     public Consulta buscarConsulta(int idConsulta) {
+      
+        Consulta consulta = new Consulta();
+        Mascota mascota;
+        Tratamiento tratamiento;
+
+        sql = "SELECT * FROM consulta WHERE idMascota = ? ORDER BY idTratamiento ASC ";
+
+        try {
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idConsulta);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+              
+                consulta.setIdConsulta(rs.getInt("idConsulta"));
+                consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
+                consulta.setPrecio(rs.getDouble("precio"));
+                consulta.setPesoConsulta(rs.getDouble("pesoConsulta"));
+                consulta.setActivo(rs.getBoolean("activo"));
+                tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
+                consulta.setTratamiento(tratamiento);
+
+                mascota = buscarMascotas(rs.getInt("IdMascota"));
+
+                consulta.setMascota(mascota);
+                consulta.setTratamiento(tratamiento);
+                
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al obtener las consultas" + ex.getMessage());
+        }
+
+        return consulta;
+    }
     
     
     

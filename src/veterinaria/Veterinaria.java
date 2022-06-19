@@ -43,7 +43,7 @@ public class Veterinaria {
 
         /*........................Tratamiento.........................*/
         Tratamiento tdd1 = new Tratamiento(1, "cirugia", "corte", "pildoras", 12389, true);
-        Tratamiento tdd2 = new Tratamiento("baño", "masajes", "pildoras", 12389, true);
+        Tratamiento tdd2 = new Tratamiento("baño", "masajes", "pildoras", 444, true);
 //        td.agregarTratamiento(tdd1);
 //        td.agregarTratamiento(tdd2);
 //        td.eliminarTratamiento(1);
@@ -61,6 +61,7 @@ public class Veterinaria {
              System.out.println(tt.getIdTratamiento()+"-"+ tt.getTipoTratamiento());
             }
 */
+ //               td.modificarTratamiento(18, tdd2);
         /*........................Cliente.........................*/
         Cliente cli = new Cliente(15, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente cl2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
@@ -111,7 +112,7 @@ public class Veterinaria {
         Consulta coneee = new Consulta(15, 500, LocalDate.of(2020, 8, 8), m3, tdd1, true, 2.5);
         cd = new ConsultaData(conexion);
         
-        
+     //   cd.promediarPesoPorMascota(23);
      //   cd.modificarConsulta(27, con);
         
         

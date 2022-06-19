@@ -97,6 +97,8 @@ public class TratamientoData {
     }
 //existe ok.
 
+    
+    //modificado y controlado
     public void modificarTratamiento(int id, Tratamiento tratamiento) {
 
         sql = "UPDATE tratamiento SET tipoTratamiento=?, descripcion=?, medicamento=?, precio=? WHERE activo=1 AND idTratamiento=?";
@@ -107,8 +109,8 @@ public class TratamientoData {
             ps.setString(2, tratamiento.getDescripcion());
             ps.setString(3, tratamiento.getMedicamento());
             ps.setDouble(4, tratamiento.getPrecio());
-            ps.setBoolean(5, tratamiento.isActivo());
-            //  ps.setInt(6, tratamiento.getConsulta().getIdConsulta());
+           
+             ps.setInt(5, id);
             ps.executeUpdate();
 
             ps.close();
@@ -116,6 +118,22 @@ public class TratamientoData {
         } catch (SQLException e) {
 
             JOptionPane.showMessageDialog(null, " No se pudo modificar el Tratamiento");
+        }
+
+    }
+    
+     public void activarTratamiento(int id) {
+        sql = "UPDATE tratamiento SET activo = 1 WHERE idTratamiento = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            ps.close();
+            JOptionPane.showMessageDialog(null, "Se dió de alta el Tratamiento");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo dar de alta el Tratamiento");
         }
 
     }
@@ -135,17 +153,17 @@ public class TratamientoData {
                 // correcto         
                 tratamiento.setIdTratamiento(rs.getInt(1));
 
-                //ps.setInt(1, tratamiento.getIdTratamiento());
+         
                 tratamiento.setTipoTratamiento(rs.getString(2));
                 tratamiento.setDescripcion(rs.getString(3));
                 tratamiento.setMedicamento(rs.getString(4));
                 tratamiento.setPrecio(rs.getDouble(5));
                 tratamiento.setActivo(rs.getBoolean(6));
-                //  ps.setInt(7, Tratamiento.getConsulta().getIdConsulta());
+             
 
             }
             ps.close();
-            //JOptionPane.showMessageDialog(null, "Busqueda exitosa");
+        
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error en la busqueda del Tratamiento.");
         }
