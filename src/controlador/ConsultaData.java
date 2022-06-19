@@ -83,7 +83,7 @@ public class ConsultaData {
         Consulta consulta;
         Mascota mascota;
         Cliente cliente;
-        sql = " SELECT consulta.idConsulta, mascota.idMascota, mascota.idCliente FROM consulta, mascota WHERE mascota.idMascota=consulta.idMascota AND mascota.idCliente= ?; ";
+        sql = " SELECT  mascota.idMascota, mascota.idCliente FROM  mascota WHERE mascota.idMascota AND mascota.idCliente= ?; ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
 
@@ -93,7 +93,6 @@ public class ConsultaData {
             while (rs.next()) {
 
                 consulta = new Consulta();
-                consulta.setIdConsulta(rs.getInt("idConsulta"));
 
                 cliente = buscarClientes(rs.getInt("idCliente"));
 
@@ -103,9 +102,6 @@ public class ConsultaData {
 
                 listado.add(consulta);
 
-            }
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(null, "No se encontró ese id como cliente activo en Consulta.");
             }
 
             ps.close();
@@ -286,10 +282,10 @@ public class ConsultaData {
     }
 //consultas activas/inactivas/filtrar por cliente y alias mascota
  public ArrayList<Consulta> listarConsultas(int valor, String cc) {
-Consulta consul;
-Mascota mascota;
-Tratamiento tratamiento;
-Cliente cliente;
+        Consulta consul;
+        Mascota mascota;
+        Tratamiento tratamiento;
+        Cliente cliente;
         ArrayList<Consulta> clista = new ArrayList<>();
         switch(valor){
             case 0:

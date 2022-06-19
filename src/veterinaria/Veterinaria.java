@@ -105,7 +105,7 @@ public class Veterinaria {
         Tratamiento tdd3 = new Tratamiento(16, "cirugia", "corte", "pildoras", 12389, true);
 
         Consulta con = new Consulta(1500, LocalDate.of(2000, 12, 06), m3, tdd3, true, 2.5);
-        Consulta cone = new Consulta(15, 500, LocalDate.of(2022, 07, 06), m3, tdd3, true, 40);
+        Consulta cone = new Consulta(23, 500, LocalDate.of(2022, 07, 06), m3, tdd3, true, 40);
        
         cd = new ConsultaData(conexion);
 
@@ -125,7 +125,7 @@ public class Veterinaria {
       */
        
         //        ok
-        //       cd.registrarConsulta(con);
+               cd.registrarConsulta(cone);
         /*      8 ok   
             List<Consulta> co =  cd.listarConsultasporMascota(23);
             for(Consulta a: co){

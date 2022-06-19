@@ -262,4 +262,19 @@ public class ClienteData {
         }
 
     }
+    public void desactivarCliente(int id) {
+        sql = "UPDATE cliente SET activo =0 WHERE IdCliente=?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, id);
+            ps.executeUpdate();
+
+            ps.close();
+            JOptionPane.showMessageDialog(null, " Se dió de baja al cliente");
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, " No se puedo desactivar el cliente");
+        }
+}
 }

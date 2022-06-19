@@ -46,9 +46,11 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jmiFormularioCliente = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmiFormularioMascotas = new javax.swing.JMenuItem();
         jmiListadoMascotas = new javax.swing.JMenuItem();
+        jmiListadoMascotaPorClientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiAgregarConsulta = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
@@ -100,6 +102,14 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         });
         jMenu2.add(jMenuItem1);
 
+        jMenuItem2.setText("Listado Clientes por mascota");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Mascotas");
@@ -119,6 +129,14 @@ public class ViewVeterinaria extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jmiListadoMascotas);
+
+        jmiListadoMascotaPorClientes.setText("Listado Mascotas Por Cliente");
+        jmiListadoMascotaPorClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmiListadoMascotaPorClientesActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jmiListadoMascotaPorClientes);
 
         jMenuBar1.add(jMenu3);
 
@@ -232,6 +250,27 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.moveToFront(ltr);
     }//GEN-LAST:event_menulTratamientosActionPerformed
 
+    private void jmiListadoMascotaPorClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListadoMascotaPorClientesActionPerformed
+        // TODO add your handling code here:
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewListaMascotasPorCliente lmc = new ViewListaMascotasPorCliente();
+        lmc.setSize(850,700);
+        lmc.setVisible(true);
+        escritorio.add(lmc);
+        escritorio.moveToFront(lmc);
+    }//GEN-LAST:event_jmiListadoMascotaPorClientesActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        escritorio.removeAll();
+        escritorio.repaint();
+        ViewClientePorMascotas cpm = new ViewClientePorMascotas();
+        cpm.setSize(850,700);
+        cpm.setVisible(true);
+        escritorio.add(cpm);
+        escritorio.moveToFront(cpm);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -277,9 +316,11 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jmiAgregarConsulta;
     private javax.swing.JMenuItem jmiFormularioCliente;
     private javax.swing.JMenuItem jmiFormularioMascotas;
+    private javax.swing.JMenuItem jmiListadoMascotaPorClientes;
     private javax.swing.JMenuItem jmiListadoMascotas;
     private javax.swing.JMenuItem jmiSalir;
     private javax.swing.JMenuItem menulTratamientos;

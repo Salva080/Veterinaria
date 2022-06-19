@@ -5,6 +5,15 @@
  */
 package vistas;
 
+import controlador.ClienteData;
+import controlador.ConsultaData;
+import controlador.MascotaData;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+import modelo.Conexion;
+import modelo.Consulta;
 import modelo.Mascota;
 
 /**
@@ -12,12 +21,36 @@ import modelo.Mascota;
  * @author Caro_Z
  */
 public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
-
+    
+    private ArrayList<Cliente> listaClientes;
+    private ClienteData clid;
+    private ArrayList<Consulta> listConsulta;
+    private ConsultaData cond;
+    private List<Mascota> listarMascotas;
+    private MascotaData md;
+    private Conexion conexion;
+    private DefaultTableModel modelo;
+    
     /**
      * Creates new form ViewListaMascotasPorCliente
      */
     public ViewListaMascotasPorCliente() {
         initComponents();
+        
+        conexion = new Conexion();
+        clid = new ClienteData(conexion);
+        listaClientes = (ArrayList<Cliente>) clid.listarClienteActivos();
+        
+        cargaClientes();
+        modelo = new DefaultTableModel();
+        armaCabeceraTabla();
+        
+        cond = new ConsultaData(conexion);
+//        Consulta cons = (Consulta) cbClientes.getSelectedItem();
+//        listConsulta = (ArrayList) cond.listarConsultas(cons.getIdConsulta(),cons.toString());
+        
+        md = new MascotaData(conexion);
+        listarMascotas = (ArrayList) md.listarMascotasActivas();
     }
 
     /**
@@ -31,9 +64,10 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        cbMascota = new javax.swing.JComboBox<>();
+        cbClientes = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtMascota = new javax.swing.JTable();
+        jbBuscar = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("SimSun", 1, 18)); // NOI18N
         jLabel1.setText("LISTADO DE MASCOTAS");
@@ -41,7 +75,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("CLIENTE");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtMascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -52,7 +86,14 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
                 "ID", "ALIAS", "ESPECIE", "RAZA", "SEXO", "PESO", "PESO ACTUAL"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtMascota);
+
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -63,26 +104,29 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(152, 152, 152)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(cbMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jbBuscar))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(185, 185, 185)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(54, 54, 54)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(56, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(jLabel1)
-                .addGap(72, 72, 72)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(cbMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(80, 80, 80)
+                    .addComponent(cbClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbBuscar))
+                .addGap(77, 77, 77)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(127, Short.MAX_VALUE))
         );
@@ -90,12 +134,59 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        cargarDatosMascotas();
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void armaCabeceraTabla(){
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("Alias");
+        columnas.add("Especie");
+        columnas.add("Raza");
+        columnas.add("Sexo");
+        columnas.add("Peso");
+        columnas.add("Peso Actual");
+        
+        for(Object it: columnas){
+            modelo.addColumn(it);
+        }
+        jtMascota.setModel(modelo);
+    }
+    
+    private void borrarFilasTabla(){
+       int a = modelo.getRowCount()-1;
+       
+       for(int i=a; i >= 0; i--){
+           modelo.removeRow(i);
+       }
+    }
+    
+    private void cargarDatosMascotas(){
+        borrarFilasTabla();
+        
+        Cliente seleccionado = (Cliente) cbClientes.getSelectedItem();
+        
+        ArrayList<Consulta> lista = (ArrayList) cond.listarMascotasPorClienteActivo(seleccionado.getIdCliente());
+        
+        for(Consulta m: lista){
+            modelo.addRow(new Object[] {m.getMascota().getIdMascota(),m.getMascota().getAlias(), m.getMascota().getEspecie(), m.getMascota().getRaza(), m.getMascota().getSexo(), m.getMascota().getPesoMascota(), m.getMascota().getPesoActual()});
+        }
+    }
+    
+    private void cargaClientes(){
+        for (Cliente item: listaClientes){
+            cbClientes.addItem(item);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<Mascota> cbMascota;
+    private javax.swing.JComboBox<Cliente> cbClientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JTable jtMascota;
     // End of variables declaration//GEN-END:variables
 }
