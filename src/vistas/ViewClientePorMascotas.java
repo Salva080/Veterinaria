@@ -9,9 +9,11 @@ import controlador.ClienteData;
 import controlador.ConsultaData;
 import controlador.MascotaData;
 import java.util.ArrayList;
+import java.util.Iterator;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
+import modelo.Consulta;
 import modelo.Mascota;
 
 /**
@@ -239,11 +241,8 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
 
     private void cargaMascotas() {
         //Carga las mascotas al ComboBox
-
         for (Mascota item : listaMascotas) {
-
             cMascotas.addItem(item);
-
         }
     }
 
@@ -254,13 +253,11 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
 
         Mascota seleccionado = (Mascota) cMascotas.getSelectedItem();
 
-        ArrayList<Cliente> lista = (ArrayList) consultaData.buscarClientePorMascota(seleccionado.getIdMascota());
+        Cliente client = consultaData.buscarClientePorMascota(seleccionado.getIdMascota());
+        
+        modelo.addRow(new Object[]{client.getIdCliente(),client.getDni(), client.getApellido(), client.getNombre(), client.getDireccion(),client.getTelefono(), client.getContactoAlternativo(),client.isActivo()});
 
-        for (Alumno a : lista) {
-
-            modelo1.addRow(new Object[]{a.getId_alumno(), a.getApellido(), a.getNombre(), a.getFechaNac()});
-
-        }
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -268,7 +265,7 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
     private javax.swing.JButton cBuscar1;
     private javax.swing.JButton cBuscar2;
     private javax.swing.JButton cBuscar3;
-    private javax.swing.JComboBox<String> cMascotas;
+    private javax.swing.JComboBox<Mascota> cMascotas;
     private javax.swing.JButton cSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
