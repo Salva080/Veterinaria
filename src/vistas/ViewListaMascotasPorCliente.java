@@ -168,10 +168,10 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         
         Cliente seleccionado = (Cliente) cbClientes.getSelectedItem();
         
-        ArrayList<Mascota> lista = (ArrayList) cond.listarMascotasPorClienteActivo(seleccionado.getIdCliente());
+        ArrayList<Consulta> lista = (ArrayList) cond.listarMascotasPorClienteActivo(seleccionado.getIdCliente());
         
-        for(Mascota m: lista){
-            modelo.addRow(new Object[] {m.getIdMascota(), m.getAlias(), m.getEspecie(), m.getRaza(), m.getSexo(), m.getPesoMascota(), m.getPesoActual()});
+        for(Consulta m: lista){
+            modelo.addRow(new Object[] {m.getMascota().getIdMascota(),m.getMascota().getAlias(), m.getMascota().getEspecie(), m.getMascota().getRaza(), m.getMascota().getSexo(), m.getMascota().getPesoMascota(), m.getMascota().getPesoActual()});
         }
     }
     
