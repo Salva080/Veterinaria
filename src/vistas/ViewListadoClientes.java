@@ -35,7 +35,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         clienteData = new ClienteData(conexion);
         listaClientes = (ArrayList<Cliente>) clienteData.listarClienteActivos();
         listaClientes = (ArrayList<Cliente>) clienteData.listarClientesInactivos();
-        
+
         modelo = new DefaultTableModel();
         armaCabeceraTabla();
         btAlta.setEnabled(false);
@@ -54,6 +54,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         tClientes = new javax.swing.JTable();
         cBuscar1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        btBaja = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         btAlta = new javax.swing.JButton();
@@ -98,6 +99,17 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         getContentPane().add(cBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 90, 30));
         getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 690, 10));
 
+        btBaja.setBackground(new java.awt.Color(255, 255, 255));
+        btBaja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btBaja.setForeground(new java.awt.Color(0, 0, 0));
+        btBaja.setText("Dar de Baja");
+        btBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBajaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btBaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 120, 30));
+
         jLabel15.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("¿No encuentras el cliente?");
@@ -117,7 +129,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
                 btAltaActionPerformed(evt);
             }
         });
-        getContentPane().add(btAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 120, 30));
+        getContentPane().add(btAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 480, 120, 30));
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -162,22 +174,16 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaActionPerformed
-    try {
+        try {
             int filaSeleccionada = tClientes.getSelectedRow();
 
             if (filaSeleccionada != -1) {
 
                 int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
-                int dni = (Integer) modelo.getValueAt (filaSeleccionada,1);
-                String apellido = (String) modelo.getValueAt(filaSeleccionada, 2);
-                String nombre = (String) modelo.getValueAt(filaSeleccionada, 3);
-                String direccion = (String) modelo.getValueAt(filaSeleccionada, 4);
-                int telefono = (int) modelo.getValueAt(filaSeleccionada, 5);
-                String contacto = (String) modelo.getValueAt(filaSeleccionada, 6);
 
                 clienteData.activarCliente(idCliente);
 
-                boolean estado = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
+                boolean activo = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
 
                 borraFilasTabla();
 
@@ -195,7 +201,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cSalirActionPerformed
 
     private void cBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar1ActionPerformed
-         ViewCliente vc = new ViewCliente();
+        ViewCliente vc = new ViewCliente();
         ViewVeterinaria.escritorio.add(vc);
         vc.toFront();
         vc.setVisible(true);
@@ -206,6 +212,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         borraFilasTabla();
         cargaDatosActivos();
         btAlta.setEnabled(false);
+        btBaja.setEnabled(true);
     }//GEN-LAST:event_rbActivosActionPerformed
 
     private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
@@ -214,8 +221,32 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         borraFilasTabla();
         cargaDatosInactivos();
         btAlta.setEnabled(true);
+        btBaja.setEnabled(false);
     }//GEN-LAST:event_rbNoActivosActionPerformed
-   private void armaCabeceraTabla() {
+
+    private void btBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBajaActionPerformed
+         try {
+            int filaSeleccionada = tClientes.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+
+                clienteData.desactivarCliente(idCliente);
+
+                boolean activo = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
+
+                borraFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar un cliente");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
+        }
+    }//GEN-LAST:event_btBajaActionPerformed
+    private void armaCabeceraTabla() {
 
         //Titulos de Columnas
         ArrayList<Object> columnas = new ArrayList<Object>();
@@ -234,6 +265,7 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         }
         tClientes.setModel(modelo);
     }
+
     private void borraFilasTabla() {
 
         int a = modelo.getRowCount() - 1;
@@ -243,15 +275,17 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
             modelo.removeRow(i);
         }
     }
-    private void cargaDatosActivos(){
+
+    private void cargaDatosActivos() {
         borraFilasTabla();
         ArrayList<Cliente> lista = (ArrayList) clienteData.listarClienteActivos();
 
         for (Cliente a : lista) {
 
-            modelo.addRow(new Object[]{a.getIdCliente(),a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(),a.getTelefono(), a.getContactoAlternativo(),a.isActivo()});
+            modelo.addRow(new Object[]{a.getIdCliente(), a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(), a.getTelefono(), a.getContactoAlternativo(), a.isActivo()});
         }
     }
+
     private void cargaDatosInactivos() {
 
         borraFilasTabla();
@@ -261,14 +295,15 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
 
         for (Cliente a : lista) {
 
-                        modelo.addRow(new Object[]{a.getIdCliente(),a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(),a.getTelefono(), a.getContactoAlternativo(),a.isActivo()});
+            modelo.addRow(new Object[]{a.getIdCliente(), a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(), a.getTelefono(), a.getContactoAlternativo(), a.isActivo()});
 
         }
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlta;
+    private javax.swing.JButton btBaja;
     private javax.swing.JButton cBuscar1;
     private javax.swing.JButton cSalir;
     private javax.swing.JLabel fondo;

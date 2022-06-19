@@ -254,7 +254,7 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
 
         Cliente client = consultaData.buscarClientePorMascota(seleccionado.getIdMascota());
         
-        modelo.addRow(new Object[]{client.getIdCliente(),client.getDni(), client.getApellido(), client.getNombre(), client.getDireccion(),client.getTelefono(), client.getContactoAlternativo(),client.isActivo()});
+        modelo.addRow(new Object[]{client.getIdCliente(),client.getDni(), client.getNombre(),client.getApellido(), client.getDireccion(),client.getTelefono(), client.getContactoAlternativo(),client.isActivo()});
 
         
     }
