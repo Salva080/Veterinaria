@@ -52,7 +52,6 @@ public class Prueba extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -61,6 +60,7 @@ public class Prueba extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 600));
@@ -89,7 +89,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(30, 400, 90, 80);
+        jButton2.setBounds(30, 380, 90, 80);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir boton.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -98,7 +98,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(30, 700, 90, 80);
+        jButton4.setBounds(30, 680, 90, 80);
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.png"))); // NOI18N
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -107,13 +107,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton9);
-        jButton9.setBounds(30, 80, 90, 80);
-
-        jLabel4.setFont(new java.awt.Font("Arial Narrow", 3, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel4.setText("VETERINARIA G3");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(290, 20, 470, 50);
+        jButton9.setBounds(30, 100, 90, 80);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 3, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
@@ -137,17 +131,17 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(30, 550, 90, 90);
+        jButton3.setBounds(30, 530, 90, 90);
 
         jLabel1.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel1.setText("Salir");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(50, 790, 60, 15);
+        jLabel1.setBounds(50, 770, 60, 15);
 
         jLabel3.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel3.setText("Clientes");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(40, 160, 60, 15);
+        jLabel3.setBounds(40, 180, 60, 15);
 
         jLabel6.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel6.setText("Mascotas");
@@ -157,12 +151,16 @@ public class Prueba extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel7.setText("Tratamientos");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(40, 480, 90, 15);
+        jLabel7.setBounds(40, 460, 90, 15);
 
         jLabel8.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel8.setText("Consultas");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(40, 640, 60, 15);
+        jLabel8.setBounds(40, 620, 60, 15);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, -10, 1150, 840);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -233,8 +231,8 @@ public class Prueba extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
