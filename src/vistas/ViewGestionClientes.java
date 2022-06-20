@@ -196,9 +196,9 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel11.setText("Nomb. Alternativo:");
+        jLabel11.setText("Contact. Alternativo:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 410, 125, 17);
+        jLabel11.setBounds(80, 410, 140, 17);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
