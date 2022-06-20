@@ -28,7 +28,7 @@ public class Prueba extends javax.swing.JFrame {
     }
     private void    mostrarPanel(JInternalFrame p){
       
-        p.setSize(980,700);   
+        p.setSize(1150, 770);   
         p.setLocation(0,0);
         
         panelPrueba.removeAll();
@@ -49,17 +49,21 @@ public class Prueba extends javax.swing.JFrame {
     private void initComponents() {
 
         panelPrueba = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(null);
 
         panelPrueba.setBackground(new java.awt.Color(255, 255, 255));
@@ -68,79 +72,46 @@ public class Prueba extends javax.swing.JFrame {
         panelPrueba.setLayout(panelPruebaLayout);
         panelPruebaLayout.setHorizontalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1140, Short.MAX_VALUE)
+            .addGap(0, 1010, Short.MAX_VALUE)
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 610, Short.MAX_VALUE)
+            .addGap(0, 750, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(140, 80, 1140, 610);
+        panelPrueba.setBounds(140, 80, 1010, 750);
 
-        jButton1.setText("Mascotas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(0, 194, 86, 32);
-
-        jButton2.setText("Tratamientos");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tratamiento.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(0, 254, 106, 32);
+        jButton2.setBounds(30, 400, 90, 80);
 
-        jButton3.setText("Consulta");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(0, 316, 80, 32);
-
-        jButton4.setText("MASCOTAS");
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir boton.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(0, 446, 96, 32);
+        jButton4.setBounds(30, 700, 90, 80);
 
-        jButton5.setText("CLIENTES");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(0, 499, 85, 32);
-
-        jButton9.setText("Clientes");
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/clientes.png"))); // NOI18N
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton9);
-        jButton9.setBounds(0, 128, 76, 32);
+        jButton9.setBounds(30, 80, 90, 80);
 
-        jLabel2.setFont(new java.awt.Font("Book Antiqua", 3, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 255));
-        jLabel2.setText("LISTADOS");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(10, 390, 100, 22);
-
-        jLabel4.setFont(new java.awt.Font("Book Antiqua", 3, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial Narrow", 3, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 102, 102));
-        jLabel4.setText("VETERINARIA PICHICHU");
+        jLabel4.setText("VETERINARIA G3");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(290, 20, 470, 50);
 
@@ -148,7 +119,50 @@ public class Prueba extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(51, 51, 255));
         jLabel5.setText("GESTIONAR");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 90, 120, 22);
+        jLabel5.setBounds(10, 50, 120, 22);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mascotas.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(30, 240, 90, 80);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consluta.png"))); // NOI18N
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(30, 550, 90, 90);
+
+        jLabel1.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
+        jLabel1.setText("Salir");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(50, 790, 60, 15);
+
+        jLabel3.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
+        jLabel3.setText("Clientes");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(40, 160, 60, 15);
+
+        jLabel6.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
+        jLabel6.setText("Mascotas");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(40, 320, 60, 15);
+
+        jLabel7.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
+        jLabel7.setText("Tratamientos");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(40, 480, 90, 15);
+
+        jLabel8.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
+        jLabel8.setText("Consultas");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(40, 640, 60, 15);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -164,7 +178,7 @@ public class Prueba extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        ViewCliente c =new ViewCliente();
+        ViewGestionClientes c =new ViewGestionClientes();
         mostrarPanel( c);
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -174,14 +188,8 @@ public class Prueba extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       ViewListadoMascotas lm =new ViewListadoMascotas();
-        mostrarPanel( lm);
+       System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-         ViewListadoClientes lc =new ViewListadoClientes();
-        mostrarPanel( lc);
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,11 +231,14 @@ public class Prueba extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel panelPrueba;
     // End of variables declaration//GEN-END:variables
 }
