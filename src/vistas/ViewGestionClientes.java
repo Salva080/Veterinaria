@@ -40,6 +40,9 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         armaCabeceraTabla();
         btAlta.setEnabled(false);
         btBaja.setEnabled(false);
+        cGuardar.setToolTipText("Guardar cliente");
+        cActualizar.setToolTipText("Editar cliente");
+        cLimpiar.setToolTipText("Limpiar campos");
 
     }
 
@@ -189,6 +192,11 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cCelularFocusLost(evt);
+            }
+        });
+        cCelular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                cCelularKeyTyped(evt);
             }
         });
         getContentPane().add(cCelular);
@@ -754,6 +762,16 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
         }
     }//GEN-LAST:event_btBajaActionPerformed
+
+    private void cCelularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cCelularKeyTyped
+     int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
+            evt.consume();
+        }
+    }//GEN-LAST:event_cCelularKeyTyped
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");

@@ -109,11 +109,11 @@ public class Prueba extends javax.swing.JFrame {
         getContentPane().add(jButton9);
         jButton9.setBounds(30, 100, 90, 80);
 
-        jLabel5.setFont(new java.awt.Font("Book Antiqua", 3, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 255));
+        jLabel5.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 153, 204));
         jLabel5.setText("GESTIONAR");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 50, 120, 22);
+        jLabel5.setBounds(30, 50, 90, 22);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mascotas.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
