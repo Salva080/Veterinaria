@@ -167,8 +167,8 @@ public class ViewListadoClientes extends javax.swing.JInternalFrame {
         jLabel3.setText("Lista de clientes");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, -1, -1));
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 780, 630));
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2sin.png"))); // NOI18N
+        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 780, 590));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

@@ -263,6 +263,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel14.setBounds(80, 180, 32, 17);
 
         cDNI2.setBackground(new java.awt.Color(255, 255, 255));
+        cDNI2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cDNI2ActionPerformed(evt);
+            }
+        });
         cDNI2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cDNI2KeyTyped(evt);
@@ -361,7 +366,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 750, 630);
+        jLabel1.setBounds(-20, 0, 770, 630);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -474,6 +479,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         limpiarCampos();
         cId.setText("");
         cId.setEnabled(false);
+        cGuardar.setEnabled(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cApellidoKeyTyped
@@ -615,6 +621,10 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             limpiar();
         }
     }//GEN-LAST:event_cBuscar1ActionPerformed
+
+    private void cDNI2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cDNI2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cDNI2ActionPerformed
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");

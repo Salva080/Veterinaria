@@ -101,7 +101,7 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         }
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(0, 160, 780, 187);
+        jScrollPane1.setBounds(30, 160, 780, 187);
 
         rbActivas.setBackground(new java.awt.Color(255, 255, 255));
         rbActivas.setText("Activas");
@@ -154,9 +154,9 @@ public class ViewListadoMascotas extends javax.swing.JInternalFrame {
         getContentPane().add(jbAgregar);
         jbAgregar.setBounds(140, 380, 210, 32);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/5.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -10, 790, 670);
+        jLabel1.setBounds(0, 0, 850, 500);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
