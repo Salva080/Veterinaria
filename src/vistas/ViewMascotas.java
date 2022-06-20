@@ -85,57 +85,70 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         setResizable(true);
         getContentPane().setLayout(null);
 
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 48)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
         jLabel3.setText("Mascotas");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 220, -1));
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(220, 10, 220, 64);
 
         jcbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbClienteActionPerformed(evt);
             }
         });
-        jPanel1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 260, -1));
+        jPanel1.add(jcbCliente);
+        jcbCliente.setBounds(230, 90, 260, 26);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel4.setText("Peso actual de la mascota:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, -1, 30));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(20, 490, 211, 30);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel5.setText("Cliente:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, 30));
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(160, 90, 62, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setText("Peso de mascota:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 440, -1, 30));
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(90, 440, 139, 30);
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel8.setText("Fecha de nacimiento:");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, -1, 30));
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(60, 540, 169, 30);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel9.setText("Especie:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, -1, 30));
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(160, 290, 66, 30);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel10.setText("Sexo:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, 30));
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(180, 240, 42, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel11.setText("Color de pelaje:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, -1, 30));
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(100, 390, 127, 30);
 
         jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel12.setText("Alias:");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, 30));
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(180, 190, 46, 30);
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel13.setText("Mascota:");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, 30));
-        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 570, -1));
-        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 172, 570, 10));
+        jPanel1.add(jLabel13);
+        jLabel13.setBounds(170, 140, 72, 30);
+        jPanel1.add(jSeparator1);
+        jSeparator1.setBounds(90, 130, 570, 2);
+        jPanel1.add(jSeparator2);
+        jSeparator2.setBounds(90, 172, 570, 10);
 
         jtfSexo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -147,7 +160,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfSexoKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 240, 130, -1));
+        jPanel1.add(jtfSexo);
+        jtfSexo.setBounds(240, 240, 130, 24);
 
         jtfEspecie.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -159,7 +173,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfEspecieKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 290, 250, -1));
+        jPanel1.add(jtfEspecie);
+        jtfEspecie.setBounds(240, 290, 250, 24);
 
         jtfRaza.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -171,7 +186,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfRazaKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfRaza, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 160, -1));
+        jPanel1.add(jtfRaza);
+        jtfRaza.setBounds(240, 340, 160, 24);
 
         jtfPesomascota.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -183,7 +199,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfPesomascotaKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfPesomascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 80, -1));
+        jPanel1.add(jtfPesomascota);
+        jtfPesomascota.setBounds(240, 440, 80, 24);
 
         jtfPesoactual.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -195,7 +212,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfPesoactualKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfPesoactual, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 490, 90, -1));
+        jPanel1.add(jtfPesoactual);
+        jtfPesoactual.setBounds(240, 490, 90, 24);
 
         jtfAlias.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -207,19 +225,23 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfAliasKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfAlias, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 190, 200, -1));
+        jPanel1.add(jtfAlias);
+        jtfAlias.setBounds(240, 190, 200, 24);
 
         jcbEstado.setText("ESTADO");
         jcbEstado.setEnabled(false);
-        jPanel1.add(jcbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, -1, -1));
+        jPanel1.add(jcbEstado);
+        jcbEstado.setBounds(240, 590, 75, 24);
 
         jdcFechaNac.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jdcFechaNacFocusLost(evt);
             }
         });
-        jPanel1.add(jdcFechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 540, -1, -1));
-        jPanel1.add(jtfIDmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, 80, -1));
+        jPanel1.add(jdcFechaNac);
+        jdcFechaNac.setBounds(240, 540, 118, 29);
+        jPanel1.add(jtfIDmascota);
+        jtfIDmascota.setBounds(260, 140, 80, 24);
 
         jbBuscarMascota.setText("Buscar");
         jbBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
@@ -227,7 +249,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbBuscarMascotaActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBuscarMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, -1, 40));
+        jPanel1.add(jbBuscarMascota);
+        jbBuscarMascota.setBounds(350, 130, 71, 40);
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +258,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbGuardarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 640, -1, -1));
+        jPanel1.add(jbGuardar);
+        jbGuardar.setBounds(50, 640, 76, 32);
 
         jbAgregar.setText("Agregar");
         jbAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -243,7 +267,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 640, 77, -1));
+        jPanel1.add(jbAgregar);
+        jbAgregar.setBounds(160, 640, 77, 32);
 
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +276,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbModificarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 640, -1, -1));
+        jPanel1.add(jbModificar);
+        jbModificar.setBounds(270, 640, 83, 32);
 
         jbLimpíar.setText("Limpiar");
         jbLimpíar.addActionListener(new java.awt.event.ActionListener() {
@@ -259,7 +285,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbLimpíarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbLimpíar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 640, -1, -1));
+        jPanel1.add(jbLimpíar);
+        jbLimpíar.setBounds(400, 640, 73, 32);
 
         jbBorrar.setText("Borrar");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +294,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbBorrarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 640, -1, -1));
+        jPanel1.add(jbBorrar);
+        jbBorrar.setBounds(520, 640, 67, 32);
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -275,11 +303,13 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jbSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(jbSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 640, -1, -1));
+        jPanel1.add(jbSalir);
+        jbSalir.setBounds(640, 640, 56, 32);
 
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel14.setText("Raza:");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, -1, 30));
+        jPanel1.add(jLabel14);
+        jLabel14.setBounds(180, 340, 44, 30);
 
         jtfColorpelaje.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -291,11 +321,13 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
                 jtfColorpelajeKeyTyped(evt);
             }
         });
-        jPanel1.add(jtfColorpelaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 390, 160, -1));
+        jPanel1.add(jtfColorpelaje);
+        jtfColorpelaje.setBounds(240, 390, 160, 24);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2pajaro.png"))); // NOI18N
         jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, -50, -1, 730));
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(0, 0, 720, 710);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 720, 710);
