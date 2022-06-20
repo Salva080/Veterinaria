@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -1094,28 +1095,67 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
         desactivarCampos();
     }//GEN-LAST:event_btnConsultarActionPerformed
-
+/*
     private void tConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConsultaMouseClicked
 
+    
+     //  intento de pasar de jTable a DataChoooser:
+    
+    SimpleDateFormat sdformato = new SimpleDateFormat("dd/MM/yyyy");
+//      
+//        String fecha = (String) tConsulta.getValueAt(seleccionado, 1);
+//         tFecha.setDate(sdformato.parse(fecha));
+//        String Fecha = (String) tConsulta.getModel().getValueAt(seleccionado, 1);
+//         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+//         Date fecha = df.parse(Fecha);     
+         
+            //obtenemos la fila seleccionada
+//        int fila = tableDetalles.getSelectedRow();
+            //obtenemos la fecha de dicha fila
+//        String fecha = tConsulta.getValueAt(seleccionado, 1).toString();
+//        //creamos el formato en el que deseamos mostrar la fecha
+//        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy/mm/dd");
+//        //creamos una variable tipo Date y la ponemos NULL
+//        Date fechaN = null;
+//        try {
+//            //parseamos de String a Date usando el formato
+//            fechaN = formatoDelTexto.parse(fecha);
+//            //seteamos o mostramos la fecha en el JDateChooser
+//            tFecha.setDate(fechaN);
+//        } catch (ParseException ex) {
+//            ex.printStackTrace();
+//            JOptionPane.showMessageDialog(this, ex.getMessage());
+//        }
+//       ///...................................................///
+//         try {
+////            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
+////            int index = jTable1.getSelectedRow();
+//            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)tConsulta.getValueAt(seleccionado, 1));
+//            tFecha.setDate(date);
+//        } catch (ParseException ex) {
+//        
+//        }
+            //////////////////..................................................////
+            //Enviando la fecha al JDateChooser
+    /*         String f =  tConsulta.getValueAt(seleccionado, 1).toString();
+            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+            Date fecha = null;
+            try {
+                fecha = formato.parse(f, null);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }
+            tFecha.setDate(fecha);
+    
+    
+    
         try {
             int seleccionado = tConsulta.rowAtPoint(evt.getPoint());
             
             tId.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 0)));
-            //obtenemos la fecha de dicha fila
+         
             String fecha = tConsulta.getValueAt(seleccionado, 1).toString();
-            //creamos el formato en el que deseamos mostrar la fecha
-            SimpleDateFormat formatoDelTexto = new SimpleDateFormat("dd/mm/yyyy");
-            //creamos una variable tipo Date y la ponemos NULL
-            Date fechaN = null;
-            try {
-                //parseamos de String a Date usando el formato
-                fechaN = formatoDelTexto.parse(fecha);
-                //seteamos o mostramos la fecha en el JDateChooser
-                tFecha.setDate(fechaN);
-            } catch (ParseException ex) {
-                ex.printStackTrace();
-            }
-            tfechaAux.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 1)));//
+       
             
             
         
@@ -1135,10 +1175,13 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         }
 
     }//GEN-LAST:event_tConsultaMouseClicked
+*/
+
 
     private void btnBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDActionPerformed
         Consulta c = cData.buscarConsulta(Integer.parseInt(tId.getText()));
         if (c != null) {
+            
             LocalDate lc = c.getFechaConsulta();
             Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
@@ -1151,6 +1194,8 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             tPeso.setText(c.getPesoConsulta() + "");
             tPrecio.setText(c.getPrecio() + "");
             chActivo.setSelected(c.isActivo());
+        }else{
+            JOptionPane.showMessageDialog(this," No se encontro una consulta")  ;   
         }
         tId.setEnabled(false);
         if (chActivo.isSelected()) {
