@@ -16,6 +16,7 @@ import modelo.Conexion;
 import modelo.Consulta;
 import modelo.Mascota;
 import modelo.Tratamiento;
+import vistas.Prueba;
 import vistas.ViewVeterinaria;
 
 /**
@@ -36,8 +37,16 @@ public class Veterinaria {
     public static void main(String[] args) {
         conexion = new Conexion();
         
-         ViewVeterinaria cv= new  ViewVeterinaria();
-      cv.setVisible(true);
+//         ViewVeterinaria cv= new  ViewVeterinaria();
+//      cv.setVisible(true);
+      
+      //............prueba............//
+        Prueba cv= new  Prueba();
+        cv.setVisible(true);
+      //............prueba............//
+      
+      
+      
         ClienteData = new ClienteData(conexion);
         td = new TratamientoData(conexion);
 
@@ -125,7 +134,7 @@ public class Veterinaria {
       */
        
         //        ok
-               cd.registrarConsulta(cone);
+       //        cd.registrarConsulta(cone);
         /*      8 ok   
             List<Consulta> co =  cd.listarConsultasporMascota(23);
             for(Consulta a: co){

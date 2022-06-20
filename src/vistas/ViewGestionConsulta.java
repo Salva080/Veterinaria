@@ -12,14 +12,17 @@ import controlador.TratamientoData;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import jdk.internal.instrumentation.Logger;
 import modelo.Cliente;
 import modelo.Conexion;
 import modelo.Consulta;
@@ -588,7 +591,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnConsultar);
-        btnConsultar.setBounds(430, 110, 93, 23);
+        btnConsultar.setBounds(410, 110, 110, 23);
 
         jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel2.setText("Mascota:");
@@ -664,6 +667,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         });
 
         tFecha.setBackground(new java.awt.Color(153, 204, 255));
+        tFecha.setDoubleBuffered(false);
         tFecha.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 tFechaFocusLost(evt);
@@ -740,8 +744,8 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addComponent(btnIngresar)
-                .addGap(63, 63, 63)
+                .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -758,10 +762,6 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
                                 .addGap(52, 52, 52)
                                 .addComponent(tPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
-                                .addComponent(tPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(63, 63, 63)
                                 .addComponent(chActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -773,14 +773,6 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
                                 .addGap(22, 22, 22)
                                 .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnGuardar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnModificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -788,9 +780,22 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
                                     .addComponent(cbMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                                         .addComponent(btnBuscarID)
-                                        .addGap(18, 18, 18))))))
+                                        .addGap(18, 18, 18))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(52, 52, 52)
+                                    .addComponent(tPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -799,7 +804,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -876,7 +881,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBaja);
-        btnBaja.setBounds(290, 320, 110, 23);
+        btnBaja.setBounds(290, 320, 120, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -912,7 +917,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tFechaFocusLost
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       
+
         if (controlar()) {
             registrar();
             cargarTabla(0, null);
@@ -987,7 +992,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
         // TODO add your handling code here:
-       
+
         if (controlar()) {
             registrar();
             cargarTabla(0, null);
@@ -1043,15 +1048,15 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-    limpiarTabla();
+        limpiarTabla();
         filtrarTipo();
-        
+
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void rActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rActivaActionPerformed
         rNoActiva.setSelected(false);
         rTodos.setSelected(false);
-      
+
         btnBaja.setEnabled(true);
         cargarTabla(2, null);
     }//GEN-LAST:event_rActivaActionPerformed
@@ -1059,13 +1064,13 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private void rNoActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rNoActivaActionPerformed
         rActiva.setSelected(false);
         rTodos.setSelected(false);
-     
+
         btnBaja.setEnabled(false);
         cargarTabla(1, null);
     }//GEN-LAST:event_rNoActivaActionPerformed
 
     private void rTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rTodosActionPerformed
-       rActiva.setSelected(false);
+        rActiva.setSelected(false);
         rNoActiva.setSelected(false);
         cargarTabla(0, null);
     }//GEN-LAST:event_rTodosActionPerformed
@@ -1079,40 +1084,47 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void tConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConsultaMouseClicked
-     
-        try{
-        int seleccionado = tConsulta.rowAtPoint(evt.getPoint());
-       
-         tId.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 0)));
-        
-        SimpleDateFormat sdformato = new SimpleDateFormat("dd/MM/yyyy");
-      
-        String fecha = (String) tConsulta.getValueAt(seleccionado, 1);
-         tFecha.setDate(sdformato.parse(fecha));
-         
-//        String Fecha = (String) tConsulta.getModel().getValueAt(seleccionado, 1);
-//         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-//         Date fecha = df.parse(Fecha);     
 
-       // tFecha.setDate(Date.valueOf(tConsulta.getValueAt(seleccionado, 1).toString()));
-        cbMascota.setSelectedItem(String.valueOf(tConsulta.getValueAt(seleccionado, 2)));
-        cbTratamiento.setSelectedItem(String.valueOf(tConsulta.getValueAt(seleccionado, 3)));
-        tPeso.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 4)));
-        tPrecio.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 5)));
-       
-        
-         if (tConsulta.getValueAt(seleccionado, 6).toString().equals("Si")) {
+        try {
+            int seleccionado = tConsulta.rowAtPoint(evt.getPoint());
+
+             //obtenemos la fecha de dicha fila
+        String fecha = tConsulta.getValueAt(seleccionado, 1).toString();
+        //creamos el formato en el que deseamos mostrar la fecha
+        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy/mm/dd");
+        //creamos una variable tipo Date y la ponemos NULL
+        Date fechaN = null;
+        try {
+            //parseamos de String a Date usando el formato
+            fechaN = formatoDelTexto.parse(fecha);
+            //seteamos o mostramos la fecha en el JDateChooser
+            tFecha.setDate(fechaN);
+        } catch (ParseException ex) {
+            ex.printStackTrace();
+        }
+            
+            
+            
+           tId.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 0)));
+
+
+            cbMascota.setSelectedItem(String.valueOf(tConsulta.getValueAt(seleccionado, 2)));
+            cbTratamiento.setSelectedItem(String.valueOf(tConsulta.getValueAt(seleccionado, 3)));
+            tPeso.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 4)));
+            tPrecio.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 5)));
+
+            if (tConsulta.getValueAt(seleccionado, 6).toString().equals("Si")) {
                 chActivo.setSelected(true);
             } else {
                 chActivo.setSelected(false);
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage());
-            
+
         }
-        
+
     }//GEN-LAST:event_tConsultaMouseClicked
- 
+
     private void btnBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDActionPerformed
         Consulta c = cData.buscarConsulta(Integer.parseInt(tId.getText()));
         if (c != null) {
@@ -1136,10 +1148,10 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarIDActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-          
+
         if (chActivo.isSelected()) {
-            
-            int id=Integer.parseInt(tId.getText());
+
+            int id = Integer.parseInt(tId.getText());
             Date fecha = tFecha.getDate();
             LocalDate fechaC = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
@@ -1152,25 +1164,26 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             boolean activo = chActivo.isSelected();
 
             Consulta c = new Consulta(precio, fechaC, m, t, activo, peso);
-       try{ 
-    
-            cData.modificarConsulta(id, c);
-        }catch(Exception e){
-            
+            try {
+
+                cData.modificarConsulta(id, c);
+            } catch (Exception e) {
+
+            }
         }
-  } cargarTabla(0, null);
+        cargarTabla(0, null);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-       int id= Integer.parseInt(tId.getText());
+
+        int id = Integer.parseInt(tId.getText());
         cData.promediarPesoPorMascota(id);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tIdFocusLost
-       if(!tId.getText().isEmpty()){
-           btnBuscarID.setEnabled(true);
-       }
+        if (!tId.getText().isEmpty()) {
+            btnBuscarID.setEnabled(true);
+        }
     }//GEN-LAST:event_tIdFocusLost
 
     private void tIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tIdActionPerformed
@@ -1178,9 +1191,9 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tIdActionPerformed
 
     private void tIdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tIdKeyTyped
-         int key = evt.getKeyChar();
+        int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
-       
+
         if (!(numeros)) {
             JOptionPane.showMessageDialog(this, "El dato Id debe ser numérico");
             evt.consume();
@@ -1188,7 +1201,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tIdKeyTyped
 
     private void btnBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaActionPerformed
-       int filaSeleccionada = tConsulta.getSelectedRow();
+        int filaSeleccionada = tConsulta.getSelectedRow();
 
         if (filaSeleccionada != -1) {
 
@@ -1207,7 +1220,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBajaActionPerformed
 
     private void tFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tFiltroKeyReleased
-       filtrarTipo();
+        filtrarTipo();
     }//GEN-LAST:event_tFiltroKeyReleased
 
     private void cargarTratamiento() {
@@ -1353,9 +1366,10 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         cargarTabla(campo, valor);
 
     }
-    private void limpiarTabla(){
-     tablaConsultas(8);
- }
+
+    private void limpiarTabla() {
+        tablaConsultas(8);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBaja;
