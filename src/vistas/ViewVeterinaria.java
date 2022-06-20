@@ -5,6 +5,7 @@
  */
 package vistas;
 
+import javax.swing.JOptionPane;
 import vistas.ViewGestionConsulta;
 import vistas.ViewGestionClientes;
 
@@ -157,7 +158,7 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jmiSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiSalirActionPerformed
-        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(null, "¡Hasta pronto!");
         System.exit(0);
     }//GEN-LAST:event_jmiSalirActionPerformed
 

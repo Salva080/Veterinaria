@@ -83,8 +83,8 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cDNI2 = new javax.swing.JTextField();
         cBuscar1 = new javax.swing.JButton();
         cDNI = new javax.swing.JTextField();
-        cGuardar = new javax.swing.JButton();
         cActualizar = new javax.swing.JButton();
+        cGuardar = new javax.swing.JButton();
         cLimpiar = new javax.swing.JButton();
         cSalir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -110,14 +110,14 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cBuscar.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cBuscar.setForeground(new java.awt.Color(0, 0, 0));
-        cBuscar.setText("Buscar ");
+        cBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos(4).png"))); // NOI18N
         cBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBuscarActionPerformed(evt);
             }
         });
         getContentPane().add(cBuscar);
-        cBuscar.setBounds(250, 130, 90, 30);
+        cBuscar.setBounds(250, 130, 40, 40);
 
         cApellido.setBackground(new java.awt.Color(255, 255, 255));
         cApellido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -252,7 +252,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbActivos);
-        rbActivos.setBounds(90, 490, 90, 28);
+        rbActivos.setBounds(90, 470, 90, 28);
 
         rbNoActivos.setBackground(new java.awt.Color(255, 255, 255));
         rbNoActivos.setForeground(new java.awt.Color(0, 0, 0));
@@ -263,7 +263,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbNoActivos);
-        rbNoActivos.setBounds(190, 490, 90, 28);
+        rbNoActivos.setBounds(190, 470, 90, 28);
 
         tClientes.setBackground(new java.awt.Color(255, 255, 255));
         tClientes.setForeground(new java.awt.Color(0, 0, 0));
@@ -285,7 +285,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tClientes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(80, 530, 610, 150);
+        jScrollPane1.setBounds(80, 510, 610, 150);
 
         btAlta.setBackground(new java.awt.Color(255, 255, 255));
         btAlta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -297,7 +297,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btAlta);
-        btAlta.setBounds(370, 480, 110, 35);
+        btAlta.setBounds(360, 470, 110, 35);
 
         btBaja.setBackground(new java.awt.Color(255, 255, 255));
         btBaja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -309,7 +309,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btBaja);
-        btBaja.setBounds(520, 480, 120, 35);
+        btBaja.setBounds(500, 470, 120, 35);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
@@ -364,14 +364,14 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cBuscar1.setForeground(new java.awt.Color(0, 0, 0));
-        cBuscar1.setText("Buscar ");
+        cBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos(4).png"))); // NOI18N
         cBuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBuscar1ActionPerformed(evt);
             }
         });
         getContentPane().add(cBuscar1);
-        cBuscar1.setBounds(350, 170, 90, 30);
+        cBuscar1.setBounds(350, 170, 40, 40);
 
         cDNI.setBackground(new java.awt.Color(255, 255, 255));
         cDNI.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -387,41 +387,41 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         getContentPane().add(cDNI);
         cDNI.setBounds(180, 250, 160, 30);
 
-        cGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cGuardar.setForeground(new java.awt.Color(0, 0, 0));
-        cGuardar.setText("Guardar");
-        cGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cGuardarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cGuardar);
-        cGuardar.setBounds(530, 260, 100, 35);
-
         cActualizar.setBackground(new java.awt.Color(255, 255, 255));
         cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cActualizar.setForeground(new java.awt.Color(0, 0, 0));
-        cActualizar.setText("Actualizar");
+        cActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (3).png"))); // NOI18N
         cActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cActualizarActionPerformed(evt);
             }
         });
         getContentPane().add(cActualizar);
-        cActualizar.setBounds(530, 300, 100, 35);
+        cActualizar.setBounds(550, 310, 60, 50);
+
+        cGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        cGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (2).png"))); // NOI18N
+        cGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cGuardar);
+        cGuardar.setBounds(550, 240, 60, 50);
 
         cLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         cLimpiar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cLimpiar.setForeground(new java.awt.Color(0, 0, 0));
-        cLimpiar.setText("Limpiar");
+        cLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (1).png"))); // NOI18N
         cLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cLimpiarActionPerformed(evt);
             }
         });
         getContentPane().add(cLimpiar);
-        cLimpiar.setBounds(530, 340, 100, 35);
+        cLimpiar.setBounds(550, 380, 60, 50);
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -433,7 +433,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cSalir);
-        cSalir.setBounds(530, 380, 90, 35);
+        cSalir.setBounds(600, 660, 90, 35);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(80, 460, 610, 10);
 
