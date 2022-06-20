@@ -6,28 +6,40 @@
 package vistas;
 
 import controlador.ClienteData;
+import java.awt.HeadlessException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
+import static vistas.ViewVeterinaria.escritorio;
 
 /**
  *
  * @author NEXO-MAX
  */
-public class ViewCliente extends javax.swing.JInternalFrame {
+public class ViewGestionClientes extends javax.swing.JInternalFrame {
 
     private ClienteData clienteData;
     private Conexion conexion;
-
+    private ArrayList<Cliente> listaClientes;
+    private DefaultTableModel modelo;
     /**
      * Creates new form ViewCliente
      */
-    public ViewCliente() {
+    public ViewGestionClientes() {
         initComponents();
         limpiar();
-        this.setSize(900, 700);
+        this.setSize(900, 950);
         conexion = new Conexion();
         clienteData = new ClienteData(conexion);
+        listaClientes = (ArrayList<Cliente>) clienteData.listarClienteActivos();
+        listaClientes = (ArrayList<Cliente>) clienteData.listarClientesInactivos();
+        
+        modelo = new DefaultTableModel();
+        armaCabeceraTabla();
+        btAlta.setEnabled(false);
+        btBaja.setEnabled(false);
 
     }
 
@@ -43,7 +55,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         cId = new javax.swing.JTextField();
         cBuscar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         cApellido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -53,10 +64,17 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         cCelular = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         alternativo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         cEstado = new javax.swing.JCheckBox();
         jSeparator2 = new javax.swing.JSeparator();
+        rbActivos = new javax.swing.JRadioButton();
+        rbNoActivos = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tClientes = new javax.swing.JTable();
+        btAlta = new javax.swing.JButton();
+        btBaja = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -65,9 +83,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cDNI2 = new javax.swing.JTextField();
         cBuscar1 = new javax.swing.JButton();
         cDNI = new javax.swing.JTextField();
-        cGuardar = new javax.swing.JButton();
-        cBorrar = new javax.swing.JButton();
         cActualizar = new javax.swing.JButton();
+        cGuardar = new javax.swing.JButton();
         cLimpiar = new javax.swing.JButton();
         cSalir = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
@@ -76,10 +93,12 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         getContentPane().setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Busqueda:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(80, 110, 87, 23);
 
+        cId.setBackground(new java.awt.Color(255, 255, 255));
         cId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 cIdKeyTyped(evt);
@@ -90,26 +109,17 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         cBuscar.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBuscar.setText("Buscar ");
+        cBuscar.setForeground(new java.awt.Color(0, 0, 0));
+        cBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos(4).png"))); // NOI18N
         cBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBuscarActionPerformed(evt);
             }
         });
         getContentPane().add(cBuscar);
-        cBuscar.setBounds(250, 130, 90, 30);
+        cBuscar.setBounds(250, 130, 40, 40);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jButton1.setText("Ingresar cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(550, 170, 140, 30);
-
+        cApellido.setBackground(new java.awt.Color(255, 255, 255));
         cApellido.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cApellidoFocusLost(evt);
@@ -124,15 +134,18 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cApellido.setBounds(180, 280, 160, 30);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Apellido:");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(80, 290, 59, 17);
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nombre:");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(80, 320, 57, 17);
 
+        cNombre.setBackground(new java.awt.Color(255, 255, 255));
         cNombre.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cNombreFocusLost(evt);
@@ -147,10 +160,12 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cNombre.setBounds(180, 310, 160, 30);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Dirección:");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(80, 350, 64, 17);
 
+        cDireccion.setBackground(new java.awt.Color(255, 255, 255));
         cDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cDireccionFocusLost(evt);
@@ -165,10 +180,12 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cDireccion.setBounds(180, 340, 260, 30);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Celular:");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(80, 380, 50, 17);
 
+        cCelular.setBackground(new java.awt.Color(255, 255, 255));
         cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cCelularFocusLost(evt);
@@ -178,10 +195,24 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cCelular.setBounds(180, 370, 260, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel11.setText("Nomb. Alternativo:");
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("Contact. Alternativo:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 410, 125, 17);
+        jLabel11.setBounds(80, 410, 140, 17);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(0, 0, 0));
+        jButton2.setText("Ingresar cliente");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(530, 150, 150, 30);
+
+        alternativo.setBackground(new java.awt.Color(255, 255, 255));
         alternativo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 alternativoFocusLost(evt);
@@ -196,6 +227,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         alternativo.setBounds(250, 400, 190, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estado:");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(80, 430, 48, 17);
@@ -207,9 +239,77 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cEstado);
-        cEstado.setBounds(180, 430, 21, 21);
+        cEstado.setBounds(180, 430, 24, 24);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(80, 230, 360, 2);
+
+        rbActivos.setBackground(new java.awt.Color(255, 255, 255));
+        rbActivos.setForeground(new java.awt.Color(0, 0, 0));
+        rbActivos.setText("Activos");
+        rbActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActivosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbActivos);
+        rbActivos.setBounds(90, 470, 90, 28);
+
+        rbNoActivos.setBackground(new java.awt.Color(255, 255, 255));
+        rbNoActivos.setForeground(new java.awt.Color(0, 0, 0));
+        rbNoActivos.setText("Inactivos");
+        rbNoActivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNoActivosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(rbNoActivos);
+        rbNoActivos.setBounds(190, 470, 90, 28);
+
+        tClientes.setBackground(new java.awt.Color(255, 255, 255));
+        tClientes.setForeground(new java.awt.Color(0, 0, 0));
+        tClientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "DNI", "Apellido", "Nombre", "Direccion", "Telefono", "Contacto", "Activo"
+            }
+        ));
+        jScrollPane1.setViewportView(tClientes);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(80, 510, 610, 150);
+
+        btAlta.setBackground(new java.awt.Color(255, 255, 255));
+        btAlta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btAlta.setForeground(new java.awt.Color(0, 0, 0));
+        btAlta.setText("Dar de Alta");
+        btAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAltaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btAlta);
+        btAlta.setBounds(360, 470, 110, 35);
+
+        btBaja.setBackground(new java.awt.Color(255, 255, 255));
+        btBaja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        btBaja.setForeground(new java.awt.Color(0, 0, 0));
+        btBaja.setText("Dar de Baja");
+        btBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBajaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btBaja);
+        btBaja.setBounds(500, 470, 120, 35);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
@@ -219,6 +319,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setText("Buscar cliente");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,23 +327,27 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(550, 130, 140, 30);
+        jButton4.setBounds(530, 120, 150, 30);
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("DNI:");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(80, 260, 32, 17);
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("ID Cliente:");
         getContentPane().add(jLabel13);
         jLabel13.setBounds(80, 150, 69, 17);
 
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("DNI:");
         getContentPane().add(jLabel14);
         jLabel14.setBounds(80, 180, 32, 17);
 
+        cDNI2.setBackground(new java.awt.Color(255, 255, 255));
         cDNI2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cDNI2ActionPerformed(evt);
@@ -258,15 +363,17 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
         cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBuscar1.setText("Buscar ");
+        cBuscar1.setForeground(new java.awt.Color(0, 0, 0));
+        cBuscar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos(4).png"))); // NOI18N
         cBuscar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cBuscar1ActionPerformed(evt);
             }
         });
         getContentPane().add(cBuscar1);
-        cBuscar1.setBounds(350, 170, 90, 30);
+        cBuscar1.setBounds(350, 170, 40, 40);
 
+        cDNI.setBackground(new java.awt.Color(255, 255, 255));
         cDNI.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 cDNIFocusLost(evt);
@@ -280,52 +387,45 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         getContentPane().add(cDNI);
         cDNI.setBounds(180, 250, 160, 30);
 
-        cGuardar.setBackground(new java.awt.Color(255, 255, 255));
-        cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cGuardar.setText("Guardar");
-        cGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cGuardarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cGuardar);
-        cGuardar.setBounds(80, 520, 100, 27);
-
-        cBorrar.setBackground(new java.awt.Color(255, 255, 255));
-        cBorrar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBorrar.setText("Borrar");
-        cBorrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBorrarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cBorrar);
-        cBorrar.setBounds(210, 520, 100, 27);
-
         cActualizar.setBackground(new java.awt.Color(255, 255, 255));
         cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cActualizar.setText("Actualizar");
+        cActualizar.setForeground(new java.awt.Color(0, 0, 0));
+        cActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (3).png"))); // NOI18N
         cActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cActualizarActionPerformed(evt);
             }
         });
         getContentPane().add(cActualizar);
-        cActualizar.setBounds(340, 520, 100, 27);
+        cActualizar.setBounds(550, 310, 60, 50);
+
+        cGuardar.setBackground(new java.awt.Color(255, 255, 255));
+        cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cGuardar.setForeground(new java.awt.Color(0, 0, 0));
+        cGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (2).png"))); // NOI18N
+        cGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cGuardarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cGuardar);
+        cGuardar.setBounds(550, 240, 60, 50);
 
         cLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         cLimpiar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cLimpiar.setText("Limpiar");
+        cLimpiar.setForeground(new java.awt.Color(0, 0, 0));
+        cLimpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (1).png"))); // NOI18N
         cLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cLimpiarActionPerformed(evt);
             }
         });
         getContentPane().add(cLimpiar);
-        cLimpiar.setBounds(470, 520, 100, 27);
+        cLimpiar.setBounds(550, 380, 60, 50);
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cSalir.setForeground(new java.awt.Color(0, 0, 0));
         cSalir.setText("Salir");
         cSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -333,13 +433,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cSalir);
-        cSalir.setBounds(600, 520, 90, 27);
+        cSalir.setBounds(600, 660, 90, 35);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(80, 490, 610, 10);
+        jSeparator1.setBounds(80, 460, 610, 10);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-20, 0, 770, 630);
+        jLabel1.setBounds(-20, 0, 770, 710);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -365,20 +465,8 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cGuardarActionPerformed
 
-    private void cBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBorrarActionPerformed
-        int id = Integer.parseInt(cId.getText());
-        if (clienteData.clienteExiste(id)) {
-            clienteData.eliminarCliente(id);
-            limpiar();
-            desactivarOtros();
-            desactivarId();
-        } else {
-            JOptionPane.showMessageDialog(this, "El clinete no existe");
-        }
-    }//GEN-LAST:event_cBorrarActionPerformed
-
     private void cActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActualizarActionPerformed
-        if (cId.getText() != null) {
+        if (cId.getText() != null || cDNI.getText() != null || cApellido.getText() != null || cNombre.getText() != null || cDireccion.getText() != null || cCelular.getText() != null || alternativo.getText() != null ) {
             int id = Integer.parseInt(cId.getText());
             int dni = Integer.parseInt(cDNI.getText());
             String apellido = cApellido.getText();
@@ -439,21 +527,6 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
         dispose();
     }//GEN-LAST:event_cSalirActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        desactivarId();
-        activarOtros();
-        //botonesGuardar();
-
-        sinBotonesBuscar();
-        cBuscar.setEnabled(false);
-        cBuscar1.setEnabled(false);
-        cDNI2.setEnabled(false);
-        limpiarCampos();
-        cId.setText("");
-        cId.setEnabled(false);
-        cGuardar.setEnabled(false);
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cApellidoKeyTyped
         int key = evt.getKeyChar();
@@ -530,13 +603,18 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cDireccionFocusLost
 
     private void cCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cCelularFocusLost
-        // TODO add your handling code here:
+        if (cCelular.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            cCelular.requestFocus();
+        }
     }//GEN-LAST:event_cCelularFocusLost
 
     private void alternativoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alternativoFocusLost
         if (alternativo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             alternativo.requestFocus();
+        }else{
+            cGuardar.setEnabled(true);
         }
     }//GEN-LAST:event_alternativoFocusLost
 
@@ -598,6 +676,84 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private void cDNI2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cDNI2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cDNI2ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        desactivarId();
+        activarOtros();
+        //botonesGuardar();
+
+        sinBotonesBuscar();
+        cBuscar.setEnabled(false);
+        cBuscar1.setEnabled(false);
+        cDNI2.setEnabled(false);
+        limpiarCampos();
+        cId.setText("");
+        cId.setEnabled(false);
+        cGuardar.setEnabled(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void rbActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivosActionPerformed
+        rbNoActivos.setSelected(false);
+        borraFilasTabla();
+        cargaDatosActivos();
+        btAlta.setEnabled(false);
+        btBaja.setEnabled(true);
+    }//GEN-LAST:event_rbActivosActionPerformed
+
+    private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
+        rbActivos.setSelected(false);
+
+        borraFilasTabla();
+        cargaDatosInactivos();
+        btAlta.setEnabled(true);
+        btBaja.setEnabled(false);
+    }//GEN-LAST:event_rbNoActivosActionPerformed
+
+    private void btAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaActionPerformed
+        try {
+            int filaSeleccionada = tClientes.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+
+                clienteData.activarCliente(idCliente);
+
+                boolean activo = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
+
+                borraFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar un cliente");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
+        }
+    }//GEN-LAST:event_btAltaActionPerformed
+
+    private void btBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBajaActionPerformed
+        try {
+            int filaSeleccionada = tClientes.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int idCliente = (Integer) modelo.getValueAt(filaSeleccionada, 0);
+
+                clienteData.desactivarCliente(idCliente);
+
+                boolean activo = (Boolean) modelo.getValueAt(filaSeleccionada, 7);
+
+                borraFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar un cliente");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de alta el cliente");
+        }
+    }//GEN-LAST:event_btBajaActionPerformed
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
@@ -647,7 +803,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         cId.setEnabled(true);
         cDNI2.setEnabled(true);
         cGuardar.setEnabled(true);
-        cBorrar.setEnabled(true);
+        
         cActualizar.setEnabled(true);
 
     }
@@ -662,13 +818,13 @@ public class ViewCliente extends javax.swing.JInternalFrame {
         alternativo.setEnabled(false);
         cId.setEnabled(false);
         cGuardar.setEnabled(false);
-        cBorrar.setEnabled(false);
+        
         cActualizar.setEnabled(false);
     }
 
     private void botonesDesactivados() {
         cGuardar.setEnabled(false);
-        cBorrar.setEnabled(false);
+        
         cActualizar.setEnabled(false);
         cBuscar.setEnabled(false);
         cBuscar1.setEnabled(false);
@@ -676,23 +832,77 @@ public class ViewCliente extends javax.swing.JInternalFrame {
 
     private void botonesBuscar() {
         cActualizar.setEnabled(true);
-        cBorrar.setEnabled(true);
+        
     }
 
     private void sinBotonesBuscar() {
         cActualizar.setEnabled(false);
-        cBorrar.setEnabled(false);
+        
     }
 
     private void botonesGuardar() {
         cGuardar.setEnabled(true);
     }
+    private void armaCabeceraTabla() {
+
+        //Titulos de Columnas
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("DNI");
+        columnas.add("Apellido");
+        columnas.add("Nombre");
+        columnas.add("Direccion");
+        columnas.add("Telefono");
+        columnas.add("Contacto");
+        columnas.add("Activo");
+
+        for (Object it : columnas) {
+
+            modelo.addColumn(it);
+        }
+        tClientes.setModel(modelo);
+    }
+
+    private void borraFilasTabla() {
+
+        int a = modelo.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+
+            modelo.removeRow(i);
+        }
+    }
+
+    private void cargaDatosActivos() {
+        borraFilasTabla();
+        ArrayList<Cliente> lista = (ArrayList) clienteData.listarClienteActivos();
+
+        for (Cliente a : lista) {
+
+            modelo.addRow(new Object[]{a.getIdCliente(), a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(), a.getTelefono(), a.getContactoAlternativo(), a.isActivo()});
+        }
+    }
+
+    private void cargaDatosInactivos() {
+
+        borraFilasTabla();
+        //Llenar filas con las materias en las que esta incripto un alumno
+
+        ArrayList<Cliente> lista = (ArrayList) clienteData.listarClientesInactivos();
+
+        for (Cliente a : lista) {
+
+            modelo.addRow(new Object[]{a.getIdCliente(), a.getDni(), a.getApellido(), a.getNombre(), a.getDireccion(), a.getTelefono(), a.getContactoAlternativo(), a.isActivo()});
+
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField alternativo;
+    private javax.swing.JButton btAlta;
+    private javax.swing.JButton btBaja;
     private javax.swing.JButton cActualizar;
     private javax.swing.JTextField cApellido;
-    private javax.swing.JButton cBorrar;
     private javax.swing.JButton cBuscar;
     private javax.swing.JButton cBuscar1;
     private javax.swing.JTextField cCelular;
@@ -705,7 +915,7 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JButton cLimpiar;
     private javax.swing.JTextField cNombre;
     private javax.swing.JButton cSalir;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -719,7 +929,11 @@ public class ViewCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JRadioButton rbActivos;
+    private javax.swing.JRadioButton rbNoActivos;
+    private javax.swing.JTable tClientes;
     // End of variables declaration//GEN-END:variables
 }

@@ -69,7 +69,6 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
         cBuscar2 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
         btAlta = new javax.swing.JButton();
-        cBuscar1 = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -156,17 +155,6 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
         });
         getContentPane().add(btAlta, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 480, 120, 30));
 
-        cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
-        cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        cBuscar1.setForeground(new java.awt.Color(0, 0, 0));
-        cBuscar1.setText("Agregar");
-        cBuscar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cBuscar1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cBuscar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 90, 30));
-
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Mascotas:");
@@ -187,13 +175,6 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar1ActionPerformed
-        ViewCliente vc = new ViewCliente();
-        ViewVeterinaria.escritorio.add(vc);
-        vc.toFront();
-        vc.setVisible(true);
-    }//GEN-LAST:event_cBuscar1ActionPerformed
 
     private void cBuscar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar2ActionPerformed
         // TODO add your handling code here:
@@ -261,7 +242,6 @@ public class ViewClientePorMascotas extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAlta;
-    private javax.swing.JButton cBuscar1;
     private javax.swing.JButton cBuscar2;
     private javax.swing.JButton cBuscar3;
     private javax.swing.JComboBox<Mascota> cMascotas;

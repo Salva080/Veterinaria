@@ -85,7 +85,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(0, 194, 77, 23);
+        jButton1.setBounds(0, 194, 86, 32);
 
         jButton2.setText("Tratamientos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +94,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(0, 254, 95, 23);
+        jButton2.setBounds(0, 254, 106, 32);
 
         jButton3.setText("Consulta");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +103,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(0, 316, 75, 23);
+        jButton3.setBounds(0, 316, 80, 32);
 
         jButton4.setText("MASCOTAS");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +112,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(0, 446, 87, 23);
+        jButton4.setBounds(0, 446, 96, 32);
 
         jButton5.setText("CLIENTES");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +121,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(0, 499, 79, 23);
+        jButton5.setBounds(0, 499, 85, 32);
 
         jButton9.setText("Clientes");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton9);
-        jButton9.setBounds(0, 128, 71, 23);
+        jButton9.setBounds(0, 128, 76, 32);
 
         jLabel2.setFont(new java.awt.Font("Book Antiqua", 3, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 255));
