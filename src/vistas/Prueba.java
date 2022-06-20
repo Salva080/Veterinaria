@@ -28,7 +28,7 @@ public class Prueba extends javax.swing.JFrame {
     }
     private void    mostrarPanel(JInternalFrame p){
       
-        p.setSize(1090,650);   
+        p.setSize(980,700);   
         p.setLocation(0,0);
         
         panelPrueba.removeAll();
@@ -60,7 +60,6 @@ public class Prueba extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(null);
 
         panelPrueba.setBackground(new java.awt.Color(255, 255, 255));
@@ -69,15 +68,15 @@ public class Prueba extends javax.swing.JFrame {
         panelPrueba.setLayout(panelPruebaLayout);
         panelPruebaLayout.setHorizontalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
+            .addGap(0, 1140, Short.MAX_VALUE)
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 610, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(140, 80, 1000, 560);
+        panelPrueba.setBounds(140, 80, 1140, 610);
 
         jButton1.setText("Mascotas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
