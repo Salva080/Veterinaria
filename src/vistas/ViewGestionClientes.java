@@ -30,7 +30,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     public ViewGestionClientes() {
         initComponents();
         limpiar();
-        this.setSize(900, 950);
+        this.setSize(1010, 750);
         conexion = new Conexion();
         clienteData = new ClienteData(conexion);
         listaClientes = (ArrayList<Cliente>) clienteData.listarClienteActivos();
@@ -79,6 +79,8 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         btAlta = new javax.swing.JButton();
         btBaja = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -99,7 +101,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Busqueda:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(80, 110, 87, 23);
+        jLabel4.setBounds(40, 190, 87, 23);
 
         cId.setBackground(new java.awt.Color(255, 255, 255));
         cId.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -108,7 +110,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cId);
-        cId.setBounds(180, 140, 60, 30);
+        cId.setBounds(140, 240, 60, 30);
 
         cBuscar.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -120,7 +122,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cBuscar);
-        cBuscar.setBounds(250, 130, 40, 40);
+        cBuscar.setBounds(210, 230, 40, 40);
 
         cApellido.setBackground(new java.awt.Color(255, 255, 255));
         cApellido.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -134,19 +136,19 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cApellido);
-        cApellido.setBounds(180, 280, 160, 30);
+        cApellido.setBounds(140, 460, 160, 30);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Apellido:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(80, 290, 59, 17);
+        jLabel5.setBounds(40, 470, 59, 17);
 
         jLabel6.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Nombre:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(80, 320, 57, 17);
+        jLabel6.setBounds(40, 500, 57, 17);
 
         cNombre.setBackground(new java.awt.Color(255, 255, 255));
         cNombre.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -160,13 +162,13 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cNombre);
-        cNombre.setBounds(180, 310, 160, 30);
+        cNombre.setBounds(140, 490, 160, 30);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Dirección:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(80, 350, 64, 17);
+        jLabel9.setBounds(40, 530, 64, 17);
 
         cDireccion.setBackground(new java.awt.Color(255, 255, 255));
         cDireccion.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -180,13 +182,13 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDireccion);
-        cDireccion.setBounds(180, 340, 260, 30);
+        cDireccion.setBounds(140, 520, 260, 30);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Celular:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(80, 380, 50, 17);
+        jLabel10.setBounds(40, 560, 50, 17);
 
         cCelular.setBackground(new java.awt.Color(255, 255, 255));
         cCelular.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -200,13 +202,13 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cCelular);
-        cCelular.setBounds(180, 370, 260, 30);
+        cCelular.setBounds(140, 550, 260, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Contact. Alternativo:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(80, 410, 140, 17);
+        jLabel11.setBounds(40, 590, 140, 17);
 
         jButton2.setBackground(new java.awt.Color(255, 255, 255));
         jButton2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -218,7 +220,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(530, 150, 150, 30);
+        jButton2.setBounds(540, 40, 150, 30);
 
         alternativo.setBackground(new java.awt.Color(255, 255, 255));
         alternativo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -232,13 +234,13 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(alternativo);
-        alternativo.setBounds(250, 400, 190, 30);
+        alternativo.setBounds(210, 580, 190, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Estado:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(80, 430, 48, 17);
+        jLabel7.setBounds(40, 610, 48, 17);
 
         cEstado.setBackground(new java.awt.Color(255, 255, 255));
         cEstado.addActionListener(new java.awt.event.ActionListener() {
@@ -247,9 +249,9 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cEstado);
-        cEstado.setBounds(180, 430, 24, 24);
+        cEstado.setBounds(140, 610, 24, 24);
         getContentPane().add(jSeparator2);
-        jSeparator2.setBounds(80, 230, 360, 2);
+        jSeparator2.setBounds(30, 340, 310, 20);
 
         rbActivos.setBackground(new java.awt.Color(255, 255, 255));
         rbActivos.setForeground(new java.awt.Color(0, 0, 0));
@@ -260,7 +262,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbActivos);
-        rbActivos.setBounds(90, 470, 90, 28);
+        rbActivos.setBounds(400, 140, 90, 28);
 
         rbNoActivos.setBackground(new java.awt.Color(255, 255, 255));
         rbNoActivos.setForeground(new java.awt.Color(0, 0, 0));
@@ -271,7 +273,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbNoActivos);
-        rbNoActivos.setBounds(190, 470, 90, 28);
+        rbNoActivos.setBounds(510, 140, 90, 28);
 
         tClientes.setBackground(new java.awt.Color(255, 255, 255));
         tClientes.setForeground(new java.awt.Color(0, 0, 0));
@@ -293,7 +295,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tClientes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(80, 510, 610, 150);
+        jScrollPane1.setBounds(380, 180, 610, 150);
 
         btAlta.setBackground(new java.awt.Color(255, 255, 255));
         btAlta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -305,7 +307,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btAlta);
-        btAlta.setBounds(360, 470, 110, 35);
+        btAlta.setBounds(800, 140, 110, 35);
 
         btBaja.setBackground(new java.awt.Color(255, 255, 255));
         btBaja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -317,13 +319,25 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btBaja);
-        btBaja.setBounds(500, 470, 120, 35);
+        btBaja.setBounds(680, 140, 120, 35);
 
-        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
-        jLabel3.setText("Clientes");
+        jLabel3.setText("Buscar cliente:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(240, 30, 150, 48);
+        jLabel3.setBounds(140, 90, 170, 48);
+
+        jLabel15.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel15.setText("Agregar cliente:");
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(140, 360, 170, 48);
+
+        jLabel12.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel12.setText("Clientes");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(280, 0, 150, 48);
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -335,25 +349,25 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(530, 120, 150, 30);
+        jButton4.setBounds(540, 10, 150, 30);
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("DNI:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(80, 260, 32, 17);
+        jLabel8.setBounds(40, 440, 32, 17);
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("ID Cliente:");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(80, 150, 69, 17);
+        jLabel13.setBounds(40, 250, 69, 17);
 
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("DNI:");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(80, 180, 32, 17);
+        jLabel14.setBounds(40, 280, 32, 17);
 
         cDNI2.setBackground(new java.awt.Color(255, 255, 255));
         cDNI2.addActionListener(new java.awt.event.ActionListener() {
@@ -367,7 +381,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDNI2);
-        cDNI2.setBounds(180, 180, 160, 30);
+        cDNI2.setBounds(140, 280, 160, 30);
 
         cBuscar1.setBackground(new java.awt.Color(255, 255, 255));
         cBuscar1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -379,7 +393,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cBuscar1);
-        cBuscar1.setBounds(350, 170, 40, 40);
+        cBuscar1.setBounds(310, 270, 40, 40);
 
         cDNI.setBackground(new java.awt.Color(255, 255, 255));
         cDNI.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -393,7 +407,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cDNI);
-        cDNI.setBounds(180, 250, 160, 30);
+        cDNI.setBounds(140, 430, 160, 30);
 
         cActualizar.setBackground(new java.awt.Color(255, 255, 255));
         cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -405,7 +419,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cActualizar);
-        cActualizar.setBounds(550, 310, 60, 50);
+        cActualizar.setBounds(570, 460, 70, 60);
 
         cGuardar.setBackground(new java.awt.Color(255, 255, 255));
         cGuardar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -417,7 +431,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cGuardar);
-        cGuardar.setBounds(550, 240, 60, 50);
+        cGuardar.setBounds(570, 390, 70, 60);
 
         cLimpiar.setBackground(new java.awt.Color(255, 255, 255));
         cLimpiar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -429,25 +443,25 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(cLimpiar);
-        cLimpiar.setBounds(550, 380, 60, 50);
+        cLimpiar.setBounds(570, 530, 70, 60);
 
         cSalir.setBackground(new java.awt.Color(255, 255, 255));
         cSalir.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         cSalir.setForeground(new java.awt.Color(0, 0, 0));
-        cSalir.setText("Salir");
+        cSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir boton.png"))); // NOI18N
         cSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cSalirActionPerformed(evt);
             }
         });
         getContentPane().add(cSalir);
-        cSalir.setBounds(600, 660, 90, 35);
+        cSalir.setBounds(850, 600, 80, 80);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(80, 460, 610, 10);
+        jSeparator1.setBounds(40, 650, 610, 10);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-20, 0, 770, 710);
+        jLabel1.setBounds(0, 0, 1000, 730);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -938,8 +952,10 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
