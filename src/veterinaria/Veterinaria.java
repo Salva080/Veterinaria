@@ -17,6 +17,7 @@ import modelo.Consulta;
 import modelo.Mascota;
 import modelo.Tratamiento;
 import vistas.Prueba;
+import vistas.ViewVeterinaria;
 
 /**
  *
@@ -74,18 +75,11 @@ public class Veterinaria {
         Cliente cli = new Cliente(15, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
         Cliente cl2 = new Cliente(39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota ma1 = new Mascota();
-        
 
-        Cliente c1 = new Cliente(26, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
-        Cliente c2 = new Cliente(24,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
-        Cliente c3 = new Cliente(29,"Martin", "Gomez","Libertad",2664,"Amigo",true);
+        Cliente cl = new Cliente(26, 39, "Maxi", "Gonzalez", "santaRosa", 2665, "2554", true);
+        Cliente c2 = new Cliente(15,39, "Mario", "Gomez", "santaRosa", 2665, "2554", true);
         Mascota m1 = new Mascota();
-        ClienteData cc = new ClienteData(conexion);
-        ClienteData.agregarCliente(c1);
-        
-        cc.agregarCliente(c2);
-        cc.modificarCliente(35, c3);
-        
+//        ClienteData.agregarCliente(cl);
 //        ClienteData.agregarCliente(c2);
 //        ClienteData.eliminarCliente(1);
 //        ClienteData.eliminarCliente(23);
@@ -93,9 +87,8 @@ public class Veterinaria {
 //            System.out.println("" +ClienteData.buscarClientePorDni(33333) );
 
         /*........................Mascota.........................*/
-    //    mascotaData;
-    //    mascotaData = new MascotaData(conexion);
-        Mascota mas1 = new Mascota(26,"Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, c1,2);
+        mascotaData = new MascotaData(conexion);
+        Mascota mas1 = new Mascota(26,"Pepita", "Femenino", "ave", "loro", "verde", LocalDate.of(2022, 12, 1), 39, true, cl,2);
         Mascota m3 = new Mascota(15,"Rodolfo", "Macho", "ave", "aguila", "negro", LocalDate.of(2019, 05, 3), 17, true, c2,23);
 
 

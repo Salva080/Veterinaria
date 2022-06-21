@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
-
+import static vistas.ViewVeterinaria.escritorio;
 
 /**
  *
@@ -293,11 +293,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
                 "ID", "DNI", "Apellido", "Nombre", "Direccion", "Telefono", "Contacto", "Activo"
             }
         ));
-        tClientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tClientesMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tClientes);
 
         getContentPane().add(jScrollPane1);
@@ -343,7 +338,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(0, 153, 204));
         jLabel12.setText("Clientes");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(280, 30, 150, 48);
+        jLabel12.setBounds(280, 0, 150, 48);
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -477,7 +472,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cEstadoActionPerformed
 
     private void cGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cGuardarActionPerformed
-       // try{
         int dni = Integer.parseInt(cDNI.getText());
         String apellido = cApellido.getText();
         String nombre = cNombre.getText();
@@ -491,17 +485,15 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         clienteData.agregarCliente(c);
         cId.setText(c.getIdCliente() + "");
         limpiar();
-      //  }catch(Exception e){
-      //      JOptionPane.showMessageDialog(null, "Asegúrese de completar todos los campos con los caracteres correctos");
-      //  }
+
     }//GEN-LAST:event_cGuardarActionPerformed
 
     private void cActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActualizarActionPerformed
         if (cId.getText() != null || cDNI.getText() != null || cApellido.getText() != null || cNombre.getText() != null || cDireccion.getText() != null || cCelular.getText() != null || alternativo.getText() != null ) {
             int id = Integer.parseInt(cId.getText());
             int dni = Integer.parseInt(cDNI.getText());
-            String nombre = cNombre.getText();
             String apellido = cApellido.getText();
+            String nombre = cNombre.getText();
             String direccion = cDireccion.getText();
             int celular = Integer.parseInt(cCelular.getText());
             String alt = alternativo.getText();
@@ -523,7 +515,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     private void cBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscarActionPerformed
         botonesBuscar();
         activarOtros();
-        cEstado.setEnabled(false);
 
         Cliente c = clienteData.buscarCliente(Integer.parseInt(cId.getText()));
 
@@ -554,7 +545,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cBuscar.setEnabled(true);
         cBuscar1.setEnabled(true);
         cDNI2.setEnabled(true);
-        cId.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
@@ -601,7 +591,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         boolean espacio = key == 32;
 
         if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "El Contacto alternativo  no es un celular, es el nombre de un contacto en relacion");
+            JOptionPane.showMessageDialog(this, "El dato Contacto alternativo  no debe ser numérico");
             evt.consume();
         }
 
@@ -609,42 +599,42 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
 
     private void cDNIFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cDNIFocusLost
         if (cDNI.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio el campo DNI");
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cDNI.requestFocus();
         }
     }//GEN-LAST:event_cDNIFocusLost
 
     private void cApellidoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cApellidoFocusLost
         if (cApellido.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio el campo Apellido");
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cApellido.requestFocus();
         }
     }//GEN-LAST:event_cApellidoFocusLost
 
     private void cNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cNombreFocusLost
         if (cNombre.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio el campo Nombre");
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cNombre.requestFocus();
         }
     }//GEN-LAST:event_cNombreFocusLost
 
     private void cDireccionFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cDireccionFocusLost
         if (cDireccion.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio el campo Direccion");
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cDireccion.requestFocus();
         }
     }//GEN-LAST:event_cDireccionFocusLost
 
     private void cCelularFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cCelularFocusLost
         if (cCelular.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio el campo Celular");
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             cCelular.requestFocus();
         }
     }//GEN-LAST:event_cCelularFocusLost
 
     private void alternativoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_alternativoFocusLost
         if (alternativo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio el campo Contacto alternativo");
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
             alternativo.requestFocus();
         }else{
             cGuardar.setEnabled(true);
@@ -665,7 +655,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El dato DNI en Agregar, debe ser numérico y sin puntos.");
+            JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
             evt.consume();
         }
 
@@ -675,7 +665,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
        int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
         if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El dato DNI en busqueda, debe ser numérico y sin puntos.");
+            JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
             evt.consume();
         }
     }//GEN-LAST:event_cDNI2KeyTyped
@@ -683,7 +673,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     private void cBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar1ActionPerformed
         botonesBuscar();
         activarOtros();
-        cEstado.setEnabled(false);
 
         Cliente c = clienteData.buscarClientePorDni(Integer.parseInt(cDNI2.getText()));
         
@@ -732,7 +721,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cargaDatosActivos();
         btAlta.setEnabled(false);
         btBaja.setEnabled(true);
-        cActualizar.setEnabled(false);
     }//GEN-LAST:event_rbActivosActionPerformed
 
     private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
@@ -742,7 +730,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cargaDatosInactivos();
         btAlta.setEnabled(true);
         btBaja.setEnabled(false);
-        cActualizar.setEnabled(false);
     }//GEN-LAST:event_rbNoActivosActionPerformed
 
     private void btAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaActionPerformed
@@ -796,35 +783,10 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         boolean numeros = key >= 48 && key <= 57;
         
         if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El dato Celular debe ser numérico, sin puntos y signos.");
+            JOptionPane.showMessageDialog(this, "El dato DNI debe ser numérico, sin puntos.");
             evt.consume();
         }
     }//GEN-LAST:event_cCelularKeyTyped
-
-    private void tClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tClientesMouseClicked
-        try {
-            int seleccionado = tClientes.rowAtPoint(evt.getPoint());
-
-            cId.setText(String.valueOf(tClientes.getValueAt(seleccionado, 0)));
-            cDNI.setText(String.valueOf(tClientes.getValueAt(seleccionado, 1)));
-            cApellido.setText(String.valueOf(tClientes.getValueAt(seleccionado, 2)));
-            cNombre.setText(String.valueOf(tClientes.getValueAt(seleccionado, 3)));
-            cDireccion.setText(String.valueOf(tClientes.getValueAt(seleccionado, 4)));
-            cCelular.setText(String.valueOf(tClientes.getValueAt(seleccionado, 5)));
-            alternativo.setText(String.valueOf(tClientes.getValueAt(seleccionado, 6)));
-
-            if (tClientes.getValueAt(seleccionado, 7).toString().equals("true")) {
-                cEstado.setSelected(true);
-            } else {
-                cEstado.setSelected(false);
-            }
-            activarCampos();
-            cActualizar.setEnabled(true);
-            
-        } catch (Exception ex) {
-
-        }
-    }//GEN-LAST:event_tClientesMouseClicked
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
@@ -877,14 +839,6 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         
         cActualizar.setEnabled(true);
 
-    }
-    private void activarCampos(){
-        cNombre.setEnabled(true);
-        cApellido.setEnabled(true);
-        cDNI.setEnabled(true);
-        cDireccion.setEnabled(true);
-        cCelular.setEnabled(true);
-        alternativo.setEnabled(true);
     }
 
     private void desactivarOtros() {
