@@ -83,9 +83,9 @@ public class Veterinaria {
         ClienteData cc = new ClienteData(conexion);
         ClienteData.agregarCliente(c1);
         
-        cc.agregarCliente(c2);
-        cc.modificarCliente(35, c3);
-        
+//        cc.agregarCliente(c2);
+//        cc.modificarCliente(35, c3);
+//        
 //        ClienteData.agregarCliente(c2);
 //        ClienteData.eliminarCliente(1);
 //        ClienteData.eliminarCliente(23);
