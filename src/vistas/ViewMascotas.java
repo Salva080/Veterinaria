@@ -7,12 +7,14 @@ package vistas;
 
 import controlador.ClienteData;
 import controlador.MascotaData;
+import java.awt.HeadlessException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
 import modelo.Mascota;
@@ -26,15 +28,25 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private MascotaData md;
     private Conexion con;
     private ClienteData cli;
+    private ArrayList<Mascota> listaMascotaA;
+    private ArrayList<Mascota> listaMascotaB;
+    private DefaultTableModel model;
     /**
      * Creates new form ViewMascotas
      */
     public ViewMascotas() {
         initComponents();
+        limpiar();
         con = new Conexion();
         md = new MascotaData(con);
         cli = new ClienteData(con);
         listaClientes = (ArrayList<Cliente>) cli.listarClienteActivos();
+        
+        listaMascotaA = (ArrayList<Mascota>) md.listarMascotasActivas();
+        listaMascotaB = (ArrayList<Mascota>) md.listarMascotasInactivas();
+        
+        model = new DefaultTableModel();
+        armarCabeceraTabla();
         
         cargarClientes();
     }
@@ -71,15 +83,26 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jcbEstado = new javax.swing.JCheckBox();
         jdcFechaNac = new com.toedter.calendar.JDateChooser();
         jtfIDmascota = new javax.swing.JTextField();
-        jbBuscarMascota = new javax.swing.JButton();
+        jbBuscar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
-        jbAgregar = new javax.swing.JButton();
         jbModificar = new javax.swing.JButton();
         jbLimpíar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
         jbSalir = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
         jtfColorpelaje = new javax.swing.JTextField();
+        jbIngresarMascota = new javax.swing.JButton();
+        jbBuscarMascota = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tMascotas = new javax.swing.JTable();
+        rbActivas = new javax.swing.JRadioButton();
+        rbNoActivas = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jbDarAlta = new javax.swing.JButton();
+        jbDarBaja = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setResizable(true);
@@ -102,53 +125,62 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jcbCliente.setBounds(230, 90, 260, 26);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Peso actual de la mascota:");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(20, 490, 211, 30);
+        jLabel4.setBounds(20, 370, 211, 30);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cliente:");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(160, 90, 62, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Peso de mascota:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(90, 440, 139, 30);
+        jLabel7.setBounds(90, 340, 139, 30);
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Fecha de nacimiento:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(60, 540, 169, 30);
+        jLabel8.setBounds(60, 400, 169, 30);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Especie:");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(160, 290, 66, 30);
+        jLabel9.setBounds(160, 250, 66, 30);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Sexo:");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(180, 240, 42, 30);
+        jLabel10.setBounds(180, 220, 42, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Color de pelaje:");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(100, 390, 127, 30);
+        jLabel11.setBounds(100, 310, 127, 30);
 
         jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Alias:");
         jPanel1.add(jLabel12);
         jLabel12.setBounds(180, 190, 46, 30);
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Mascota:");
         jPanel1.add(jLabel13);
         jLabel13.setBounds(170, 140, 72, 30);
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(90, 130, 570, 2);
+        jSeparator1.setBounds(100, 120, 570, 20);
         jPanel1.add(jSeparator2);
-        jSeparator2.setBounds(90, 172, 570, 10);
+        jSeparator2.setBounds(10, 530, 700, 10);
 
         jtfSexo.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -161,7 +193,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfSexo);
-        jtfSexo.setBounds(240, 240, 130, 24);
+        jtfSexo.setBounds(240, 220, 110, 30);
 
         jtfEspecie.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -174,7 +206,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfEspecie);
-        jtfEspecie.setBounds(240, 290, 250, 24);
+        jtfEspecie.setBounds(240, 250, 200, 30);
 
         jtfRaza.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -187,7 +219,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfRaza);
-        jtfRaza.setBounds(240, 340, 160, 24);
+        jtfRaza.setBounds(240, 280, 160, 30);
 
         jtfPesomascota.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -200,7 +232,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfPesomascota);
-        jtfPesomascota.setBounds(240, 440, 80, 24);
+        jtfPesomascota.setBounds(240, 344, 80, 30);
 
         jtfPesoactual.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -213,7 +245,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfPesoactual);
-        jtfPesoactual.setBounds(240, 490, 90, 24);
+        jtfPesoactual.setBounds(240, 374, 90, 30);
 
         jtfAlias.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -226,12 +258,12 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfAlias);
-        jtfAlias.setBounds(240, 190, 200, 24);
+        jtfAlias.setBounds(240, 190, 200, 30);
 
         jcbEstado.setText("ESTADO");
         jcbEstado.setEnabled(false);
         jPanel1.add(jcbEstado);
-        jcbEstado.setBounds(240, 590, 75, 24);
+        jcbEstado.setBounds(240, 450, 75, 24);
 
         jdcFechaNac.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -239,18 +271,24 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jdcFechaNac);
-        jdcFechaNac.setBounds(240, 540, 118, 29);
+        jdcFechaNac.setBounds(240, 409, 150, 30);
+
+        jtfIDmascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtfIDmascotaActionPerformed(evt);
+            }
+        });
         jPanel1.add(jtfIDmascota);
         jtfIDmascota.setBounds(260, 140, 80, 24);
 
-        jbBuscarMascota.setText("Buscar");
-        jbBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
+        jbBuscar.setText("Buscar");
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbBuscarMascotaActionPerformed(evt);
+                jbBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbBuscarMascota);
-        jbBuscarMascota.setBounds(350, 130, 71, 40);
+        jPanel1.add(jbBuscar);
+        jbBuscar.setBounds(350, 130, 71, 40);
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -259,16 +297,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbGuardar);
-        jbGuardar.setBounds(50, 640, 76, 32);
-
-        jbAgregar.setText("Agregar");
-        jbAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAgregarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jbAgregar);
-        jbAgregar.setBounds(160, 640, 77, 32);
+        jbGuardar.setBounds(140, 490, 80, 32);
 
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -277,7 +306,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbModificar);
-        jbModificar.setBounds(270, 640, 83, 32);
+        jbModificar.setBounds(250, 490, 83, 32);
 
         jbLimpíar.setText("Limpiar");
         jbLimpíar.addActionListener(new java.awt.event.ActionListener() {
@@ -286,7 +315,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbLimpíar);
-        jbLimpíar.setBounds(400, 640, 73, 32);
+        jbLimpíar.setBounds(360, 490, 80, 32);
 
         jbBorrar.setText("Borrar");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -295,7 +324,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbBorrar);
-        jbBorrar.setBounds(520, 640, 67, 32);
+        jbBorrar.setBounds(470, 490, 80, 32);
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -304,12 +333,13 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbSalir);
-        jbSalir.setBounds(640, 640, 56, 32);
+        jbSalir.setBounds(650, 750, 56, 32);
 
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Raza:");
         jPanel1.add(jLabel14);
-        jLabel14.setBounds(180, 340, 44, 30);
+        jLabel14.setBounds(180, 280, 44, 30);
 
         jtfColorpelaje.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -322,237 +352,148 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfColorpelaje);
-        jtfColorpelaje.setBounds(240, 390, 160, 24);
+        jtfColorpelaje.setBounds(240, 314, 160, 30);
+
+        jbIngresarMascota.setText("Ingresar Mascota");
+        jbIngresarMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbIngresarMascotaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbIngresarMascota);
+        jbIngresarMascota.setBounds(580, 180, 130, 40);
+
+        jbBuscarMascota.setText("Buscar Mascota");
+        jbBuscarMascota.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarMascotaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbBuscarMascota);
+        jbBuscarMascota.setBounds(580, 130, 130, 40);
+
+        tMascotas.setBackground(new java.awt.Color(255, 255, 255));
+        tMascotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        tMascotas.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        tMascotas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "ALIAS", "SEXO", "ESPECIE", "RAZA", "ESTADO", "COLOR DE PELAJE", "FECHA DE NACIMIENTO", "PESO DE MASCOTA", "PESO ACTUAL DE MASCOTA"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true, true, true, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tMascotas.setAutoscrolls(false);
+        jScrollPane1.setViewportView(tMascotas);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 590, 690, 150);
+
+        rbActivas.setBackground(new java.awt.Color(255, 255, 255));
+        rbActivas.setText("Activas");
+        rbActivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbActivasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rbActivas);
+        rbActivas.setBounds(400, 560, 100, 20);
+
+        rbNoActivas.setBackground(new java.awt.Color(255, 255, 255));
+        rbNoActivas.setText("Inactivas");
+        rbNoActivas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNoActivasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rbNoActivas);
+        rbNoActivas.setBounds(510, 560, 90, 20);
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel2.setText("haga click en el boton Ingresar Mascota.");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(30, 760, 380, 20);
+        jPanel1.add(jSeparator3);
+        jSeparator3.setBounds(90, 172, 570, 10);
+
+        jLabel6.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 204));
+        jLabel6.setText("Listado de Mascotas");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(240, 520, 170, 48);
+
+        jbDarAlta.setText("Dar De Alta");
+        jbDarAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDarAltaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbDarAlta);
+        jbDarAlta.setBounds(30, 550, 100, 32);
+
+        jbDarBaja.setText("Dar De Baja");
+        jbDarBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDarBajaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbDarBaja);
+        jbDarBaja.setBounds(130, 550, 96, 32);
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 153, 153));
+        jLabel15.setText("Si no encuentra su mascota en este listado");
+        jPanel1.add(jLabel15);
+        jLabel15.setBounds(20, 740, 380, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2pajaro.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(0, 0, 720, 710);
+        jLabel1.setBounds(0, 0, 730, 840);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 0, 720, 710);
+        jPanel1.setBounds(0, 0, 720, 810);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbBuscarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarMascotaActionPerformed
         // TODO add your handling code here:
-        
-        Mascota m = md.buscarMascota(Integer.parseInt(jtfIDmascota.getText()));
-        if(m != null){
-        Cliente c = m.getCliente();
-//            System.out.println(c);
-        jcbCliente.setSelectedItem(c);
-//        double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
-//        double pesoActual = Double.parseDouble(jtfPesoactual.getText());        
-        int id = Integer.parseInt(jtfIDmascota.getText());
-        
-        if(jtfIDmascota.getText() != null && md.mascotaExiste(id)){
-//            jcbCliente.setSelectedItem(m.getCliente());
-            jtfAlias.setText(m.getAlias());
-            jtfSexo.setText(m.getSexo());
-            jtfEspecie.setText(m.getEspecie());
-            jtfRaza.setText(m.getRaza());
-            jtfColorpelaje.setText(m.getColorPelaje());
-            jtfPesomascota.setText(m.getPesoMascota()+"");
-            jtfPesoactual.setText(m.getPesoActual()+"");
-            LocalDate lc = m.getFechaNac();
-            Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
-            jdcFechaNac.setDate(date);
-            jcbEstado.setSelected(m.isActivo());
-            
-            jbGuardar.setEnabled(false);
-            jtfAlias.setEnabled(true);
-            jtfSexo.setEnabled(true);
-            jtfEspecie.setEnabled(true);
-            jtfRaza.setEnabled(true);
-            jtfColorpelaje.setEnabled(true);
-            jtfPesomascota.setEnabled(true);
-            jtfPesoactual.setEnabled(true);
-            jdcFechaNac.setEnabled(true);
-            jbBorrar.setEnabled(true);
-            jbModificar.setEnabled(true);
-        }else{
-            JOptionPane.showMessageDialog(this, "Mascota no existente");
-            jcbEstado.setEnabled(false);
-            jtfAlias.setEnabled(false);
-            jtfSexo.setEnabled(false);
-            jtfEspecie.setEnabled(false);
-            jtfRaza.setEnabled(false);
-            jtfColorpelaje.setEnabled(false);
-            jtfPesomascota.setEnabled(false);
-            jtfPesoactual.setEnabled(false);
-            jdcFechaNac.setEnabled(false);
-            jbBorrar.setEnabled(false);
-            jbGuardar.setEnabled(false);
-            jbModificar.setEnabled(false);
-        }
-        if(jcbEstado.isSelected()){
-            jbBorrar.setEnabled(true);
-            jbModificar.setEnabled(true);
-        }else{
-            jbBorrar.setEnabled(false);
-            jbModificar.setEnabled(false);
-        }
-        }else{
-            JOptionPane.showMessageDialog(this, "Mascota no existente");
-            jcbEstado.setEnabled(false);
-            jtfAlias.setEnabled(false);
-            jtfSexo.setEnabled(false);
-            jtfEspecie.setEnabled(false);
-            jtfRaza.setEnabled(false);
-            jtfColorpelaje.setEnabled(false);
-            jtfPesomascota.setEnabled(false);
-            jtfPesoactual.setEnabled(false);
-            jdcFechaNac.setEnabled(false);
-            jbBorrar.setEnabled(false);
-            jbGuardar.setEnabled(false);
-            jbModificar.setEnabled(false);
-        }
+        desactivarOtros();
+        activarID();
+        jbBuscar.setEnabled(true);
     }//GEN-LAST:event_jbBuscarMascotaActionPerformed
 
-    private void jcbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteActionPerformed
+    private void jbIngresarMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIngresarMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jcbClienteActionPerformed
-
-    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
-        // TODO add your handling code here:
-        String alias = jtfAlias.getText();
-        String sexo = jtfSexo.getText();
-        String especie = jtfEspecie.getText();
-        String raza = jtfRaza.getText();
-        String colorPelaje = jtfColorpelaje.getText();
-        double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
-        boolean estado = jcbEstado.isEnabled();
-        Cliente c = (Cliente) jcbCliente.getSelectedItem();
-        Date fecha = jdcFechaNac.getDate();
-        LocalDate fechaNac = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
-        double pesoActual = Double.parseDouble(jtfPesoactual.getText()); 
-        
-        Mascota m = new Mascota(alias, sexo, especie, raza, colorPelaje,fechaNac, pesoMascota, estado, c,pesoActual);
-        
-        if(jcbEstado.isSelected()){
-        md.agregarMascota(m);
-        jtfIDmascota.setText(m.getIdMascota()+ "");
-        }else{
-            JOptionPane.showMessageDialog(this, "Debe agregar una mascota con estado activo");
-            jcbEstado.isFocusPainted();
-        }
-        jcbEstado.setSelected(true);
-        desactivarOtros();
-    }//GEN-LAST:event_jbGuardarActionPerformed
-
-    private void jbLimpíarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpíarActionPerformed
-        // TODO add your handling code here:
-        limpiar();
-        activarID();
-        jbBuscarMascota.setEnabled(true);
-    }//GEN-LAST:event_jbLimpíarActionPerformed
-
-    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
-        // TODO add your handling code here:
-        int id = Integer.parseInt(jtfIDmascota.getText());
-        
-        if(jtfIDmascota.getText() != null){
-            md.eliminarMascota(id);
-            jbGuardar.setEnabled(false);
-            jbModificar.setEnabled(false);
-        } else {
-            JOptionPane.showMessageDialog(this, "Debe ingresar una mascota");
-        }
-    }//GEN-LAST:event_jbBorrarActionPerformed
-
-    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
-        // TODO add your handling code here:
-        dispose();
-    }//GEN-LAST:event_jbSalirActionPerformed
-
-    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
-        // TODO add your handling code here:
-        if(jtfIDmascota.getText() != null){
-            int id = Integer.parseInt(jtfIDmascota.getText());
-            String alias = jtfAlias.getText();
-            String sexo = jtfSexo.getText();
-            String especie = jtfEspecie.getText();
-            String raza = jtfRaza.getText();
-            String colorPelaje = jtfColorpelaje.getText();
-            double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
-            boolean estado = jcbEstado.isEnabled();
-            Cliente c = (Cliente) jcbCliente.getSelectedItem();
-            Date fecha = jdcFechaNac.getDate();
-            LocalDate fechaNac = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate(); 
-            double pesoActual = Double.parseDouble(jtfPesoactual.getText()); 
-            
-            jcbEstado.setEnabled(false);
-            jcbEstado.setSelected(true);
-            Mascota m = new Mascota(alias, sexo, especie, raza, colorPelaje,fechaNac, pesoMascota, estado, c,pesoActual);
-            md.modificarMascota(id, m);
-            jbGuardar.setEnabled(false);
-        }else{
-            JOptionPane.showMessageDialog(this, "La mascota no se encuentra activa");
-        }
-    }//GEN-LAST:event_jbModificarActionPerformed
-
-    private void jbAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAgregarActionPerformed
-        // TODO add your handling code here:
+        desactivarID();
         activarOtros();
-    }//GEN-LAST:event_jbAgregarActionPerformed
 
-    private void jtfAliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAliasKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
+        jbModificar.setEnabled(false);
+        jbBuscar.setEnabled(false);
+        limpiarCampos();
+        jtfIDmascota.setEnabled(false);
 
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
-
-        if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "El Alias de su mascota no debe ser numerico!");
-            evt.consume();
-        }
-    }//GEN-LAST:event_jtfAliasKeyTyped
-
-    private void jtfSexoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSexoKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
-
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
-
-        if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "El sexo de su mascota no debe ser numerico!");
-            evt.consume();
-        }
-    }//GEN-LAST:event_jtfSexoKeyTyped
-
-    private void jtfEspecieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEspecieKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
-
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
-
-        if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "La especie de su mascota no debe ser un dato numerico!");
-            evt.consume();
-        }
-    }//GEN-LAST:event_jtfEspecieKeyTyped
-
-    private void jtfRazaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRazaKeyTyped
-        // TODO add your handling code here:
-        int key = evt.getKeyChar();
-
-        boolean mayusculas = key >= 65 && key <= 90;
-        boolean minusculas = key >= 97 && key <= 122;
-        boolean espacio = key == 32;
-
-        if (!(minusculas || mayusculas || espacio)) {
-            JOptionPane.showMessageDialog(this, "La raza de su mascota no debe ser un dato numerico!");
-            evt.consume();
-        }
-    }//GEN-LAST:event_jtfRazaKeyTyped
+    }//GEN-LAST:event_jbIngresarMascotaActionPerformed
 
     private void jtfColorpelajeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfColorpelajeKeyTyped
         // TODO add your handling code here:
@@ -568,25 +509,186 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtfColorpelajeKeyTyped
 
-    private void jtfPesomascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesomascotaKeyTyped
+    private void jtfColorpelajeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfColorpelajeFocusLost
         // TODO add your handling code here:
-        double key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key <= 57;
-        if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El peso de la mascota debe ser numerico!");
-            evt.consume();
+        if (jtfColorpelaje.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfColorpelaje.requestFocus();
         }
-    }//GEN-LAST:event_jtfPesomascotaKeyTyped
+    }//GEN-LAST:event_jtfColorpelajeFocusLost
 
-    private void jtfPesoactualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoactualKeyTyped
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
         // TODO add your handling code here:
-        double key = evt.getKeyChar();
-        boolean numeros = key >= 48 && key <= 57;
-        if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El peso actual de la mascota debe ser numerico!");
-            evt.consume();
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        // TODO add your handling code here:
+        try{
+            int id = Integer.parseInt(jtfIDmascota.getText());
+
+            if(jtfIDmascota.getText() != null){
+                md.eliminarMascota(id);
+                jbGuardar.setEnabled(false);
+                jbModificar.setEnabled(false);
+            } else {
+                JOptionPane.showMessageDialog(this, "Debe seleccionar una mascota.");
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Seleccione a la mascota que desea borrar del sistema.");
         }
-    }//GEN-LAST:event_jtfPesoactualKeyTyped
+    }//GEN-LAST:event_jbBorrarActionPerformed
+
+    private void jbLimpíarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpíarActionPerformed
+        // TODO add your handling code here:
+        limpiar();
+        activarID();
+        jbBuscar.setEnabled(true);
+    }//GEN-LAST:event_jbLimpíarActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        // TODO add your handling code here:
+        try{
+            if(jtfIDmascota.getText() != null){
+                int id = Integer.parseInt(jtfIDmascota.getText());
+                String alias = jtfAlias.getText();
+                String sexo = jtfSexo.getText();
+                String especie = jtfEspecie.getText();
+                String raza = jtfRaza.getText();
+                String colorPelaje = jtfColorpelaje.getText();
+                double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
+                boolean estado = jcbEstado.isEnabled();
+                Cliente c = (Cliente) jcbCliente.getSelectedItem();
+                Date fecha = jdcFechaNac.getDate();
+                LocalDate fechaNac = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                double pesoActual = Double.parseDouble(jtfPesoactual.getText());
+
+                jcbEstado.setEnabled(false);
+                jcbEstado.setSelected(true);
+                Mascota m = new Mascota(alias, sexo, especie, raza, colorPelaje,fechaNac, pesoMascota, estado, c,pesoActual);
+                md.modificarMascota(id, m);
+                jbGuardar.setEnabled(false);
+            }else{
+                JOptionPane.showMessageDialog(this, "La mascota no se encuentra activa");
+            }
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Debe tener registrada una mascota para poder modificarla!");
+        }
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        // TODO add your handling code here:
+        try{
+            String alias = jtfAlias.getText();
+            String sexo = jtfSexo.getText();
+            String especie = jtfEspecie.getText();
+            String raza = jtfRaza.getText();
+            String colorPelaje = jtfColorpelaje.getText();
+            double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
+            boolean estado = jcbEstado.isEnabled();
+            Cliente c = (Cliente) jcbCliente.getSelectedItem();
+            Date fecha = jdcFechaNac.getDate();
+            LocalDate fechaNac = fecha.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            double pesoActual = Double.parseDouble(jtfPesoactual.getText());
+
+            Mascota m = new Mascota(alias, sexo, especie, raza, colorPelaje,fechaNac, pesoMascota, estado, c,pesoActual);
+
+            if(jcbEstado.isSelected()){
+                md.agregarMascota(m);
+                jtfIDmascota.setText(m.getIdMascota()+ "");
+            }else{
+                JOptionPane.showMessageDialog(this, "Su mascota no fue guardada, debe ingresar una mascota con estado activo");
+                jcbEstado.isFocusPainted();
+            }
+            jcbEstado.setSelected(true);
+            desactivarOtros();
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Por favor complete los campos para poder registrar a su mascota.");
+        }
+    }//GEN-LAST:event_jbGuardarActionPerformed
+
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        // TODO add your handling code here:
+        try{
+            Mascota m = md.buscarMascota(Integer.parseInt(jtfIDmascota.getText()));
+            if(m != null){
+                Cliente c = m.getCliente();
+                //            System.out.println(c);
+                jcbCliente.setSelectedItem(c);
+                //        double pesoMascota = Double.parseDouble(jtfPesomascota.getText());
+                //        double pesoActual = Double.parseDouble(jtfPesoactual.getText());
+                int id = Integer.parseInt(jtfIDmascota.getText());
+
+                if(jtfIDmascota.getText() != null && md.mascotaExiste(id)){
+                    //            jcbCliente.setSelectedItem(m.getCliente());
+                    jtfAlias.setText(m.getAlias());
+                    jtfSexo.setText(m.getSexo());
+                    jtfEspecie.setText(m.getEspecie());
+                    jtfRaza.setText(m.getRaza());
+                    jtfColorpelaje.setText(m.getColorPelaje());
+                    jtfPesomascota.setText(m.getPesoMascota()+"");
+                    jtfPesoactual.setText(m.getPesoActual()+"");
+                    LocalDate lc = m.getFechaNac();
+                    Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                    jdcFechaNac.setDate(date);
+                    jcbEstado.setSelected(m.isActivo());
+
+                    jbGuardar.setEnabled(false);
+                    jtfAlias.setEnabled(true);
+                    jtfSexo.setEnabled(true);
+                    jtfEspecie.setEnabled(true);
+                    jtfRaza.setEnabled(true);
+                    jtfColorpelaje.setEnabled(true);
+                    jtfPesomascota.setEnabled(true);
+                    jtfPesoactual.setEnabled(true);
+                    jdcFechaNac.setEnabled(true);
+                    jbBorrar.setEnabled(true);
+                    jbModificar.setEnabled(true);
+                }else{
+                    JOptionPane.showMessageDialog(this, "Mascota no existente");
+                    jcbEstado.setEnabled(false);
+                    jtfAlias.setEnabled(false);
+                    jtfSexo.setEnabled(false);
+                    jtfEspecie.setEnabled(false);
+                    jtfRaza.setEnabled(false);
+                    jtfColorpelaje.setEnabled(false);
+                    jtfPesomascota.setEnabled(false);
+                    jtfPesoactual.setEnabled(false);
+                    jdcFechaNac.setEnabled(false);
+                    jbBorrar.setEnabled(false);
+                    jbGuardar.setEnabled(false);
+                    jbModificar.setEnabled(false);
+                }
+                if(jcbEstado.isSelected()){
+                    jbBorrar.setEnabled(true);
+                    jbModificar.setEnabled(true);
+                }else{
+                    jbBorrar.setEnabled(false);
+                    jbModificar.setEnabled(false);
+                }
+            }else{
+                JOptionPane.showMessageDialog(this, "Mascota no existente");
+                jcbEstado.setEnabled(false);
+                jtfAlias.setEnabled(false);
+                jtfSexo.setEnabled(false);
+                jtfEspecie.setEnabled(false);
+                jtfRaza.setEnabled(false);
+                jtfColorpelaje.setEnabled(false);
+                jtfPesomascota.setEnabled(false);
+                jtfPesoactual.setEnabled(false);
+                jdcFechaNac.setEnabled(false);
+                jbBorrar.setEnabled(false);
+                jbGuardar.setEnabled(false);
+                jbModificar.setEnabled(false);
+            }
+        }catch (Exception e){
+            JOptionPane.showMessageDialog(this, "Debe ingresar el ID de su mascota para poder buscarla.");
+        }
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jtfIDmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIDmascotaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtfIDmascotaActionPerformed
 
     private void jdcFechaNacFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jdcFechaNacFocusLost
         // TODO add your handling code here:
@@ -601,6 +703,20 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jdcFechaNacFocusLost
 
+    private void jtfAliasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfAliasKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El Alias de su mascota no debe ser numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfAliasKeyTyped
+
     private void jtfAliasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfAliasFocusLost
         // TODO add your handling code here:
         if (jtfAlias.getText().isEmpty()) {
@@ -609,37 +725,33 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtfAliasFocusLost
 
-    private void jtfSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSexoFocusLost
+    private void jtfPesoactualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoactualKeyTyped
         // TODO add your handling code here:
-        if (jtfSexo.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
-            jtfSexo.requestFocus();
+        double key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El peso actual de la mascota debe ser numerico!");
+            evt.consume();
         }
-    }//GEN-LAST:event_jtfSexoFocusLost
+    }//GEN-LAST:event_jtfPesoactualKeyTyped
 
-    private void jtfEspecieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEspecieFocusLost
+    private void jtfPesoactualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesoactualFocusLost
         // TODO add your handling code here:
-        if (jtfEspecie.getText().isEmpty()) {
+        if (jtfPesoactual.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
-            jtfEspecie.requestFocus();
+            jtfPesoactual.requestFocus();
         }
-    }//GEN-LAST:event_jtfEspecieFocusLost
+    }//GEN-LAST:event_jtfPesoactualFocusLost
 
-    private void jtfRazaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRazaFocusLost
+    private void jtfPesomascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesomascotaKeyTyped
         // TODO add your handling code here:
-        if (jtfRaza.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
-            jtfRaza.requestFocus();
+        double key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros) {
+            JOptionPane.showMessageDialog(this, "El peso de la mascota debe ser numerico!");
+            evt.consume();
         }
-    }//GEN-LAST:event_jtfRazaFocusLost
-
-    private void jtfColorpelajeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfColorpelajeFocusLost
-        // TODO add your handling code here:
-        if (jtfColorpelaje.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
-            jtfColorpelaje.requestFocus();
-        }
-    }//GEN-LAST:event_jtfColorpelajeFocusLost
+    }//GEN-LAST:event_jtfPesomascotaKeyTyped
 
     private void jtfPesomascotaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesomascotaFocusLost
         // TODO add your handling code here:
@@ -649,13 +761,137 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jtfPesomascotaFocusLost
 
-    private void jtfPesoactualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfPesoactualFocusLost
+    private void jtfRazaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfRazaKeyTyped
         // TODO add your handling code here:
-        if (jtfPesoactual.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
-            jtfPesoactual.requestFocus();
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "La raza de su mascota no debe ser un dato numerico!");
+            evt.consume();
         }
-    }//GEN-LAST:event_jtfPesoactualFocusLost
+    }//GEN-LAST:event_jtfRazaKeyTyped
+
+    private void jtfRazaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfRazaFocusLost
+        // TODO add your handling code here:
+        if (jtfRaza.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfRaza.requestFocus();
+        }
+    }//GEN-LAST:event_jtfRazaFocusLost
+
+    private void jtfEspecieKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfEspecieKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "La especie de su mascota no debe ser un dato numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfEspecieKeyTyped
+
+    private void jtfEspecieFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfEspecieFocusLost
+        // TODO add your handling code here:
+        if (jtfEspecie.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfEspecie.requestFocus();
+        }
+    }//GEN-LAST:event_jtfEspecieFocusLost
+
+    private void jtfSexoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSexoKeyTyped
+        // TODO add your handling code here:
+        int key = evt.getKeyChar();
+
+        boolean mayusculas = key >= 65 && key <= 90;
+        boolean minusculas = key >= 97 && key <= 122;
+        boolean espacio = key == 32;
+
+        if (!(minusculas || mayusculas || espacio)) {
+            JOptionPane.showMessageDialog(this, "El sexo de su mascota no debe ser numerico!");
+            evt.consume();
+        }
+    }//GEN-LAST:event_jtfSexoKeyTyped
+
+    private void jtfSexoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jtfSexoFocusLost
+        // TODO add your handling code here:
+        if (jtfSexo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No puede dejar vacio este campo");
+            jtfSexo.requestFocus();
+        }
+    }//GEN-LAST:event_jtfSexoFocusLost
+
+    private void jcbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcbClienteActionPerformed
+
+    private void rbActivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivasActionPerformed
+        // TODO add your handling code here:
+        rbNoActivas.setSelected(false);
+        borrarFilasTabla();
+        cargarDatosActivos();
+    }//GEN-LAST:event_rbActivasActionPerformed
+
+    private void rbNoActivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivasActionPerformed
+        // TODO add your handling code here:
+        rbActivas.setSelected(false);
+        borrarFilasTabla();
+        cargarDatosInactivas();
+    }//GEN-LAST:event_rbNoActivasActionPerformed
+
+    private void jbDarAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDarAltaActionPerformed
+        // TODO add your handling code here:
+        try {
+            int filaSeleccionada = tMascotas.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int idMascota = (Integer) model.getValueAt(filaSeleccionada, 0);
+
+                md.activarMascotas(idMascota);
+
+                String activo =  model.getValueAt(filaSeleccionada, 6).toString();
+
+                borrarFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar una mascota");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de alta a la mascota");
+        }
+    }//GEN-LAST:event_jbDarAltaActionPerformed
+
+    private void jbDarBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDarBajaActionPerformed
+        // TODO add your handling code here:
+        try {
+            int filaSeleccionada = tMascotas.getSelectedRow();
+
+            if (filaSeleccionada != -1) {
+
+                int idMascota = (Integer) model.getValueAt(filaSeleccionada, 0);
+
+                md.eliminarMascota(idMascota);
+
+                String activo =  model.getValueAt(filaSeleccionada, 6).toString();
+
+                borrarFilasTabla();
+
+            } else {
+                JOptionPane.showMessageDialog(this, " Debe seleccionar una mascota");
+
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(this, " No se puedo dar de baja a la mascota");
+        }
+    }//GEN-LAST:event_jbDarBajaActionPerformed
 
     private void cargarClientes(){
         for(Cliente item:listaClientes){
@@ -680,8 +916,20 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         botonesDesactivados();
     }
     
+    private void limpiarCampos(){
+        jtfIDmascota.setText("");
+        jtfAlias.setText("");
+        jtfSexo.setText("");
+        jtfEspecie.setText("");
+        jtfRaza.setText("");
+        jtfColorpelaje.setText("");
+        jtfPesomascota.setText("");
+        jtfPesoactual.setText("");
+        jcbEstado.setSelected(false);
+    } 
+    
     private void activarOtros(){
-            jtfIDmascota.setEnabled(true);
+            
             jcbEstado.setEnabled(true);
             jtfAlias.setEnabled(true);
             jtfSexo.setEnabled(true);
@@ -705,6 +953,9 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             jtfPesoactual.setEnabled(false);
             jdcFechaNac.setEnabled(false);
             jbGuardar.setEnabled(false);
+            jbBuscar.setEnabled(false);
+            jbModificar.setEnabled(false);
+            jbBorrar.setEnabled(false);
     }
     
     private void activarID(){
@@ -719,8 +970,62 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jbGuardar.setEnabled(false);
         jbBorrar.setEnabled(false);
         jbModificar.setEnabled(false);
-        jbBuscarMascota.setEnabled(false);
+        jbBuscar.setEnabled(false);
     }
+    
+        private void cargarDatosActivos(){
+        
+        borrarFilasTabla();
+        
+        ArrayList<Mascota> lista = (ArrayList) md.listarMascotasActivas();
+        
+        for (Mascota m : lista){
+            model.addRow(new Object[] {m.getIdMascota(), m.getAlias(), m.getSexo(), m.getEspecie(), m.getRaza(), m.isActivo(),m.getColorPelaje(), m.getFechaNac(), m.getPesoMascota(), m.getPesoActual()});
+        }
+    }
+    
+    private void cargarDatosInactivas(){
+        borrarFilasTabla();
+        
+        ArrayList<Mascota> lista = (ArrayList) md.listarMascotasInactivas();
+        
+        for (Mascota m : lista){
+            model.addRow(new Object[] {m.getIdMascota(), m.getAlias(), m.getSexo(), m.getEspecie(), m.getRaza(), m.isActivo(),m.getColorPelaje(), m.getFechaNac(), m.getPesoMascota(), m.getPesoActual()});
+        }
+    }
+    
+    private void armarCabeceraTabla() {
+
+        //Titulos de Columnas
+        ArrayList<Object> columnas = new ArrayList<Object>();
+        columnas.add("ID");
+        columnas.add("Alias");
+        columnas.add("Sexo");
+        columnas.add("Especie");
+        columnas.add("Raza");
+        columnas.add("Estado");
+        columnas.add("Color de pelaje");
+        columnas.add("Fecha de Nacimiento");
+        columnas.add("Peso de mascota");
+        columnas.add("Peso actual de mascota");
+
+        for (Object it : columnas) {
+
+            model.addColumn(it);
+        }
+        tMascotas.setModel(model);
+    }
+    
+    private void borrarFilasTabla() {
+
+        int a = model.getRowCount() - 1;
+
+        for (int i = a; i >= 0; i--) {
+
+            model.removeRow(i);
+        }
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -730,19 +1035,27 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JButton jbAgregar;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbBuscarMascota;
+    private javax.swing.JButton jbDarAlta;
+    private javax.swing.JButton jbDarBaja;
     private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbIngresarMascota;
     private javax.swing.JButton jbLimpíar;
     private javax.swing.JButton jbModificar;
     private javax.swing.JButton jbSalir;
@@ -757,5 +1070,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private javax.swing.JTextField jtfPesomascota;
     private javax.swing.JTextField jtfRaza;
     private javax.swing.JTextField jtfSexo;
+    private javax.swing.JRadioButton rbActivas;
+    private javax.swing.JRadioButton rbNoActivas;
+    private javax.swing.JTable tMascotas;
     // End of variables declaration//GEN-END:variables
 }

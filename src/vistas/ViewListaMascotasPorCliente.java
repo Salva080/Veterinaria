@@ -68,6 +68,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jtMascota = new javax.swing.JTable();
         jbBuscar = new javax.swing.JButton();
+        jbSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         getContentPane().setLayout(null);
@@ -111,6 +112,15 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         getContentPane().add(jbBuscar);
         jbBuscar.setBounds(530, 153, 71, 32);
 
+        jbSalir.setText("Salir");
+        jbSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jbSalir);
+        jbSalir.setBounds(720, 390, 56, 32);
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/5 cama.png"))); // NOI18N
         getContentPane().add(jLabel3);
         jLabel3.setBounds(0, 0, 840, 450);
@@ -122,6 +132,11 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         cargarDatosMascotas();
     }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalirActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jbSalirActionPerformed
 
     private void armaCabeceraTabla(){
         ArrayList<Object> columnas = new ArrayList<Object>();
@@ -172,6 +187,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbSalir;
     private javax.swing.JTable jtMascota;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,7 +49,6 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         jmiFormularioCliente = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jmiFormularioMascotas = new javax.swing.JMenuItem();
-        jmiListadoMascotas = new javax.swing.JMenuItem();
         jmiListadoMascotaPorClientes = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jmiAgregarConsulta = new javax.swing.JMenuItem();
@@ -98,14 +97,6 @@ public class ViewVeterinaria extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jmiFormularioMascotas);
-
-        jmiListadoMascotas.setText("Listado Mascotas");
-        jmiListadoMascotas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jmiListadoMascotasActionPerformed(evt);
-            }
-        });
-        jMenu3.add(jmiListadoMascotas);
 
         jmiListadoMascotaPorClientes.setText("Listado Mascotas Por Cliente");
         jmiListadoMascotaPorClientes.addActionListener(new java.awt.event.ActionListener() {
@@ -183,17 +174,6 @@ public class ViewVeterinaria extends javax.swing.JFrame {
         escritorio.add(vac);
         escritorio.moveToFront(vac);
     }//GEN-LAST:event_jmiAgregarConsultaActionPerformed
-
-    private void jmiListadoMascotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmiListadoMascotasActionPerformed
-        // TODO add your handling code here:
-        escritorio.removeAll();
-        escritorio.repaint();
-        ViewListadoMascotas vlm = new ViewListadoMascotas();
-        vlm.setSize(850,700);
-        vlm.setVisible(true);
-        escritorio.add(vlm);
-        escritorio.moveToFront(vlm);
-    }//GEN-LAST:event_jmiListadoMascotasActionPerformed
 
     private void menulTratamientosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menulTratamientosActionPerformed
         escritorio.removeAll();
@@ -277,7 +257,6 @@ public class ViewVeterinaria extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiFormularioCliente;
     private javax.swing.JMenuItem jmiFormularioMascotas;
     private javax.swing.JMenuItem jmiListadoMascotaPorClientes;
-    private javax.swing.JMenuItem jmiListadoMascotas;
     private javax.swing.JMenuItem jmiSalir;
     private javax.swing.JMenuItem menulTratamientos;
     // End of variables declaration//GEN-END:variables
