@@ -6,6 +6,7 @@
 package vistas;
 
 import controlador.ClienteData;
+import controlador.ConsultaData;
 import controlador.MascotaData;
 import java.awt.HeadlessException;
 import java.text.SimpleDateFormat;
@@ -17,6 +18,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
+import modelo.Consulta;
 import modelo.Mascota;
 
 /**
@@ -31,6 +33,8 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private ArrayList<Mascota> listaMascotaA;
     private ArrayList<Mascota> listaMascotaB;
     private DefaultTableModel model;
+    private ArrayList<Consulta> listConsulta;
+    private ConsultaData cond;
     /**
      * Creates new form ViewMascotas
      */
@@ -49,6 +53,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         armarCabeceraTabla();
         
         cargarClientes();
+        
     }
 
     /**
@@ -97,12 +102,10 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         tMascotas = new javax.swing.JTable();
         rbActivas = new javax.swing.JRadioButton();
         rbNoActivas = new javax.swing.JRadioButton();
-        jLabel2 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel6 = new javax.swing.JLabel();
         jbDarAlta = new javax.swing.JButton();
         jbDarBaja = new javax.swing.JButton();
-        jLabel15 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setResizable(true);
@@ -114,7 +117,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
         jLabel3.setText("Mascotas");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(220, 10, 220, 64);
+        jLabel3.setBounds(220, 0, 220, 50);
 
         jcbCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,58 +125,49 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jcbCliente);
-        jcbCliente.setBounds(230, 90, 260, 26);
+        jcbCliente.setBounds(230, 90, 260, 20);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Peso actual de la mascota:");
         jPanel1.add(jLabel4);
         jLabel4.setBounds(20, 370, 211, 30);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Cliente:");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(160, 90, 62, 30);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Peso de mascota:");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(90, 340, 139, 30);
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Fecha de nacimiento:");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(60, 400, 169, 30);
 
         jLabel9.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Especie:");
         jPanel1.add(jLabel9);
         jLabel9.setBounds(160, 250, 66, 30);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Sexo:");
         jPanel1.add(jLabel10);
         jLabel10.setBounds(180, 220, 42, 30);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Color de pelaje:");
         jPanel1.add(jLabel11);
         jLabel11.setBounds(100, 310, 127, 30);
 
         jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Alias:");
         jPanel1.add(jLabel12);
         jLabel12.setBounds(180, 190, 46, 30);
 
         jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
         jLabel13.setText("Mascota:");
         jPanel1.add(jLabel13);
         jLabel13.setBounds(170, 140, 72, 30);
@@ -263,11 +257,16 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jcbEstado.setText("ESTADO");
         jcbEstado.setEnabled(false);
         jPanel1.add(jcbEstado);
-        jcbEstado.setBounds(240, 450, 75, 24);
+        jcbEstado.setBounds(240, 450, 65, 23);
 
         jdcFechaNac.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jdcFechaNacFocusLost(evt);
+            }
+        });
+        jdcFechaNac.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jdcFechaNacMouseClicked(evt);
             }
         });
         jPanel1.add(jdcFechaNac);
@@ -279,7 +278,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jtfIDmascota);
-        jtfIDmascota.setBounds(260, 140, 80, 24);
+        jtfIDmascota.setBounds(260, 140, 80, 20);
 
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -288,7 +287,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbBuscar);
-        jbBuscar.setBounds(350, 130, 71, 40);
+        jbBuscar.setBounds(350, 130, 80, 40);
 
         jbGuardar.setText("Guardar");
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -297,7 +296,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbGuardar);
-        jbGuardar.setBounds(140, 490, 80, 32);
+        jbGuardar.setBounds(110, 490, 90, 23);
 
         jbModificar.setText("Modificar");
         jbModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +305,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbModificar);
-        jbModificar.setBounds(250, 490, 83, 32);
+        jbModificar.setBounds(235, 490, 90, 23);
 
         jbLimpíar.setText("Limpiar");
         jbLimpíar.addActionListener(new java.awt.event.ActionListener() {
@@ -315,7 +314,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbLimpíar);
-        jbLimpíar.setBounds(360, 490, 80, 32);
+        jbLimpíar.setBounds(350, 490, 90, 23);
 
         jbBorrar.setText("Borrar");
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
@@ -324,7 +323,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbBorrar);
-        jbBorrar.setBounds(470, 490, 80, 32);
+        jbBorrar.setBounds(470, 490, 80, 23);
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -333,10 +332,9 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbSalir);
-        jbSalir.setBounds(650, 750, 56, 32);
+        jbSalir.setBounds(580, 490, 80, 23);
 
         jLabel14.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(0, 0, 0));
         jLabel14.setText("Raza:");
         jPanel1.add(jLabel14);
         jLabel14.setBounds(180, 280, 44, 30);
@@ -372,7 +370,6 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jPanel1.add(jbBuscarMascota);
         jbBuscarMascota.setBounds(580, 130, 130, 40);
 
-        tMascotas.setBackground(new java.awt.Color(255, 255, 255));
         tMascotas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tMascotas.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
         tMascotas.setModel(new javax.swing.table.DefaultTableModel(
@@ -405,7 +402,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tMascotas);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 590, 690, 150);
+        jScrollPane1.setBounds(10, 600, 690, 150);
 
         rbActivas.setBackground(new java.awt.Color(255, 255, 255));
         rbActivas.setText("Activas");
@@ -415,7 +412,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(rbActivas);
-        rbActivas.setBounds(400, 560, 100, 20);
+        rbActivas.setBounds(460, 560, 100, 20);
 
         rbNoActivas.setBackground(new java.awt.Color(255, 255, 255));
         rbNoActivas.setText("Inactivas");
@@ -425,13 +422,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(rbNoActivas);
-        rbNoActivas.setBounds(510, 560, 90, 20);
-
-        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel2.setText("haga click en el boton Ingresar Mascota.");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(30, 760, 380, 20);
+        rbNoActivas.setBounds(580, 560, 90, 20);
         jPanel1.add(jSeparator3);
         jSeparator3.setBounds(90, 172, 570, 10);
 
@@ -439,7 +430,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jLabel6.setForeground(new java.awt.Color(0, 153, 204));
         jLabel6.setText("Listado de Mascotas");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(240, 520, 170, 48);
+        jLabel6.setBounds(280, 520, 170, 48);
 
         jbDarAlta.setText("Dar De Alta");
         jbDarAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -448,7 +439,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbDarAlta);
-        jbDarAlta.setBounds(30, 550, 100, 32);
+        jbDarAlta.setBounds(10, 550, 130, 23);
 
         jbDarBaja.setText("Dar De Baja");
         jbDarBaja.addActionListener(new java.awt.event.ActionListener() {
@@ -457,13 +448,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(jbDarBaja);
-        jbDarBaja.setBounds(130, 550, 96, 32);
-
-        jLabel15.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(0, 153, 153));
-        jLabel15.setText("Si no encuentra su mascota en este listado");
-        jPanel1.add(jLabel15);
-        jLabel15.setBounds(20, 740, 380, 20);
+        jbDarBaja.setBounds(150, 550, 110, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2pajaro.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -726,11 +711,12 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfAliasFocusLost
 
     private void jtfPesoactualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesoactualKeyTyped
-        // TODO add your handling code here:
-        double key = evt.getKeyChar();
+      int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
-        if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El peso actual de la mascota debe ser numerico!");
+        boolean coma = key == 44;
+        boolean punto = key == 46;
+        if (!(numeros || coma || punto)) {
+
             evt.consume();
         }
     }//GEN-LAST:event_jtfPesoactualKeyTyped
@@ -745,10 +731,12 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
 
     private void jtfPesomascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfPesomascotaKeyTyped
         // TODO add your handling code here:
-        double key = evt.getKeyChar();
+       int key = evt.getKeyChar();
         boolean numeros = key >= 48 && key <= 57;
-        if (!numeros) {
-            JOptionPane.showMessageDialog(this, "El peso de la mascota debe ser numerico!");
+        boolean coma = key == 44;
+        boolean punto = key == 46;
+        if (!(numeros || coma || punto)) {
+
             evt.consume();
         }
     }//GEN-LAST:event_jtfPesomascotaKeyTyped
@@ -828,7 +816,9 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtfSexoFocusLost
 
     private void jcbClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcbClienteActionPerformed
-        // TODO add your handling code here:
+       
+        
+        
     }//GEN-LAST:event_jcbClienteActionPerformed
 
     private void rbActivasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbActivasActionPerformed
@@ -893,12 +883,19 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jbDarBajaActionPerformed
 
+    private void jdcFechaNacMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jdcFechaNacMouseClicked
+         if (jdcFechaNac.isDisplayable() && jdcFechaNac.getAutoscrolls()) {
+
+            jbGuardar.setEnabled(true);
+        }
+    }//GEN-LAST:event_jdcFechaNacMouseClicked
+
     private void cargarClientes(){
         for(Cliente item:listaClientes){
             jcbCliente.addItem(item);
         }
     }
-    
+   
     
     private void limpiar(){
         jtfIDmascota.setText("");
@@ -1035,8 +1032,6 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

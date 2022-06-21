@@ -84,9 +84,8 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         jLabel2.setBounds(152, 160, 115, 17);
 
         getContentPane().add(cbClientes);
-        cbClientes.setBounds(273, 156, 215, 26);
+        cbClientes.setBounds(273, 156, 215, 20);
 
-        jtMascota.setBackground(new java.awt.Color(255, 255, 255));
         jtMascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -110,7 +109,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbBuscar);
-        jbBuscar.setBounds(530, 153, 71, 32);
+        jbBuscar.setBounds(530, 153, 65, 23);
 
         jbSalir.setText("Salir");
         jbSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -119,11 +118,11 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbSalir);
-        jbSalir.setBounds(720, 390, 56, 32);
+        jbSalir.setBounds(550, 380, 53, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/5 cama.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(0, 0, 840, 450);
+        jLabel3.setBounds(-10, 0, 830, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

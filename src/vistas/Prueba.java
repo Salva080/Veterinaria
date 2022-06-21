@@ -21,14 +21,16 @@ public class Prueba extends javax.swing.JFrame {
      */
     public Prueba() {
         initComponents();
-        
+        this.setSize(1150, 830);
+       this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         
 //        ViewGestionConsulta gc =new ViewGestionConsulta();
 //        mostrarPanel( gc);
     }
     private void    mostrarPanel(JInternalFrame p){
       
-        p.setSize(1150, 770);   
+        p.setSize(1010, 700);   
         p.setLocation(0,0);
         
         panelPrueba.removeAll();
@@ -63,7 +65,6 @@ public class Prueba extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
         getContentPane().setLayout(null);
 
         panelPrueba.setBackground(new java.awt.Color(255, 255, 255));
@@ -72,7 +73,7 @@ public class Prueba extends javax.swing.JFrame {
         panelPrueba.setLayout(panelPruebaLayout);
         panelPruebaLayout.setHorizontalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGap(0, 1020, Short.MAX_VALUE)
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,7 +81,7 @@ public class Prueba extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(140, 80, 1010, 750);
+        panelPrueba.setBounds(120, 80, 1020, 750);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tratamiento.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +123,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(30, 240, 90, 80);
+        jButton1.setBounds(30, 240, 90, 73);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/consluta.png"))); // NOI18N
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -189,14 +190,14 @@ public class Prueba extends javax.swing.JFrame {
        System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-<<<<<<< Updated upstream
-=======
+
+
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 //         ViewListadoClientes lc =new ViewListadoClientes();
 //        mostrarPanel( lc);
     }//GEN-LAST:event_jButton5ActionPerformed
 
->>>>>>> Stashed changes
+
     /**
      * @param args the command line arguments
      */

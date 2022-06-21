@@ -85,6 +85,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
         btnConsultar = new javax.swing.JButton();
         btnBaja = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        cActualizar = new javax.swing.JButton();
 
         getContentPane().setLayout(null);
 
@@ -97,7 +98,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbActivo);
-        rbActivo.setBounds(114, 207, 85, 28);
+        rbActivo.setBounds(114, 207, 79, 23);
 
         rbactivos.add(rbNoActivo);
         rbNoActivo.setFont(new java.awt.Font("Book Antiqua", 1, 11)); // NOI18N
@@ -108,7 +109,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbNoActivo);
-        rbNoActivo.setBounds(211, 207, 106, 28);
+        rbNoActivo.setBounds(211, 207, 99, 23);
 
         btnAlta.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         btnAlta.setText("Dar de Alta");
@@ -119,7 +120,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnAlta);
-        btnAlta.setBounds(129, 514, 111, 32);
+        btnAlta.setBounds(129, 514, 111, 25);
 
         jPanel1.setLayout(null);
 
@@ -149,7 +150,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(cbActivo);
-        cbActivo.setBounds(91, 345, 24, 24);
+        cbActivo.setBounds(91, 345, 21, 21);
 
         jLabel7.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel7.setText("Activo:");
@@ -183,7 +184,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(txttipot);
-        txttipot.setBounds(116, 118, 266, 24);
+        txttipot.setBounds(116, 118, 266, 20);
 
         tadescripciont.setColumns(20);
         tadescripciont.setRows(5);
@@ -196,7 +197,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
         jScrollPane2.setViewportView(tadescripciont);
 
         jPanel1.add(jScrollPane2);
-        jScrollPane2.setBounds(124, 160, 252, 83);
+        jScrollPane2.setBounds(124, 160, 252, 80);
 
         btngc.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         btngc.setText("Guardar");
@@ -207,7 +208,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btngc);
-        btngc.setBounds(6, 402, 75, 32);
+        btngc.setBounds(6, 402, 77, 25);
 
         txtmedicamentot.setEnabled(false);
         txtmedicamentot.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -216,7 +217,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(txtmedicamentot);
-        txtmedicamentot.setBounds(134, 256, 250, 24);
+        txtmedicamentot.setBounds(134, 256, 250, 20);
 
         txtprecio.setEnabled(false);
         txtprecio.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -230,7 +231,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(txtprecio);
-        txtprecio.setBounds(75, 297, 217, 24);
+        txtprecio.setBounds(75, 297, 217, 20);
 
         btnModificar.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         btnModificar.setText("Modificar");
@@ -241,7 +242,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnModificar);
-        btnModificar.setBounds(107, 402, 81, 32);
+        btnModificar.setBounds(107, 402, 83, 25);
 
         btnLimpiar.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -251,7 +252,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnLimpiar);
-        btnLimpiar.setBounds(206, 402, 84, 32);
+        btnLimpiar.setBounds(206, 402, 84, 25);
 
         btnIngresar.setFont(new java.awt.Font("Book Antiqua", 0, 11)); // NOI18N
         btnIngresar.setText("INGRESAR");
@@ -261,7 +262,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btnIngresar);
-        btnIngresar.setBounds(6, 0, 87, 31);
+        btnIngresar.setBounds(6, 0, 89, 23);
 
         jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
         jLabel11.setText("Tipo:");
@@ -275,7 +276,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(tId);
-        tId.setBounds(116, 82, 84, 24);
+        tId.setBounds(116, 82, 84, 20);
         jPanel1.add(jSeparator2);
         jSeparator2.setBounds(6, 54, 360, 10);
 
@@ -287,11 +288,11 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         jPanel1.add(btneliminart);
-        btneliminart.setBounds(308, 402, 70, 32);
+        btneliminart.setBounds(308, 402, 70, 25);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(0, 0, 410, 460);
+        jLabel5.setBounds(0, 0, 410, 380);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(461, 103, 401, 460);
@@ -312,7 +313,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rbTodos);
-        rbTodos.setBounds(29, 207, 73, 28);
+        rbTodos.setBounds(29, 207, 67, 23);
 
         ttratamientos.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 255)));
         ttratamientos.setModel(new javax.swing.table.DefaultTableModel(
@@ -347,7 +348,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(txttipotfiltro);
-        txttipotfiltro.setBounds(158, 252, 263, 24);
+        txttipotfiltro.setBounds(158, 252, 263, 20);
 
         btnConsultar.setFont(new java.awt.Font("Book Antiqua", 0, 11)); // NOI18N
         btnConsultar.setText("CONSULTAR");
@@ -357,7 +358,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnConsultar);
-        btnConsultar.setBounds(318, 103, 101, 31);
+        btnConsultar.setBounds(318, 103, 103, 23);
 
         btnBaja.setFont(new java.awt.Font("Book Antiqua", 0, 12)); // NOI18N
         btnBaja.setText("Dar de Baja");
@@ -368,13 +369,24 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBaja);
-        btnBaja.setBounds(269, 514, 91, 32);
+        btnBaja.setBounds(269, 514, 93, 25);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/3 tortu.png"))); // NOI18N
         jLabel2.setText("jLabel2");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, 0, 930, 650);
+        jLabel2.setBounds(0, 0, 920, 650);
+
+        cActualizar.setBackground(new java.awt.Color(255, 255, 255));
+        cActualizar.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        cActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/iconos (3).png"))); // NOI18N
+        cActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cActualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(cActualizar);
+        cActualizar.setBounds(570, 460, 70, 60);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -409,7 +421,6 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
             String activo = ttratamientos.getValueAt(filaSeleccionada, 5).toString();
             cargarTabla(2, null);
 
-            // borraFilasTabla();
         } else {
             JOptionPane.showMessageDialog(this, " Debe seleccionar un tratamiento");
 
@@ -598,6 +609,10 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
 
         }
     }//GEN-LAST:event_tIdActionPerformed
+
+    private void cActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActualizarActionPerformed
+       
+    }//GEN-LAST:event_cActualizarActionPerformed
     private void tablaTratamientos(int filas) {
         String titulos[] = new String[6];
         titulos[0] = "ID";
@@ -651,6 +666,7 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btneliminart;
     private javax.swing.JButton btngc;
+    private javax.swing.JButton cActualizar;
     private javax.swing.JCheckBox cbActivo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
