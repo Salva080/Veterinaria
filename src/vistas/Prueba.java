@@ -78,11 +78,11 @@ public class Prueba extends javax.swing.JFrame {
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 780, Short.MAX_VALUE)
+            .addGap(0, 790, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(120, 70, 1030, 780);
+        panelPrueba.setBounds(120, 70, 1030, 790);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tratamiento.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -162,7 +162,7 @@ public class Prueba extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -20, 1150, 840);
+        jLabel2.setBounds(-10, -20, 1170, 840);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mascotas.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
