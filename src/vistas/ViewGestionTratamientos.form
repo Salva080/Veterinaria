@@ -83,7 +83,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="461" y="103" width="401" height="-1"/>
+          <AbsoluteConstraints x="461" y="103" width="401" height="460"/>
         </Constraint>
       </Constraints>
 
@@ -384,7 +384,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="400" height="460"/>
+              <AbsoluteConstraints x="0" y="0" width="410" height="460"/>
             </Constraint>
           </Constraints>
         </Component>

@@ -291,10 +291,10 @@ public class ViewGestionTratamientos extends javax.swing.JInternalFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4.png"))); // NOI18N
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(0, 0, 400, 460);
+        jLabel5.setBounds(0, 0, 410, 460);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(461, 103, 401, 0);
+        jPanel1.setBounds(461, 103, 401, 460);
 
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 153, 204));

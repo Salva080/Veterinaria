@@ -95,6 +95,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
 
+        setMaximumSize(new java.awt.Dimension(1010, 750));
         getContentPane().setLayout(null);
 
         jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
@@ -220,7 +221,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(540, 40, 150, 30);
+        jButton2.setBounds(540, 60, 150, 30);
 
         alternativo.setBackground(new java.awt.Color(255, 255, 255));
         alternativo.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -295,7 +296,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(tClientes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(380, 180, 610, 150);
+        jScrollPane1.setBounds(380, 170, 610, 150);
 
         btAlta.setBackground(new java.awt.Color(255, 255, 255));
         btAlta.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -307,7 +308,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btAlta);
-        btAlta.setBounds(800, 140, 110, 35);
+        btAlta.setBounds(800, 130, 110, 35);
 
         btBaja.setBackground(new java.awt.Color(255, 255, 255));
         btBaja.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -319,7 +320,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btBaja);
-        btBaja.setBounds(680, 140, 120, 35);
+        btBaja.setBounds(680, 130, 120, 35);
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 153, 204));
@@ -349,7 +350,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(540, 10, 150, 30);
+        jButton4.setBounds(540, 30, 150, 30);
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
@@ -461,7 +462,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1000, 730);
+        jLabel1.setBounds(0, 0, 1010, 750);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
