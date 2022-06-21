@@ -477,7 +477,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cEstadoActionPerformed
 
     private void cGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cGuardarActionPerformed
-        try{
+       // try{
         int dni = Integer.parseInt(cDNI.getText());
         String apellido = cApellido.getText();
         String nombre = cNombre.getText();
@@ -491,17 +491,17 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         clienteData.agregarCliente(c);
         cId.setText(c.getIdCliente() + "");
         limpiar();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "Asegúrese de completar todos los campos con los caracteres correctos");
-        }
+      //  }catch(Exception e){
+      //      JOptionPane.showMessageDialog(null, "Asegúrese de completar todos los campos con los caracteres correctos");
+      //  }
     }//GEN-LAST:event_cGuardarActionPerformed
 
     private void cActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActualizarActionPerformed
         if (cId.getText() != null || cDNI.getText() != null || cApellido.getText() != null || cNombre.getText() != null || cDireccion.getText() != null || cCelular.getText() != null || alternativo.getText() != null ) {
             int id = Integer.parseInt(cId.getText());
             int dni = Integer.parseInt(cDNI.getText());
-            String apellido = cApellido.getText();
             String nombre = cNombre.getText();
+            String apellido = cApellido.getText();
             String direccion = cDireccion.getText();
             int celular = Integer.parseInt(cCelular.getText());
             String alt = alternativo.getText();
@@ -554,6 +554,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cBuscar.setEnabled(true);
         cBuscar1.setEnabled(true);
         cDNI2.setEnabled(true);
+        cId.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void cSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cSalirActionPerformed
@@ -731,6 +732,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cargaDatosActivos();
         btAlta.setEnabled(false);
         btBaja.setEnabled(true);
+        cActualizar.setEnabled(false);
     }//GEN-LAST:event_rbActivosActionPerformed
 
     private void rbNoActivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNoActivosActionPerformed
@@ -740,6 +742,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         cargaDatosInactivos();
         btAlta.setEnabled(true);
         btBaja.setEnabled(false);
+        cActualizar.setEnabled(false);
     }//GEN-LAST:event_rbNoActivosActionPerformed
 
     private void btAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAltaActionPerformed

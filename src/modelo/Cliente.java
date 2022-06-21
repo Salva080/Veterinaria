@@ -21,21 +21,21 @@ public class Cliente {
     private String contactoAlternativo;
     private boolean activo;
 
-    public Cliente(int idCliente, int dni, String apellido, String nombre, String direccion, int telefono, String contactoAlternativo, boolean activo) {
+    public Cliente(int idCliente, int dni, String nombre, String apellido, String direccion, int telefono, String contactoAlternativo, boolean activo) {
         this.idCliente = idCliente;
         this.dni = dni;
-        this.apellido = apellido;
-        this.nombre = nombre;
+        this.apellido = nombre;
+        this.nombre = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         this.contactoAlternativo = contactoAlternativo;
         this.activo = activo;
     }
 
-    public Cliente(int dni, String apellido, String nombre, String direccion, int telefono, String contactoAlternativo, boolean activo) {
+    public Cliente(int dni, String nombre, String apellido, String direccion, int telefono, String contactoAlternativo, boolean activo) {
         this.dni = dni;
-        this.apellido = apellido;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         this.contactoAlternativo = contactoAlternativo;
