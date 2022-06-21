@@ -959,6 +959,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
         jtfIDmascota.setEnabled(true);
     }
     
+ // ok
     private void desactivarID(){
         jtfIDmascota.setEnabled(false);
     }
