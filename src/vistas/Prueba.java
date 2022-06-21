@@ -21,7 +21,7 @@ public class Prueba extends javax.swing.JFrame {
      */
     public Prueba() {
         initComponents();
-        this.setSize(1150, 830);
+        this.setSize(1150, 850);
        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         
@@ -30,7 +30,7 @@ public class Prueba extends javax.swing.JFrame {
     }
     private void    mostrarPanel(JInternalFrame p){
       
-        p.setSize(1010, 700);   
+        p.setSize(1010, 800);   
         p.setLocation(0,0);
         
         panelPrueba.removeAll();
@@ -73,15 +73,15 @@ public class Prueba extends javax.swing.JFrame {
         panelPrueba.setLayout(panelPruebaLayout);
         panelPruebaLayout.setHorizontalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1020, Short.MAX_VALUE)
+            .addGap(0, 1030, Short.MAX_VALUE)
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 780, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(120, 80, 1020, 750);
+        panelPrueba.setBounds(120, 70, 1030, 780);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tratamiento.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +161,7 @@ public class Prueba extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -10, 1150, 840);
+        jLabel2.setBounds(0, -20, 1150, 840);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

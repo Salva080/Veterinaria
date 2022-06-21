@@ -81,7 +81,7 @@ public class Veterinaria {
         Cliente c3 = new Cliente(29,"Martin", "Gomez","Libertad",2664,"Amigo",true);
         Mascota m1 = new Mascota();
         ClienteData cc = new ClienteData(conexion);
-        ClienteData.agregarCliente(c1);
+//        ClienteData.agregarCliente(c1);
         
 //        cc.agregarCliente(c2);
 //        cc.modificarCliente(35, c3);
