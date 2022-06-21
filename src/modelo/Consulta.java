@@ -14,32 +14,43 @@ public class Consulta {
     private LocalDate fechaConsulta;
     private Mascota mascota; ///
     private Tratamiento tratamiento;
+    private String detallesConsulta;
     private boolean activo;
     private double pesoConsulta;
 
-    public Consulta(int idConsulta, double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoConsulta) {
+    public Consulta(int idConsulta, double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, String detallesConsulta, boolean activo, double pesoConsulta) {
         this.idConsulta = idConsulta;
         this.precio = precio;
         this.fechaConsulta = fechaConsulta;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
+        this.detallesConsulta=detallesConsulta;
         this.activo = activo;
         this.pesoConsulta = pesoConsulta;
     }
 
-    public Consulta(double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento, boolean activo, double pesoConsulta) {
+    public Consulta(double precio, LocalDate fechaConsulta, Mascota mascota, Tratamiento tratamiento,String detallesConsulta, boolean activo, double pesoConsulta) {
         this.precio = precio;
         this.fechaConsulta = fechaConsulta;
         this.mascota = mascota;
         this.tratamiento = tratamiento;
+         this.detallesConsulta=detallesConsulta;
         this.activo = activo;
         this.pesoConsulta = pesoConsulta;
     }
 
+    
+
     public Consulta() {
     }
     
-  
+  public String getDetallesConsulta() {
+        return detallesConsulta;
+    }
+
+    public void setDetallesConsulta(String detallesConsulta) {
+        this.detallesConsulta = detallesConsulta;
+    }
 
     public int getIdConsulta() {
         return idConsulta;

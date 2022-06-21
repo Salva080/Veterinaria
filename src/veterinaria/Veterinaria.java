@@ -43,7 +43,7 @@ public class Veterinaria {
       //............prueba............//
         Prueba cv= new  Prueba();
         cv.setVisible(true);
-      //............prueba............//
+//      //............prueba............//
       
       
       
@@ -113,13 +113,15 @@ public class Veterinaria {
         /*........................Consulta.........................*/
         Tratamiento tdd3 = new Tratamiento(16, "cirugia", "corte", "pildoras", 12389, true);
 
-        Consulta con = new Consulta(1500, LocalDate.of(2000, 12, 06), m3, tdd3, true, 2.5);
-        Consulta cone = new Consulta(23, 500, LocalDate.of(2022, 07, 06), m3, tdd3, true, 40);
+        Consulta con = new Consulta(1500, LocalDate.of(2000, 12, 06), m3, tdd3,"dwdra", true, 2.5);
+        Consulta cone = new Consulta(23, 500, LocalDate.of(2022, 07, 06), m3, tdd3,"jdñljsaldj", true, 40);
        
         cd = new ConsultaData(conexion);
 
-        Consulta coneee = new Consulta(15, 500, LocalDate.of(2020, 8, 8), m3, tdd1, true, 2.5);
+        Consulta coneee = new Consulta(15, 500, LocalDate.of(2020, 8, 8), m3, tdd1,"dñakdñas", true, 2.5);
         cd = new ConsultaData(conexion);
+        
+      //  cd.actualizarPesoActual(234, 26.5);
         
      //   cd.promediarPesoPorMascota(23);
      //   cd.modificarConsulta(27, con);

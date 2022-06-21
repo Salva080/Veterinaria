@@ -97,7 +97,6 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         tFiltro = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        btnBuscar = new javax.swing.JButton();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         cbMascota1 = new javax.swing.JComboBox<>();
         cbTratamiento1 = new javax.swing.JComboBox<>();
@@ -153,17 +152,24 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         tFecha = new com.toedter.calendar.JDateChooser();
         btnLimpiar = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
         jSeparator9 = new javax.swing.JSeparator();
-        jSeparator5 = new javax.swing.JSeparator();
         btnIngresar = new javax.swing.JButton();
         tId = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         btnBuscarID = new javax.swing.JButton();
-        tfechaAux = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tDetalles = new javax.swing.JTextArea();
+        jSeparator11 = new javax.swing.JSeparator();
         btnBaja = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel13 = new javax.swing.JLabel();
+        tPesoPr = new javax.swing.JTextField();
+        btnPromediar = new javax.swing.JButton();
+        tIdMascota = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jSeparator12 = new javax.swing.JSeparator();
+        btnLimpiarC = new javax.swing.JButton();
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -182,18 +188,18 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         tConsulta.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         tConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "FECHA", "MASCOTA", "DNI CLIENTE", "TRATAMIENTO", "PESO CONSULTA", "PRECIO"
+                "ID", "FECHA", "MOTIVO", "ID M", "MASCOTA", "PESOACTUAL", "PESO CONSULTA", "TRATAMIENTO", "MEDICACION", " $ PRECIO", "DNI CLIENTE", "ACTIVO"
             }
         ));
         tConsulta.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -204,9 +210,9 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(0, 300, 530, 190);
+        jScrollPane3.setBounds(0, 320, 520, 170);
         getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(70, 80, 288, 10);
+        jSeparator1.setBounds(70, 60, 288, 10);
         getContentPane().add(jSeparator2);
         jSeparator2.setBounds(10, 334, 450, 0);
 
@@ -214,7 +220,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         jLabel9.setForeground(new java.awt.Color(0, 153, 204));
         jLabel9.setText("Listado de consultas");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(80, 40, 269, 36);
+        jLabel9.setBounds(80, 20, 269, 36);
 
         rActiva.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         rActiva.setText("Activas");
@@ -224,7 +230,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rActiva);
-        rActiva.setBounds(310, 120, 73, 25);
+        rActiva.setBounds(310, 100, 73, 25);
 
         rNoActiva.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         rNoActiva.setText("No Activas");
@@ -234,7 +240,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rNoActiva);
-        rNoActiva.setBounds(180, 120, 97, 25);
+        rNoActiva.setBounds(160, 100, 97, 25);
 
         rTodos.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         rTodos.setText("Todas");
@@ -244,17 +250,17 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(rTodos);
-        rTodos.setBounds(60, 120, 65, 25);
+        rTodos.setBounds(50, 100, 65, 25);
 
         cFiltro.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         cFiltro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "alias", "dni", "tipoTratamiento" }));
         getContentPane().add(cFiltro);
-        cFiltro.setBounds(170, 150, 227, 23);
+        cFiltro.setBounds(170, 140, 227, 23);
 
         jLabel5.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel5.setText("Filtrar Por:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(50, 150, 85, 17);
+        jLabel5.setBounds(30, 140, 85, 17);
 
         tFiltro.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         tFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -263,22 +269,12 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tFiltro);
-        tFiltro.setBounds(170, 190, 227, 23);
+        tFiltro.setBounds(170, 180, 227, 23);
 
         jLabel10.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        jLabel10.setText("Ingresar dato:");
+        jLabel10.setText("Id Mascota:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(50, 190, 105, 17);
-
-        btnBuscar.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnBuscar);
-        btnBuscar.setBounds(30, 250, 110, 25);
+        jLabel10.setBounds(20, 270, 80, 17);
 
         jInternalFrame1.setBorder(null);
 
@@ -594,12 +590,23 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnConsultar);
-        btnConsultar.setBounds(400, 40, 110, 23);
+        btnConsultar.setBounds(400, 20, 110, 23);
 
-        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        cbTratamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbTratamientoMouseClicked(evt);
+            }
+        });
+        cbTratamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbTratamientoActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel2.setText("Mascota:");
 
-        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel3.setText("Tratamiento:");
 
         btnGuardar.setText("Guardar");
@@ -634,7 +641,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel4.setText("Precio:");
 
         jLabel6.setFont(new java.awt.Font("Trebuchet MS", 0, 24)); // NOI18N
@@ -643,7 +650,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
 
         chActivo.setEnabled(false);
 
-        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel1.setText("Activo:");
 
         btnSalir.setText("Salir");
@@ -653,10 +660,10 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel11.setText("Fecha:");
 
-        jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel12.setText("Peso:");
 
         tPeso.setText("kg");
@@ -700,18 +707,6 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("Promediar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jTextField2.setText("Kg");
-
-        jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
-        jLabel13.setText("Promediar peso:");
-
         btnIngresar.setText("INGRESAR");
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -735,7 +730,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel25.setFont(new java.awt.Font("Book Antiqua", 0, 18)); // NOI18N
+        jLabel25.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel25.setText("ID:");
 
         btnBuscarID.setText("Buscar");
@@ -746,12 +741,25 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel26.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel26.setText("Detalles:");
+
+        tDetalles.setColumns(20);
+        tDetalles.setRows(5);
+        tDetalles.setEnabled(false);
+        tDetalles.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tDetallesFocusLost(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tDetalles);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap()
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -759,62 +767,56 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(25, 25, 25)
-                                .addComponent(cbTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
-                                .addComponent(tPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(chActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(22, 22, 22)
-                                .addComponent(jButton1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(38, 38, 38)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tfechaAux, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cbMascota, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(99, 99, 99)
                                         .addComponent(btnBuscarID))))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(52, 52, 52)
-                                    .addComponent(tPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3)
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(46, 46, 46)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(cbTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(chActivo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(28, 28, 28)
+                                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(146, 146, 146)
+                        .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -822,69 +824,55 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnIngresar)
-                    .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(17, 17, 17)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel25)
                     .addComponent(tId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarID))
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(cbMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(cbTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(tPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(tPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(chActivo))
-                        .addGap(11, 11, 11)
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(jButton1)))
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnGuardar)
-                            .addComponent(btnModificar)
-                            .addComponent(btnLimpiar)
-                            .addComponent(btnSalir)))
-                    .addComponent(tfechaAux, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(cbMascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(cbTratamiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel26)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(tPeso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(tPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(chActivo))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardar)
+                    .addComponent(btnModificar)
+                    .addComponent(btnLimpiar)
+                    .addComponent(btnSalir))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(520, 30, 430, 470);
+        jPanel1.setBounds(530, 0, 470, 440);
 
         btnBaja.setText("Dar de Baja");
         btnBaja.setEnabled(false);
@@ -894,7 +882,57 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(btnBaja);
-        btnBaja.setBounds(280, 250, 120, 23);
+        btnBaja.setBounds(380, 500, 120, 23);
+        getContentPane().add(jSeparator5);
+        jSeparator5.setBounds(50, 225, 470, 0);
+
+        jLabel13.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel13.setText("Promediar peso");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(180, 230, 110, 17);
+
+        tPesoPr.setText("Kg");
+        getContentPane().add(tPesoPr);
+        tPesoPr.setBounds(240, 270, 109, 20);
+
+        btnPromediar.setText("Promediar");
+        btnPromediar.setEnabled(false);
+        btnPromediar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPromediarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnPromediar);
+        btnPromediar.setBounds(380, 270, 81, 23);
+
+        tIdMascota.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tIdMascotaFocusLost(evt);
+            }
+        });
+        tIdMascota.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tIdMascotaKeyTyped(evt);
+            }
+        });
+        getContentPane().add(tIdMascota);
+        tIdMascota.setBounds(120, 270, 80, 20);
+
+        jLabel27.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
+        jLabel27.setText("Ingresar dato:");
+        getContentPane().add(jLabel27);
+        jLabel27.setBounds(30, 180, 105, 17);
+        getContentPane().add(jSeparator12);
+        jSeparator12.setBounds(60, 222, 350, 2);
+
+        btnLimpiarC.setText("Limpiar");
+        btnLimpiarC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarCActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnLimpiarC);
+        btnLimpiarC.setBounds(250, 500, 100, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -951,9 +989,10 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         tId.setText("");
         tPrecio.setText("");
         tPeso.setText("");
+        tDetalles.setText("");
         tFecha.setDate(null);
-
-        btnGuardar.setEnabled(false);
+        chActivo.setSelected(false);
+      desactivarBtn();
 
 
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -1009,6 +1048,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         if (controlar()) {
             registrar();
             cargarTabla(0, null);
+            limpiarCampos();
         } else {
 
         }
@@ -1060,12 +1100,6 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLimpiar1ActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        limpiarTabla();
-        filtrarTipo();
-
-    }//GEN-LAST:event_btnBuscarActionPerformed
-
     private void rActivaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rActivaActionPerformed
         rNoActiva.setSelected(false);
         rTodos.setSelected(false);
@@ -1089,99 +1123,24 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_rTodosActionPerformed
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        tId.setEnabled(false);
         activarCampos();
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+          tId.setEnabled(true);
         desactivarCampos();
     }//GEN-LAST:event_btnConsultarActionPerformed
-/*
-    private void tConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConsultaMouseClicked
-
-    
-     //  intento de pasar de jTable a DataChoooser:
-    
-    SimpleDateFormat sdformato = new SimpleDateFormat("dd/MM/yyyy");
-//      
-//        String fecha = (String) tConsulta.getValueAt(seleccionado, 1);
-//         tFecha.setDate(sdformato.parse(fecha));
-//        String Fecha = (String) tConsulta.getModel().getValueAt(seleccionado, 1);
-//         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-//         Date fecha = df.parse(Fecha);     
-         
-            //obtenemos la fila seleccionada
-//        int fila = tableDetalles.getSelectedRow();
-            //obtenemos la fecha de dicha fila
-//        String fecha = tConsulta.getValueAt(seleccionado, 1).toString();
-//        //creamos el formato en el que deseamos mostrar la fecha
-//        SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy/mm/dd");
-//        //creamos una variable tipo Date y la ponemos NULL
-//        Date fechaN = null;
-//        try {
-//            //parseamos de String a Date usando el formato
-//            fechaN = formatoDelTexto.parse(fecha);
-//            //seteamos o mostramos la fecha en el JDateChooser
-//            tFecha.setDate(fechaN);
-//        } catch (ParseException ex) {
-//            ex.printStackTrace();
-//            JOptionPane.showMessageDialog(this, ex.getMessage());
-//        }
-//       ///...................................................///
-//         try {
-////            DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
-////            int index = jTable1.getSelectedRow();
-//            Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)tConsulta.getValueAt(seleccionado, 1));
-//            tFecha.setDate(date);
-//        } catch (ParseException ex) {
-//        
-//        }
-            //////////////////..................................................////
-            //Enviando la fecha al JDateChooser
-    /*         String f =  tConsulta.getValueAt(seleccionado, 1).toString();
-            SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-            Date fecha = null;
-            try {
-                fecha = formato.parse(f, null);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(this, e.getMessage());
-            }
-            tFecha.setDate(fecha);
-    
-    
-    
-        try {
-            int seleccionado = tConsulta.rowAtPoint(evt.getPoint());
-            
-            tId.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 0)));
-         
-            String fecha = tConsulta.getValueAt(seleccionado, 1).toString();
-       
-            
-            
-        
-            cbMascota.setSelectedItem(String.valueOf(tConsulta.getValueAt(seleccionado, 2)));
-            cbTratamiento.setSelectedItem(String.valueOf(tConsulta.getValueAt(seleccionado, 4)));
-            tPeso.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 5)));
-            tPrecio.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 6)));
-
-            if (tConsulta.getValueAt(seleccionado, 7).toString().equals("Si")) {
-                chActivo.setSelected(true);
-            } else {
-                chActivo.setSelected(false);
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-
-        }
-
-    }//GEN-LAST:event_tConsultaMouseClicked
-*/
+    /**/
 
 
     private void btnBuscarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarIDActionPerformed
         Consulta c = cData.buscarConsulta(Integer.parseInt(tId.getText()));
-        if (c != null) {
-            
+
+        int id = Integer.parseInt(tId.getText());
+
+        if (tId.getText() != null) {
+
             LocalDate lc = c.getFechaConsulta();
             Date date = Date.from(lc.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
@@ -1191,11 +1150,14 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
 
             cbTratamiento.setSelectedItem(t);
             cbMascota.setSelectedItem(m);
+           tDetalles.setText(c.getDetallesConsulta());
             tPeso.setText(c.getPesoConsulta() + "");
             tPrecio.setText(c.getPrecio() + "");
             chActivo.setSelected(c.isActivo());
-        }else{
-            JOptionPane.showMessageDialog(this," No se encontro una consulta")  ;   
+            btnPromediar.setEnabled(true);
+            
+        } else {
+            JOptionPane.showMessageDialog(this, " No se encontró una consulta");
         }
         tId.setEnabled(false);
         if (chActivo.isSelected()) {
@@ -1214,27 +1176,41 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             Tratamiento t = (Tratamiento) cbTratamiento.getSelectedItem();
 
             Mascota m = (Mascota) cbMascota.getSelectedItem();
-
+            String detalles = tDetalles.getText();
             double peso = Double.parseDouble(tPeso.getText());
+
             double precio = Double.parseDouble(tPrecio.getText());
             boolean activo = chActivo.isSelected();
 
-            Consulta c = new Consulta(precio, fechaC, m, t, activo, peso);
+            Consulta c = new Consulta(precio, fechaC, m, t, detalles, activo, peso);
             try {
 
                 cData.modificarConsulta(id, c);
+
+               //seteo peso actual con el peso de consulta
+                double pesoA = c.getPesoConsulta();
+
+                int idm = m.getIdMascota();
+
+                
+                cData.actualizarPesoActual(idm, pesoA);
+                ////////////////////////////////////////////////
+
             } catch (Exception e) {
 
             }
         }
+        desactivarBtn();
         cargarTabla(0, null);
     }//GEN-LAST:event_btnModificarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        int id = Integer.parseInt(tId.getText());
-        cData.promediarPesoPorMascota(id);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnPromediarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPromediarActionPerformed
+        
+        int id = Integer.parseInt(tIdMascota.getText());
+        
+       double promedio= cData.promediarPesoPorMascota(id);
+        tPesoPr.setText(promedio+"");
+    }//GEN-LAST:event_btnPromediarActionPerformed
 
     private void tIdFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tIdFocusLost
         if (!tId.getText().isEmpty()) {
@@ -1278,6 +1254,58 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private void tFiltroKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tFiltroKeyReleased
         filtrarTipo();
     }//GEN-LAST:event_tFiltroKeyReleased
+
+    private void cbTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTratamientoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTratamientoActionPerformed
+
+    private void cbTratamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbTratamientoMouseClicked
+    
+         // prueba para setear precio del tratamiento en precio consulta
+         tPrecio.setText(cbTratamiento.getSelectedItem().toString());
+    }//GEN-LAST:event_cbTratamientoMouseClicked
+
+    private void tDetallesFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tDetallesFocusLost
+        if(tDetalles.getText().isEmpty()){
+            JOptionPane.showMessageDialog(this, "Ingrese un motivo/detalle  de la consulta");
+        }
+    }//GEN-LAST:event_tDetallesFocusLost
+
+    private void tIdMascotaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tIdMascotaFocusLost
+       if(!tIdMascota.getText().isEmpty()){
+           btnPromediar.setEnabled(true);
+       }else{
+           btnPromediar.setEnabled(false);
+       }
+    }//GEN-LAST:event_tIdMascotaFocusLost
+
+    private void tIdMascotaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tIdMascotaKeyTyped
+       int key = evt.getKeyChar();
+        boolean numeros = key >= 48 && key <= 57;
+
+        if (!(numeros)) {
+            JOptionPane.showMessageDialog(this, "El dato Id debe ser numérico");
+            evt.consume();
+        }
+    }//GEN-LAST:event_tIdMascotaKeyTyped
+
+    private void btnLimpiarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarCActionPerformed
+       tFiltro.setText("");
+       tIdMascota.setText("");
+       tPesoPr.setText("");
+       btnPromediar.setEnabled(false);
+    }//GEN-LAST:event_btnLimpiarCActionPerformed
+
+    private void tConsultaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tConsultaMouseClicked
+       try {
+            int seleccionado = tConsulta.rowAtPoint(evt.getPoint());
+
+           tIdMascota.setText(String.valueOf(tConsulta.getValueAt(seleccionado, 3)));
+            
+       }catch(Exception e){
+           
+       }
+    }//GEN-LAST:event_tConsultaMouseClicked
 
     private void cargarTratamiento() {
 
@@ -1331,12 +1359,23 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         LocalDate fechaNac = fech.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         Mascota seleccionada = (Mascota) cbMascota.getSelectedItem();
         Tratamiento seleccionado = (Tratamiento) cbTratamiento.getSelectedItem();
+        String detalles = tDetalles.getText();
         boolean estado = chActivo.isSelected();
         double PesoC = Double.parseDouble(tPeso.getText());
-        Consulta consul = new Consulta(precio, fechaNac, seleccionada, seleccionado, estado, PesoC);
+        Consulta consul = new Consulta(precio, fechaNac, seleccionada, seleccionado, detalles, estado, PesoC);
         try {
             if (chActivo.isSelected() && !tPrecio.getText().isEmpty() && tFecha.getDate() != null && !tPeso.getText().isEmpty()) {
                 cData.registrarConsulta(consul);
+
+                //seteo peso actual con el peso de consulta
+                double pesoA = consul.getPesoConsulta();
+
+                int idm = seleccionada.getIdMascota();
+
+               
+                cData.actualizarPesoActual(idm, pesoA);
+                ////////////////////////////////////////////////
+
             } else {
 
                 JOptionPane.showMessageDialog(this, " Esta agregando una consulta con estado inactivo");//
@@ -1351,11 +1390,24 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         // modelo.addRow(new Object[]{consul.getIdConsulta(), consul.getFechaConsulta(), consul.getMascota().getAlias(), consul.getTratamiento().getTipoTratamiento(), consul.getPesoConsulta(), consul.getPrecio()});
     }
 
+        private void desactivarBtn(){
+            btnGuardar.setEnabled(false);
+            btnModificar.setEnabled(false);
+
+        }
+        private void activarBtn(){
+            btnGuardar.setEnabled(true);
+            btnModificar.setEnabled(true);
+
+        }
+        
+        
     private void desactivarCampos() {
         tPrecio.setEnabled(false);
         tFecha.setEnabled(false);
         cbMascota.setEnabled(false);
         cbTratamiento.setEnabled(false);
+        tDetalles.setEnabled(false);
         chActivo.setEnabled(false);
         tPeso.setEnabled(false);
     }
@@ -1370,15 +1422,19 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     }
 
     private void tablaConsultas(int filas) {
-        String titulos[] = new String[8];
+        String titulos[] = new String[12];
         titulos[0] = "ID";
         titulos[1] = "FECHA";
-        titulos[2] = "MASCOTA";
-        titulos[3] = "CLIENTE";
-        titulos[4] = "TRATAMIENTO";
-        titulos[5] = "PESO CONSULTA";
-        titulos[6] = "PRECIO";
-        titulos[7] = "ACTIVO";
+        titulos[2] = "MOTIVO";
+        titulos[3] = "ID M";
+        titulos[4] = "MASCOTA";
+        titulos[5] = "PESO ACTUAL";
+        titulos[6] = "PESO CONSULTA";
+        titulos[7] = "TRATAMIENTO";
+        titulos[8] = "MEDICACION";
+        titulos[9] = "PRECIO";
+        titulos[10] = "CLIENTE";
+        titulos[11] = "ACTIVO";
 
         tConsulta.setModel(new TablaModelo(titulos, filas));
 
@@ -1393,16 +1449,20 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
 
                 tConsulta.setValueAt(consultas.get(i).getIdConsulta(), i, 0);
                 tConsulta.setValueAt(consultas.get(i).getFechaConsulta(), i, 1);
-                tConsulta.setValueAt(consultas.get(i).getMascota().getAlias(), i, 2);
-                tConsulta.setValueAt(consultas.get(i).getMascota().getCliente().getDni(), i, 3);
-                tConsulta.setValueAt(consultas.get(i).getTratamiento().getTipoTratamiento(), i, 4);
-                tConsulta.setValueAt(consultas.get(i).getPesoConsulta(), i, 5);
-                tConsulta.setValueAt(consultas.get(i).getPrecio(), i, 6);
-                tConsulta.setValueAt(consultas.get(i).isActivo(), i, 7);
+                tConsulta.setValueAt(consultas.get(i).getDetallesConsulta(), i, 2);
+                tConsulta.setValueAt(consultas.get(i).getMascota().getIdMascota(), i, 3);
+                tConsulta.setValueAt(consultas.get(i).getMascota().getAlias(), i, 4);
+                tConsulta.setValueAt(consultas.get(i).getMascota().getPesoActual(), i, 5);
+                tConsulta.setValueAt(consultas.get(i).getPesoConsulta(), i, 6);
+                tConsulta.setValueAt(consultas.get(i).getTratamiento().getTipoTratamiento(), i, 7);
+                tConsulta.setValueAt(consultas.get(i).getTratamiento().getMedicamento(), i, 8);
+                tConsulta.setValueAt(consultas.get(i).getPrecio(), i, 9);
+                tConsulta.setValueAt(consultas.get(i).getMascota().getCliente().getDni(), i, 10);
+                tConsulta.setValueAt(consultas.get(i).isActivo(), i, 11);
                 if (consultas.get(i).isActivo()) {
-                    tConsulta.setValueAt("Si", i, 7);
+                    tConsulta.setValueAt("Si", i, 11);
                 } else {
-                    tConsulta.setValueAt("No", i, 7);
+                    tConsulta.setValueAt("No", i, 11);
                 }
             }
         }
@@ -1423,13 +1483,22 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
 
     }
 
+    private void limpiarCampos() {
+        tFecha.setDate(null);
+        cbMascota.setSelectedItem(false);
+        cbTratamiento.setSelectedItem(false);
+        tDetalles.setText("");
+        tPrecio.setText("");
+        tPeso.setText("");
+        chActivo.setSelected(false);
+    }
+
     private void limpiarTabla() {
         tablaConsultas(8);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBaja;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarID;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnGuardar;
@@ -1437,8 +1506,10 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnLimpiar1;
+    private javax.swing.JButton btnLimpiarC;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnModificar1;
+    private javax.swing.JButton btnPromediar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSalir1;
     private javax.swing.JComboBox<String> cFiltro;
@@ -1449,7 +1520,6 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JComboBox<Tratamiento> cbTratamiento1;
     private javax.swing.JCheckBox chActivo;
     private javax.swing.JCheckBox chActivo1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
@@ -1472,6 +1542,8 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1484,16 +1556,18 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton5;
     private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JRadioButton rActiva;
@@ -1501,15 +1575,17 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rTodos;
     private javax.swing.JTable tConsulta;
     private javax.swing.JTable tConsulta1;
+    private javax.swing.JTextArea tDetalles;
     private com.toedter.calendar.JDateChooser tFecha;
     private com.toedter.calendar.JDateChooser tFecha1;
     private javax.swing.JTextField tFiltro;
     private javax.swing.JTextField tFiltro1;
     private javax.swing.JTextField tId;
+    private javax.swing.JTextField tIdMascota;
     private javax.swing.JTextField tPeso;
     private javax.swing.JTextField tPeso1;
+    private javax.swing.JTextField tPesoPr;
     private javax.swing.JTextField tPrecio;
     private javax.swing.JTextField tPrecio1;
-    private javax.swing.JTextField tfechaAux;
     // End of variables declaration//GEN-END:variables
 }
