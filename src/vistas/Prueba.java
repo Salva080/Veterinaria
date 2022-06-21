@@ -21,7 +21,7 @@ public class Prueba extends javax.swing.JFrame {
      */
     public Prueba() {
         initComponents();
-        this.setSize(1150, 850);
+        this.setSize(1270, 850);
        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         
@@ -64,6 +64,7 @@ public class Prueba extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -74,7 +75,7 @@ public class Prueba extends javax.swing.JFrame {
         panelPrueba.setLayout(panelPruebaLayout);
         panelPruebaLayout.setHorizontalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1030, Short.MAX_VALUE)
+            .addGap(0, 1140, Short.MAX_VALUE)
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -82,7 +83,7 @@ public class Prueba extends javax.swing.JFrame {
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(120, 70, 1030, 790);
+        panelPrueba.setBounds(120, 70, 1140, 790);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tratamiento.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +92,7 @@ public class Prueba extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(30, 380, 90, 80);
+        jButton2.setBounds(30, 400, 90, 80);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir boton.png"))); // NOI18N
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -148,12 +149,12 @@ public class Prueba extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel6.setText("Mascotas");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 320, 60, 15);
+        jLabel6.setBounds(40, 310, 60, 15);
 
         jLabel7.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel7.setText("Tratamientos");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(40, 460, 90, 15);
+        jLabel7.setBounds(30, 480, 90, 15);
 
         jLabel8.setFont(new java.awt.Font("Gill Sans Ultra Bold Condensed", 0, 12)); // NOI18N
         jLabel8.setText("Consultas");
@@ -162,7 +163,7 @@ public class Prueba extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(-10, -20, 1170, 840);
+        jLabel2.setBounds(150, -20, 1120, 840);
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mascotas.png"))); // NOI18N
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -172,6 +173,16 @@ public class Prueba extends javax.swing.JFrame {
         });
         getContentPane().add(jButton5);
         jButton5.setBounds(30, 240, 90, 73);
+
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton6.setText("DETALLES");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton6);
+        jButton6.setBounds(30, 350, 90, 23);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,6 +217,11 @@ public class Prueba extends javax.swing.JFrame {
 //         ViewListadoClientes lc =new ViewListadoClientes();
 //        mostrarPanel( lc);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        ViewListaMascotasPorCliente lc =new ViewListaMascotasPorCliente();
+      mostrarPanel( lc);
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     /**
@@ -249,6 +265,7 @@ public class Prueba extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

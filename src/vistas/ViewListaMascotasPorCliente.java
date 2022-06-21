@@ -124,7 +124,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/5 cama.png"))); // NOI18N
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(-10, 0, 830, 420);
+        jLabel3.setBounds(-10, 0, 860, 420);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
