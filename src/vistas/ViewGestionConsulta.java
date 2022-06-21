@@ -173,6 +173,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         jSeparator12 = new javax.swing.JSeparator();
         btnLimpiarC = new javax.swing.JButton();
         jLabel28 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu2.png"))); // NOI18N
         jLabel8.setText("jLabel8");
@@ -838,7 +839,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
 
         tPesoPr.setText("Kg");
         getContentPane().add(tPesoPr);
-        tPesoPr.setBounds(280, 300, 140, 20);
+        tPesoPr.setBounds(250, 300, 150, 20);
 
         tIdMascota.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -851,7 +852,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(tIdMascota);
-        tIdMascota.setBounds(140, 300, 100, 20);
+        tIdMascota.setBounds(130, 300, 100, 20);
 
         jLabel27.setFont(new java.awt.Font("Book Antiqua", 0, 14)); // NOI18N
         jLabel27.setText("Ingresar dato:");
@@ -872,7 +873,11 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         jLabel28.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/4 gato.png"))); // NOI18N
         jLabel28.setText("jLabel28");
         getContentPane().add(jLabel28);
-        jLabel28.setBounds(-6, 0, 1050, 670);
+        jLabel28.setBounds(0, 0, 1050, 700);
+
+        jTextField1.setText("jTextField1");
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(200, 300, 120, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1498,6 +1503,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private java.awt.PopupMenu popupMenu1;
     private javax.swing.JRadioButton rActiva;

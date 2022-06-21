@@ -86,6 +86,8 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         getContentPane().add(cbClientes);
         cbClientes.setBounds(273, 156, 215, 20);
 
+        jtMascota.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jtMascota.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jtMascota.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
@@ -100,7 +102,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
         jScrollPane1.setViewportView(jtMascota);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(54, 262, 660, 94);
+        jScrollPane1.setBounds(70, 210, 660, 94);
 
         jbBuscar.setText("Buscar");
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +120,7 @@ public class ViewListaMascotasPorCliente extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jbSalir);
-        jbSalir.setBounds(550, 380, 53, 23);
+        jbSalir.setBounds(640, 150, 53, 23);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/5 cama.png"))); // NOI18N
         getContentPane().add(jLabel3);
