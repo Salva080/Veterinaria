@@ -214,7 +214,7 @@ public class ViewGestionConsulta extends javax.swing.JInternalFrame {
         jScrollPane3.setViewportView(tConsulta);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(0, 350, 520, 180);
+        jScrollPane3.setBounds(0, 350, 530, 180);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(90, 70, 288, 0);
         getContentPane().add(jSeparator2);
