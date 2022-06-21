@@ -17,7 +17,6 @@ import modelo.Consulta;
 import modelo.Mascota;
 import modelo.Tratamiento;
 import vistas.Prueba;
-import vistas.ViewVeterinaria;
 
 /**
  *

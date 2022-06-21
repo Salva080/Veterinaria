@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 import modelo.Conexion;
-import static vistas.ViewVeterinaria.escritorio;
+
 
 /**
  *
@@ -293,6 +293,11 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
                 "ID", "DNI", "Apellido", "Nombre", "Direccion", "Telefono", "Contacto", "Activo"
             }
         ));
+        tClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tClientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tClientes);
 
         getContentPane().add(jScrollPane1);
@@ -338,7 +343,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         jLabel12.setForeground(new java.awt.Color(0, 153, 204));
         jLabel12.setText("Clientes");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(280, 0, 150, 48);
+        jLabel12.setBounds(280, 30, 150, 48);
 
         jButton4.setBackground(new java.awt.Color(255, 255, 255));
         jButton4.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
@@ -515,6 +520,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     private void cBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscarActionPerformed
         botonesBuscar();
         activarOtros();
+        cEstado.setEnabled(false);
 
         Cliente c = clienteData.buscarCliente(Integer.parseInt(cId.getText()));
 
@@ -673,6 +679,7 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
     private void cBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cBuscar1ActionPerformed
         botonesBuscar();
         activarOtros();
+        cEstado.setEnabled(false);
 
         Cliente c = clienteData.buscarClientePorDni(Integer.parseInt(cDNI2.getText()));
         
@@ -787,6 +794,29 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
             evt.consume();
         }
     }//GEN-LAST:event_cCelularKeyTyped
+
+    private void tClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tClientesMouseClicked
+        try {
+            int seleccionado = tClientes.rowAtPoint(evt.getPoint());
+
+            cId.setText(String.valueOf(tClientes.getValueAt(seleccionado, 0)));
+            cDNI.setText(String.valueOf(tClientes.getValueAt(seleccionado, 1)));
+            cApellido.setText(String.valueOf(tClientes.getValueAt(seleccionado, 2)));
+            cNombre.setText(String.valueOf(tClientes.getValueAt(seleccionado, 3)));
+            cDireccion.setText(String.valueOf(tClientes.getValueAt(seleccionado, 4)));
+            cCelular.setText(String.valueOf(tClientes.getValueAt(seleccionado, 5)));
+            alternativo.setText(String.valueOf(tClientes.getValueAt(seleccionado, 6)));
+
+            if (tClientes.getValueAt(seleccionado, 7).toString().equals("Si")) {
+                cEstado.setSelected(true);
+            } else {
+                cEstado.setSelected(false);
+            }
+            
+        } catch (Exception ex) {
+
+        }
+    }//GEN-LAST:event_tClientesMouseClicked
     private void limpiar() {
         cId.setText("");
         cDNI.setText("");
@@ -839,6 +869,14 @@ public class ViewGestionClientes extends javax.swing.JInternalFrame {
         
         cActualizar.setEnabled(true);
 
+    }
+    private void activarCampos(){
+        cNombre.setEnabled(true);
+        cApellido.setEnabled(true);
+        cDNI.setEnabled(true);
+        cDireccion.setEnabled(true);
+        cCelular.setEnabled(true);
+        alternativo.setEnabled(true);
     }
 
     private void desactivarOtros() {

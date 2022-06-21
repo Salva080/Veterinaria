@@ -28,7 +28,7 @@ public class Prueba extends javax.swing.JFrame {
     }
     private void    mostrarPanel(JInternalFrame p){
       
-        p.setSize(1150, 770);   
+        p.setSize(1000, 740);   
         p.setLocation(0,0);
         
         panelPrueba.removeAll();
@@ -63,24 +63,26 @@ public class Prueba extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1000, 600));
+        setPreferredSize(new java.awt.Dimension(1158, 858));
         getContentPane().setLayout(null);
 
         panelPrueba.setBackground(new java.awt.Color(255, 255, 255));
+        panelPrueba.setMaximumSize(new java.awt.Dimension(1010, 750));
+        panelPrueba.setPreferredSize(new java.awt.Dimension(1010, 750));
 
         javax.swing.GroupLayout panelPruebaLayout = new javax.swing.GroupLayout(panelPrueba);
         panelPrueba.setLayout(panelPruebaLayout);
         panelPruebaLayout.setHorizontalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1010, Short.MAX_VALUE)
+            .addGap(0, 1005, Short.MAX_VALUE)
         );
         panelPruebaLayout.setVerticalGroup(
             panelPruebaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 750, Short.MAX_VALUE)
+            .addGap(0, 740, Short.MAX_VALUE)
         );
 
         getContentPane().add(panelPrueba);
-        panelPrueba.setBounds(140, 80, 1010, 750);
+        panelPrueba.setBounds(140, 80, 1005, 740);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tratamiento.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -159,8 +161,10 @@ public class Prueba extends javax.swing.JFrame {
         jLabel8.setBounds(40, 620, 60, 15);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo.png"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(20000, 839));
+        jLabel2.setPreferredSize(new java.awt.Dimension(20000, 839));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -10, 1150, 840);
+        jLabel2.setBounds(0, -10, 1140, 830);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,14 +193,6 @@ public class Prueba extends javax.swing.JFrame {
        System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
-<<<<<<< Updated upstream
-=======
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-//         ViewListadoClientes lc =new ViewListadoClientes();
-//        mostrarPanel( lc);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
->>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */
