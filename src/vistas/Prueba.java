@@ -204,7 +204,16 @@ public class Prueba extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ViewMascotas m =new ViewMascotas();
-        mostrarPanel( m);
+        m.setSize(740, 802);   
+        m.setLocation(0,0);
+        
+        panelPrueba.removeAll();
+        panelPrueba.add(m,BorderLayout.CENTER);
+        
+         panelPrueba.revalidate();
+         panelPrueba.repaint();
+         m.setVisible(true);
+         m.moveToFront();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -220,7 +229,16 @@ public class Prueba extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         ViewListaMascotasPorCliente lc =new ViewListaMascotasPorCliente();
-      mostrarPanel( lc);
+        lc.setSize(858, 451);   
+        lc.setLocation(0,0);
+        
+        panelPrueba.removeAll();
+        panelPrueba.add(lc,BorderLayout.CENTER);
+        
+         panelPrueba.revalidate();
+         panelPrueba.repaint();
+         lc.setVisible(true);
+         lc.moveToFront();
     }//GEN-LAST:event_jButton6ActionPerformed
 
 

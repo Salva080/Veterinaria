@@ -527,7 +527,7 @@ public class ViewMascotas extends javax.swing.JInternalFrame {
     private void jbLimpíarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbLimpíarActionPerformed
         // TODO add your handling code here:
         limpiar();
-        activarID();
+        desactivarID();
         jbBuscar.setEnabled(true);
     }//GEN-LAST:event_jbLimpíarActionPerformed
 
