@@ -63,6 +63,7 @@ public class Prueba extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -163,6 +164,15 @@ public class Prueba extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, -20, 1150, 840);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mascotas.png"))); // NOI18N
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5);
+        jButton5.setBounds(30, 240, 90, 73);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -238,6 +248,7 @@ public class Prueba extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
