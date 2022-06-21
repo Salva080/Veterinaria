@@ -54,15 +54,8 @@ public class ConsultaData {
 
             while (rs.next()) {
                 promedio = rs.getDouble("AVG(pesoConsulta)");
-                System.out.println(""+ promedio);
-//                consulta = new Consulta();
-//                consulta.setIdConsulta(rs.getInt("idConsulta"));
-//                mascota = buscarMascotas(rs.getInt("idMascota"));
-//
-//                consulta.setPesoConsulta(rs.getDouble("AVG(pesoConsulta)"));
-//
-//                consulta.setMascota(mascota);
-//                promedios.add(consulta);
+               
+
             
             }
             ps.close();
@@ -145,7 +138,7 @@ public class ConsultaData {
 //4 ok
 
     public void registrarConsulta(Consulta consulta) {
-        sql = "INSERT INTO consulta (precio, fechaConsulta, idMascota, idTratamiento, activo, PesoConsulta) VALUES (?, ?, ?, ?, ?, ?)";
+        sql = "INSERT INTO consulta (precio, fechaConsulta, idMascota, idTratamiento, detallesConsulta, activo, PesoConsulta) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try {
 
@@ -155,8 +148,9 @@ public class ConsultaData {
             ps.setDate(2, Date.valueOf(consulta.getFechaConsulta()));
             ps.setInt(3, consulta.getMascota().getIdMascota());
             ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
-            ps.setBoolean(5, consulta.isActivo());
-            ps.setDouble(6, consulta.getPesoConsulta());
+            ps.setString(5, consulta.getDetallesConsulta());
+            ps.setBoolean(6, consulta.isActivo());
+            ps.setDouble(7, consulta.getPesoConsulta());
 
             ps.execute();
 
@@ -175,7 +169,7 @@ public class ConsultaData {
     }
     public void modificarConsulta(int idConsulta, Consulta consulta) {
         
-        sql = "UPDATE consulta SET precio=?, fechaConsulta=?, idMascota=?,  idTratamiento=?, pesoConsulta=? WHERE  activo=1 AND idConsulta=? ";
+        sql = "UPDATE consulta SET precio=?, fechaConsulta=?, idMascota=?,  idTratamiento=?, detallesConsulta=?, pesoConsulta=? WHERE  activo=1 AND idConsulta=? ";
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             
@@ -183,8 +177,9 @@ public class ConsultaData {
             ps.setDate(2, Date.valueOf(consulta.getFechaConsulta()));
             ps.setInt(3, consulta.getMascota().getIdMascota());
             ps.setInt(4, consulta.getTratamiento().getIdTratamiento());
-            ps.setDouble(5, consulta.getPesoConsulta());
-            ps.setInt(6, idConsulta);
+            ps.setString(5, consulta.getDetallesConsulta());
+            ps.setDouble(6, consulta.getPesoConsulta());
+            ps.setInt(7, idConsulta);
 
             
             
@@ -243,7 +238,27 @@ public class ConsultaData {
     }
 //9 ok 
 
-  
+  public void actualizarPesoActual(int idMascota, double peso) {
+      
+        sql = "UPDATE mascota SET pesoActual = ? WHERE activo = 1 AND idMascota = ?";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            Mascota m= new Mascota();
+         
+            ps.setInt(2, idMascota);
+            
+            ps.setDouble(1,peso);
+            
+            
+            
+            ps.executeUpdate();
+            
+            ps.close(); 
+            JOptionPane.showMessageDialog(null, "Se modificó  el peso de la mascota");           
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "ERROR AL MODIFICAR LA MASCOTA" + ex.getMessage());
+        }
+    }
     
     
     
@@ -318,7 +333,7 @@ public class ConsultaData {
                 consul.setIdConsulta(rs.getInt("idConsulta"));
                 consul.setPrecio(rs.getDouble("precio"));
                 consul.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
-
+                consul.setDetallesConsulta(rs.getString("detallesConsulta"));
                 consul.setPesoConsulta(rs.getDouble("pesoConsulta"));
                 consul.setActivo(rs.getBoolean("activo"));
                 tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
@@ -345,7 +360,7 @@ public class ConsultaData {
         Mascota mascota;
         Tratamiento tratamiento;
 
-        sql = "SELECT * FROM consulta WHERE idMascota = ? ORDER BY idTratamiento ASC ";
+        sql = "SELECT * FROM consulta WHERE idConsulta = ? ORDER BY fechaConsulta ASC ";
 
         try {
             
@@ -355,11 +370,12 @@ public class ConsultaData {
 
             while (rs.next()) {
               
-                consulta.setIdConsulta(rs.getInt("idConsulta"));
+               // consulta.setIdConsulta(rs.getInt("idConsulta"));
                 consulta.setFechaConsulta(rs.getDate("fechaConsulta").toLocalDate());
                 consulta.setPrecio(rs.getDouble("precio"));
                 consulta.setPesoConsulta(rs.getDouble("pesoConsulta"));
                 consulta.setActivo(rs.getBoolean("activo"));
+                consulta.setDetallesConsulta(rs.getString("detallesConsulta"));
                 tratamiento = buscarTratamientos(rs.getInt("idTratamiento"));
                 consulta.setTratamiento(tratamiento);
 

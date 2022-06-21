@@ -189,6 +189,14 @@ public class Prueba extends javax.swing.JFrame {
        System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
+<<<<<<< Updated upstream
+=======
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+//         ViewListadoClientes lc =new ViewListadoClientes();
+//        mostrarPanel( lc);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+>>>>>>> Stashed changes
     /**
      * @param args the command line arguments
      */

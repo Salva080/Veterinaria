@@ -178,7 +178,7 @@ public class Mascota {
     @Override
     public String toString() {
        // return idMascota + "," + alias + "," + sexo + "," + especie + "," + raza + "," + colorPelaje + "," + fechaNac + "," + pesoMascota +" ,"+ cliente +", "+ pesoActual;
-       return idMascota+"-" + alias+"-"+pesoActual;
+       return idMascota+"-" + alias;
     }
     
     
